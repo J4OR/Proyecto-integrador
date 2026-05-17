@@ -2,9 +2,10 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Proyecto_Integrador.Models
+namespace Proyecto_Integrador.Controller
 {
-    internal class Estudiante
+    internal class UsuarioController
     {
+
     }
 }

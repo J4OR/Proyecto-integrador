@@ -11,10 +11,9 @@ namespace Proyecto_Integrador.Models
         public string User { get; set; }
 
         [JsonConstructor]
-        public Admin(int id, string nit, string nombre, string password, string user, bool state) : base(id, nit, nombre)
+        public Admin(string nit, string nombre, string password, string user) : base(nit, nombre)
         {
             this.password = password;
-            this.state = state;
             this.User = user;
         }
     }

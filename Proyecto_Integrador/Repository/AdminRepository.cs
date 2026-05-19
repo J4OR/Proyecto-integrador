@@ -6,14 +6,14 @@ using System.Text.Json;
 
 namespace Proyecto_Integrador.Repository
 {
-    internal class UsuarioRepository
+    internal class AdminRepository
     {
         private static readonly string folder = "Data";
-        public static readonly string filePath = Path.Combine(folder, "usuarios.json");
+        public static readonly string filePath = Path.Combine(folder, "Admin.json");
 
-        public List<Usuario> leer()
+        public List<Admin> leer()
         {
-            List<Usuario> lista = new List<Usuario>();
+            List<Admin> lista = new List<Admin>();
             if (File.Exists(filePath))
             {
                 using (StreamReader sr = new StreamReader(filePath))
@@ -22,7 +22,7 @@ namespace Proyecto_Integrador.Repository
 
                     if (!string.IsNullOrWhiteSpace(json))
                     {
-                        lista = JsonSerializer.Deserialize<List<Usuario>>(json) ?? lista;
+                        lista = JsonSerializer.Deserialize<List<Admin>>(json) ?? lista;
                     }
                 }
             }
@@ -33,7 +33,7 @@ namespace Proyecto_Integrador.Repository
             }
             return lista;
         }
-        private void guardar(List<Usuario> lista)
+        private void guardar(List<Admin> lista)
         {
 
             JsonSerializerOptions opciones = new JsonSerializerOptions
@@ -49,20 +49,20 @@ namespace Proyecto_Integrador.Repository
             }
         }
 
-        public void agregar(Usuario usuario)
+        public void agregar(Admin admin)
         {
-            List<Usuario> lista = this.leer();
-            lista.Add(usuario);
+            List<Admin> lista = this.leer();
+            lista.Add(admin);
             this.guardar(lista);
         }
 
-        public void editar(Usuario usuario)
+        public void editar(Admin admin)
         {
-            List<Usuario> lista = this.leer();
-            int index = lista.FindIndex(u => u.id == usuario.id);
+            List<Admin> lista = this.leer();
+            int index = lista.FindIndex(u => u.id == admin.id);
             if (index != -1)
             {
-                lista[index] = usuario;
+                lista[index] = admin;
                 this.guardar(lista);
             }
         }

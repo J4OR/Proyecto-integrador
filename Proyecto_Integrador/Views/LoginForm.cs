@@ -8,9 +8,9 @@ using System.Windows.Forms;
 
 namespace Proyecto_Integrador.Views
 {
-    public partial class FormHome : Form
+    public partial class LoginForm : Form
     {
-        public FormHome()
+        public LoginForm()
         {
             InitializeComponent();
         }

@@ -13,6 +13,13 @@ namespace Proyecto_Integrador.Models
         public string nombre { get; set; }
 
         [JsonConstructor]
+        public Persona(int id, string nit, string nombre)
+        {
+            this.id = id;
+            this.nit = nit;
+            this.nombre = nombre;
+        }
+
         public Persona (string nit, string nombre)
         {
             this.id = contador++;
@@ -20,7 +27,7 @@ namespace Proyecto_Integrador.Models
             this.nombre = nombre;
         }
 
-        public static void actualizarContador(int valor)
+        public static void ActualizarContador(int valor)
         {
             contador = valor;
         }

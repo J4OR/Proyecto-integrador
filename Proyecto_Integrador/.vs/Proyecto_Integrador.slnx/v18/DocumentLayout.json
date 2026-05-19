@@ -7,15 +7,15 @@
       "RelativeMoniker": "D:0:0:{A5FDC321-FDC1-1B61-942A-7975B50CF8F5}|Proyecto_Integrador.csproj|solutionrelative:repository\\usuariorepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A5FDC321-FDC1-1B61-942A-7975B50CF8F5}|Proyecto_Integrador.csproj|c:\\users\\jorte\\onedrive\\documentos\\github\\proyecto-integrador\\proyecto_integrador\\repository\\personarepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A5FDC321-FDC1-1B61-942A-7975B50CF8F5}|Proyecto_Integrador.csproj|solutionrelative:repository\\personarepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A5FDC321-FDC1-1B61-942A-7975B50CF8F5}|Proyecto_Integrador.csproj|c:\\users\\jorte\\onedrive\\documentos\\github\\proyecto-integrador\\proyecto_integrador\\repository\\adminrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A5FDC321-FDC1-1B61-942A-7975B50CF8F5}|Proyecto_Integrador.csproj|solutionrelative:repository\\adminrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A5FDC321-FDC1-1B61-942A-7975B50CF8F5}|Proyecto_Integrador.csproj|c:\\users\\jorte\\onedrive\\documentos\\github\\proyecto-integrador\\proyecto_integrador\\models\\persona.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A5FDC321-FDC1-1B61-942A-7975B50CF8F5}|Proyecto_Integrador.csproj|solutionrelative:models\\persona.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A5FDC321-FDC1-1B61-942A-7975B50CF8F5}|Proyecto_Integrador.csproj|c:\\users\\jorte\\onedrive\\documentos\\github\\proyecto-integrador\\proyecto_integrador\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{A5FDC321-FDC1-1B61-942A-7975B50CF8F5}|Proyecto_Integrador.csproj|C:\\Users\\jorte\\OneDrive\\Documentos\\GitHub\\Proyecto-integrador\\Proyecto_Integrador\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{A5FDC321-FDC1-1B61-942A-7975B50CF8F5}|Proyecto_Integrador.csproj|solutionrelative:form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
@@ -30,7 +30,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 5,
           "Children": [
             {
               "$type": "Bookmark",
@@ -50,13 +50,26 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "AdminRepository.cs",
+              "DocumentMoniker": "C:\\Users\\jorte\\OneDrive\\Documentos\\GitHub\\Proyecto-integrador\\Proyecto_Integrador\\Repository\\AdminRepository.cs",
+              "RelativeDocumentMoniker": "Repository\\AdminRepository.cs",
+              "ToolTip": "C:\\Users\\jorte\\OneDrive\\Documentos\\GitHub\\Proyecto-integrador\\Proyecto_Integrador\\Repository\\AdminRepository.cs",
+              "RelativeToolTip": "Repository\\AdminRepository.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAABEAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-19T12:26:36.888Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 0,
               "Title": "UsuarioRepository.cs",
               "DocumentMoniker": "C:\\Users\\jorte\\OneDrive\\Documentos\\GitHub\\Proyecto-integrador\\Proyecto_Integrador\\Repository\\UsuarioRepository.cs",
               "RelativeDocumentMoniker": "Repository\\UsuarioRepository.cs",
               "ToolTip": "C:\\Users\\jorte\\OneDrive\\Documentos\\GitHub\\Proyecto-integrador\\Proyecto_Integrador\\Repository\\UsuarioRepository.cs",
               "RelativeToolTip": "Repository\\UsuarioRepository.cs",
-              "ViewState": "AgIAAAgAAAAAAAAAAAAxwBEAAAANAAAAAAAAAA==",
+              "ViewState": "AgIAACMAAAAAAAAAAAAYwDAAAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-05-19T04:42:52.332Z",
               "EditorCaption": ""
@@ -70,21 +83,7 @@
               "ToolTip": "C:\\Users\\jorte\\OneDrive\\Documentos\\GitHub\\Proyecto-integrador\\Proyecto_Integrador\\Form1.cs [Dise\u00F1o]",
               "RelativeToolTip": "Form1.cs [Dise\u00F1o]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-19T04:40:09.281Z",
-              "EditorCaption": " [Dise\u00F1o]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "PersonaRepository.cs",
-              "DocumentMoniker": "C:\\Users\\jorte\\OneDrive\\Documentos\\GitHub\\Proyecto-integrador\\Proyecto_Integrador\\Repository\\PersonaRepository.cs",
-              "RelativeDocumentMoniker": "Repository\\PersonaRepository.cs",
-              "ToolTip": "C:\\Users\\jorte\\OneDrive\\Documentos\\GitHub\\Proyecto-integrador\\Proyecto_Integrador\\Repository\\PersonaRepository.cs",
-              "RelativeToolTip": "Repository\\PersonaRepository.cs",
-              "ViewState": "AgIAAAcAAAAAAAAAAAAAAAoAAAAIAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-19T03:56:58.084Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-19T04:40:09.281Z"
             },
             {
               "$type": "Document",
@@ -96,8 +95,7 @@
               "RelativeToolTip": "Models\\Persona.cs",
               "ViewState": "AgIAAAgAAAAAAAAAAAAAwBUAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-18T00:05:06.456Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-18T00:05:06.456Z"
             },
             {
               "$type": "Document",
@@ -109,8 +107,7 @@
               "RelativeToolTip": "Models\\Admin.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAdAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-18T00:04:59.32Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-18T00:04:59.32Z"
             }
           ]
         }

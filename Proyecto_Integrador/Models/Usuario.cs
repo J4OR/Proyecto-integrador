@@ -13,7 +13,7 @@ namespace Proyecto_Integrador.Models
         public int idPersona { get; set; }
 
         [JsonConstructor]
-        public Usuario(string nit, string nombre, string password, string user) : base(nit, nombre)
+        public Usuario(string nit, string nombre,string telefono, string correo, string password, string user) : base(nit, nombre, telefono, correo)
         {
             this.password = password;
             this.state = true;

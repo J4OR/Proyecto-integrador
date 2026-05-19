@@ -10,10 +10,11 @@ namespace Proyecto_Integrador.Models
         public string password { get; set; }
         public string User { get; set; }
         public bool state { get; set; }
-        public int idPersona { get; set; }
+        public string telefono { get; set; }
+        public string correo { get; set; }
 
         [JsonConstructor]
-        public Usuario(string nit, string nombre,string telefono, string correo, string password, string user) : base(nit, nombre, telefono, correo)
+        public Usuario(string nit, string nombre,string telefono, string correo, string password, string user) : base(nit, nombre)
         {
             this.password = password;
             this.state = true;

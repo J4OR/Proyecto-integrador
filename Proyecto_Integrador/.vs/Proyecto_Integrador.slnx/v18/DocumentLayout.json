@@ -7,24 +7,52 @@
       "RelativeMoniker": "D:0:0:{A5FDC321-FDC1-1B61-942A-7975B50CF8F5}|Proyecto_Integrador.csproj|solutionrelative:views\\loginform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{A5FDC321-FDC1-1B61-942A-7975B50CF8F5}|Proyecto_Integrador.csproj|C:\\Users\\jorte\\OneDrive\\Documentos\\GitHub\\Proyecto-integrador\\Proyecto_Integrador\\views\\loginform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{A5FDC321-FDC1-1B61-942A-7975B50CF8F5}|Proyecto_Integrador.csproj|solutionrelative:views\\loginform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A5FDC321-FDC1-1B61-942A-7975B50CF8F5}|Proyecto_Integrador.csproj|c:\\users\\jorte\\onedrive\\documentos\\github\\proyecto-integrador\\proyecto_integrador\\views\\formprueba.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A5FDC321-FDC1-1B61-942A-7975B50CF8F5}|Proyecto_Integrador.csproj|solutionrelative:views\\formprueba.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A5FDC321-FDC1-1B61-942A-7975B50CF8F5}|Proyecto_Integrador.csproj|c:\\users\\jorte\\onedrive\\documentos\\github\\proyecto-integrador\\proyecto_integrador\\views\\formprueba.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{A5FDC321-FDC1-1B61-942A-7975B50CF8F5}|Proyecto_Integrador.csproj|solutionrelative:views\\formprueba.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A5FDC321-FDC1-1B61-942A-7975B50CF8F5}|Proyecto_Integrador.csproj|c:\\users\\jorte\\onedrive\\documentos\\github\\proyecto-integrador\\proyecto_integrador\\views\\formprueba.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A5FDC321-FDC1-1B61-942A-7975B50CF8F5}|Proyecto_Integrador.csproj|solutionrelative:views\\formprueba.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A5FDC321-FDC1-1B61-942A-7975B50CF8F5}|Proyecto_Integrador.csproj|c:\\users\\jorte\\onedrive\\documentos\\github\\proyecto-integrador\\proyecto_integrador\\controller\\clientecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A5FDC321-FDC1-1B61-942A-7975B50CF8F5}|Proyecto_Integrador.csproj|solutionrelative:controller\\clientecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{A5FDC321-FDC1-1B61-942A-7975B50CF8F5}|Proyecto_Integrador.csproj|c:\\users\\jorte\\onedrive\\documentos\\github\\proyecto-integrador\\proyecto_integrador\\controller\\usuariocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A5FDC321-FDC1-1B61-942A-7975B50CF8F5}|Proyecto_Integrador.csproj|solutionrelative:controller\\usuariocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A5FDC321-FDC1-1B61-942A-7975B50CF8F5}|Proyecto_Integrador.csproj|c:\\users\\jorte\\onedrive\\documentos\\github\\proyecto-integrador\\proyecto_integrador\\repository\\clienterepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A5FDC321-FDC1-1B61-942A-7975B50CF8F5}|Proyecto_Integrador.csproj|solutionrelative:repository\\clienterepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A5FDC321-FDC1-1B61-942A-7975B50CF8F5}|Proyecto_Integrador.csproj|c:\\users\\jorte\\onedrive\\documentos\\github\\proyecto-integrador\\proyecto_integrador\\repository\\usuariorepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A5FDC321-FDC1-1B61-942A-7975B50CF8F5}|Proyecto_Integrador.csproj|solutionrelative:repository\\usuariorepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A5FDC321-FDC1-1B61-942A-7975B50CF8F5}|Proyecto_Integrador.csproj|c:\\users\\jorte\\onedrive\\documentos\\github\\proyecto-integrador\\proyecto_integrador\\repository\\jsonrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A5FDC321-FDC1-1B61-942A-7975B50CF8F5}|Proyecto_Integrador.csproj|solutionrelative:repository\\jsonrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A5FDC321-FDC1-1B61-942A-7975B50CF8F5}|Proyecto_Integrador.csproj|c:\\users\\jorte\\onedrive\\documentos\\github\\proyecto-integrador\\proyecto_integrador\\models\\cliente.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A5FDC321-FDC1-1B61-942A-7975B50CF8F5}|Proyecto_Integrador.csproj|solutionrelative:models\\cliente.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A5FDC321-FDC1-1B61-942A-7975B50CF8F5}|Proyecto_Integrador.csproj|c:\\users\\jorte\\onedrive\\documentos\\github\\proyecto-integrador\\proyecto_integrador\\models\\material.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A5FDC321-FDC1-1B61-942A-7975B50CF8F5}|Proyecto_Integrador.csproj|solutionrelative:models\\material.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A5FDC321-FDC1-1B61-942A-7975B50CF8F5}|Proyecto_Integrador.csproj|c:\\users\\jorte\\onedrive\\documentos\\github\\proyecto-integrador\\proyecto_integrador\\models\\persona.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A5FDC321-FDC1-1B61-942A-7975B50CF8F5}|Proyecto_Integrador.csproj|solutionrelative:models\\persona.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A5FDC321-FDC1-1B61-942A-7975B50CF8F5}|Proyecto_Integrador.csproj|C:\\Users\\jorte\\OneDrive\\Documentos\\GitHub\\Proyecto-integrador\\Proyecto_Integrador\\views\\loginform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{A5FDC321-FDC1-1B61-942A-7975B50CF8F5}|Proyecto_Integrador.csproj|solutionrelative:views\\loginform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{A5FDC321-FDC1-1B61-942A-7975B50CF8F5}|Proyecto_Integrador.csproj|c:\\users\\jorte\\onedrive\\documentos\\github\\proyecto-integrador\\proyecto_integrador\\repository\\jsonrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A5FDC321-FDC1-1B61-942A-7975B50CF8F5}|Proyecto_Integrador.csproj|solutionrelative:repository\\jsonrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A5FDC321-FDC1-1B61-942A-7975B50CF8F5}|Proyecto_Integrador.csproj|c:\\users\\jorte\\onedrive\\documentos\\github\\proyecto-integrador\\proyecto_integrador\\security\\passwordhasher.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -62,7 +90,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 9,
+          "SelectedChildIndex": 10,
           "Children": [
             {
               "$type": "Bookmark",
@@ -82,7 +110,58 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 2,
+              "Title": "Formprueba.cs",
+              "DocumentMoniker": "C:\\Users\\jorte\\OneDrive\\Documentos\\GitHub\\Proyecto-integrador\\Proyecto_Integrador\\Views\\Formprueba.cs",
+              "RelativeDocumentMoniker": "Views\\Formprueba.cs",
+              "ToolTip": "C:\\Users\\jorte\\OneDrive\\Documentos\\GitHub\\Proyecto-integrador\\Proyecto_Integrador\\Views\\Formprueba.cs",
+              "RelativeToolTip": "Views\\Formprueba.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAewA0AAABGAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-20T22:53:28.899Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "ClienteController.cs",
+              "DocumentMoniker": "C:\\Users\\jorte\\OneDrive\\Documentos\\GitHub\\Proyecto-integrador\\Proyecto_Integrador\\Controller\\ClienteController.cs",
+              "RelativeDocumentMoniker": "Controller\\ClienteController.cs",
+              "ToolTip": "C:\\Users\\jorte\\OneDrive\\Documentos\\GitHub\\Proyecto-integrador\\Proyecto_Integrador\\Controller\\ClienteController.cs",
+              "RelativeToolTip": "Controller\\ClienteController.cs",
+              "ViewState": "AgIAAA0AAAAAAAAAAAAQwB8AAAA1AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-20T22:43:12.878Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "ClienteRepository.cs",
+              "DocumentMoniker": "C:\\Users\\jorte\\OneDrive\\Documentos\\GitHub\\Proyecto-integrador\\Proyecto_Integrador\\Repository\\ClienteRepository.cs",
+              "RelativeDocumentMoniker": "Repository\\ClienteRepository.cs",
+              "ToolTip": "C:\\Users\\jorte\\OneDrive\\Documentos\\GitHub\\Proyecto-integrador\\Proyecto_Integrador\\Repository\\ClienteRepository.cs",
+              "RelativeToolTip": "Repository\\ClienteRepository.cs",
+              "ViewState": "AgIAABMAAAAAAAAAAAAQwBwAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-20T19:48:43.781Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "Cliente.cs",
+              "DocumentMoniker": "C:\\Users\\jorte\\OneDrive\\Documentos\\GitHub\\Proyecto-integrador\\Proyecto_Integrador\\Models\\Cliente.cs",
+              "RelativeDocumentMoniker": "Models\\Cliente.cs",
+              "ToolTip": "C:\\Users\\jorte\\OneDrive\\Documentos\\GitHub\\Proyecto-integrador\\Proyecto_Integrador\\Models\\Cliente.cs",
+              "RelativeToolTip": "Models\\Cliente.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-20T19:35:52.622Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
               "Title": "JsonRepository.cs",
               "DocumentMoniker": "C:\\Users\\jorte\\OneDrive\\Documentos\\GitHub\\Proyecto-integrador\\Proyecto_Integrador\\Repository\\JsonRepository.cs",
               "RelativeDocumentMoniker": "Repository\\JsonRepository.cs",
@@ -90,25 +169,74 @@
               "RelativeToolTip": "Repository\\JsonRepository.cs",
               "ViewState": "AgIAACQAAAAAAAAAAAAYwBIAAAAEAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-20T18:05:37.6Z",
+              "WhenOpened": "2026-05-20T18:05:37.6Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "LoginForm.cs [Dise\u00F1o]",
+              "DocumentMoniker": "C:\\Users\\jorte\\OneDrive\\Documentos\\GitHub\\Proyecto-integrador\\Proyecto_Integrador\\Views\\LoginForm.cs",
+              "RelativeDocumentMoniker": "Views\\LoginForm.cs",
+              "ToolTip": "C:\\Users\\jorte\\OneDrive\\Documentos\\GitHub\\Proyecto-integrador\\Proyecto_Integrador\\Views\\LoginForm.cs [Dise\u00F1o]",
+              "RelativeToolTip": "Views\\LoginForm.cs [Dise\u00F1o]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-19T22:44:29.468Z",
+              "EditorCaption": " [Dise\u00F1o]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "LoginForm.cs",
+              "DocumentMoniker": "C:\\Users\\jorte\\OneDrive\\Documentos\\GitHub\\Proyecto-integrador\\Proyecto_Integrador\\Views\\LoginForm.cs",
+              "RelativeDocumentMoniker": "Views\\LoginForm.cs",
+              "ToolTip": "C:\\Users\\jorte\\OneDrive\\Documentos\\GitHub\\Proyecto-integrador\\Proyecto_Integrador\\Views\\LoginForm.cs",
+              "RelativeToolTip": "Views\\LoginForm.cs",
+              "ViewState": "AgIAAFQAAAAAAAAAAAAgwGYAAAAgAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-20T02:58:17.623Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 4,
+              "Title": "Formprueba.Designer.cs",
+              "DocumentMoniker": "C:\\Users\\jorte\\OneDrive\\Documentos\\GitHub\\Proyecto-integrador\\Proyecto_Integrador\\Views\\Formprueba.Designer.cs",
+              "RelativeDocumentMoniker": "Views\\Formprueba.Designer.cs",
+              "ToolTip": "C:\\Users\\jorte\\OneDrive\\Documentos\\GitHub\\Proyecto-integrador\\Proyecto_Integrador\\Views\\Formprueba.Designer.cs",
+              "RelativeToolTip": "Views\\Formprueba.Designer.cs",
+              "ViewState": "AgIAABgAAAAAAAAAAAAnwFYAAAAhAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-20T22:54:33.578Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Formprueba.cs [Dise\u00F1o]",
+              "DocumentMoniker": "C:\\Users\\jorte\\OneDrive\\Documentos\\GitHub\\Proyecto-integrador\\Proyecto_Integrador\\Views\\Formprueba.cs",
+              "RelativeDocumentMoniker": "Views\\Formprueba.cs",
+              "ToolTip": "C:\\Users\\jorte\\OneDrive\\Documentos\\GitHub\\Proyecto-integrador\\Proyecto_Integrador\\Views\\Formprueba.cs [Dise\u00F1o]",
+              "RelativeToolTip": "Views\\Formprueba.cs [Dise\u00F1o]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-20T22:55:52.037Z",
+              "EditorCaption": " [Dise\u00F1o]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
               "Title": "UsuarioRepository.cs",
               "DocumentMoniker": "C:\\Users\\jorte\\OneDrive\\Documentos\\GitHub\\Proyecto-integrador\\Proyecto_Integrador\\Repository\\UsuarioRepository.cs",
               "RelativeDocumentMoniker": "Repository\\UsuarioRepository.cs",
               "ToolTip": "C:\\Users\\jorte\\OneDrive\\Documentos\\GitHub\\Proyecto-integrador\\Proyecto_Integrador\\Repository\\UsuarioRepository.cs",
               "RelativeToolTip": "Repository\\UsuarioRepository.cs",
-              "ViewState": "AgIAABkAAAAAAAAAAAAQwCQAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAwAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-05-20T17:57:05.839Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 14,
               "Title": "Usuario.cs",
               "DocumentMoniker": "C:\\Users\\jorte\\OneDrive\\Documentos\\GitHub\\Proyecto-integrador\\Proyecto_Integrador\\Models\\Usuario.cs",
               "RelativeDocumentMoniker": "Models\\Usuario.cs",
@@ -120,20 +248,32 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 6,
               "Title": "UsuarioController.cs",
               "DocumentMoniker": "C:\\Users\\jorte\\OneDrive\\Documentos\\GitHub\\Proyecto-integrador\\Proyecto_Integrador\\Controller\\UsuarioController.cs",
               "RelativeDocumentMoniker": "Controller\\UsuarioController.cs",
               "ToolTip": "C:\\Users\\jorte\\OneDrive\\Documentos\\GitHub\\Proyecto-integrador\\Proyecto_Integrador\\Controller\\UsuarioController.cs",
               "RelativeToolTip": "Controller\\UsuarioController.cs",
-              "ViewState": "AgIAABIAAAAAAAAAAAAqwCgAAAA7AAAAAAAAAA==",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAACgAAAA7AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-05-20T16:36:27.52Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 10,
+              "Title": "Material.cs",
+              "DocumentMoniker": "C:\\Users\\jorte\\OneDrive\\Documentos\\GitHub\\Proyecto-integrador\\Proyecto_Integrador\\Models\\Material.cs",
+              "RelativeDocumentMoniker": "Models\\Material.cs",
+              "ToolTip": "C:\\Users\\jorte\\OneDrive\\Documentos\\GitHub\\Proyecto-integrador\\Proyecto_Integrador\\Models\\Material.cs",
+              "RelativeToolTip": "Models\\Material.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-20T19:44:51.635Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
               "Title": "Persona.cs",
               "DocumentMoniker": "C:\\Users\\jorte\\OneDrive\\Documentos\\GitHub\\Proyecto-integrador\\Proyecto_Integrador\\Models\\Persona.cs",
               "RelativeDocumentMoniker": "Models\\Persona.cs",
@@ -141,37 +281,11 @@
               "RelativeToolTip": "Models\\Persona.cs",
               "ViewState": "AgIAAAMAAAAAAAAAAAAAABYAAAAhAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-18T00:05:06.456Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-18T00:05:06.456Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "LoginForm.cs",
-              "DocumentMoniker": "C:\\Users\\jorte\\OneDrive\\Documentos\\GitHub\\Proyecto-integrador\\Proyecto_Integrador\\Views\\LoginForm.cs",
-              "RelativeDocumentMoniker": "Views\\LoginForm.cs",
-              "ToolTip": "C:\\Users\\jorte\\OneDrive\\Documentos\\GitHub\\Proyecto-integrador\\Proyecto_Integrador\\Views\\LoginForm.cs*",
-              "RelativeToolTip": "Views\\LoginForm.cs*",
-              "ViewState": "AgIAAFMAAAAAAAAAAAAlwGEAAAARAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-20T02:58:17.623Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "LoginForm.cs [Dise\u00F1o]",
-              "DocumentMoniker": "C:\\Users\\jorte\\OneDrive\\Documentos\\GitHub\\Proyecto-integrador\\Proyecto_Integrador\\Views\\LoginForm.cs",
-              "RelativeDocumentMoniker": "Views\\LoginForm.cs",
-              "ToolTip": "C:\\Users\\jorte\\OneDrive\\Documentos\\GitHub\\Proyecto-integrador\\Proyecto_Integrador\\Views\\LoginForm.cs [Dise\u00F1o]*",
-              "RelativeToolTip": "Views\\LoginForm.cs [Dise\u00F1o]*",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-19T22:44:29.468Z",
-              "EditorCaption": " [Dise\u00F1o]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 13,
               "Title": "PasswordHasher.cs",
               "DocumentMoniker": "C:\\Users\\jorte\\OneDrive\\Documentos\\GitHub\\Proyecto-integrador\\Proyecto_Integrador\\Security\\PasswordHasher.cs",
               "RelativeDocumentMoniker": "Security\\PasswordHasher.cs",
@@ -183,7 +297,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 17,
               "Title": "Resources.Designer.cs",
               "DocumentMoniker": "C:\\Users\\jorte\\OneDrive\\Documentos\\GitHub\\Proyecto-integrador\\Proyecto_Integrador\\Properties\\Resources.Designer.cs",
               "RelativeDocumentMoniker": "Properties\\Resources.Designer.cs",
@@ -195,7 +309,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 18,
               "Title": "Resources.resx",
               "DocumentMoniker": "C:\\Users\\jorte\\OneDrive\\Documentos\\GitHub\\Proyecto-integrador\\Proyecto_Integrador\\Properties\\Resources.resx",
               "RelativeDocumentMoniker": "Properties\\Resources.resx",
@@ -206,7 +320,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 15,
               "Title": "LoginForm.Designer.cs",
               "DocumentMoniker": "C:\\Users\\jorte\\OneDrive\\Documentos\\GitHub\\Proyecto-integrador\\Proyecto_Integrador\\Views\\LoginForm.Designer.cs",
               "RelativeDocumentMoniker": "Views\\LoginForm.Designer.cs",
@@ -219,7 +333,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 16,
               "Title": "Form1.cs [Dise\u00F1o]",
               "DocumentMoniker": "C:\\Users\\jorte\\OneDrive\\Documentos\\GitHub\\Proyecto-integrador\\Proyecto_Integrador\\Form1.cs",
               "RelativeDocumentMoniker": "Form1.cs",
@@ -230,7 +344,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 19,
               "Title": "RegistroForm.cs [Dise\u00F1o]",
               "DocumentMoniker": "C:\\Users\\jorte\\OneDrive\\Documentos\\GitHub\\Proyecto-integrador\\Proyecto_Integrador\\Views\\RegistroForm.cs",
               "RelativeDocumentMoniker": "Views\\RegistroForm.cs",

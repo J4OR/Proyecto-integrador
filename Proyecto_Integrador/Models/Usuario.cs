@@ -10,16 +10,18 @@ namespace Proyecto_Integrador.Models
         public string password { get; set; }
         public string user { get; set; }
         public bool state { get; set; }
-
+        public Rol rol { get; set; }
         [JsonConstructor]
-        public Usuario(Persona persona, string password, string user) : base(persona.nit, persona.nombre, persona.telefono, persona.correo)
+        public Usuario(string nit, string nombre, string telefono, string correo, string password, string user, Rol rol) : base(nit, nombre, telefono, correo)
         {
             this.password = password;
             this.state = true;
+            this.rol = rol;
             this.user = user;
         }
-
-
-
+    }
+    public enum Rol
+    {
+        Administrador,Usuario
     }
 }

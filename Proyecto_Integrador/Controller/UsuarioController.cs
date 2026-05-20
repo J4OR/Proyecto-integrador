@@ -22,52 +22,14 @@ namespace Proyecto_Integrador.Controller
         }
 
         // Agregar usuario
-        public void AgregarUsuario(
-            string nit,
-            string nombre,
-            string telefono,
-            string correo,
-            string password,
-            string user)
+        public void AgregarUsuario(Usuario usuario)
         {
-            Persona persona = new Persona(
-                nit,
-                nombre,
-                telefono,
-                correo
-            );
-
-            Usuario usuario = new Usuario(
-                persona,
-                password,
-                user
-            );
-
             repository.agregar(usuario);
         }
 
         // Editar usuario
-        public void EditarUsuario(
-            string nit,
-            string nombre,
-            string telefono,
-            string correo,
-            string password,
-            string user)
+        public void EditarUsuario(Usuario usuario)
         {
-            Persona persona = new Persona(
-                nit,
-                nombre,
-                telefono,
-                correo
-            );
-
-            Usuario usuario = new Usuario(
-                persona,
-                password,
-                user
-            );
-
             repository.editar(usuario);
         }
 

@@ -6,65 +6,44 @@ using System.Text.Json;
 
 namespace Proyecto_Integrador.Repository
 {
-    internal class UsuarioRepository
+    public class UsuarioRepository
     {
         private static readonly string folder = "Data";
         public static readonly string filePath = Path.Combine(folder, "usuarios.json");
 
-        public List<Usuario> leer()
-        {
-            List<Usuario> lista = new List<Usuario>();
-            if (File.Exists(filePath))
-            {
-                using (StreamReader sr = new StreamReader(filePath))
-                {
-                    string json = sr.ReadToEnd();
+        JsonRepository<Usuario> jsonRepository = new JsonRepository<Usuario>(folder, filePath);
 
-                    if (!string.IsNullOrWhiteSpace(json))
-                    {
-                        lista = JsonSerializer.Deserialize<List<Usuario>>(json) ?? lista;
-                    }
-                }
-            }
+
+        public int ObtenerSiguienteId(List<Usuario> lista)
+        {
+            if (lista.Count == 0)
+                return 1;
             else
-            {
-                Directory.CreateDirectory(folder);
-                File.WriteAllText(filePath, "[]");
-            }
-            return lista;
-        }
-        private void guardar(List<Usuario> lista)
-        {
-
-            JsonSerializerOptions opciones = new JsonSerializerOptions
-            {
-                WriteIndented = true
-            };
-
-
-            using (StreamWriter sw = new StreamWriter(filePath))
-            {
-                string json = JsonSerializer.Serialize(lista, opciones);
-                sw.Write(json);
-            }
+                return lista.Max(u => u.Id) + 1;
         }
 
-        public void agregar(Usuario usuario)
+        public List<Usuario> Leer()
         {
-            List<Usuario> lista = this.leer();
+            return jsonRepository.Leer();
+        }
+
+        public void Agregar(Usuario usuario)
+        {
+            List<Usuario> lista = jsonRepository.Leer();
+            usuario.Id = ObtenerSiguienteId(lista);
             lista.Add(usuario);
-            this.guardar(lista);
+            jsonRepository.Guardar(lista); ;
         }
 
-        public void editar(Usuario usuario)
+
+        public void Editar(Usuario nuevoUsuario, int id)
         {
-            List<Usuario> lista = this.leer();
-            int index = lista.FindIndex(u => u.id == usuario.id);
-            if (index != -1)
-            {
-                lista[index] = usuario;
-                this.guardar(lista);
-            }
+            jsonRepository.Editar(nuevoUsuario, u => u.Id == id);
+        }
+
+        public Usuario? Buscar(string userName)
+        {
+            return jsonRepository.Buscar(u => u.Username == userName);
         }
     }
 }

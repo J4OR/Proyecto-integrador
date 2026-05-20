@@ -94,7 +94,7 @@ namespace Proyecto_Integrador.Views
 
             if (usuario != null)
             {
-                if (usuario.password == password)
+                if (usuario.Password == password)
                 {
                     MessageBox.Show("Inicio de sesión exitoso");
 

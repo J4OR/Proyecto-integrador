@@ -34,5 +34,11 @@ namespace Proyecto_Integrador.Controller
             List<Cliente> lista = clienteRepository.Leer();
             return lista.Find(c => c.Nombre == nombre);
         }
+
+        public int ObtenerSiguienteId()
+        {
+            List<Cliente> lista = clienteRepository.Leer();
+            return clienteRepository.ObtenerSiguienteId(lista);
+        }
     }
 }

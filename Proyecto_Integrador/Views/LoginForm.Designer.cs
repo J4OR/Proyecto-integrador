@@ -133,6 +133,7 @@
             btnIniciarSesion.TabIndex = 11;
             btnIniciarSesion.Text = "Iniciar sesion";
             btnIniciarSesion.UseVisualStyleBackColor = false;
+            btnIniciarSesion.Click += btnIniciarSesion_Click;
             // 
             // lblTitullo
             // 
@@ -194,6 +195,7 @@
             btnRegistrar.TabIndex = 17;
             btnRegistrar.Text = "Registrar";
             btnRegistrar.UseVisualStyleBackColor = false;
+            btnRegistrar.Click += btnRegistrar_Click;
             // 
             // linkLblOlvidarContraseña
             // 
@@ -210,7 +212,7 @@
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ControlLightLight;
-            ClientSize = new Size(979, 624);
+            ClientSize = new Size(971, 624);
             Controls.Add(linkLblOlvidarContraseña);
             Controls.Add(btnRegistrar);
             Controls.Add(panelLinea);

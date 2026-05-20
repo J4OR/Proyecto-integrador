@@ -5,6 +5,8 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
+using Proyecto_Integrador.Controller;
+using Proyecto_Integrador.Models;
 
 namespace Proyecto_Integrador.Views
 {
@@ -77,6 +79,40 @@ namespace Proyecto_Integrador.Views
             }
         }
 
-        
+        private void btnRegistrar_Click(object sender, EventArgs e)
+        {
+            RegistroForm registroForm = new RegistroForm();
+            registroForm.ShowDialog();
+        }
+
+        private void btnIniciarSesion_Click(object sender, EventArgs e)
+        {
+            string user = txtUser.Text;
+            string password = txtPassword.Text;
+            UsuarioController controller = new UsuarioController();
+            Usuario usuario = controller.BuscarPorUser(user);
+
+            if (usuario != null)
+            {
+                if (usuario.password == password)
+                {
+                    MessageBox.Show("Inicio de sesión exitoso");
+
+                    // Abrir otro formulario
+                    LoginForm home = new LoginForm();
+                    home.Show();
+
+                    this.Hide();
+                }
+                else
+                {
+                    MessageBox.Show("Contraseña incorrecta");
+                }
+            }
+            else
+            {
+                MessageBox.Show("El usuario no existe");
+            }
+        }
     }
 }

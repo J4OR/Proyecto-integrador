@@ -5,22 +5,24 @@ using System.Text.Json;
 
 namespace Proyecto_Integrador.Repository
 {
-    internal class JsonRepository<T> where T : class
+    public class JsonRepository<T> where T : class
     {
-        private string filePath;
+        private readonly string filePath;
+        private readonly string folder;
 
-        public JsonRepository(string filePath)
+        public JsonRepository(string folder, string filePath)
         {
+            this.folder = folder;
             this.filePath = filePath;
         }
 
+    
         public List<T> Leer()
         {
             List<T> lista = new List<T>();
 
             if (File.Exists(this.filePath))
             {
-
                 using (StreamReader sr = new StreamReader(this.filePath))
                 {
                     string json = sr.ReadToEnd();
@@ -48,6 +50,30 @@ namespace Proyecto_Integrador.Repository
                 string json = JsonSerializer.Serialize<List<T>>(lista, opciones);
                 sw.Write(json);
             }
+        }
+
+        public void Editar(T nuevoItem, Func<T, bool> criterio)
+        {
+            List<T> lista = Leer();
+            int index = lista.FindIndex(item => criterio(item));
+            if (index != -1)
+            {
+                lista[index] = nuevoItem;
+                Guardar(lista);
+            }
+        }
+
+        public void Eliminar(Func<T, bool> criterio)
+        {
+            List<T> lista = Leer();
+            lista.RemoveAll(item => criterio(item));
+            Guardar(lista);
+        }
+
+        public T? Buscar(Func<T, bool> criterio)
+        {
+            List<T> lista = Leer();
+            return lista.FirstOrDefault(item => criterio(item));
         }
     }
 }

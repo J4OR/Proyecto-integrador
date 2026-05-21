@@ -7,35 +7,20 @@ namespace Proyecto_Integrador.Models
 {
     public class Persona
     {
-        private static int contador = 1 ;
-        public int id { get; set; }
-        public string nit { get; set; }
-        public string nombre { get; set; }
-        public string telefono { get; set; }
-        public string correo { get; set; }
+        public int Id { get; set; }
+        public string Identificacion { get; set; }
+        public string Nombre { get; set; }
+        public string Telefono { get; set; }
+        public string Correo { get; set; }
 
         [JsonConstructor]
-        public Persona(int id, string nit, string nombre, string telefono, string correo)
+        public Persona(int id, string identificacion, string nombre, string telefono, string correo)
         {
-            this.id = id;
-            this.nit = nit;
-            this.nombre = nombre;
-            this.telefono = telefono;
-            this.correo = correo;
-        }
-
-        public Persona (string nit, string nombre, string telefono, string correo)
-        {
-            this.id = contador++;
-            this.nit = nit;
-            this.nombre = nombre;
-            this.telefono = telefono;
-            this.correo = correo;
-        }
-
-        public static void ActualizarContador(int valor)
-        {
-            contador = valor;
+            this.Id = id;
+            this.Identificacion = identificacion;
+            this.Nombre = nombre;
+            this.Telefono = telefono;
+            this.Correo = correo;
         }
 
     }

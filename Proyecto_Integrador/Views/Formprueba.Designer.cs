@@ -34,15 +34,16 @@
             txtCorreo = new TextBox();
             btnAgregar = new Button();
             tablaClientes = new DataGridView();
+            label1 = new Label();
+            label2 = new Label();
+            label3 = new Label();
+            label4 = new Label();
             Id = new DataGridViewTextBoxColumn();
             Nombre = new DataGridViewTextBoxColumn();
             Identificacion = new DataGridViewTextBoxColumn();
             Telefono = new DataGridViewTextBoxColumn();
             Correo = new DataGridViewTextBoxColumn();
-            label1 = new Label();
-            label2 = new Label();
-            label3 = new Label();
-            label4 = new Label();
+            Accion = new DataGridViewButtonColumn();
             ((System.ComponentModel.ISupportInitialize)tablaClientes).BeginInit();
             SuspendLayout();
             // 
@@ -86,48 +87,21 @@
             // 
             // tablaClientes
             // 
+            tablaClientes.AllowUserToDeleteRows = false;
+            tablaClientes.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            tablaClientes.BorderStyle = BorderStyle.None;
             tablaClientes.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            tablaClientes.Columns.AddRange(new DataGridViewColumn[] { Id, Nombre, Identificacion, Telefono, Correo });
-            tablaClientes.Location = new Point(503, 107);
+            tablaClientes.Columns.AddRange(new DataGridViewColumn[] { Id, Nombre, Identificacion, Telefono, Correo, Accion });
+            tablaClientes.GridColor = SystemColors.HighlightText;
+            tablaClientes.Location = new Point(448, 107);
+            tablaClientes.MultiSelect = false;
             tablaClientes.Name = "tablaClientes";
+            tablaClientes.ReadOnly = true;
+            tablaClientes.RowHeadersVisible = false;
             tablaClientes.RowHeadersWidth = 51;
+            tablaClientes.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             tablaClientes.Size = new Size(654, 291);
             tablaClientes.TabIndex = 5;
-            // 
-            // Id
-            // 
-            Id.HeaderText = "ID";
-            Id.MinimumWidth = 6;
-            Id.Name = "Id";
-            Id.Width = 125;
-            // 
-            // Nombre
-            // 
-            Nombre.HeaderText = "Nombre";
-            Nombre.MinimumWidth = 6;
-            Nombre.Name = "Nombre";
-            Nombre.Width = 125;
-            // 
-            // Identificacion
-            // 
-            Identificacion.HeaderText = "Identificacion";
-            Identificacion.MinimumWidth = 6;
-            Identificacion.Name = "Identificacion";
-            Identificacion.Width = 125;
-            // 
-            // Telefono
-            // 
-            Telefono.HeaderText = "Telefono";
-            Telefono.MinimumWidth = 6;
-            Telefono.Name = "Telefono";
-            Telefono.Width = 125;
-            // 
-            // Correo
-            // 
-            Correo.HeaderText = "Correo";
-            Correo.MinimumWidth = 6;
-            Correo.Name = "Correo";
-            Correo.Width = 125;
             // 
             // label1
             // 
@@ -165,6 +139,48 @@
             label4.TabIndex = 9;
             label4.Text = "Correo";
             // 
+            // Id
+            // 
+            Id.HeaderText = "ID";
+            Id.MinimumWidth = 6;
+            Id.Name = "Id";
+            Id.ReadOnly = true;
+            // 
+            // Nombre
+            // 
+            Nombre.HeaderText = "Nombre";
+            Nombre.MinimumWidth = 6;
+            Nombre.Name = "Nombre";
+            Nombre.ReadOnly = true;
+            // 
+            // Identificacion
+            // 
+            Identificacion.HeaderText = "Identificacion";
+            Identificacion.MinimumWidth = 6;
+            Identificacion.Name = "Identificacion";
+            Identificacion.ReadOnly = true;
+            // 
+            // Telefono
+            // 
+            Telefono.HeaderText = "Telefono";
+            Telefono.MinimumWidth = 6;
+            Telefono.Name = "Telefono";
+            Telefono.ReadOnly = true;
+            // 
+            // Correo
+            // 
+            Correo.HeaderText = "Correo";
+            Correo.MinimumWidth = 6;
+            Correo.Name = "Correo";
+            Correo.ReadOnly = true;
+            // 
+            // Accion
+            // 
+            Accion.HeaderText = "Accion";
+            Accion.MinimumWidth = 6;
+            Accion.Name = "Accion";
+            Accion.ReadOnly = true;
+            // 
             // Form_prueba
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -195,14 +211,15 @@
         private TextBox txtCorreo;
         private Button btnAgregar;
         private DataGridView tablaClientes;
+        private Label label1;
+        private Label label2;
+        private Label label3;
+        private Label label4;
         private DataGridViewTextBoxColumn Id;
         private DataGridViewTextBoxColumn Nombre;
         private DataGridViewTextBoxColumn Identificacion;
         private DataGridViewTextBoxColumn Telefono;
         private DataGridViewTextBoxColumn Correo;
-        private Label label1;
-        private Label label2;
-        private Label label3;
-        private Label label4;
+        private DataGridViewButtonColumn Accion;
     }
 }

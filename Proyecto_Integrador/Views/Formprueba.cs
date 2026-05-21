@@ -28,7 +28,7 @@ namespace Proyecto_Integrador.Views
             tablaClientes.Columns["Nombre"].DataPropertyName = "Nombre";
             tablaClientes.Columns["Identificacion"].DataPropertyName = "Identificacion";
             tablaClientes.Columns["Telefono"].DataPropertyName = "Telefono";
-            tablaClientes.Columns["Correo"].DataPropertyName = "Correo";
+            tablaClientes.Columns["Correo"].DataPropertyName = "Correo";    
             tablaClientes.DataSource = null;
             tablaClientes.DataSource = clienteLista;
 
@@ -45,6 +45,11 @@ namespace Proyecto_Integrador.Views
             cargarClientes();
 
         }
+        private void BotonEditar()
+        {
         
+
+        }
+
     }
 }

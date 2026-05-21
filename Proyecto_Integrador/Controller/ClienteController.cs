@@ -32,7 +32,7 @@ namespace Proyecto_Integrador.Controller
         public Cliente BuscarPorNombre(string nombre)
         {
             List<Cliente> lista = clienteRepository.Leer();
-            return lista.Find(c => c.Nombre == nombre);
+            return lista.Find(c => c.nombre == nombre);
         }
 
         public int ObtenerSiguienteId()

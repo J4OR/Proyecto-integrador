@@ -13,10 +13,25 @@ namespace Proyecto_Integrador.Views
     public partial class Form_prueba : Form
     {
         ClienteController clienteController = new ClienteController();
+        private List<Cliente> clienteLista = new List<Cliente>();
 
         public Form_prueba()
         {
             InitializeComponent();
+            cargarClientes();
+        }
+
+        private void cargarClientes()
+        {
+            clienteLista = clienteController.ObtenerClientes();
+            tablaClientes.Columns["ID"].DataPropertyName = "ID";
+            tablaClientes.Columns["Nombre"].DataPropertyName = "Nombre";
+            tablaClientes.Columns["Identificacion"].DataPropertyName = "Identificacion";
+            tablaClientes.Columns["Telefono"].DataPropertyName = "Telefono";
+            tablaClientes.Columns["Correo"].DataPropertyName = "Correo";
+            tablaClientes.DataSource = null;
+            tablaClientes.DataSource = clienteLista;
+
         }
 
         private void btnAgregar_Click(object sender, EventArgs e)
@@ -27,6 +42,7 @@ namespace Proyecto_Integrador.Views
 
             clienteController.AgregarCliente(cliente);
             MessageBox.Show("Agregado con exito!");
+            cargarClientes();
 
         }
         

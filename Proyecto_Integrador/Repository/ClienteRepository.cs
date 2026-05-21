@@ -17,7 +17,7 @@ namespace Proyecto_Integrador.Repository
             if (lista.Count == 0)
                 return 1;
             else
-                return lista.Max(c => c.Id) + 1;
+                return lista.Max(c => c.id) + 1;
         }
 
         public List<Cliente> Leer()
@@ -28,7 +28,7 @@ namespace Proyecto_Integrador.Repository
         public void Agregar(Cliente cliente)
         {
             List<Cliente> lista = jsonRepository.Leer();
-            cliente.Id = ObtenerSiguienteId(lista);
+            cliente.id = ObtenerSiguienteId(lista);
             lista.Add(cliente);
             jsonRepository.Guardar(lista); ;
         }
@@ -36,12 +36,12 @@ namespace Proyecto_Integrador.Repository
 
         public void Editar(Cliente nuevoCliente, int id)
         {
-            jsonRepository.Editar(nuevoCliente, u => u.Id == id);
+            jsonRepository.Editar(nuevoCliente, u => u.id == id);
         }
 
         public Cliente? Buscar(string nombre)
         {
-            return jsonRepository.Buscar(c => c.Nombre == nombre);
+            return jsonRepository.Buscar(c => c.nombre == nombre);
         }
     }
 }

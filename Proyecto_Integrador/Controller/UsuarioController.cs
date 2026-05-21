@@ -38,7 +38,7 @@ namespace Proyecto_Integrador.Controller
         {
             List<Usuario> lista = usuarioRepository.Leer();
 
-            return lista.Find(u => u.Username == userName);
+            return lista.Find(u => u.userName == userName);
         }
     }
 }

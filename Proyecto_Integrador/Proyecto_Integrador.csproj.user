@@ -4,6 +4,9 @@
     <Compile Update="Views\Form1.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Views\Formprueba.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Views\LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>

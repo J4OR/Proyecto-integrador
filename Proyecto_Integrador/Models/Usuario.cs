@@ -7,17 +7,17 @@ namespace Proyecto_Integrador.Models
 {
     public class Usuario : Persona
     {
-        public string password { get; set; }
-        public string user { get; set; }
-        public bool state { get; set; }
-        public Rol rol { get; set; }
+        public string Username { get; set; }
+        public string Password { get; set; }
+        public Rol Rol { get; set; } = new Rol();
+        public bool Estado { get; set; }
         [JsonConstructor]
-        public Usuario(string nit, string nombre, string telefono, string correo, string password, string user, Rol rol) : base(nit, nombre, telefono, correo)
+        public Usuario(string username, string password, Rol rol, bool estado, int id, string identificacion, string nombre, string telefono, string correo) : base(id, identificacion, nombre, telefono, correo)
         {
-            this.password = password;
-            this.state = true;
-            this.rol = rol;
-            this.user = user;
+            this.Username = username;
+            this.Password = password;
+            this.Rol = rol;
+            this.Estado = estado;
         }
     }
     public enum Rol

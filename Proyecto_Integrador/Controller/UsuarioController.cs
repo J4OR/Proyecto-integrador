@@ -6,77 +6,39 @@ using Proyecto_Integrador.Repository;
 
 namespace Proyecto_Integrador.Controller
 {
-    internal class UsuarioController
+    public class UsuarioController
     {
-        private UsuarioRepository repository;
+        private UsuarioRepository usuarioRepository;
 
         public UsuarioController()
         {
-            repository = new UsuarioRepository();
+           this.usuarioRepository = new UsuarioRepository();
         }
 
         // Obtener todos los usuarios
         public List<Usuario> ObtenerUsuarios()
         {
-            return repository.leer();
+            return usuarioRepository.Leer();
         }
 
         // Agregar usuario
-        public void AgregarUsuario(
-            string nit,
-            string nombre,
-            string telefono,
-            string correo,
-            string password,
-            string user)
+        public void AgregarUsuario(Usuario usuario)
         {
-            Persona persona = new Persona(
-                nit,
-                nombre,
-                telefono,
-                correo
-            );
-
-            Usuario usuario = new Usuario(
-                persona,
-                password,
-                user
-            );
-
-            repository.agregar(usuario);
+            usuarioRepository.Agregar(usuario);
         }
 
         // Editar usuario
-        public void EditarUsuario(
-            string nit,
-            string nombre,
-            string telefono,
-            string correo,
-            string password,
-            string user)
+        public void EditarUsuario(Usuario usuario, int id)
         {
-            Persona persona = new Persona(
-                nit,
-                nombre,
-                telefono,
-                correo
-            );
-
-            Usuario usuario = new Usuario(
-                persona,
-                password,
-                user
-            );
-
-            repository.editar(usuario);
+            usuarioRepository.Editar(usuario, id);
         }
 
         // Buscar usuario por user
-        public Usuario BuscarPorUser(string user)
+        public Usuario BuscarPorUser(string userName)
         {
-            List<Usuario> lista = repository.leer();
+            List<Usuario> lista = usuarioRepository.Leer();
 
-            return lista.Find(u => u.user == user);
+            return lista.Find(u => u.Username == userName);
         }
     }
 }

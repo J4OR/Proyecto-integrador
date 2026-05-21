@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle8 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle7 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             tablaClientes = new DataGridView();
             Id = new DataGridViewTextBoxColumn();
             Nombre = new DataGridViewTextBoxColumn();
@@ -59,24 +59,24 @@
             tablaClientes.BackgroundColor = SystemColors.ButtonHighlight;
             tablaClientes.BorderStyle = BorderStyle.None;
             tablaClientes.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = SystemColors.Control;
-            dataGridViewCellStyle5.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle5.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle5.SelectionBackColor = Color.Transparent;
-            dataGridViewCellStyle5.SelectionForeColor = SystemColors.Desktop;
-            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.True;
-            tablaClientes.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = SystemColors.Control;
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = Color.Transparent;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.Desktop;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            tablaClientes.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             tablaClientes.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             tablaClientes.Columns.AddRange(new DataGridViewColumn[] { Id, Nombre, Identificacion, Telefono, Correo, Accion });
-            dataGridViewCellStyle8.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = SystemColors.Window;
-            dataGridViewCellStyle8.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle8.ForeColor = SystemColors.ActiveCaptionText;
-            dataGridViewCellStyle8.SelectionBackColor = Color.Transparent;
-            dataGridViewCellStyle8.SelectionForeColor = SystemColors.InfoText;
-            dataGridViewCellStyle8.WrapMode = DataGridViewTriState.False;
-            tablaClientes.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = SystemColors.Window;
+            dataGridViewCellStyle4.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle4.ForeColor = SystemColors.ActiveCaptionText;
+            dataGridViewCellStyle4.SelectionBackColor = Color.Transparent;
+            dataGridViewCellStyle4.SelectionForeColor = SystemColors.InfoText;
+            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.False;
+            tablaClientes.DefaultCellStyle = dataGridViewCellStyle4;
             tablaClientes.EnableHeadersVisualStyles = false;
             tablaClientes.GridColor = SystemColors.HighlightText;
             tablaClientes.Location = new Point(476, 128);
@@ -92,8 +92,8 @@
             // 
             // Id
             // 
-            dataGridViewCellStyle6.BackColor = Color.White;
-            Id.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle2.BackColor = Color.White;
+            Id.DefaultCellStyle = dataGridViewCellStyle2;
             Id.HeaderText = "ID";
             Id.MinimumWidth = 6;
             Id.Name = "Id";
@@ -129,10 +129,10 @@
             // 
             // Accion
             // 
-            dataGridViewCellStyle7.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle7.BackColor = Color.DarkBlue;
-            dataGridViewCellStyle7.SelectionBackColor = Color.RoyalBlue;
-            Accion.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = Color.DarkBlue;
+            dataGridViewCellStyle3.SelectionBackColor = Color.RoyalBlue;
+            Accion.DefaultCellStyle = dataGridViewCellStyle3;
             Accion.FlatStyle = FlatStyle.Flat;
             Accion.HeaderText = "Accion";
             Accion.MinimumWidth = 6;

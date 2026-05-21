@@ -19,6 +19,7 @@ namespace Proyecto_Integrador.Views
         {
             InitializeComponent();
             cargarClientes();
+            tablaClientes.AutoGenerateColumns = false;
 
 
         }
@@ -26,16 +27,17 @@ namespace Proyecto_Integrador.Views
         private void cargarClientes()
         {
             clienteLista = clienteController.ObtenerClientes();
-            tablaClientes.DataSource = null;
-            tablaClientes.AutoGenerateColumns = false;
 
-            tablaClientes.Columns["ID"].DataPropertyName = "Id";
+            tablaClientes.Columns["ID"].DataPropertyName = "id";
             tablaClientes.Columns["Nombre"].DataPropertyName = "nombre";
             tablaClientes.Columns["Identificacion"].DataPropertyName = "identificacion";
             tablaClientes.Columns["Telefono"].DataPropertyName = "telefono";
             tablaClientes.Columns["Correo"].DataPropertyName = "correo";
+            tablaClientes.Columns["Accion"].DataPropertyName = "id"; // Usamos el ID para identificar la fila a editar
 
+            tablaClientes.DataSource = null;
             tablaClientes.DataSource = clienteLista;
+
 
         }
 
@@ -70,15 +72,16 @@ namespace Proyecto_Integrador.Views
             string busqueda = txtBuscador.Text.ToLower();
 
             var filtradros = clienteLista.Where(
-                c => c.nombre.ToLower().Contains(busqueda)||
+                c => c.nombre.ToLower().Contains(busqueda)||    
                      c.identificacion.ToLower().Contains(busqueda) ||
                      c.telefono.ToLower().Contains(busqueda) ||
                      c.correo.ToLower().Contains(busqueda)
             ).ToList();
-
-            tablaClientes.AutoGenerateColumns = false;
             tablaClientes.DataSource = null;
             tablaClientes.DataSource = filtradros;
+            
+            
+            
         }
     }
 }

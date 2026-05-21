@@ -19,17 +19,22 @@ namespace Proyecto_Integrador.Views
         {
             InitializeComponent();
             cargarClientes();
+
+
         }
 
         private void cargarClientes()
         {
             clienteLista = clienteController.ObtenerClientes();
-            tablaClientes.Columns["ID"].DataPropertyName = "ID";
-            tablaClientes.Columns["Nombre"].DataPropertyName = "Nombre";
-            tablaClientes.Columns["Identificacion"].DataPropertyName = "Identificacion";
-            tablaClientes.Columns["Telefono"].DataPropertyName = "Telefono";
-            tablaClientes.Columns["Correo"].DataPropertyName = "Correo";    
             tablaClientes.DataSource = null;
+            tablaClientes.AutoGenerateColumns = false;
+
+            tablaClientes.Columns["ID"].DataPropertyName = "Id";
+            tablaClientes.Columns["Nombre"].DataPropertyName = "nombre";
+            tablaClientes.Columns["Identificacion"].DataPropertyName = "identificacion";
+            tablaClientes.Columns["Telefono"].DataPropertyName = "telefono";
+            tablaClientes.Columns["Correo"].DataPropertyName = "correo";
+
             tablaClientes.DataSource = clienteLista;
 
         }
@@ -38,18 +43,42 @@ namespace Proyecto_Integrador.Views
         {
             int id = clienteController.ObtenerSiguienteId();
 
-            Cliente cliente = new Cliente(id,txtNombre.Text, txtIdentificacion.Text, txtTelefono.Text, txtCorreo.Text);
+            Cliente cliente = new Cliente(id, txtNombre.Text, txtIdentificacion.Text, txtTelefono.Text, txtCorreo.Text);
 
             clienteController.AgregarCliente(cliente);
             MessageBox.Show("Agregado con exito!");
             cargarClientes();
 
         }
-        private void BotonEditar()
-        {
-        
 
+
+        private void tablaClientes_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0 && tablaClientes.Columns[e.ColumnIndex].Name == "Accion")
+            {
+                var idCliente = int.Parse(tablaClientes.Rows[e.RowIndex].Cells["ID"].Value.ToString());
+                EditarForm editarForm = new EditarForm(idCliente);
+                if (editarForm.ShowDialog() == DialogResult.OK)
+                {
+                    cargarClientes();
+                }
+            }
         }
 
+        private void txtBuscador_TextChanged(object sender, EventArgs e)
+        {
+            string busqueda = txtBuscador.Text.ToLower();
+
+            var filtradros = clienteLista.Where(
+                c => c.nombre.ToLower().Contains(busqueda)||
+                     c.identificacion.ToLower().Contains(busqueda) ||
+                     c.telefono.ToLower().Contains(busqueda) ||
+                     c.correo.ToLower().Contains(busqueda)
+            ).ToList();
+
+            tablaClientes.AutoGenerateColumns = false;
+            tablaClientes.DataSource = null;
+            tablaClientes.DataSource = filtradros;
+        }
     }
 }

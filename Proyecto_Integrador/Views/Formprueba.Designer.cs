@@ -241,6 +241,8 @@
             Controls.Add(label1);
             Name = "Form_prueba";
             Text = "Form_prueba";
+            FormClosed += Form_prueba_FormClosed;
+            Load += Form_prueba_Load;
             ((System.ComponentModel.ISupportInitialize)tablaClientes).EndInit();
             ResumeLayout(false);
             PerformLayout();

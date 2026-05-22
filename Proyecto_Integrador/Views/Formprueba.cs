@@ -72,16 +72,26 @@ namespace Proyecto_Integrador.Views
             string busqueda = txtBuscador.Text.ToLower();
 
             var filtradros = clienteLista.Where(
-                c => c.nombre.ToLower().Contains(busqueda)||    
+                c => c.nombre.ToLower().Contains(busqueda) ||
                      c.identificacion.ToLower().Contains(busqueda) ||
                      c.telefono.ToLower().Contains(busqueda) ||
                      c.correo.ToLower().Contains(busqueda)
             ).ToList();
             tablaClientes.DataSource = null;
             tablaClientes.DataSource = filtradros;
-            
-            
-            
+
+
+
+        }
+
+        private void Form_prueba_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Form_prueba_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

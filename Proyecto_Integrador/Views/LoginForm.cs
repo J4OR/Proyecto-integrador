@@ -153,8 +153,8 @@ namespace Proyecto_Integrador.Views
                     pbError2.Visible = false;
                     MessageBox.Show("Inicio de sesión exitoso");
                     Form_prueba form_Prueba = new Form_prueba(usuario);
-                    form_Prueba.Show();
-                    this.Hide();
+                    form_Prueba.ShowDialog();
+                    this.Close();
 
                 }
                 else

@@ -19,6 +19,9 @@ namespace Proyecto_Integrador.Views
         public LoginForm()
         {
             InitializeComponent();
+            resizer = new ControlResizer(this);
+            this.WindowState = FormWindowState.Maximized;
+
             pbOjo.Image = Properties.Resources.ojoAbierto;
             lblError.Visible = false;
             pbError.Visible = false;
@@ -29,7 +32,7 @@ namespace Proyecto_Integrador.Views
         private void LoginForm_Load(object sender, EventArgs e)
         {
 
-            resizer = new ControlResizer(this);
+            
         }
 
         private void LoginForm_Resize(object sender, EventArgs e)

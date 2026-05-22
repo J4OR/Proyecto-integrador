@@ -45,7 +45,7 @@ namespace Proyecto_Integrador.Views
         {
             int id = clienteController.ObtenerSiguienteId();
 
-            Cliente cliente = new Cliente(id, txtNombre.Text, txtIdentificacion.Text, txtTelefono.Text, txtCorreo.Text);
+            Cliente cliente = new Cliente(id, txtIdentificacion.Text, txtNombre.Text, txtTelefono.Text, txtCorreo.Text);
 
             clienteController.AgregarCliente(cliente);
             MessageBox.Show("Agregado con exito!");

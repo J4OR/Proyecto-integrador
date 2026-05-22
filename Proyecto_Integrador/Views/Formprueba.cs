@@ -15,7 +15,7 @@ namespace Proyecto_Integrador.Views
         ClienteController clienteController = new ClienteController();
         private List<Cliente> clienteLista = new List<Cliente>();
 
-        public Form_prueba()
+        public Form_prueba(Usuario usuario)
         {
             InitializeComponent();
             cargarClientes();

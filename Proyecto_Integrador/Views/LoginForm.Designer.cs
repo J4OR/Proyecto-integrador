@@ -37,7 +37,6 @@
             pbUser = new PictureBox();
             txtUser = new TextBox();
             pbBanner = new PictureBox();
-            linkLblContraseña = new LinkLabel();
             lblSubtitulo = new Label();
             txtPassword = new TextBox();
             lblTitulo = new Label();
@@ -141,16 +140,6 @@
             pbBanner.TabIndex = 5;
             pbBanner.TabStop = false;
             // 
-            // linkLblContraseña
-            // 
-            linkLblContraseña.AutoSize = true;
-            linkLblContraseña.Location = new Point(808, 393);
-            linkLblContraseña.Name = "linkLblContraseña";
-            linkLblContraseña.Size = new Size(178, 20);
-            linkLblContraseña.TabIndex = 18;
-            linkLblContraseña.TabStop = true;
-            linkLblContraseña.Text = "¿Olvidaste tu contraseña?";
-            // 
             // lblSubtitulo
             // 
             lblSubtitulo.AutoSize = true;
@@ -226,7 +215,6 @@
             Controls.Add(lblContraseña);
             Controls.Add(pbUser);
             Controls.Add(pbPassword);
-            Controls.Add(linkLblContraseña);
             Name = "LoginForm";
             Text = "LoginForm";
             Load += LoginForm_Load;
@@ -248,7 +236,6 @@
         private PictureBox pbUser;
         private TextBox txtUser;
         private PictureBox pbBanner;
-        private LinkLabel linkLblContraseña;
         private Label lblSubtitulo;
         private TextBox txtPassword;
         private Label lblTitulo;

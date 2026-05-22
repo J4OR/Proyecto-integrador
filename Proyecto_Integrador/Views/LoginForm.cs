@@ -29,14 +29,12 @@ namespace Proyecto_Integrador.Views
         private void LoginForm_Load(object sender, EventArgs e)
         {
 
-            linkLblContraseña.AutoSize = true;
             resizer = new ControlResizer(this);
         }
 
         private void LoginForm_Resize(object sender, EventArgs e)
         {
             resizer.ejecutarEscalado();
-            ajustarAlineacionEspecial();
 
             if (lblError.Visible)
             {
@@ -44,14 +42,7 @@ namespace Proyecto_Integrador.Views
             }
 
         }
-        private void ajustarAlineacionEspecial()
-        {
-            int txtPasswordRightEdge = txtPassword.Location.X + txtPassword.Width;
-            int newLinkX = txtPasswordRightEdge - linkLblContraseña.Width;
-            linkLblContraseña.Location = new Point(newLinkX, linkLblContraseña.Location.Y);
-        }
-
-
+      
 
         private void txtPassword_Enter(object sender, EventArgs e)
         {

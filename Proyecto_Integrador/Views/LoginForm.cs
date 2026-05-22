@@ -1,26 +1,50 @@
-﻿using System;
+﻿using Proyecto_Integrador.Controller;
+using Proyecto_Integrador.Models;
+using Proyecto_Integrador.Views.Utils;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Security.Policy;
 using System.Text;
 using System.Windows.Forms;
-using Proyecto_Integrador.Controller;
-using Proyecto_Integrador.Models;
 
 namespace Proyecto_Integrador.Views
 {
     public partial class LoginForm : Form
     {
-        private Size originalFormSize;
-        private Dictionary<Control, Rectangle> controlBounds = new Dictionary<Control, Rectangle>();
-
+        //private Size originalFormSize;
+        //private Dictionary<Control, Rectangle> controlBounds = new Dictionary<Control, Rectangle>();
+        //private Dictionary<Control, float> controlFontSizes = new Dictionary<Control, float>();
+        private ControlResizer resizer;
         public LoginForm()
         {
             InitializeComponent();
             pbOjo.Image = Properties.Resources.ojoAbierto;
 
         }
+
+        private void LoginForm_Load(object sender, EventArgs e)
+        {
+            linkLblContraseña.AutoSize = true;
+            resizer = new ControlResizer(this);
+        }
+
+        private void LoginForm_Resize(object sender, EventArgs e)
+        {
+            resizer.ejecutarEscalado();
+            ajustarAlineacionEspecial();
+
+        }
+        private void ajustarAlineacionEspecial()
+        {
+            int txtPasswordRightEdge = txtPassword.Location.X + txtPassword.Width;
+            int newLinkX = txtPasswordRightEdge - linkLblContraseña.Width;
+            linkLblContraseña.Location = new Point(newLinkX, linkLblContraseña.Location.Y);
+        }
+
+
 
         private void txtPassword_Enter(object sender, EventArgs e)
         {
@@ -114,33 +138,5 @@ namespace Proyecto_Integrador.Views
                 MessageBox.Show("El usuario no existe");
             }
         }
-        private void LoginForm_Load(object sender, EventArgs e)
-        {
-            originalFormSize = this.Size;
-            foreach (Control ctrl in this.Controls)
-            {
-                controlBounds[ctrl] = ctrl.Bounds;
-            }
-           
-
-        }
-       
-
-        private void LoginForm_Resize(object sender, EventArgs e)
-        {
-            float xRatio = (float)(this.Width) / originalFormSize.Width;
-            float yRatio = (float)(this.Height) / originalFormSize.Height;
-            foreach (Control ctrl in this.Controls)
-            {
-                Rectangle original = controlBounds[ctrl];
-                ctrl.SetBounds(
-                    (int)(original.X * xRatio),
-                    (int)(original.Y * yRatio),
-                    (int)(original.Width * xRatio),
-                    (int)(original.Height * yRatio));
-            }
-        }
-
-        
     }
 }

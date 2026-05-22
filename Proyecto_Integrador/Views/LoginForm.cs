@@ -14,12 +14,11 @@ namespace Proyecto_Integrador.Views
 {
     public partial class LoginForm : Form
     {
-        UsuarioController controller;
+        UsuarioController controller = new UsuarioController();
         private ControlResizer resizer;
         public LoginForm()
         {
             InitializeComponent();
-            controller = new UsuarioController();
             pbOjo.Image = Properties.Resources.ojoAbierto;
             lblError.Visible = false;
             pbError.Visible = false;
@@ -29,10 +28,6 @@ namespace Proyecto_Integrador.Views
 
         private void LoginForm_Load(object sender, EventArgs e)
         {
-             int id = controller.ObtenerSiguienteId();
-            Usuario admin = new Usuario(id, "1234567890", "Admin User", "555-1234", "admin@example.com", "admin", "admin123", Rol.Administrador, true);
-            MessageBox.Show("Test");
-            controller.AgregarUsuario(admin);
 
             linkLblContraseña.AutoSize = true;
             resizer = new ControlResizer(this);
@@ -153,10 +148,14 @@ namespace Proyecto_Integrador.Views
                 }
                 if (usuario.password == password)
                 {
+                    lblError.Visible = false;
+                    pbError.Visible = false;
+                    pbError2.Visible = false;
                     MessageBox.Show("Inicio de sesión exitoso");
                     Form_prueba form_Prueba = new Form_prueba(usuario);
                     form_Prueba.Show();
                     this.Hide();
+
                 }
                 else
                 {

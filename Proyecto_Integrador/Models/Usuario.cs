@@ -11,6 +11,7 @@ namespace Proyecto_Integrador.Models
         public string password { get; set; }
         public Rol rol { get; set; } 
         public bool estado { get; set; }
+
         [JsonConstructor]
         public Usuario(int id, string identificacion, string nombre, string telefono, string correo, string userName, string password, Rol rol, bool estado) : base(id, identificacion, nombre, telefono, correo)
         {

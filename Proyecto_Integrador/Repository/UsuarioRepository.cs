@@ -11,7 +11,7 @@ namespace Proyecto_Integrador.Repository
         private static readonly string folder = "Data";
         public static readonly string filePath = Path.Combine(folder, "usuarios.json");
 
-        JsonRepository<Usuario> jsonRepository = new JsonRepository<Usuario>(folder, filePath);
+        JsonRepository<Usuario> jsonRepository = new JsonRepository<Usuario>(folder,filePath);
 
 
         public int ObtenerSiguienteId(List<Usuario> lista)
@@ -26,13 +26,14 @@ namespace Proyecto_Integrador.Repository
         {
             return jsonRepository.Leer();
         }
-
+        
+       
         public void Agregar(Usuario usuario)
         {
             List<Usuario> lista = jsonRepository.Leer();
             usuario.id = ObtenerSiguienteId(lista);
             lista.Add(usuario);
-            jsonRepository.Guardar(lista); ;
+            jsonRepository.Guardar(lista); 
         }
 
 

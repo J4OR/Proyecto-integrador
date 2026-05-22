@@ -9,10 +9,10 @@ namespace Proyecto_Integrador.Models
     {
         public string userName { get; set; }
         public string password { get; set; }
-        public Rol rol { get; set; } = new Rol();
+        public Rol rol { get; set; } 
         public bool estado { get; set; }
         [JsonConstructor]
-        public Usuario(string userName, string password, Rol rol, bool estado, int id, string identificacion, string nombre, string telefono, string correo) : base(id, identificacion, nombre, telefono, correo)
+        public Usuario(int id, string identificacion, string nombre, string telefono, string correo, string userName, string password, Rol rol, bool estado) : base(id, identificacion, nombre, telefono, correo)
         {
             this.userName = userName;
             this.password = password;

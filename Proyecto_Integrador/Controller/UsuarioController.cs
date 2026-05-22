@@ -15,6 +15,12 @@ namespace Proyecto_Integrador.Controller
            this.usuarioRepository = new UsuarioRepository();
         }
 
+        public int ObtenerSiguienteId()
+        {
+            List<Usuario> lista = usuarioRepository.Leer();
+            return usuarioRepository.ObtenerSiguienteId(lista);
+        }
+
         // Obtener todos los usuarios
         public List<Usuario> ObtenerUsuarios()
         {

@@ -29,137 +29,54 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LoginForm));
-            pictureBoxPassword = new PictureBox();
-            pictureBoxUser = new PictureBox();
-            txtPassword = new TextBox();
-            txtUser = new TextBox();
-            pictureBoxBanner = new PictureBox();
-            pictureBoxOjo = new PictureBox();
-            btnIniciarSesion = new Button();
-            lblTitullo = new Label();
-            label1 = new Label();
+            pbOjo = new PictureBox();
+            pbPassword = new PictureBox();
             lblUsuario = new Label();
             lblContraseña = new Label();
-            panelLinea = new Panel();
+            btnIniciarSesion = new Button();
+            pbUser = new PictureBox();
+            txtUser = new TextBox();
+            pbBanner = new PictureBox();
+            linkLblContraseña = new LinkLabel();
+            lblSubtitulo = new Label();
+            txtPassword = new TextBox();
+            lblTitulo = new Label();
             btnRegistrar = new Button();
-            linkLblOlvidarContraseña = new LinkLabel();
-            ((System.ComponentModel.ISupportInitialize)pictureBoxPassword).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBoxUser).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBoxBanner).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBoxOjo).BeginInit();
+            panelLinea = new Panel();
+            ((System.ComponentModel.ISupportInitialize)pbOjo).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pbPassword).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pbUser).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pbBanner).BeginInit();
             SuspendLayout();
             // 
-            // pictureBoxPassword
+            // pbOjo
             // 
-            pictureBoxPassword.BackColor = Color.Transparent;
-            pictureBoxPassword.Image = (Image)resources.GetObject("pictureBoxPassword.Image");
-            pictureBoxPassword.Location = new Point(492, 341);
-            pictureBoxPassword.Name = "pictureBoxPassword";
-            pictureBoxPassword.Size = new Size(44, 45);
-            pictureBoxPassword.SizeMode = PictureBoxSizeMode.StretchImage;
-            pictureBoxPassword.TabIndex = 9;
-            pictureBoxPassword.TabStop = false;
+            pbOjo.BackColor = Color.Transparent;
+            pbOjo.Image = (Image)resources.GetObject("pbOjo.Image");
+            pbOjo.Location = new Point(961, 326);
+            pbOjo.Name = "pbOjo";
+            pbOjo.Size = new Size(25, 27);
+            pbOjo.SizeMode = PictureBoxSizeMode.StretchImage;
+            pbOjo.TabIndex = 10;
+            pbOjo.TabStop = false;
+            pbOjo.MouseClick += pictureBoxOjo_MouseClick;
             // 
-            // pictureBoxUser
+            // pbPassword
             // 
-            pictureBoxUser.BackColor = Color.Transparent;
-            pictureBoxUser.Image = (Image)resources.GetObject("pictureBoxUser.Image");
-            pictureBoxUser.Location = new Point(492, 220);
-            pictureBoxUser.Name = "pictureBoxUser";
-            pictureBoxUser.Size = new Size(44, 45);
-            pictureBoxUser.SizeMode = PictureBoxSizeMode.StretchImage;
-            pictureBoxUser.TabIndex = 8;
-            pictureBoxUser.TabStop = false;
-            // 
-            // txtPassword
-            // 
-            txtPassword.AccessibleDescription = "";
-            txtPassword.Font = new Font("Segoe UI", 9F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
-            txtPassword.ForeColor = SystemColors.InactiveCaption;
-            txtPassword.Location = new Point(564, 341);
-            txtPassword.Multiline = true;
-            txtPassword.Name = "txtPassword";
-            txtPassword.Size = new Size(366, 45);
-            txtPassword.TabIndex = 7;
-            txtPassword.Text = "Ingrese su contraseña";
-            txtPassword.Enter += txtPassword_Enter;
-            txtPassword.Leave += txtPassword_Leave;
-            // 
-            // txtUser
-            // 
-            txtUser.AccessibleDescription = "";
-            txtUser.Font = new Font("Segoe UI", 9F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
-            txtUser.ForeColor = SystemColors.InactiveCaption;
-            txtUser.Location = new Point(564, 220);
-            txtUser.Multiline = true;
-            txtUser.Name = "txtUser";
-            txtUser.Size = new Size(366, 45);
-            txtUser.TabIndex = 6;
-            txtUser.Text = "Ingrese su usuario";
-            txtUser.Enter += txtUser_Enter;
-            txtUser.Leave += txtUser_Leave;
-            // 
-            // pictureBoxBanner
-            // 
-            pictureBoxBanner.Image = (Image)resources.GetObject("pictureBoxBanner.Image");
-            pictureBoxBanner.Location = new Point(0, 0);
-            pictureBoxBanner.Name = "pictureBoxBanner";
-            pictureBoxBanner.Size = new Size(429, 625);
-            pictureBoxBanner.SizeMode = PictureBoxSizeMode.StretchImage;
-            pictureBoxBanner.TabIndex = 5;
-            pictureBoxBanner.TabStop = false;
-            // 
-            // pictureBoxOjo
-            // 
-            pictureBoxOjo.BackColor = Color.Transparent;
-            pictureBoxOjo.Image = (Image)resources.GetObject("pictureBoxOjo.Image");
-            pictureBoxOjo.Location = new Point(891, 350);
-            pictureBoxOjo.Name = "pictureBoxOjo";
-            pictureBoxOjo.Size = new Size(25, 27);
-            pictureBoxOjo.SizeMode = PictureBoxSizeMode.StretchImage;
-            pictureBoxOjo.TabIndex = 10;
-            pictureBoxOjo.TabStop = false;
-            pictureBoxOjo.MouseClick += pictureBoxOjo_MouseClick;
-            // 
-            // btnIniciarSesion
-            // 
-            btnIniciarSesion.BackColor = Color.Blue;
-            btnIniciarSesion.FlatStyle = FlatStyle.Flat;
-            btnIniciarSesion.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnIniciarSesion.ForeColor = SystemColors.ButtonHighlight;
-            btnIniciarSesion.Location = new Point(564, 481);
-            btnIniciarSesion.Name = "btnIniciarSesion";
-            btnIniciarSesion.Size = new Size(155, 44);
-            btnIniciarSesion.TabIndex = 11;
-            btnIniciarSesion.Text = "Iniciar sesion";
-            btnIniciarSesion.UseVisualStyleBackColor = false;
-            btnIniciarSesion.Click += btnIniciarSesion_Click;
-            // 
-            // lblTitullo
-            // 
-            lblTitullo.AutoSize = true;
-            lblTitullo.Font = new Font("Segoe UI", 22.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblTitullo.Location = new Point(605, 46);
-            lblTitullo.Name = "lblTitullo";
-            lblTitullo.Size = new Size(254, 50);
-            lblTitullo.TabIndex = 12;
-            lblTitullo.Text = "Iniciar Sesión";
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label1.Location = new Point(593, 106);
-            label1.Name = "label1";
-            label1.Size = new Size(280, 25);
-            label1.TabIndex = 13;
-            label1.Text = "Accede a tu cuenta para continuar";
+            pbPassword.BackColor = Color.Transparent;
+            pbPassword.Image = (Image)resources.GetObject("pbPassword.Image");
+            pbPassword.Location = new Point(551, 317);
+            pbPassword.Name = "pbPassword";
+            pbPassword.Size = new Size(44, 45);
+            pbPassword.SizeMode = PictureBoxSizeMode.StretchImage;
+            pbPassword.TabIndex = 9;
+            pbPassword.TabStop = false;
             // 
             // lblUsuario
             // 
             lblUsuario.AutoSize = true;
             lblUsuario.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblUsuario.Location = new Point(492, 184);
+            lblUsuario.Location = new Point(551, 170);
             lblUsuario.Name = "lblUsuario";
             lblUsuario.Size = new Size(70, 23);
             lblUsuario.TabIndex = 14;
@@ -169,19 +86,104 @@
             // 
             lblContraseña.AutoSize = true;
             lblContraseña.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblContraseña.Location = new Point(492, 304);
+            lblContraseña.Location = new Point(551, 291);
             lblContraseña.Name = "lblContraseña";
             lblContraseña.Size = new Size(99, 23);
             lblContraseña.TabIndex = 15;
             lblContraseña.Text = "Contraseña";
             // 
-            // panelLinea
+            // btnIniciarSesion
             // 
-            panelLinea.BackColor = Color.Gray;
-            panelLinea.Location = new Point(495, 461);
-            panelLinea.Name = "panelLinea";
-            panelLinea.Size = new Size(435, 2);
-            panelLinea.TabIndex = 16;
+            btnIniciarSesion.BackColor = Color.Blue;
+            btnIniciarSesion.FlatStyle = FlatStyle.Flat;
+            btnIniciarSesion.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnIniciarSesion.ForeColor = SystemColors.ButtonHighlight;
+            btnIniciarSesion.Location = new Point(567, 549);
+            btnIniciarSesion.Name = "btnIniciarSesion";
+            btnIniciarSesion.Size = new Size(155, 44);
+            btnIniciarSesion.TabIndex = 11;
+            btnIniciarSesion.Text = "Iniciar sesion";
+            btnIniciarSesion.UseVisualStyleBackColor = false;
+            btnIniciarSesion.Click += btnIniciarSesion_Click;
+            // 
+            // pbUser
+            // 
+            pbUser.BackColor = Color.Transparent;
+            pbUser.Image = (Image)resources.GetObject("pbUser.Image");
+            pbUser.Location = new Point(551, 196);
+            pbUser.Name = "pbUser";
+            pbUser.Size = new Size(44, 45);
+            pbUser.SizeMode = PictureBoxSizeMode.StretchImage;
+            pbUser.TabIndex = 8;
+            pbUser.TabStop = false;
+            // 
+            // txtUser
+            // 
+            txtUser.AccessibleDescription = "";
+            txtUser.Font = new Font("Segoe UI", 9F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
+            txtUser.ForeColor = SystemColors.InactiveCaption;
+            txtUser.Location = new Point(620, 196);
+            txtUser.Multiline = true;
+            txtUser.Name = "txtUser";
+            txtUser.Size = new Size(366, 45);
+            txtUser.TabIndex = 6;
+            txtUser.Text = "Ingrese su usuario";
+            txtUser.Enter += txtUser_Enter;
+            txtUser.Leave += txtUser_Leave;
+            // 
+            // pbBanner
+            // 
+            pbBanner.Image = (Image)resources.GetObject("pbBanner.Image");
+            pbBanner.Location = new Point(0, 0);
+            pbBanner.Name = "pbBanner";
+            pbBanner.Size = new Size(466, 687);
+            pbBanner.SizeMode = PictureBoxSizeMode.StretchImage;
+            pbBanner.TabIndex = 5;
+            pbBanner.TabStop = false;
+            // 
+            // linkLblContraseña
+            // 
+            linkLblContraseña.AutoSize = true;
+            linkLblContraseña.Location = new Point(808, 393);
+            linkLblContraseña.Name = "linkLblContraseña";
+            linkLblContraseña.Size = new Size(178, 20);
+            linkLblContraseña.TabIndex = 18;
+            linkLblContraseña.TabStop = true;
+            linkLblContraseña.Text = "¿Olvidaste tu contraseña?";
+            // 
+            // lblSubtitulo
+            // 
+            lblSubtitulo.AutoSize = true;
+            lblSubtitulo.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblSubtitulo.Location = new Point(636, 86);
+            lblSubtitulo.Name = "lblSubtitulo";
+            lblSubtitulo.Size = new Size(280, 25);
+            lblSubtitulo.TabIndex = 13;
+            lblSubtitulo.Text = "Accede a tu cuenta para continuar";
+            // 
+            // txtPassword
+            // 
+            txtPassword.AccessibleDescription = "";
+            txtPassword.Font = new Font("Segoe UI", 9F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
+            txtPassword.ForeColor = SystemColors.InactiveCaption;
+            txtPassword.Location = new Point(620, 317);
+            txtPassword.Multiline = true;
+            txtPassword.Name = "txtPassword";
+            txtPassword.Size = new Size(366, 45);
+            txtPassword.TabIndex = 7;
+            txtPassword.Text = "Ingrese su contraseña";
+            txtPassword.Enter += txtPassword_Enter;
+            txtPassword.Leave += txtPassword_Leave;
+            // 
+            // lblTitulo
+            // 
+            lblTitulo.AutoSize = true;
+            lblTitulo.Font = new Font("Segoe UI", 22.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblTitulo.Location = new Point(648, 23);
+            lblTitulo.Name = "lblTitulo";
+            lblTitulo.Size = new Size(254, 50);
+            lblTitulo.TabIndex = 12;
+            lblTitulo.Text = "Iniciar Sesión";
             // 
             // btnRegistrar
             // 
@@ -189,7 +191,7 @@
             btnRegistrar.FlatStyle = FlatStyle.Flat;
             btnRegistrar.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnRegistrar.ForeColor = SystemColors.ButtonHighlight;
-            btnRegistrar.Location = new Point(775, 481);
+            btnRegistrar.Location = new Point(778, 549);
             btnRegistrar.Name = "btnRegistrar";
             btnRegistrar.Size = new Size(155, 44);
             btnRegistrar.TabIndex = 17;
@@ -197,61 +199,60 @@
             btnRegistrar.UseVisualStyleBackColor = false;
             btnRegistrar.Click += btnRegistrar_Click;
             // 
-            // linkLblOlvidarContraseña
+            // panelLinea
             // 
-            linkLblOlvidarContraseña.AutoSize = true;
-            linkLblOlvidarContraseña.Location = new Point(752, 405);
-            linkLblOlvidarContraseña.Name = "linkLblOlvidarContraseña";
-            linkLblOlvidarContraseña.Size = new Size(178, 20);
-            linkLblOlvidarContraseña.TabIndex = 18;
-            linkLblOlvidarContraseña.TabStop = true;
-            linkLblOlvidarContraseña.Text = "¿Olvidaste tu contraseña?";
+            panelLinea.BackColor = Color.Gray;
+            panelLinea.Location = new Point(526, 473);
+            panelLinea.Name = "panelLinea";
+            panelLinea.Size = new Size(460, 2);
+            panelLinea.TabIndex = 16;
             // 
             // LoginForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ControlLightLight;
-            ClientSize = new Size(971, 624);
-            Controls.Add(linkLblOlvidarContraseña);
-            Controls.Add(btnRegistrar);
-            Controls.Add(panelLinea);
-            Controls.Add(lblContraseña);
-            Controls.Add(lblUsuario);
-            Controls.Add(label1);
-            Controls.Add(lblTitullo);
-            Controls.Add(btnIniciarSesion);
-            Controls.Add(pictureBoxOjo);
-            Controls.Add(pictureBoxPassword);
-            Controls.Add(pictureBoxUser);
+            ClientSize = new Size(1013, 683);
+            Controls.Add(pbOjo);
             Controls.Add(txtPassword);
+            Controls.Add(pbBanner);
+            Controls.Add(lblTitulo);
+            Controls.Add(panelLinea);
+            Controls.Add(lblSubtitulo);
+            Controls.Add(btnIniciarSesion);
+            Controls.Add(btnRegistrar);
+            Controls.Add(lblUsuario);
             Controls.Add(txtUser);
-            Controls.Add(pictureBoxBanner);
+            Controls.Add(lblContraseña);
+            Controls.Add(pbUser);
+            Controls.Add(pbPassword);
+            Controls.Add(linkLblContraseña);
             Name = "LoginForm";
             Text = "LoginForm";
-            ((System.ComponentModel.ISupportInitialize)pictureBoxPassword).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBoxUser).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBoxBanner).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBoxOjo).EndInit();
+            Load += LoginForm_Load;
+            Resize += LoginForm_Resize;
+            ((System.ComponentModel.ISupportInitialize)pbOjo).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pbPassword).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pbUser).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pbBanner).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
-
-        private PictureBox pictureBoxPassword;
-        private PictureBox pictureBoxUser;
-        private TextBox txtPassword;
-        private TextBox txtUser;
-        private PictureBox pictureBoxBanner;
-        private PictureBox pictureBoxOjo;
-        private Button btnIniciarSesion;
-        private Label lblTitullo;
-        private Label label1;
+        private PictureBox pbOjo;
+        private PictureBox pbPassword;
         private Label lblUsuario;
         private Label lblContraseña;
-        private Panel panelLinea;
+        private Button btnIniciarSesion;
+        private PictureBox pbUser;
+        private TextBox txtUser;
+        private PictureBox pbBanner;
+        private LinkLabel linkLblContraseña;
+        private Label lblSubtitulo;
+        private TextBox txtPassword;
+        private Label lblTitulo;
         private Button btnRegistrar;
-        private LinkLabel linkLblOlvidarContraseña;
+        private Panel panelLinea;
     }
 }

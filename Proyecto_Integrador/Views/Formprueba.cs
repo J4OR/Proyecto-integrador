@@ -91,7 +91,7 @@ namespace Proyecto_Integrador.Views
 
         private void Form_prueba_FormClosed(object sender, FormClosedEventArgs e)
         {
-            Application.Exit();
+            
         }
     }
 }

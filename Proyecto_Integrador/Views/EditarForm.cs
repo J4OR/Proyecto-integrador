@@ -44,7 +44,7 @@ namespace Proyecto_Integrador.Views
 
         private void btnEditar_Click(object sender, EventArgs e)
         {
-            Cliente cliente = new Cliente(idCliente, txtNombre.Text, txtIdentificacion.Text, txtTelefono.Text, txtCorreo.Text);
+            Cliente cliente = new Cliente(idCliente, txtIdentificacion.Text, txtNombre.Text, txtTelefono.Text, txtCorreo.Text);
             clienteController.EditarCliente(cliente, idCliente);
             MessageBox.Show("Cliente editado con éxito!");
             DialogResult = DialogResult.OK;

@@ -32,7 +32,11 @@ namespace Proyecto_Integrador.Repository
                         lista = JsonSerializer.Deserialize<List<T>>(json) ?? lista;
                     }
                 }
-
+            }
+            else
+            {
+                Directory.CreateDirectory(folder);
+                File.WriteAllText(filePath, "[]");
             }
 
             return lista;

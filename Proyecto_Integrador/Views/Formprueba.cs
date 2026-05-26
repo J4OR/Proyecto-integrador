@@ -50,7 +50,6 @@ namespace Proyecto_Integrador.Views
             clienteController.AgregarCliente(cliente);
             MessageBox.Show("Agregado con exito!");
             cargarClientes();
-
         }
 
 

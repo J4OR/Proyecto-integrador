@@ -106,6 +106,16 @@ namespace Proyecto_Integrador.Views.Utils
                 {
                     evaluarYEscalarControles(ctrl, xRatio, yRatio, fontRatio);
                 }
+                if (controlFontSizes.ContainsKey(ctrl))
+                {
+                    float originalFontSize = controlFontSizes[ctrl];
+                    float newFontSize = originalFontSize * fontRatio;
+
+                    // ESTE ES TU ESCUDO: Si el tamaño da menor a 9, lo congela en 9 para que no se destruya el diseño
+                    if (newFontSize < 9f) newFontSize = 9f;
+
+                    ctrl.Font = new Font(ctrl.Font.FontFamily, newFontSize, ctrl.Font.Style);
+                }
             }
         }
     }    

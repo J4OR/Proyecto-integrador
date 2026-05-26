@@ -29,12 +29,6 @@ namespace Proyecto_Integrador.Views
 
         }
 
-        private void LoginForm_Load(object sender, EventArgs e)
-        {
-
-            
-        }
-
         private void LoginForm_Resize(object sender, EventArgs e)
         {
             resizer.ejecutarEscalado();
@@ -45,49 +39,87 @@ namespace Proyecto_Integrador.Views
             }
 
         }
-      
 
-        private void txtPassword_Enter(object sender, EventArgs e)
+        private void TextBoxs_Enter(object sender, EventArgs e)
         {
-            if (txtPassword.Text == "Ingrese su contraseña")
-            {
-                txtPassword.Text = "";
-                txtPassword.PasswordChar = '*';
-                txtPassword.ForeColor = Color.Black;
-                pbOjo.Image = Properties.Resources.ojoCerrado;
+            TextBox txt = sender as TextBox;
+            if (txt == null) return;
 
+            if (txt.Text == "Ingrese su usuario" || txt.Text == "Ingrese su contraseña")
+            {
+                txt.Text = "";
+                txt.ForeColor = Color.Black;
+
+                if (txt.Name == "txtPassword")
+                {
+                    txt.PasswordChar = '*';
+                    pbOjo.Image = Properties.Resources.ojoCerrado;
+                }
             }
         }
 
-        private void txtPassword_Leave(object sender, EventArgs e)
+        private void TextBoxs_Leave(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(txtPassword.Text))
+            TextBox txt = sender as TextBox;
+            if (txt == null) return;
+
+            if (string.IsNullOrWhiteSpace(txt.Text))
             {
-                txtPassword.Text = "Ingrese su contraseña";
-                txtPassword.PasswordChar = '\0';
-                txtPassword.ForeColor = SystemColors.InactiveCaption;
-                pbOjo.Image = Properties.Resources.ojoAbierto;
+                if (txt.Name == "txtUser")
+                {
+                    txt.Text = "Ingrese su usuario";
+                }
+                else if (txt.Name == "txtPassword")
+                {
+                    txt.Text = "Ingrese su contraseña";
+                    txt.PasswordChar = '\0';
+                    pbOjo.Image = Properties.Resources.ojoAbierto;
+                }
+
+                txt.ForeColor = SystemColors.InactiveCaption;
             }
         }
+        //private void txtPassword_Enter(object sender, EventArgs e)
+        //{
+        //    if (txtPassword.Text == "Ingrese su contraseña")
+        //    {
+        //        txtPassword.Text = "";
+        //        txtPassword.PasswordChar = '*';
+        //        txtPassword.ForeColor = Color.Black;
+        //        pbOjo.Image = Properties.Resources.ojoCerrado;
 
-        private void txtUser_Enter(object sender, EventArgs e)
-        {
-            if (txtUser.Text == "Ingrese su usuario")
-            {
-                txtUser.Text = "";
-                txtUser.ForeColor = Color.Black;
+        //    }
+        //}
 
-            }
-        }
+        //private void txtPassword_Leave(object sender, EventArgs e)
+        //{
+        //    if (string.IsNullOrWhiteSpace(txtPassword.Text))
+        //    {
+        //        txtPassword.Text = "Ingrese su contraseña";
+        //        txtPassword.PasswordChar = '\0';
+        //        txtPassword.ForeColor = SystemColors.InactiveCaption;
+        //        pbOjo.Image = Properties.Resources.ojoAbierto;
+        //    }
+        //}
 
-        private void txtUser_Leave(object sender, EventArgs e)
-        {
-            if (string.IsNullOrWhiteSpace(txtUser.Text))
-            {
-                txtUser.Text = "Ingrese su usuario";
-                txtUser.ForeColor = SystemColors.InactiveCaption;
-            }
-        }
+        //private void txtUser_Enter(object sender, EventArgs e)
+        //{
+        //    if (txtUser.Text == "Ingrese su usuario")
+        //    {
+        //        txtUser.Text = "";
+        //        txtUser.ForeColor = Color.Black;
+
+        //    }
+        //}
+
+        //private void txtUser_Leave(object sender, EventArgs e)
+        //{
+        //    if (string.IsNullOrWhiteSpace(txtUser.Text))
+        //    {
+        //        txtUser.Text = "Ingrese su usuario";
+        //        txtUser.ForeColor = SystemColors.InactiveCaption;
+        //    }
+        //}
 
         private void pictureBoxOjo_MouseClick(object sender, MouseEventArgs e)
         {

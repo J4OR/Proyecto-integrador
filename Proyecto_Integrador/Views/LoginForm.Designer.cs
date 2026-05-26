@@ -132,8 +132,8 @@
             txtUser.Size = new Size(366, 45);
             txtUser.TabIndex = 6;
             txtUser.Text = "Ingrese su usuario";
-            txtUser.Enter += txtUser_Enter;
-            txtUser.Leave += txtUser_Leave;
+            txtUser.Enter += TextBoxs_Enter;
+            txtUser.Leave += TextBoxs_Leave;
             // 
             // pbBanner
             // 
@@ -167,8 +167,8 @@
             txtPassword.Size = new Size(366, 45);
             txtPassword.TabIndex = 7;
             txtPassword.Text = "Ingrese su contraseña";
-            txtPassword.Enter += txtPassword_Enter;
-            txtPassword.Leave += txtPassword_Leave;
+            txtPassword.Enter += TextBoxs_Enter;
+            txtPassword.Leave += TextBoxs_Leave;
             // 
             // lblTitulo
             // 
@@ -197,7 +197,8 @@
             // panelLinea
             // 
             panelLinea.BackColor = Color.Gray;
-            panelLinea.Location = new Point(579, 518);
+            panelLinea.BorderStyle = BorderStyle.Fixed3D;
+            panelLinea.Location = new Point(579, 513);
             panelLinea.Name = "panelLinea";
             panelLinea.Size = new Size(460, 2);
             panelLinea.TabIndex = 16;
@@ -257,6 +258,7 @@
             Controls.Add(lblContraseña);
             Controls.Add(pbUser);
             Controls.Add(pbPassword);
+            FormBorderStyle = FormBorderStyle.FixedSingle;
             Name = "LoginForm";
             Text = "LoginForm";
             Resize += LoginForm_Resize;

@@ -6,14 +6,14 @@ using System.Text;
 
 namespace Proyecto_Integrador.Views.Utils
 {
-    public class ControlResizer
+    public class ControlsUtils
     {
         private Size originalFormSize;
         private readonly Dictionary<Control, Rectangle> controlBounds = new Dictionary<Control, Rectangle>();
         private readonly Dictionary<Control, float> controlFontSizes = new Dictionary<Control, float>();
         private readonly Form formulario;
 
-        public ControlResizer(Form form)
+        public ControlsUtils(Form form)
         {
             formulario = form;
             originalFormSize = form.Size;

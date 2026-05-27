@@ -15,11 +15,11 @@ namespace Proyecto_Integrador.Views
     public partial class LoginForm : Form
     {
         UsuarioController controller = new UsuarioController();
-        private ControlResizer resizer;
+        private ControlsUtils resizer;
         public LoginForm()
         {
             InitializeComponent();
-            resizer = new ControlResizer(this);
+            resizer = new ControlsUtils(this);
             this.WindowState = FormWindowState.Maximized;
 
             pbOjo.Image = Properties.Resources.ojoAbierto;
@@ -137,6 +137,8 @@ namespace Proyecto_Integrador.Views
         private void btnRegistrar_Click(object sender, EventArgs e)
         {
             RegistroForm registroForm = new RegistroForm();
+            registroForm.FormClosed += (s, e) => this.Show();
+            this.Hide();
             registroForm.ShowDialog();
         }
         private void ajustarPosicionError()

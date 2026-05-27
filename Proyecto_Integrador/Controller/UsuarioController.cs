@@ -46,5 +46,17 @@ namespace Proyecto_Integrador.Controller
 
             return lista.Find(u => u.userName == userName);
         }
+
+        public bool ExisteUsuario(string userName)
+        {
+            List<Usuario> lista = usuarioRepository.Leer();
+            return lista.Any(u => u.userName == userName);
+        }
+
+        public bool ExisteDocumento(string documento)
+        {
+            List<Usuario> lista = usuarioRepository.Leer();
+            return lista.Any(u => u.identificacion == documento);
+        }
     }
 }

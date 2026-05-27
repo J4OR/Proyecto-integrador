@@ -33,6 +33,13 @@
             lblTitullo = new Label();
             pbUser = new PictureBox();
             panel1 = new Panel();
+            lblErrorConfirmar = new Label();
+            lblErrorContraseña = new Label();
+            lblErrorUsuario = new Label();
+            lblErrorDocumento = new Label();
+            lblErrorCorreo = new Label();
+            lblErrorTelefono = new Label();
+            lblErrorNombre = new Label();
             pbOjo2 = new PictureBox();
             pbOjo = new PictureBox();
             label7 = new Label();
@@ -114,6 +121,13 @@
             panel1.BackColor = SystemColors.ControlLightLight;
             panel1.BackgroundImageLayout = ImageLayout.None;
             panel1.BorderStyle = BorderStyle.FixedSingle;
+            panel1.Controls.Add(lblErrorConfirmar);
+            panel1.Controls.Add(lblErrorContraseña);
+            panel1.Controls.Add(lblErrorUsuario);
+            panel1.Controls.Add(lblErrorDocumento);
+            panel1.Controls.Add(lblErrorCorreo);
+            panel1.Controls.Add(lblErrorTelefono);
+            panel1.Controls.Add(lblErrorNombre);
             panel1.Controls.Add(pbOjo2);
             panel1.Controls.Add(pbOjo);
             panel1.Controls.Add(label7);
@@ -145,37 +159,123 @@
             panel1.Controls.Add(txtNombre);
             panel1.Location = new Point(-10, -2);
             panel1.Name = "panel1";
-            panel1.Size = new Size(1318, 740);
+            panel1.Size = new Size(1318, 778);
             panel1.TabIndex = 15;
+            // 
+            // lblErrorConfirmar
+            // 
+            lblErrorConfirmar.AutoSize = true;
+            lblErrorConfirmar.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblErrorConfirmar.ForeColor = Color.FromArgb(192, 0, 0);
+            lblErrorConfirmar.Location = new Point(82, 734);
+            lblErrorConfirmar.Name = "lblErrorConfirmar";
+            lblErrorConfirmar.Size = new Size(14, 20);
+            lblErrorConfirmar.TabIndex = 46;
+            lblErrorConfirmar.Text = "t";
+            lblErrorConfirmar.Visible = false;
+            // 
+            // lblErrorContraseña
+            // 
+            lblErrorContraseña.AutoSize = true;
+            lblErrorContraseña.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblErrorContraseña.ForeColor = Color.FromArgb(192, 0, 0);
+            lblErrorContraseña.Location = new Point(722, 604);
+            lblErrorContraseña.Name = "lblErrorContraseña";
+            lblErrorContraseña.Size = new Size(14, 20);
+            lblErrorContraseña.TabIndex = 45;
+            lblErrorContraseña.Text = "t";
+            lblErrorContraseña.Visible = false;
+            // 
+            // lblErrorUsuario
+            // 
+            lblErrorUsuario.AutoSize = true;
+            lblErrorUsuario.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblErrorUsuario.ForeColor = Color.FromArgb(192, 0, 0);
+            lblErrorUsuario.Location = new Point(82, 604);
+            lblErrorUsuario.Name = "lblErrorUsuario";
+            lblErrorUsuario.Size = new Size(14, 20);
+            lblErrorUsuario.TabIndex = 44;
+            lblErrorUsuario.Text = "t";
+            lblErrorUsuario.Visible = false;
+            // 
+            // lblErrorDocumento
+            // 
+            lblErrorDocumento.AutoSize = true;
+            lblErrorDocumento.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblErrorDocumento.ForeColor = Color.FromArgb(192, 0, 0);
+            lblErrorDocumento.Location = new Point(722, 414);
+            lblErrorDocumento.Name = "lblErrorDocumento";
+            lblErrorDocumento.Size = new Size(14, 20);
+            lblErrorDocumento.TabIndex = 43;
+            lblErrorDocumento.Text = "t";
+            lblErrorDocumento.Visible = false;
+            // 
+            // lblErrorCorreo
+            // 
+            lblErrorCorreo.AutoSize = true;
+            lblErrorCorreo.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblErrorCorreo.ForeColor = Color.FromArgb(192, 0, 0);
+            lblErrorCorreo.Location = new Point(82, 413);
+            lblErrorCorreo.Name = "lblErrorCorreo";
+            lblErrorCorreo.Size = new Size(14, 20);
+            lblErrorCorreo.TabIndex = 42;
+            lblErrorCorreo.Text = "t";
+            lblErrorCorreo.Visible = false;
+            // 
+            // lblErrorTelefono
+            // 
+            lblErrorTelefono.AutoSize = true;
+            lblErrorTelefono.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblErrorTelefono.ForeColor = Color.FromArgb(192, 0, 0);
+            lblErrorTelefono.Location = new Point(722, 288);
+            lblErrorTelefono.Name = "lblErrorTelefono";
+            lblErrorTelefono.Size = new Size(14, 20);
+            lblErrorTelefono.TabIndex = 41;
+            lblErrorTelefono.Text = "t";
+            lblErrorTelefono.Visible = false;
+            // 
+            // lblErrorNombre
+            // 
+            lblErrorNombre.AutoSize = true;
+            lblErrorNombre.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblErrorNombre.ForeColor = Color.FromArgb(192, 0, 0);
+            lblErrorNombre.Location = new Point(82, 288);
+            lblErrorNombre.Name = "lblErrorNombre";
+            lblErrorNombre.Size = new Size(14, 20);
+            lblErrorNombre.TabIndex = 40;
+            lblErrorNombre.Text = "t";
+            lblErrorNombre.Visible = false;
             // 
             // pbOjo2
             // 
             pbOjo2.BackColor = Color.Transparent;
             pbOjo2.Image = (Image)resources.GetObject("pbOjo2.Image");
-            pbOjo2.Location = new Point(559, 637);
+            pbOjo2.Location = new Point(559, 695);
             pbOjo2.Name = "pbOjo2";
             pbOjo2.Size = new Size(25, 27);
             pbOjo2.SizeMode = PictureBoxSizeMode.StretchImage;
             pbOjo2.TabIndex = 39;
             pbOjo2.TabStop = false;
+            pbOjo2.Click += pbOjo2_Click;
             // 
             // pbOjo
             // 
             pbOjo.BackColor = Color.Transparent;
             pbOjo.Image = (Image)resources.GetObject("pbOjo.Image");
-            pbOjo.Location = new Point(1199, 530);
+            pbOjo.Location = new Point(1199, 567);
             pbOjo.Name = "pbOjo";
             pbOjo.Size = new Size(25, 27);
             pbOjo.SizeMode = PictureBoxSizeMode.StretchImage;
             pbOjo.TabIndex = 38;
             pbOjo.TabStop = false;
+            pbOjo.Click += pbOjo_Click;
             // 
             // label7
             // 
             label7.AutoSize = true;
             label7.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label7.ForeColor = Color.Black;
-            label7.Location = new Point(34, 586);
+            label7.Location = new Point(34, 644);
             label7.Name = "label7";
             label7.Size = new Size(191, 25);
             label7.TabIndex = 37;
@@ -185,7 +285,7 @@
             // 
             pictureBox6.BackColor = Color.Transparent;
             pictureBox6.Image = (Image)resources.GetObject("pictureBox6.Image");
-            pictureBox6.Location = new Point(34, 629);
+            pictureBox6.Location = new Point(34, 687);
             pictureBox6.Name = "pictureBox6";
             pictureBox6.Size = new Size(42, 44);
             pictureBox6.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -197,7 +297,7 @@
             txtConfirmar.AccessibleDescription = "";
             txtConfirmar.Font = new Font("Segoe UI", 9F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
             txtConfirmar.ForeColor = SystemColors.InactiveCaption;
-            txtConfirmar.Location = new Point(82, 628);
+            txtConfirmar.Location = new Point(82, 686);
             txtConfirmar.Multiline = true;
             txtConfirmar.Name = "txtConfirmar";
             txtConfirmar.Size = new Size(502, 45);
@@ -211,7 +311,7 @@
             label8.AutoSize = true;
             label8.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label8.ForeColor = Color.Black;
-            label8.Location = new Point(674, 477);
+            label8.Location = new Point(674, 514);
             label8.Name = "label8";
             label8.Size = new Size(106, 25);
             label8.TabIndex = 34;
@@ -221,7 +321,7 @@
             // 
             pictureBox7.BackColor = Color.Transparent;
             pictureBox7.Image = (Image)resources.GetObject("pictureBox7.Image");
-            pictureBox7.Location = new Point(674, 520);
+            pictureBox7.Location = new Point(674, 557);
             pictureBox7.Name = "pictureBox7";
             pictureBox7.Size = new Size(42, 44);
             pictureBox7.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -233,7 +333,7 @@
             txtContraseña.AccessibleDescription = "";
             txtContraseña.Font = new Font("Segoe UI", 9F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
             txtContraseña.ForeColor = SystemColors.InactiveCaption;
-            txtContraseña.Location = new Point(722, 519);
+            txtContraseña.Location = new Point(722, 556);
             txtContraseña.Multiline = true;
             txtContraseña.Name = "txtContraseña";
             txtContraseña.Size = new Size(502, 45);
@@ -247,7 +347,7 @@
             label9.AutoSize = true;
             label9.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label9.ForeColor = Color.Black;
-            label9.Location = new Point(34, 477);
+            label9.Location = new Point(34, 514);
             label9.Name = "label9";
             label9.Size = new Size(179, 25);
             label9.TabIndex = 31;
@@ -258,7 +358,7 @@
             label10.AutoSize = true;
             label10.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label10.ForeColor = Color.DarkBlue;
-            label10.Location = new Point(34, 431);
+            label10.Location = new Point(34, 460);
             label10.Name = "label10";
             label10.Size = new Size(232, 28);
             label10.TabIndex = 30;
@@ -268,7 +368,7 @@
             // 
             pictureBox8.BackColor = Color.Transparent;
             pictureBox8.Image = (Image)resources.GetObject("pictureBox8.Image");
-            pictureBox8.Location = new Point(34, 520);
+            pictureBox8.Location = new Point(34, 557);
             pictureBox8.Name = "pictureBox8";
             pictureBox8.Size = new Size(42, 44);
             pictureBox8.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -280,7 +380,7 @@
             txtUsuario.AccessibleDescription = "";
             txtUsuario.Font = new Font("Segoe UI", 9F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
             txtUsuario.ForeColor = SystemColors.InactiveCaption;
-            txtUsuario.Location = new Point(82, 519);
+            txtUsuario.Location = new Point(82, 556);
             txtUsuario.Multiline = true;
             txtUsuario.Name = "txtUsuario";
             txtUsuario.Size = new Size(502, 45);
@@ -303,7 +403,7 @@
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label4.ForeColor = Color.Black;
-            label4.Location = new Point(674, 307);
+            label4.Location = new Point(674, 323);
             label4.Name = "label4";
             label4.Size = new Size(221, 25);
             label4.TabIndex = 26;
@@ -313,7 +413,7 @@
             // 
             pictureBox3.BackColor = Color.Transparent;
             pictureBox3.Image = (Image)resources.GetObject("pictureBox3.Image");
-            pictureBox3.Location = new Point(674, 350);
+            pictureBox3.Location = new Point(674, 366);
             pictureBox3.Name = "pictureBox3";
             pictureBox3.Size = new Size(42, 44);
             pictureBox3.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -325,7 +425,7 @@
             txtDocumento.AccessibleDescription = "";
             txtDocumento.Font = new Font("Segoe UI", 9F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
             txtDocumento.ForeColor = SystemColors.InactiveCaption;
-            txtDocumento.Location = new Point(722, 350);
+            txtDocumento.Location = new Point(722, 366);
             txtDocumento.Multiline = true;
             txtDocumento.Name = "txtDocumento";
             txtDocumento.Size = new Size(502, 45);
@@ -339,7 +439,7 @@
             label5.AutoSize = true;
             label5.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label5.ForeColor = Color.Black;
-            label5.Location = new Point(34, 307);
+            label5.Location = new Point(34, 323);
             label5.Name = "label5";
             label5.Size = new Size(167, 25);
             label5.TabIndex = 23;
@@ -349,7 +449,7 @@
             // 
             pictureBox4.BackColor = Color.Transparent;
             pictureBox4.Image = (Image)resources.GetObject("pictureBox4.Image");
-            pictureBox4.Location = new Point(34, 350);
+            pictureBox4.Location = new Point(34, 366);
             pictureBox4.Name = "pictureBox4";
             pictureBox4.Size = new Size(42, 44);
             pictureBox4.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -361,7 +461,7 @@
             txtCorreo.AccessibleDescription = "";
             txtCorreo.Font = new Font("Segoe UI", 9F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
             txtCorreo.ForeColor = SystemColors.InactiveCaption;
-            txtCorreo.Location = new Point(82, 349);
+            txtCorreo.Location = new Point(82, 365);
             txtCorreo.Multiline = true;
             txtCorreo.Name = "txtCorreo";
             txtCorreo.Size = new Size(502, 45);
@@ -457,7 +557,7 @@
             btnCancelar.ForeColor = SystemColors.ActiveCaptionText;
             btnCancelar.Image = (Image)resources.GetObject("btnCancelar.Image");
             btnCancelar.ImageAlign = ContentAlignment.MiddleLeft;
-            btnCancelar.Location = new Point(802, 775);
+            btnCancelar.Location = new Point(802, 819);
             btnCancelar.Name = "btnCancelar";
             btnCancelar.Padding = new Padding(10, 5, 0, 5);
             btnCancelar.Size = new Size(153, 55);
@@ -466,6 +566,7 @@
             btnCancelar.TextAlign = ContentAlignment.MiddleRight;
             btnCancelar.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnCancelar.UseVisualStyleBackColor = false;
+            btnCancelar.Click += btnCancelar_Click;
             // 
             // btnGuardar
             // 
@@ -475,7 +576,7 @@
             btnGuardar.ForeColor = SystemColors.ButtonHighlight;
             btnGuardar.Image = (Image)resources.GetObject("btnGuardar.Image");
             btnGuardar.ImageAlign = ContentAlignment.MiddleLeft;
-            btnGuardar.Location = new Point(993, 775);
+            btnGuardar.Location = new Point(993, 819);
             btnGuardar.Name = "btnGuardar";
             btnGuardar.Padding = new Padding(10, 5, 0, 5);
             btnGuardar.Size = new Size(223, 55);
@@ -484,12 +585,13 @@
             btnGuardar.TextAlign = ContentAlignment.MiddleRight;
             btnGuardar.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnGuardar.UseVisualStyleBackColor = false;
+            btnGuardar.Click += btnGuardar_Click;
             // 
             // RegistroForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1302, 867);
+            ClientSize = new Size(1302, 901);
             Controls.Add(btnGuardar);
             Controls.Add(btnCancelar);
             Controls.Add(panel1);
@@ -544,5 +646,12 @@
         private Button btnGuardar;
         private PictureBox pbOjo2;
         private PictureBox pbOjo;
+        private Label lblErrorConfirmar;
+        private Label lblErrorContraseña;
+        private Label lblErrorUsuario;
+        private Label lblErrorDocumento;
+        private Label lblErrorCorreo;
+        private Label lblErrorTelefono;
+        private Label lblErrorNombre;
     }
 }

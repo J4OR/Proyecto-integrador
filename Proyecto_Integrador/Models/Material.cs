@@ -6,5 +6,6 @@ namespace Proyecto_Integrador.Models
 {
     internal class Material
     {
+
     }
 }

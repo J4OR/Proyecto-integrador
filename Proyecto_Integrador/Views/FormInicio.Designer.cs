@@ -1,6 +1,6 @@
-﻿namespace Proyecto_Integrador
+﻿namespace Proyecto_Integrador.Views
 {
-    partial class Form1
+    partial class FormInicio
     {
         /// <summary>
         /// Required designer variable.
@@ -28,10 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Text = "Form1";
+            SuspendLayout();
+            // 
+            // FormInicio
+            // 
+            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(989, 603);
+            Name = "FormInicio";
+            Text = "FormInicio";
+            ResumeLayout(false);
         }
 
         #endregion

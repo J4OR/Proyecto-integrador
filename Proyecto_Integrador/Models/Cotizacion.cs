@@ -15,7 +15,9 @@ namespace Proyecto_Integrador.Models
         public DateTime fecha { get; set; }
         public bool estado { get; set; }
         [JsonConstructor]
-        public Cotizacion(string id,Cliente cliente, Terreno terreno,Material material, DateTime fecha)
+        public Cotizacion(string id, Cliente cliente, Terreno terreno,
+                          Material material, double costoTotal, DateTime fecha,
+                          string estado, string observaciones)
         {
             this.id = id;
             this.cliente = cliente;

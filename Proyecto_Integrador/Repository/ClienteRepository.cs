@@ -7,10 +7,10 @@ namespace Proyecto_Integrador.Repository
 {
     public class ClienteRepository
     {
-        private static readonly string folder = "Data";
-        private static readonly string filePath = Path.Combine(folder, "clientes.json");
+        private static readonly string carpeta = "Data";
+        private static readonly string rutaCarpeta = Path.Combine(carpeta, "clientes.json");
 
-        JsonRepository<Cliente> jsonRepository = new JsonRepository<Cliente>(folder, filePath);
+        JsonRepository<Cliente> jsonRepository = new JsonRepository<Cliente>(carpeta, rutaCarpeta);
 
         public int ObtenerSiguienteId(List<Cliente> lista)
         {
@@ -28,7 +28,6 @@ namespace Proyecto_Integrador.Repository
         public void Agregar(Cliente cliente)
         {
             List<Cliente> lista = jsonRepository.Leer();
-            cliente.id = ObtenerSiguienteId(lista);
             lista.Add(cliente);
             jsonRepository.Guardar(lista); ;
         }
@@ -39,9 +38,5 @@ namespace Proyecto_Integrador.Repository
             jsonRepository.Editar(nuevoCliente, u => u.id == id);
         }
 
-        public Cliente? Buscar(string nombre)
-        {
-            return jsonRepository.Buscar(c => c.nombre == nombre);
-        }
     }
 }

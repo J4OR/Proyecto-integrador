@@ -7,13 +7,13 @@ namespace Proyecto_Integrador.Repository
 {
     public class JsonRepository<T> where T : class
     {
-        private readonly string filePath;
-        private readonly string folder;
+        private readonly string carpeta;
+        private readonly string rutaCarpeta;
 
-        public JsonRepository(string folder, string filePath)
+        public JsonRepository(string carpeta, string rutaCarpeta)
         {
-            this.folder = folder;
-            this.filePath = filePath;
+            this.carpeta = carpeta;
+            this.rutaCarpeta = rutaCarpeta;
         }
 
     
@@ -21,9 +21,9 @@ namespace Proyecto_Integrador.Repository
         {
             List<T> lista = new List<T>();
 
-            if (File.Exists(this.filePath))
+            if (File.Exists(this.rutaCarpeta))
             {
-                using (StreamReader sr = new StreamReader(this.filePath))
+                using (StreamReader sr = new StreamReader(this.rutaCarpeta))
                 {
                     string json = sr.ReadToEnd();
 
@@ -35,8 +35,8 @@ namespace Proyecto_Integrador.Repository
             }
             else
             {
-                Directory.CreateDirectory(folder);
-                File.WriteAllText(filePath, "[]");
+                Directory.CreateDirectory(carpeta);
+                File.WriteAllText(rutaCarpeta, "[]");
             }
 
             return lista;
@@ -49,7 +49,7 @@ namespace Proyecto_Integrador.Repository
                 WriteIndented = true
             };
 
-            using (StreamWriter sw = new StreamWriter(filePath))
+            using (StreamWriter sw = new StreamWriter(rutaCarpeta))
             {
                 string json = JsonSerializer.Serialize<List<T>>(lista, opciones);
                 sw.Write(json);

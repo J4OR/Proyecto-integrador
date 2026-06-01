@@ -49,7 +49,15 @@
             label2 = new Label();
             label1 = new Label();
             txtBuscador = new TextBox();
+            tablaClientes2 = new DataGridView();
+            Id2 = new DataGridViewTextBoxColumn();
+            Nombre2 = new DataGridViewTextBoxColumn();
+            Identificacion2 = new DataGridViewTextBoxColumn();
+            Telefono2 = new DataGridViewTextBoxColumn();
+            Correo2 = new DataGridViewTextBoxColumn();
+            Accion2 = new DataGridViewButtonColumn();
             ((System.ComponentModel.ISupportInitialize)tablaClientes).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)tablaClientes2).BeginInit();
             SuspendLayout();
             // 
             // tablaClientes
@@ -59,41 +67,25 @@
             tablaClientes.BackgroundColor = SystemColors.ButtonHighlight;
             tablaClientes.BorderStyle = BorderStyle.None;
             tablaClientes.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = SystemColors.Control;
-            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = Color.Transparent;
-            dataGridViewCellStyle1.SelectionForeColor = SystemColors.Desktop;
-            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
-            tablaClientes.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             tablaClientes.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             tablaClientes.Columns.AddRange(new DataGridViewColumn[] { Id, Nombre, Identificacion, Telefono, Correo, Accion });
-            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = SystemColors.Window;
-            dataGridViewCellStyle4.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle4.ForeColor = SystemColors.ActiveCaptionText;
-            dataGridViewCellStyle4.SelectionBackColor = Color.Transparent;
-            dataGridViewCellStyle4.SelectionForeColor = SystemColors.InfoText;
-            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.False;
-            tablaClientes.DefaultCellStyle = dataGridViewCellStyle4;
             tablaClientes.EnableHeadersVisualStyles = false;
             tablaClientes.GridColor = SystemColors.HighlightText;
-            tablaClientes.Location = new Point(476, 128);
+            tablaClientes.Location = new Point(542, 128);
             tablaClientes.MultiSelect = false;
             tablaClientes.Name = "tablaClientes";
             tablaClientes.ReadOnly = true;
             tablaClientes.RowHeadersVisible = false;
             tablaClientes.RowHeadersWidth = 51;
             tablaClientes.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            tablaClientes.Size = new Size(654, 291);
+            tablaClientes.Size = new Size(797, 262);
             tablaClientes.TabIndex = 15;
             tablaClientes.CellContentClick += tablaClientes_CellContentClick;
             // 
             // Id
             // 
-            dataGridViewCellStyle2.BackColor = Color.White;
-            Id.DefaultCellStyle = dataGridViewCellStyle2;
+            //dataGridViewCellStyle2.BackColor = Color.White;
+            //Id.DefaultCellStyle = dataGridViewCellStyle2;
             Id.HeaderText = "ID";
             Id.MinimumWidth = 6;
             Id.Name = "Id";
@@ -129,10 +121,10 @@
             // 
             // Accion
             // 
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.BackColor = Color.DarkBlue;
-            dataGridViewCellStyle3.SelectionBackColor = Color.RoyalBlue;
-            Accion.DefaultCellStyle = dataGridViewCellStyle3;
+            //dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            //dataGridViewCellStyle3.BackColor = Color.DarkBlue;
+            //dataGridViewCellStyle3.SelectionBackColor = Color.RoyalBlue;
+            //Accion.DefaultCellStyle = dataGridViewCellStyle3;
             Accion.FlatStyle = FlatStyle.Flat;
             Accion.HeaderText = "Accion";
             Accion.MinimumWidth = 6;
@@ -223,11 +215,64 @@
             txtBuscador.TabIndex = 20;
             txtBuscador.TextChanged += txtBuscador_TextChanged;
             // 
+            // tablaClientes2
+            // 
+            tablaClientes2.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            tablaClientes2.Columns.AddRange(new DataGridViewColumn[] { Id2, Nombre2, Identificacion2, Telefono2, Correo2, Accion2 });
+            tablaClientes2.Location = new Point(542, 415);
+            tablaClientes2.Name = "tablaClientes2";
+            tablaClientes2.RowHeadersWidth = 51;
+            tablaClientes2.Size = new Size(784, 188);
+            tablaClientes2.TabIndex = 21;
+            // 
+            // Id2
+            // 
+            Id2.HeaderText = "Id2";
+            Id2.MinimumWidth = 6;
+            Id2.Name = "Id2";
+            Id2.Width = 125;
+            // 
+            // Nombre2
+            // 
+            Nombre2.HeaderText = "Nombre2";
+            Nombre2.MinimumWidth = 6;
+            Nombre2.Name = "Nombre2";
+            Nombre2.Width = 125;
+            // 
+            // Identificacion2
+            // 
+            Identificacion2.HeaderText = "Identificacion2";
+            Identificacion2.MinimumWidth = 6;
+            Identificacion2.Name = "Identificacion2";
+            Identificacion2.Width = 125;
+            // 
+            // Telefono2
+            // 
+            Telefono2.HeaderText = "Telefono2";
+            Telefono2.MinimumWidth = 6;
+            Telefono2.Name = "Telefono2";
+            Telefono2.Width = 125;
+            // 
+            // Correo2
+            // 
+            Correo2.HeaderText = "Correo2";
+            Correo2.MinimumWidth = 6;
+            Correo2.Name = "Correo2";
+            Correo2.Width = 125;
+            // 
+            // Accion2
+            // 
+            Accion2.HeaderText = "Accion2";
+            Accion2.MinimumWidth = 6;
+            Accion2.Name = "Accion2";
+            Accion2.Width = 125;
+            // 
             // Form_prueba
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1231, 547);
+            ClientSize = new Size(1434, 547);
+            Controls.Add(tablaClientes2);
             Controls.Add(txtBuscador);
             Controls.Add(tablaClientes);
             Controls.Add(btnAgregar);
@@ -243,6 +288,7 @@
             Text = "Form_prueba";
             Load += Form_prueba_Load;
             ((System.ComponentModel.ISupportInitialize)tablaClientes).EndInit();
+            ((System.ComponentModel.ISupportInitialize)tablaClientes2).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -266,5 +312,12 @@
         private Label label2;
         private Label label1;
         private TextBox txtBuscador;
+        private DataGridView tablaClientes2;
+        private DataGridViewTextBoxColumn Id2;
+        private DataGridViewTextBoxColumn Nombre2;
+        private DataGridViewTextBoxColumn Identificacion2;
+        private DataGridViewTextBoxColumn Telefono2;
+        private DataGridViewTextBoxColumn Correo2;
+        private DataGridViewButtonColumn Accion2;
     }
 }

@@ -18,7 +18,10 @@ namespace Proyecto_Integrador.Views
         private ControlsUtils resizer;
         public LoginForm()
         {
+            MessageBox.Show($"{1:D4}");
             InitializeComponent();
+            txtPassword.Text = "admin123";
+            txtUser.Text = "admin";
             resizer = new ControlsUtils(this);
             this.WindowState = FormWindowState.Maximized;
 
@@ -164,7 +167,7 @@ namespace Proyecto_Integrador.Views
         {
             string userName = txtUser.Text.Trim();
             string password = txtPassword.Text.Trim();
-            Usuario usuario = controller.BuscarPorUser(userName);
+            Usuario usuario = controller.BuscarPorUserName(userName);
             string mensaje = "";
             if (usuario != null)
             {

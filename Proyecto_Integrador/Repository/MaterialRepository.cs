@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Text.Json;
@@ -6,39 +6,36 @@ using Proyecto_Integrador.Models;
 
 namespace Proyecto_Integrador.Repository
 {
-    internal class MaterialRepository
+    public class MaterialRepository
     {
-        private readonly string rutaArchivo;
+        private static readonly string carpeta = "Data";
+        private static readonly string rutaCarpeta = Path.Combine(carpeta, "materiales.json");
 
-        public MaterialRepository(string rutaArchivo)
+        JsonRepository<Material> jsonRepository = new JsonRepository<Material>(carpeta, rutaCarpeta);
+
+        public int ObtenerSiguienteId(List<Material> lista)
         {
-            this.rutaArchivo = rutaArchivo;
+            if (lista.Count == 0)
+                return 1;
+            else
+                return lista.Max(m => m.id) + 1;
         }
 
         public List<Material> Leer()
         {
-            if (!File.Exists(rutaArchivo))
-                return new List<Material>();
-
-            string json = File.ReadAllText(rutaArchivo);
-
-            if (string.IsNullOrWhiteSpace(json))
-                return new List<Material>();
-
-            return JsonSerializer.Deserialize<List<Material>>(json)
-                   ?? new List<Material>();
+            return jsonRepository.Leer();
         }
 
-        public void Guardar(List<Material> materiales)
+        public void Agregar(Material material)
         {
-            string json = JsonSerializer.Serialize(
-                materiales,
-                new JsonSerializerOptions
-                {
-                    WriteIndented = true
-                });
+            List<Material> lista = jsonRepository.Leer();
+            lista.Add(material);
+            jsonRepository.Guardar(lista); ;
+        }
 
-            File.WriteAllText(rutaArchivo, json);
+        public void Editar(Material nuevoMaterial, int id)
+        {
+            jsonRepository.Editar(nuevoMaterial, u => u.id == id);
         }
     }
 }

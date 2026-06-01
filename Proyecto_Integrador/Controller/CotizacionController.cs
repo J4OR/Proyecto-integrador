@@ -2,91 +2,48 @@
 using System.Collections.Generic;
 using System.Text;
 using Proyecto_Integrador.Models;
+using Proyecto_Integrador.Repository;
+
 
 namespace Proyecto_Integrador.Controller
 {
     public class CotizacionController
     {
-        private readonly CotizacionRepository repository;
-        private List<Cotizacion> cotizaciones;
+        private CotizacionRepository cotizacionRepository;
 
-        public CotizacionController(string rutaDatos)
+        public CotizacionController()
         {
-            repository = new CotizacionRepository(
-                Path.Combine(rutaDatos, "cotizaciones.json"));
-
-            cotizaciones = repository.Leer();
+            cotizacionRepository = new CotizacionRepository();
         }
 
-        public (bool ok, Cotizacion cotizacion, string mensaje)
-            GenerarCotizacion(
-            Cliente cliente,
-            Material material,
-            double volumenM3,
-            string descripcion)
+        private int obtenerSiguienteNumeroId()
         {
-            if (cliente == null)
-                return (false, null, "Debe seleccionar un cliente.");
-
-            if (material == null)
-                return (false, null, "Debe seleccionar un material.");
-
-            if (volumenM3 <= 0)
-                return (false, null, "El volumen debe ser mayor que 0.");
-
-            Cotizacion cot = new Cotizacion
-            {
-                ClienteId = cliente.Id,
-                NombreCliente = cliente.Nombre,
-                MaterialId = material.Id,
-                NombreMaterial = material.Nombre,
-                VolumenM3 = volumenM3,
-                CostoPorM3 = material.CostoPorUnidad,
-                Descripcion = descripcion
-            };
-
-            cotizaciones.Add(cot);
-
-            repository.Guardar(cotizaciones);
-
-            return (true,
-                    cot,
-                    $"Cotización generada. Total: ${cot.Total:F2}");
+            List<Cotizacion> lista = cotizacionRepository.Leer();
+            if (lista.Count == 0)
+                return 1;
+            else
+                return lista.Max(c => c.numero) + 1;
         }
 
-        public List<Cotizacion> ObtenerTodas()
+        public string ObtenerSiguienteId()
         {
-            return cotizaciones;
+            int siguienteNumero = obtenerSiguienteNumeroId();
+            return $"COT-{siguienteNumero:D4}";
         }
 
-        public List<Cotizacion> ObtenerPorCliente(string clienteId)
+        public List<Cotizacion> ObtenerCotizaciones()
         {
-            return cotizaciones
-                .FindAll(c => c.ClienteId == clienteId);
+            return cotizacionRepository.Leer();
         }
 
-        public Cotizacion ObtenerPorId(string id)
+        public void AgregarCotizacion(Cotizacion cotizacion)
         {
-            return cotizaciones
-                .Find(c => c.Id == id);
+            cotizacionRepository.Agregar(cotizacion);
         }
 
-        public (bool ok, string mensaje)
-            CambiarEstado(
-            string cotizacionId,
-            EstadoCotizacion estado)
+        public void EditarCotizacion(Cotizacion cotizacion, int id)
         {
-            Cotizacion encontrada =
-                cotizaciones.Find(c => c.Id == cotizacionId);
-
-            if (encontrada == null)
-                return (false, "Cotización no encontrada.");
-
-            encontrada.Estado = estado;
-
-            repository.Guardar(cotizaciones);
-
-            return (true, $"Estado cambiado a {estado}.");
+            cotizacionRepository.Editar(cotizacion, id);
         }
     }
 }

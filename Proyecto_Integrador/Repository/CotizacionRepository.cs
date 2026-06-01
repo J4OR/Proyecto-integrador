@@ -25,7 +25,7 @@ namespace Proyecto_Integrador.Repository
             jsonRepository.Guardar(lista); ;
         }
 
-        public void Editar(Cotizacion nuevaCotizacion, int id)
+        public void Editar(Cotizacion nuevaCotizacion, string id)
         {
             jsonRepository.Editar(nuevaCotizacion, c => c.id == id);
         }

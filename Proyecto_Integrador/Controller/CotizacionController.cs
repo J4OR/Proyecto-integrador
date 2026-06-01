@@ -16,21 +16,12 @@ namespace Proyecto_Integrador.Controller
             cotizacionRepository = new CotizacionRepository();
         }
 
-        private int obtenerSiguienteNumeroId()
+        public string obtenerId()
         {
             List<Cotizacion> lista = cotizacionRepository.Leer();
-            if (lista.Count == 0)
-                return 1;
-            else
-                return lista.Max(c => c.numero) + 1;
+            int numero = lista.Count + 1;
+            return $"COT-{numero:D4}";
         }
-
-        public string ObtenerSiguienteId()
-        {
-            int siguienteNumero = obtenerSiguienteNumeroId();
-            return $"COT-{siguienteNumero:D4}";
-        }
-
         public List<Cotizacion> ObtenerCotizaciones()
         {
             return cotizacionRepository.Leer();
@@ -41,7 +32,7 @@ namespace Proyecto_Integrador.Controller
             cotizacionRepository.Agregar(cotizacion);
         }
 
-        public void EditarCotizacion(Cotizacion cotizacion, int id)
+        public void EditarCotizacion(Cotizacion cotizacion, string id)
         {
             cotizacionRepository.Editar(cotizacion, id);
         }

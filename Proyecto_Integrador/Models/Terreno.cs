@@ -56,7 +56,7 @@ namespace Proyecto_Integrador.Models
         public CalculadoraVolumen(Terreno terreno, int nPasos = 100)
         {
             _terreno = terreno;
-            _nPasos = nPasos;
+            nPasos = nPasos;
         }
 
         /// <summary>
@@ -93,20 +93,20 @@ namespace Proyecto_Integrador.Models
                 return 0;
             }
 
-            double dx = (_terreno.XMax - _terreno.XMin) / _nPasos;
-            double dy = (_terreno.YMax - _terreno.YMin) / _nPasos;
+            double dx = (_terreno.XMax - _terreno.XMin) / nPasos;
+            double dy = (_terreno.YMax - _terreno.YMin) / nPasos;
 
             double suma = 0;
 
-            for (int i = 0; i <= _nPasos; i++)
+            for (int i = 0; i <= nPasos; i++)
             {
                 double x = _terreno.XMin + i * dx;
-                double wx = (i == 0 || i == _nPasos) ? 0.5 : 1.0; // Peso trapecio en X
+                double wx = (i == 0 || i == nPasos) ? 0.5 : 1.0; // Peso trapecio en X
 
-                for (int j = 0; j <= _nPasos; j++)
+                for (int j = 0; j <= nPasos; j++)
                 {
                     double y = _terreno.YMin + j * dy;
-                    double wy = (j == 0 || j == _nPasos) ? 0.5 : 1.0; // Peso trapecio en Y
+                    double wy = (j == 0 || j == nPasos) ? 0.5 : 1.0; // Peso trapecio en Y
 
                     double z = InterpolarZ(x, y);
                     double altura = Math.Max(0, z - _terreno.NivelCorte);

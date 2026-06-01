@@ -8,82 +8,28 @@ namespace Proyecto_Integrador.Controller
 {
     public class FacturaController
     {
-        private readonly FacturaRepository repository;
-        private List<Factura> facturas;
+        FacturaRepository facturaRepository;
 
-        public FacturaController(string rutaDatos)
+        public FacturaController()
         {
-            repository = new FacturaRepository(
-                Path.Combine(rutaDatos, "facturas.json"));
-
-            facturas = repository.Leer();
+            facturaRepository = new FacturaRepository();
         }
 
-        public (bool ok, Factura factura, string mensaje)
-            ConvertirDesde(Cotizacion cotizacion)
+        public string obtenerId()
         {
-            if (cotizacion == null)
-                return (false, null, "Cotización inválida.");
-
-            Factura factura =
-                Factura.DesdeCotizacion(cotizacion);
-
-            facturas.Add(factura);
-
-            repository.Guardar(facturas);
-
-            return (true,
-                    factura,
-                    $"Factura generada. Total: ${factura.Total:F2}");
+            List<Factura> lista = facturaRepository.Leer();
+            int numero = lista.Count + 1;
+            return $"FAC-{numero:D4}";
         }
 
-        public List<Factura> ObtenerTodas()
+        public List<Factura> ObtenerFacturas()
         {
-            return facturas;
+            return facturaRepository.Leer();
         }
 
-        public Factura ObtenerPorId(string id)
+        public void AgregarFactura(Factura factura)
         {
-            return facturas.Find(f => f.Id == id);
-        }
-
-        public List<Factura> Filtrar(
-            string clienteId,
-            DateTime? desde,
-            DateTime? hasta,
-            EstadoFactura? estado)
-        {
-            return facturas.FindAll(f =>
-                (string.IsNullOrEmpty(clienteId) ||
-                 f.ClienteId == clienteId)
-                &&
-                (!desde.HasValue ||
-                 f.Fecha >= desde.Value)
-                &&
-                (!hasta.HasValue ||
-                 f.Fecha <= hasta.Value)
-                &&
-                (!estado.HasValue ||
-                 f.Estado == estado.Value)
-            );
-        }
-
-        public (bool ok, string mensaje)
-            CambiarEstado(
-            string facturaId,
-            EstadoFactura estado)
-        {
-            Factura encontrada =
-                facturas.Find(f => f.Id == facturaId);
-
-            if (encontrada == null)
-                return (false, "Factura no encontrada.");
-
-            encontrada.Estado = estado;
-
-            repository.Guardar(facturas);
-
-            return (true, $"Estado cambiado a {estado}.");
+            facturaRepository.Agregar(factura);
         }
     }
 }

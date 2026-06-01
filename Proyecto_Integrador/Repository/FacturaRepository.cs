@@ -8,37 +8,22 @@ namespace Proyecto_Integrador.Repository
 {
     public class FacturaRepository
     {
-        private readonly string rutaArchivo;
-
-        public FacturaRepository(string rutaArchivo)
-        {
-            this.rutaArchivo = rutaArchivo;
-        }
+        private static readonly string carpeta = "Data";
+        private static readonly string rutaCarpeta = Path.Combine("Data", "facturas.json");
+        JsonRepository<Factura> jsonRepository = new JsonRepository<Factura>(carpeta, rutaCarpeta);
 
         public List<Factura> Leer()
         {
-            if (!File.Exists(rutaArchivo))
-                return new List<Factura>();
-
-            string json = File.ReadAllText(rutaArchivo);
-
-            if (string.IsNullOrWhiteSpace(json))
-                return new List<Factura>();
-
-            return JsonSerializer.Deserialize<List<Factura>>(json)
-                   ?? new List<Factura>();
+          return jsonRepository.Leer();
         }
 
-        public void Guardar(List<Factura> facturas)
+        public void Agregar(Factura factura)
         {
-            string json = JsonSerializer.Serialize(
-                facturas,
-                new JsonSerializerOptions
-                {
-                    WriteIndented = true
-                });
-
-            File.WriteAllText(rutaArchivo, json);
+            List<Factura> lista = jsonRepository.Leer();
+            lista.Add(factura);
+            jsonRepository.Guardar(lista); 
         }
+
+
     }
 }

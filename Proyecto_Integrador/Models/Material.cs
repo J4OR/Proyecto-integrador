@@ -7,20 +7,18 @@ namespace Proyecto_Integrador.Models
 {
     public class Material
     {
-        public string Id { get; set; }
-        public string Nombre { get; set; }
-        public double CostoPorUnidad { get; set; } // Costo por m³
-
-        public Material() { Id = Guid.NewGuid().ToString(); }
+        public int id { get; set; }
+        public string nombre { get; set; }
+        public double precioUnidad { get; set; }
+        public bool estado { get; set; }
 
         [JsonConstructor]
-        public Material(string nombre, double costoPorUnidad)
+        public Material(int id, string nombre, double precioUnidad, bool estado)
         {
-            Id = Guid.NewGuid().ToString();
-            Nombre = nombre;
-            CostoPorUnidad = costoPorUnidad;
+            this.id = id;
+            this.nombre = nombre;
+            this.precioUnidad = precioUnidad;
+            this.estado = estado;
         }
-
-        public override string ToString() => $"{Nombre} - ${CostoPorUnidad:F2}/m³";
     }
 }

@@ -1,83 +1,45 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using Proyecto_Integrador.Models;
 using Proyecto_Integrador.Repository;
+using System;
+using System.Collections.Generic;
+using System.Text;
 
 namespace Proyecto_Integrador.Controller
 {
     public class MaterialController
-    {
-        private readonly MaterialRepository repository;
-        private List<Material> materiales;
+    {  
+        private MaterialRepository materialRepository;
 
-        public MaterialController(string rutaDatos)
+        public MaterialController()
         {
-            repository = new MaterialRepository(
-                Path.Combine(rutaDatos, "materiales.json"));
-
-            materiales = repository.Leer();
-
-            SeedMateriales();
+            this.materialRepository = new MaterialRepository();
         }
 
-        private void SeedMateriales()
+        public List<Material> ObtenerMateriales()
         {
-            if (materiales.Count == 0)
-            {
-                materiales.Add(new Material("Arena", 25000));
-                materiales.Add(new Material("Tierra", 18000));
-                materiales.Add(new Material("Roca", 55000));
-                materiales.Add(new Material("Grava", 30000));
-
-                repository.Guardar(materiales);
-            }
+            return materialRepository.Leer();
         }
 
-        public (bool ok, string mensaje) CrearMaterial(
-            string nombre,
-            double costo)
+        public void AgregarMaterial(Material material)
         {
-            if (string.IsNullOrWhiteSpace(nombre))
-                return (false, "El nombre es obligatorio.");
-
-            if (costo <= 0)
-                return (false, "El costo debe ser mayor que cero.");
-
-            materiales.Add(new Material(nombre, costo));
-
-            repository.Guardar(materiales);
-
-            return (true, "Material creado correctamente.");
+            materialRepository.Agregar(material);
         }
 
-        public (bool ok, string mensaje) ActualizarCosto(
-            string materialId,
-            double nuevoCosto)
+        public void EditarMaterial(Material material, int id)
         {
-            Material material = materiales.Find(m => m.Id == materialId);
-
-            if (material == null)
-                return (false, "Material no encontrado.");
-
-            if (nuevoCosto <= 0)
-                return (false, "El costo debe ser mayor que cero.");
-
-            material.CostoPorUnidad = nuevoCosto;
-
-            repository.Guardar(materiales);
-
-            return (true, "Costo actualizado correctamente.");
+            materialRepository.Editar(material, id);
         }
 
-        public List<Material> ObtenerTodos()
+        public int ObtenerSiguienteId()
         {
-            return materiales;
+            List<Material> lista = materialRepository.Leer();
+            return materialRepository.ObtenerSiguienteId(lista);
         }
 
-        public Material ObtenerPorId(string id)
+        public bool ExisteMaterial(string nombre)
         {
-            return materiales.Find(m => m.Id == id);
+            List<Material> lista = materialRepository.Leer();
+            return lista.Any(m => m.nombre == nombre);
         }
     }
 }

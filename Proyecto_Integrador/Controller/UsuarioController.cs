@@ -38,12 +38,10 @@ namespace Proyecto_Integrador.Controller
         {
             usuarioRepository.Editar(usuario, id);
         }
-
-        // Buscar usuario por user
-        public Usuario BuscarPorUser(string userName)
+        
+        public Usuario BuscarPorUserName(string userName)
         {
             List<Usuario> lista = usuarioRepository.Leer();
-
             return lista.Find(u => u.userName == userName);
         }
 

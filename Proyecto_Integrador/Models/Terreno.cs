@@ -33,6 +33,7 @@ namespace Proyecto_Integrador.Models
 
         // Nivel de corte (profundidad objetivo o nivel final deseado)
         public double NivelCorte { get; set; }
+        public double volumen { get; set; }
 
         public Terreno()
         {
@@ -48,7 +49,7 @@ namespace Proyecto_Integrador.Models
     public class CalculadoraVolumen
     {
         private readonly Terreno _terreno;
-        private readonly int _nPasos; // Divisiones de la cuadrícula
+        private readonly int nPasos; // Divisiones de la cuadrícula
 
         public double VolumenCalculado { get; private set; }
 

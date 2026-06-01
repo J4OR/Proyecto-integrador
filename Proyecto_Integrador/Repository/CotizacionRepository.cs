@@ -8,37 +8,27 @@ namespace Proyecto_Integrador.Repository
 {
     public class CotizacionRepository
     {
-        private readonly string rutaArchivo;
+        private static readonly string carpeta = "Data";
+        private  static readonly string rutaArchivo = Path.Combine(carpeta, "cotizaciones.json");
 
-        public CotizacionRepository(string rutaArchivo)
-        {
-            this.rutaArchivo = rutaArchivo;
-        }
+        JsonRepository<Cotizacion> jsonRepository = new JsonRepository<Cotizacion>(carpeta, rutaArchivo);
 
         public List<Cotizacion> Leer()
         {
-            if (!File.Exists(rutaArchivo))
-                return new List<Cotizacion>();
-
-            string json = File.ReadAllText(rutaArchivo);
-
-            if (string.IsNullOrWhiteSpace(json))
-                return new List<Cotizacion>();
-
-            return JsonSerializer.Deserialize<List<Cotizacion>>(json)
-                   ?? new List<Cotizacion>();
+            return jsonRepository.Leer();
         }
 
-        public void Guardar(List<Cotizacion> cotizaciones)
+        public void Agregar(Cotizacion cotizacion)
         {
-            string json = JsonSerializer.Serialize(
-                cotizaciones,
-                new JsonSerializerOptions
-                {
-                    WriteIndented = true
-                });
-
-            File.WriteAllText(rutaArchivo, json);
+            List<Cotizacion> lista = jsonRepository.Leer();
+            lista.Add(cotizacion);
+            jsonRepository.Guardar(lista); ;
         }
+
+        public void Editar(Cotizacion nuevaCotizacion, int id)
+        {
+            jsonRepository.Editar(nuevaCotizacion, c => c.id == id);
+        }
+
     }
 }

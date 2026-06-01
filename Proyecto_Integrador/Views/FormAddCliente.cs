@@ -18,9 +18,14 @@ namespace Proyecto_Integrador.Views
         public Form_prueba(Usuario usuario)
         {
             InitializeComponent();
+            //tablaClientes.AutoGenerateColumns = false;
+            tablaClientes.Columns["Id"].DataPropertyName = "id";
+            tablaClientes.Columns["Nombre"].DataPropertyName = "nombre";
+            tablaClientes.Columns["Identificacion"].DataPropertyName = "identificacion";
+            tablaClientes.Columns["Telefono"].DataPropertyName = "telefono";
+            tablaClientes.Columns["Correo"].DataPropertyName = "correo";
+            tablaClientes.Columns["Accion"].DataPropertyName = "accion";
             cargarClientes();
-            tablaClientes.AutoGenerateColumns = false;
-
 
         }
 
@@ -28,15 +33,21 @@ namespace Proyecto_Integrador.Views
         {
             clienteLista = clienteController.ObtenerClientes();
 
-            tablaClientes.Columns["ID"].DataPropertyName = "id";
-            tablaClientes.Columns["Nombre"].DataPropertyName = "nombre";
-            tablaClientes.Columns["Identificacion"].DataPropertyName = "identificacion";
-            tablaClientes.Columns["Telefono"].DataPropertyName = "telefono";
-            tablaClientes.Columns["Correo"].DataPropertyName = "correo";
-            tablaClientes.Columns["Accion"].DataPropertyName = "id"; // Usamos el ID para identificar la fila a editar
 
+            //tablaClientes.Columns["ID"].DataPropertyName = "id";
+            //tablaClientes.Columns["Nombre"].DataPropertyName = "nombre";
+            //tablaClientes.Columns["Identificacion"].DataPropertyName = "identificacion";
+            //tablaClientes.Columns["Telefono"].DataPropertyName = "telefono";
+            //tablaClientes.Columns["Correo"].DataPropertyName = "correo";
+            //tablaClientes.Columns["Accion"].DataPropertyName = "accion"; // Usamos el ID para identificar la fila a editar
+
+            // Usamos el ID para identificar la fila a editar
+
+
+            //tablaClientes.DataSource = null;
             tablaClientes.DataSource = null;
             tablaClientes.DataSource = clienteLista;
+            //tablaClientes.DataSource = clienteLista;
 
 
         }
@@ -72,19 +83,22 @@ namespace Proyecto_Integrador.Views
 
             var filtradros = clienteLista.Where(
                 c => c.nombre.ToLower().Contains(busqueda) ||
-                     c.identificacion.ToLower().Contains(busqueda) ||
-                     c.telefono.ToLower().Contains(busqueda) ||
-                     c.correo.ToLower().Contains(busqueda)
+                     c.identificacion.ToLower().Contains(busqueda)
             ).ToList();
             tablaClientes.DataSource = null;
             tablaClientes.DataSource = filtradros;
 
-
-
+            Id.DisplayIndex = 0;
+            Nombre.DisplayIndex = 1;
+            Identificacion.DisplayIndex = 2;
+            Telefono.DisplayIndex = 3;
+            Correo.DisplayIndex = 4;
+            Accion.DisplayIndex = 5;
         }
 
         private void Form_prueba_Load(object sender, EventArgs e)
         {
+           
 
         }
 

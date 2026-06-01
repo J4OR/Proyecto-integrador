@@ -39,7 +39,7 @@ namespace Proyecto_Integrador.Validator
             if (string.IsNullOrWhiteSpace(correo) || correo == "Ingrese el correo electrónico")
                 errores["txtCorreo"] = "El correo es obligatorio.";
             else if (!Regex.IsMatch(correo, @"^[^@\s]+@[^@\s]+\.[^@\s]+$"))
-                errores["txtCorreo"] = "El formato del correo no es válido.";
+                errores["txtCorreo"] = "El formato del correo no es válido.";c
 
             // USUARIO
             if (string.IsNullOrWhiteSpace(usuario) || usuario == "Ingrese el nombre de usuario")
@@ -56,6 +56,9 @@ namespace Proyecto_Integrador.Validator
                 errores["txtContraseña"] = "La contraseña debe tener mínimo 6 caracteres.";
             else if (!Regex.IsMatch(contraseña, @"[0-9]"))
                 errores["txtContraseña"] = "La contraseña debe tener al menos un número.";
+            else if (!Regex.IsMatch(contraseña, @"[^a-zA-Z0-9]"))
+                errores["txtContraseña"] = "La contraseña debe tener al menos un carácter especial.";
+
 
             // CONFIRMAR
             if (string.IsNullOrWhiteSpace(confirmar) || confirmar == "Confirma la contraseña")

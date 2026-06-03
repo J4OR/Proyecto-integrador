@@ -18,7 +18,6 @@ namespace Proyecto_Integrador.Views
         private ControlsUtils resizer;
         public LoginForm()
         {
-            MessageBox.Show($"{1:D4}");
             InitializeComponent();
             txtPassword.Text = "admin123";
             txtUser.Text = "admin";

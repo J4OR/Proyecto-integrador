@@ -27,7 +27,7 @@ namespace Proyecto_Integrador.Repository
             ActualizarLimites();
 
             return (true,
-                $"Punto ({x}, {y}, {z}) agregado. Total: {TerrenoActual.Puntos.Count} puntos.");
+                $"Punto ({x}, {y}, {z}) agregado. Total: {TerrenoActual.puntos.Count} puntos.");
         }
 
         public void LimpiarPuntos()

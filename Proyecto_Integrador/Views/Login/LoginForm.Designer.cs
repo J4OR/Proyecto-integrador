@@ -45,6 +45,10 @@
             lblError = new Label();
             pbError = new PictureBox();
             pbError2 = new PictureBox();
+            label1 = new Label();
+            label2 = new Label();
+            label3 = new Label();
+            label4 = new Label();
             ((System.ComponentModel.ISupportInitialize)pbOjo).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pbPassword).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pbUser).BeginInit();
@@ -236,12 +240,68 @@
             pbError2.TabIndex = 21;
             pbError2.TabStop = false;
             // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.BackColor = Color.FromArgb(0, 21, 52);
+            label1.Font = new Font("Segoe UI", 22.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label1.ForeColor = Color.White;
+            label1.Location = new Point(111, 263);
+            label1.Name = "label1";
+            label1.Size = new Size(236, 50);
+            label1.TabIndex = 22;
+            label1.Text = "MI SISTEMA";
+            label1.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.BackColor = Color.FromArgb(0, 21, 52);
+            label2.Font = new Font("Segoe UI Semibold", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label2.ForeColor = Color.SteelBlue;
+            label2.Location = new Point(79, 313);
+            label2.Name = "label2";
+            label2.Size = new Size(321, 31);
+            label2.TabIndex = 23;
+            label2.Text = "Sistema de Gestión Integrado";
+            label2.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.BackColor = Color.FromArgb(0, 21, 52);
+            label3.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label3.ForeColor = Color.White;
+            label3.Location = new Point(93, 393);
+            label3.Name = "label3";
+            label3.Size = new Size(293, 23);
+            label3.TabIndex = 24;
+            label3.Text = "Bienvenido al sistema administrativo.";
+            label3.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.BackColor = Color.FromArgb(0, 21, 52);
+            label4.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label4.ForeColor = Color.White;
+            label4.Location = new Point(129, 430);
+            label4.Name = "label4";
+            label4.Size = new Size(222, 23);
+            label4.TabIndex = 25;
+            label4.Text = "Inicia sesión para continuar.";
+            label4.TextAlign = ContentAlignment.MiddleCenter;
+            // 
             // LoginForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ControlLightLight;
             ClientSize = new Size(1175, 739);
+            Controls.Add(label4);
+            Controls.Add(label3);
+            Controls.Add(label2);
+            Controls.Add(label1);
             Controls.Add(pbError2);
             Controls.Add(pbError);
             Controls.Add(lblError);
@@ -289,5 +349,9 @@
         private Label lblError;
         private PictureBox pbError;
         private PictureBox pbError2;
+        private Label label1;
+        private Label label2;
+        private Label label3;
+        private Label label4;
     }
 }

@@ -26,8 +26,10 @@ namespace Proyecto_Integrador.Repository
 
             ActualizarLimites();
 
-            return (true,
-                $"Punto ({x}, {y}, {z}) agregado. Total: {TerrenoActual.puntos.Count} puntos.");
+            return (
+                true,
+                $"Punto ({x}, {y}, {z}) agregado. Total: {TerrenoActual.puntos.Count} puntos."
+            );
         }
 
         public void LimpiarPuntos()
@@ -39,20 +41,21 @@ namespace Proyecto_Integrador.Repository
 
         private void ActualizarLimites()
         {
-            if (TerrenoActual.Puntos.Count == 0)
+            if (TerrenoActual.puntos.Count == 0)
                 return;
 
-            double xMin = TerrenoActual.Puntos[0].X;
-            double xMax = TerrenoActual.Puntos[0].X;
-            double yMin = TerrenoActual.Puntos[0].Y;
-            double yMax = TerrenoActual.Puntos[0].Y;
+            double xMin = TerrenoActual.puntos[0].x;
+            double xMax = TerrenoActual.puntos[0].x;
+            double yMin = TerrenoActual.puntos[0].y;
+            double yMax = TerrenoActual.puntos[0].y;
 
-            foreach (PuntoTerreno p in TerrenoActual.Puntos)
+            foreach (PuntoTerreno p in TerrenoActual.puntos)
             {
-                if (p.X < xMin) xMin = p.X;
-                if (p.X > xMax) xMax = p.X;
-                if (p.Y < yMin) yMin = p.Y;
-                if (p.Y > yMax) yMax = p.Y;
+                if (p.x < xMin) xMin = p.x;
+                if (p.x > xMax) xMax = p.x;
+
+                if (p.y < yMin) yMin = p.y;
+                if (p.y > yMax) yMax = p.y;
             }
 
             TerrenoActual.XMin = xMin;
@@ -68,21 +71,23 @@ namespace Proyecto_Integrador.Repository
 
         public (bool ok, double volumen, string mensaje) CalcularVolumen()
         {
-            if (TerrenoActual.Puntos.Count < 3)
+            if (TerrenoActual.puntos.Count < 3)
                 return (false, 0, "Se necesitan al menos 3 puntos para calcular el volumen.");
 
             if (TerrenoActual.XMax <= TerrenoActual.XMin ||
                 TerrenoActual.YMax <= TerrenoActual.YMin)
                 return (false, 0, "Los puntos deben definir un área con extensión en X e Y.");
 
-             CalculadoraVolumen calc = new CalculadoraVolumen(TerrenoActual, 50);
+            CalculadoraVolumen calc = new CalculadoraVolumen(TerrenoActual, 50);
 
             VolumenCalculado = calc.Calcular();
             MatrizVisualizacion = calc.GenerarMatrizAlturas(20);
 
-            return (true,
-                    VolumenCalculado,
-                    $"Volumen calculado: {VolumenCalculado:F4} m³");
+            return (
+                true,
+                VolumenCalculado,
+                $"Volumen calculado: {VolumenCalculado:F4} m³"
+            );
         }
 
         public double[,] ObtenerMatrizGrafica()

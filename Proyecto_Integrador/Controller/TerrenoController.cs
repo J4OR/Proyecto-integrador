@@ -21,17 +21,17 @@ namespace Proyecto_Integrador.Controller
 
         public void AgregarPunto(PuntoTerreno punto)
         {
-            terreno.Puntos.Add(punto);
-        }
-
-        public void LimpiarPuntos()
-        {
-            terreno.Puntos.Clear();
+            terreno.puntos.Add(punto);
         }
 
         public List<PuntoTerreno> ObtenerPuntos()
         {
-            return terreno.Puntos;
+            return terreno.puntos;
+        }
+
+        public void LimpiarPuntos()
+        {
+            terreno.puntos.Clear();
         }
     }
 }

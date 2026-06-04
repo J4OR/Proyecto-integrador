@@ -31,5 +31,11 @@ namespace Proyecto_Integrador.Models
             this.YMax = yMax;
             this.NivelCorte = nivelCorte;
         }
+
+        public Terreno()
+        {
+            id = Guid.NewGuid().ToString();
+            puntos = new List<PuntoTerreno>();
+        }
     }
 }

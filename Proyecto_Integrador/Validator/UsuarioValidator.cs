@@ -39,7 +39,7 @@ namespace Proyecto_Integrador.Validator
             if (string.IsNullOrWhiteSpace(correo) || correo == "Ingrese el correo electrónico")
                 errores["txtCorreo"] = "El correo es obligatorio.";
             else if (!Regex.IsMatch(correo, @"^[^@\s]+@[^@\s]+\.[^@\s]+$"))
-                errores["txtCorreo"] = "El formato del correo no es válido.";c
+                errores["txtCorreo"] = "El formato del correo no es válido.";
 
             // USUARIO
             if (string.IsNullOrWhiteSpace(usuario) || usuario == "Ingrese el nombre de usuario")

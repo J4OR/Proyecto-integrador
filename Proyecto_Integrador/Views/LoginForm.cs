@@ -166,8 +166,11 @@ namespace Proyecto_Integrador.Views
         {
             string userName = txtUser.Text.Trim();
             string password = txtPassword.Text.Trim();
+
             Usuario usuario = controller.BuscarPorUserName(userName);
             string mensaje = "";
+            MessageBox.Show("Entró al botón");
+
             if (usuario != null)
             {
                 if (!usuario.estado)
@@ -176,15 +179,19 @@ namespace Proyecto_Integrador.Views
                     mostrarError(mensaje);
                     return;
                 }
+
                 if (usuario.password == password)
                 {
                     lblError.Visible = false;
                     pbError.Visible = false;
                     pbError2.Visible = false;
+
                     MessageBox.Show("Inicio de sesión exitoso");
-                    Form_prueba form_Prueba = new Form_prueba(usuario);
+
+                    FormInicio formInicio = new FormInicio(usuario);
+
                     this.Hide();
-                    form_Prueba.ShowDialog();
+                    formInicio.ShowDialog();
                     this.Close();
 
                 }
@@ -192,15 +199,14 @@ namespace Proyecto_Integrador.Views
                 {
                     mensaje = "Contraseña incorrecta.";
                     mostrarError(mensaje);
-                    return;
                 }
             }
             else
             {
                 mensaje = "Usuario no encontrado.";
                 mostrarError(mensaje);
-                return;
             }
         }
     }
+
 }

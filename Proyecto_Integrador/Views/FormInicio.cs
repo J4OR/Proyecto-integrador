@@ -67,7 +67,7 @@ namespace Proyecto_Integrador.Views
             panelMenu.BackColor = Color.FromArgb(28, 62, 110);
 
             Label logoLabel = new Label();
-            logoLabel.Text = "MovimientaTierra";
+            logoLabel.Text = "🏗️  MovimientaTierra";
             logoLabel.Font = new Font("Segoe UI", 12, FontStyle.Bold);
             logoLabel.ForeColor = Color.White;
             logoLabel.AutoSize = false;
@@ -108,11 +108,11 @@ namespace Proyecto_Integrador.Views
 
             // Botones del menú
             int menuY = 105;
-            AgregarBotonMenu("Terreno / Volumen", menuY, new EventHandler(AbrirTerreno)); menuY += 45;
-            AgregarBotonMenu("Clientes", menuY, new EventHandler(AbrirClientes)); menuY += 45;
-            AgregarBotonMenu("Materiales", menuY, new EventHandler(AbrirMateriales)); menuY += 45;
-            AgregarBotonMenu("Cotizaciones", menuY, new EventHandler(AbrirCotizaciones)); menuY += 45;
-            AgregarBotonMenu("Facturas", menuY, new EventHandler(AbrirFacturas)); menuY += 45;
+            AgregarBotonMenu("🏔️ Terreno / Volumen", menuY, new EventHandler(AbrirTerreno)); menuY += 45;
+            AgregarBotonMenu("👤 Clientes", menuY, new EventHandler(AbrirClientes)); menuY += 45;
+            AgregarBotonMenu("🧱 Materiales", menuY, new EventHandler(AbrirMateriales)); menuY += 45;
+            AgregarBotonMenu("💲Cotizaciones", menuY, new EventHandler(AbrirCotizaciones)); menuY += 45;
+            AgregarBotonMenu("🧾 Facturas", menuY, new EventHandler(AbrirFacturas)); menuY += 45;
             AgregarBotonMenu("Cambiar Contraseña", menuY, new EventHandler(AbrirCambioContrasena)); menuY += 45;
 
             if (_usuario.rol == Rol.Administrador)
@@ -187,7 +187,8 @@ namespace Proyecto_Integrador.Views
 
         private void AbrirTerreno(object sender, EventArgs e)
         {
-            
+            TerrenoController ctrl = new TerrenoController();
+            AbrirEnContenido(new FormTerreno(ctrl));
         }
 
         private void AbrirClientes(object sender, EventArgs e)

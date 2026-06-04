@@ -20,18 +20,6 @@ namespace Proyecto_Integrador.Repository
             TerrenoActual = repository.ObtenerTerreno();
         }
 
-        public (bool ok, string mensaje) AgregarPunto(double x, double y, double z)
-        {
-            repository.AgregarPunto(new PuntoTerreno(x, y, z));
-
-            ActualizarLimites();
-
-            return (
-                true,
-                $"Punto ({x}, {y}, {z}) agregado. Total: {TerrenoActual.puntos.Count} puntos."
-            );
-        }
-
         public void LimpiarPuntos()
         {
             repository.LimpiarPuntos();

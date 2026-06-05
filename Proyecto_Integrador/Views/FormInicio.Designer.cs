@@ -22,6 +22,34 @@ namespace Proyecto_Integrador.Views
             base.Dispose(disposing);
         }
 
+        private void AgregarBotonMenu(string texto, int y, EventHandler handler)
+        {
+            Button btn = new Button();
+            btn.Text = texto;
+            btn.Location = new Point(10, y);
+            btn.Width = 200;
+            btn.Height = 36;
+            btn.FlatStyle = FlatStyle.Flat;
+            btn.ForeColor = Color.White;
+            btn.TextAlign = ContentAlignment.MiddleLeft;
+            btn.Padding = new Padding(8, 0, 0, 0);
+            btn.Font = new Font("Segoe UI", 9.5f);
+            btn.BackColor = Color.FromArgb(28, 62, 110);
+            btn.FlatAppearance.BorderSize = 0;
+            btn.FlatAppearance.MouseOverBackColor = Color.FromArgb(50, 100, 170);
+            btn.Click += handler;
+            panelMenu.Controls.Add(btn);
+        }
+
+        private void AbrirEnContenido(Form form)
+        {
+            panelContenido.Controls.Clear();
+            form.TopLevel = false;
+            form.FormBorderStyle = FormBorderStyle.None;
+            form.Dock = DockStyle.Fill;
+            panelContenido.Controls.Add(form);
+            form.Show();
+        }
         private void InitializeComponent()
         {
             this.Text = "MI SISTEMA 2026 – Sistema de Cálculo y Facturación";

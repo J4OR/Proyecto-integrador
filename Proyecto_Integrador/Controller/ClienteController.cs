@@ -24,6 +24,7 @@ namespace Proyecto_Integrador.Controller
         {
             clienteRepository.Agregar(cliente);
         }
+
         public void EditarCliente(Cliente cliente, int id)
         {
             clienteRepository.Editar(cliente, id);
@@ -39,6 +40,15 @@ namespace Proyecto_Integrador.Controller
         {
             List<Cliente> lista = clienteRepository.Leer();
             return clienteRepository.ObtenerSiguienteId(lista);
+        }
+
+        public List<Cliente> Buscar(string texto)
+        {
+            List<Cliente> lista = clienteRepository.Leer();
+
+            return lista.FindAll(c =>
+                c.nombre.Contains(texto, StringComparison.OrdinalIgnoreCase) ||
+                c.identificacion.Contains(texto, StringComparison.OrdinalIgnoreCase));
         }
     }
 }

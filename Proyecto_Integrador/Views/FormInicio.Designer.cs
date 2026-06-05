@@ -110,13 +110,14 @@ namespace Proyecto_Integrador.Views
             AgregarBotonMenu("🧱 Materiales", menuY, new EventHandler(AbrirMateriales)); menuY += 45;
             AgregarBotonMenu("💲Cotizaciones", menuY, new EventHandler(AbrirCotizaciones)); menuY += 45;
             AgregarBotonMenu("🧾 Facturas", menuY, new EventHandler(AbrirFacturas)); menuY += 45;
-            AgregarBotonMenu("Cambiar Contraseña", menuY, new EventHandler(AbrirCambioContrasena)); menuY += 45;
+            AgregarBotonMenu("🔄 Cambiar Contraseña", menuY, new EventHandler(AbrirCambioContrasena)); menuY += 45;
+            AgregarBotonMenu("👑 Administrar Usuarios", menuY, new EventHandler(AbrirAdminUsuarios)); menuY += 45;
 
-            if (_usuario.rol == Rol.Administrador)
-            {
-                AgregarBotonMenu("Administrar Usuarios", menuY, new EventHandler(AbrirAdminUsuarios));
-                menuY += 45;
-            }
+            //if (_usuario.rol == Rol.Administrador)
+            //{
+            //    AgregarBotonMenu("Administrar Usuarios", menuY, new EventHandler(AbrirAdminUsuarios));
+            //    menuY += 45;
+            //}
 
             Button btnSalir = new Button();
             btnSalir.Text = "Cerrar sesión";

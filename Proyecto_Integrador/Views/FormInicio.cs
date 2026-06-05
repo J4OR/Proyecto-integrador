@@ -54,35 +54,6 @@ namespace Proyecto_Integrador.Views
             InitializeComponent();
         }
 
-        private void AgregarBotonMenu(string texto, int y, EventHandler handler)
-        {
-            Button btn = new Button();
-            btn.Text = texto;
-            btn.Location = new Point(10, y);
-            btn.Width = 200;
-            btn.Height = 36;
-            btn.FlatStyle = FlatStyle.Flat;
-            btn.ForeColor = Color.White;
-            btn.TextAlign = ContentAlignment.MiddleLeft;
-            btn.Padding = new Padding(8, 0, 0, 0);
-            btn.Font = new Font("Segoe UI", 9.5f);
-            btn.BackColor = Color.FromArgb(28, 62, 110);
-            btn.FlatAppearance.BorderSize = 0;
-            btn.FlatAppearance.MouseOverBackColor = Color.FromArgb(50, 100, 170);
-            btn.Click += handler;
-            panelMenu.Controls.Add(btn);
-        }
-
-        private void AbrirEnContenido(Form form)
-        {
-            panelContenido.Controls.Clear();
-            form.TopLevel = false;
-            form.FormBorderStyle = FormBorderStyle.None;
-            form.Dock = DockStyle.Fill;
-            panelContenido.Controls.Add(form);
-            form.Show();
-        }
-
         private void BtnSalir_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -117,17 +88,17 @@ namespace Proyecto_Integrador.Views
 
         private void AbrirFacturas(object sender, EventArgs e)
         {
-            
+            AbrirEnContenido(new FormFactura(_facCtrl, _cotCtrl, _clienteCtrl, _usuario));
         }
 
         private void AbrirCambioContrasena(object sender, EventArgs e)
         {
-            
+            AbrirEnContenido(new FormCambiarContraseña(_usuarioCtrl, _usuario));
         }
 
         private void AbrirAdminUsuarios(object sender, EventArgs e)
         {
-            
+            AbrirEnContenido(new FormAdminUsuarios(_usuarioCtrl));
         }
     }
 }

@@ -14,17 +14,26 @@ namespace Proyecto_Integrador.Models
         public double costoTotal { get; set; }
         public DateTime fecha { get; set; }
         public bool estado { get; set; }
-        [JsonConstructor]
-        public Cotizacion(string id, Cliente cliente, Terreno terreno,
-                          Material material, double costoTotal, DateTime fecha,
-                          string estado, string observaciones)
+
+        // Constructor vacío para JSON
+        public Cotizacion()
+        {
+        }
+
+        // Constructor para crear nuevas cotizaciones
+        public Cotizacion(
+            string id,
+            Cliente cliente,
+            Terreno terreno,
+            Material material)
         {
             this.id = id;
             this.cliente = cliente;
             this.terreno = terreno;
             this.material = material;
+
             this.costoTotal = material.precioUnidad * terreno.volumen;
-            this.fecha = fecha;
+            this.fecha = DateTime.Now;
             this.estado = true;
         }
     }

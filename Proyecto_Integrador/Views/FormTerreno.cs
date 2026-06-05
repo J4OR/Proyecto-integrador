@@ -102,9 +102,9 @@ namespace Proyecto_Integrador.Views
 
                 lblVolumen = new Label();
                 lblVolumen.Location = new Point(12, y); lblVolumen.Width = 265;
-                lblVolumen.Height = 40; lblVolumen.Font = new Font("Segoe UI", 11, FontStyle.Bold);
+                lblVolumen.Height = 60; lblVolumen.Font = new Font("Segoe UI", 11, FontStyle.Bold);
                 lblVolumen.ForeColor = Color.DarkGreen;
-                panelIzq.Controls.Add(lblVolumen); y += 50;
+                panelIzq.Controls.Add(lblVolumen); y += 60;
 
                 lblEstado = new Label();
                 lblEstado.Location = new Point(12, y); lblEstado.Width = 265;
@@ -280,6 +280,7 @@ namespace Proyecto_Integrador.Views
 
                 _ctrl.SetNivelCorte(nivel);
                 var (ok, vol, msg) = _ctrl.CalcularVolumen();
+                
 
                 if (ok)
                 {

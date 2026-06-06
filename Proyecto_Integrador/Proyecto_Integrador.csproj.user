@@ -7,6 +7,9 @@
     <Compile Update="Views\FormCambiarContraseña.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Views\Inicio\FormDashboard.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Views\FormFactura.cs">
       <SubType>Form</SubType>
     </Compile>

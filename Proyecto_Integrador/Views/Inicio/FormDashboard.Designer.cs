@@ -283,6 +283,7 @@
             btnClientes.TextAlign = ContentAlignment.MiddleLeft;
             btnClientes.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnClientes.UseVisualStyleBackColor = false;
+            btnClientes.Click += btnClientes_Click;
             // 
             // panel2
             // 

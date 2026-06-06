@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Proyecto_Integrador.Controller;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -8,6 +9,7 @@ namespace Proyecto_Integrador.Validator
 {
     internal class UsuarioValidator
     {
+        UsuarioController usuarioController = new UsuarioController();
         public static Dictionary<string, string> Validar(string nombre, string telefono, string documento,
         string correo, string usuario, string contraseña, string confirmar)
         {
@@ -62,6 +64,64 @@ namespace Proyecto_Integrador.Validator
 
             // CONFIRMAR
             if (string.IsNullOrWhiteSpace(confirmar) || confirmar == "Confirma la contraseña")
+                errores["txtConfirmar"] = "Confirma la contraseña.";
+            else if (contraseña != confirmar)
+                errores["txtConfirmar"] = "Las contraseñas no coinciden.";
+
+            return errores;
+        }
+
+        public static Dictionary<string, string> validarEdicion (string nombre, string telefono, string documento, string correo, string usuario)
+        {
+            Dictionary<string, string> errores = new Dictionary<string, string>();
+            // NOMBRE
+            if (string.IsNullOrWhiteSpace(nombre))
+                errores["txtNombre"] = "El nombre es obligatorio.";
+            else if (nombre.Length < 3)
+                errores["txtNombre"] = "El nombre debe tener al menos 3 caracteres.";
+            else if (!Regex.IsMatch(nombre, @"^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$"))
+                errores["txtNombre"] = "El nombre solo puede contener letras.";
+            // TELEFONO
+            if (string.IsNullOrWhiteSpace(telefono))
+                errores["txtTelefono"] = "El teléfono es obligatorio.";
+            else if (!Regex.IsMatch(telefono, @"^\d{10}$"))
+                errores["txtTelefono"] = "El teléfono debe tener exactamente 10 dígitos.";
+            // DOCUMENTO
+            if (string.IsNullOrWhiteSpace(documento))
+                errores["txtDocumento"] = "El documento es obligatorio.";
+            else if (!Regex.IsMatch(documento, @"^[0-9\-]+$"))
+                errores["txtDocumento"] = "El documento solo puede contener números y guiones.";
+            else if (documento.Length < 6 || documento.Length > 11)
+                errores["txtDocumento"] = "El documento debe tener entre 6 y 11 caracteres.";
+            // CORREO
+            if (string.IsNullOrWhiteSpace(correo))
+                errores["txtCorreo"] = "El correo es obligatorio.";
+            else if (!Regex.IsMatch(correo, @"^[^@\s]+@[^@\s]+\.[^@\s]+$"))
+                errores["txtCorreo"] = "El formato del correo no es válido.";
+            // USUARIO
+            if (string.IsNullOrWhiteSpace(usuario))
+                errores["txtUsuario"] = "El usuario es obligatorio.";
+            else if (usuario.Length < 4)
+                errores["txtUsuario"] = "El usuario debe tener al menos 4 caracteres.";
+            else if (!Regex.IsMatch(usuario, @"^[a-zA-Z0-9_]+$"))
+                errores["txtUsuario"] = "El usuario solo puede contener letras, números y guion bajo.";
+            return errores;
+
+        }
+        public static Dictionary<string, string> ValidarContraseña(string contraseña, string confirmar)
+        {
+            Dictionary<string, string> errores = new Dictionary<string, string>();
+
+            if (string.IsNullOrWhiteSpace(contraseña))
+                errores["txtContraseña"] = "La contraseña es obligatoria.";
+            else if (contraseña.Length < 6)
+                errores["txtContraseña"] = "La contraseña debe tener mínimo 6 caracteres.";
+            else if (!Regex.IsMatch(contraseña, @"[0-9]"))
+                errores["txtContraseña"] = "La contraseña debe tener al menos un número.";
+            else if (!Regex.IsMatch(contraseña, @"[^a-zA-Z0-9]"))
+                errores["txtContraseña"] = "La contraseña debe tener al menos un carácter especial.";
+
+            if (string.IsNullOrWhiteSpace(confirmar))
                 errores["txtConfirmar"] = "Confirma la contraseña.";
             else if (contraseña != confirmar)
                 errores["txtConfirmar"] = "Las contraseñas no coinciden.";

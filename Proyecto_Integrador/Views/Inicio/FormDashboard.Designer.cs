@@ -46,11 +46,13 @@
             btnClientes = new Button();
             panel2 = new Panel();
             lblBienvenida = new Label();
+            PanelContenido = new Panel();
             panelMenu.SuspendLayout();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panel2.SuspendLayout();
+            PanelContenido.SuspendLayout();
             SuspendLayout();
             // 
             // panelMenu
@@ -75,6 +77,7 @@
             // 
             btnCerrarSesion.BackColor = Color.FromArgb(0, 0, 80);
             btnCerrarSesion.FlatAppearance.BorderSize = 0;
+            btnCerrarSesion.FlatStyle = FlatStyle.Flat;
             btnCerrarSesion.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnCerrarSesion.ForeColor = Color.White;
             btnCerrarSesion.Image = (Image)resources.GetObject("btnCerrarSesion.Image");
@@ -86,6 +89,7 @@
             btnCerrarSesion.TextAlign = ContentAlignment.MiddleRight;
             btnCerrarSesion.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnCerrarSesion.UseVisualStyleBackColor = false;
+            btnCerrarSesion.Click += btnCerrarSesion_Click;
             // 
             // panel1
             // 
@@ -102,11 +106,11 @@
             // lblRol
             // 
             lblRol.AutoSize = true;
-            lblRol.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblRol.Font = new Font("Segoe UI", 9F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
             lblRol.ForeColor = Color.White;
             lblRol.Location = new Point(101, 67);
             lblRol.Name = "lblRol";
-            lblRol.Size = new Size(31, 20);
+            lblRol.Size = new Size(33, 20);
             lblRol.TabIndex = 3;
             lblRol.Text = "Rol";
             // 
@@ -159,6 +163,7 @@
             btnUsuarios.TextAlign = ContentAlignment.MiddleLeft;
             btnUsuarios.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnUsuarios.UseVisualStyleBackColor = false;
+            btnUsuarios.Click += btnUsuarios_Click;
             // 
             // btnCambiarContraseña
             // 
@@ -284,9 +289,9 @@
             panel2.BackColor = Color.FromArgb(0, 0, 64);
             panel2.BorderStyle = BorderStyle.Fixed3D;
             panel2.Controls.Add(lblBienvenida);
-            panel2.Location = new Point(481, 191);
+            panel2.Location = new Point(111, 252);
             panel2.Name = "panel2";
-            panel2.Size = new Size(835, 407);
+            panel2.Size = new Size(835, 243);
             panel2.TabIndex = 1;
             // 
             // lblBienvenida
@@ -294,19 +299,28 @@
             lblBienvenida.AutoSize = true;
             lblBienvenida.Font = new Font("Segoe UI Black", 19.8000011F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblBienvenida.ForeColor = Color.White;
-            lblBienvenida.Location = new Point(32, 51);
+            lblBienvenida.Location = new Point(22, 33);
             lblBienvenida.Name = "lblBienvenida";
             lblBienvenida.Size = new Size(400, 46);
             lblBienvenida.TabIndex = 1;
             lblBienvenida.Text = "Mensaje de bienvenida";
+            // 
+            // PanelContenido
+            // 
+            PanelContenido.BackColor = Color.White;
+            PanelContenido.Controls.Add(panel2);
+            PanelContenido.Location = new Point(384, 1);
+            PanelContenido.Name = "PanelContenido";
+            PanelContenido.Size = new Size(1017, 791);
+            PanelContenido.TabIndex = 2;
             // 
             // FormDashboard
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1395, 783);
-            Controls.Add(panel2);
             Controls.Add(panelMenu);
+            Controls.Add(PanelContenido);
             Name = "FormDashboard";
             Text = "FormDashboard";
             Load += FormDashboard_Load;
@@ -318,6 +332,7 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
+            PanelContenido.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -342,5 +357,6 @@
         private Panel panel2;
         private Label lblBienvenida;
         private Label lblRol;
+        private Panel PanelContenido;
     }
 }

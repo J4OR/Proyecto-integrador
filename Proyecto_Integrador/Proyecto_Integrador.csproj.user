@@ -25,6 +25,9 @@
     <Compile Update="Views\FormTerreno.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Views\Usuarios\UsuariosForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Views\Login\LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>

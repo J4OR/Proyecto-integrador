@@ -45,5 +45,12 @@ namespace Proyecto_Integrador.Repository
         {
             return jsonRepository.Buscar(u => u.userName == userName);
         }
+        public void CambiarEstadoUsuarioPorId(int id, bool nuevoEstado)
+        {
+            jsonRepository.Actualizar(
+                usuario => usuario.id == id,
+                usuario => usuario.estado = nuevoEstado
+            );
+        }
     }
 }

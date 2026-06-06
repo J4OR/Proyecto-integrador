@@ -154,7 +154,7 @@
             // 
             lblSubtitulo.AutoSize = true;
             lblSubtitulo.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblSubtitulo.Location = new Point(662, 96);
+            lblSubtitulo.Location = new Point(671, 96);
             lblSubtitulo.Name = "lblSubtitulo";
             lblSubtitulo.Size = new Size(280, 25);
             lblSubtitulo.TabIndex = 13;
@@ -178,7 +178,7 @@
             // 
             lblTitulo.AutoSize = true;
             lblTitulo.Font = new Font("Segoe UI", 22.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblTitulo.Location = new Point(674, 33);
+            lblTitulo.Location = new Point(683, 33);
             lblTitulo.Name = "lblTitulo";
             lblTitulo.Size = new Size(254, 50);
             lblTitulo.TabIndex = 12;

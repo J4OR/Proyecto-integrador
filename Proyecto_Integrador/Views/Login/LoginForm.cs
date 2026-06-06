@@ -21,7 +21,7 @@ namespace Proyecto_Integrador.Views
             InitializeComponent();
             txtPassword.Text = "123456*";
             txtUser.Text = "deider";
-            resizer = new ControlsUtils(this);
+            resizer = new ControlsUtils(this);    
             this.WindowState = FormWindowState.Maximized;
 
             pbOjo.Image = Properties.Resources.ojoAbierto;
@@ -187,10 +187,10 @@ namespace Proyecto_Integrador.Views
 
                     MessageBox.Show("Inicio de sesión exitoso");
 
-                    FormInicio formInicio = new FormInicio(usuario);
+                    FormDashboard formDashboard = new FormDashboard(usuario);
 
                     this.Hide();
-                    formInicio.ShowDialog();
+                    formDashboard.ShowDialog();
                     this.Close();
 
                 }

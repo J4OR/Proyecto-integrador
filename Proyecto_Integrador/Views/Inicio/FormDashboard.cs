@@ -68,18 +68,23 @@ namespace Proyecto_Integrador.Views
 
         private void btnUsuarios_Click(object sender, EventArgs e)
         {
-            AbrirFormularioEnPanel(new UsuariosForm());
+            AbrirFormularioEnPanel(new UsuariosForm(usuarioLogueado));
         }
 
         private void btnCerrarSesion_Click(object sender, EventArgs e)
         {
-            DialogResult respuesta = MessageBox.Show("¿Seguro que quiere cerrar sesión?","Cerrar sesión",
-            MessageBoxButtons.OKCancel,MessageBoxIcon.Question);
+            DialogResult respuesta = MessageBox.Show("¿Seguro que quiere cerrar sesión?", "Cerrar sesión",
+            MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
 
             if (respuesta == DialogResult.OK)
             {
                 this.Close();
             }
+        }
+
+        private void btnClientes_Click(object sender, EventArgs e)
+        {
+            AbrirFormularioEnPanel(new ClientesForm());
         }
     }
 }

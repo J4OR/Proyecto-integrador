@@ -14,12 +14,10 @@ namespace Proyecto_Integrador.Repository
         JsonRepository<Usuario> jsonRepository = new JsonRepository<Usuario>(carpeta, rutaCarpeta);
 
 
-        public int ObtenerSiguienteId(List<Usuario> lista)
+        public int ObtenerSiguienteId()
         {
-            if (lista.Count == 0)
-                return 1;
-            else
-                return lista.Max(u => u.id) + 1;
+            List<Usuario> lista = jsonRepository.Leer();
+            return lista.Count + 1;
         }
 
         public List<Usuario> Leer()

@@ -12,6 +12,8 @@ namespace Proyecto_Integrador.Models
         public string nombre { get; set; }
         public string telefono { get; set; }
         public string correo { get; set; }
+        public bool estado { get; set; }
+
 
         [JsonConstructor]
         public Persona(int id, string identificacion, string nombre, string telefono, string correo)

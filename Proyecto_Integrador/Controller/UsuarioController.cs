@@ -17,23 +17,19 @@ namespace Proyecto_Integrador.Controller
 
         public int ObtenerSiguienteId()
         {
-            List<Usuario> lista = usuarioRepository.Leer();
-            return usuarioRepository.ObtenerSiguienteId(lista);
+            return usuarioRepository.ObtenerSiguienteId();
         }
 
-        // Obtener todos los usuarios
         public List<Usuario> ObtenerUsuarios()
         {
             return usuarioRepository.Leer();
         }
 
-        // Agregar usuario
         public void AgregarUsuario(Usuario usuario)
         {
             usuarioRepository.Agregar(usuario);
         }
 
-        // Editar usuario
         public void EditarUsuario(Usuario usuario, int id)
         {
             usuarioRepository.Editar(usuario, id);

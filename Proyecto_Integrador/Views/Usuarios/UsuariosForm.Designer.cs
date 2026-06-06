@@ -30,12 +30,16 @@
         {
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UsuariosForm));
             label1 = new Label();
             txtBuscador = new TextBox();
             tablaUsuarios = new DataGridView();
             Id = new DataGridViewTextBoxColumn();
+            UserName = new DataGridViewTextBoxColumn();
             Nombre = new DataGridViewTextBoxColumn();
             Identificacion = new DataGridViewTextBoxColumn();
+            Telefono = new DataGridViewTextBoxColumn();
+            Correo = new DataGridViewTextBoxColumn();
             Rol = new DataGridViewTextBoxColumn();
             Estado = new DataGridViewTextBoxColumn();
             Editar = new DataGridViewButtonColumn();
@@ -51,7 +55,7 @@
             label1.BackColor = Color.FromArgb(0, 0, 64);
             label1.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label1.ForeColor = Color.White;
-            label1.Location = new Point(378, 9);
+            label1.Location = new Point(400, 9);
             label1.Name = "label1";
             label1.Size = new Size(270, 28);
             label1.TabIndex = 2;
@@ -61,7 +65,7 @@
             // txtBuscador
             // 
             txtBuscador.ForeColor = Color.Black;
-            txtBuscador.Location = new Point(34, 85);
+            txtBuscador.Location = new Point(44, 94);
             txtBuscador.Name = "txtBuscador";
             txtBuscador.Size = new Size(235, 27);
             txtBuscador.TabIndex = 3;
@@ -71,13 +75,14 @@
             // 
             tablaUsuarios.AllowUserToAddRows = false;
             tablaUsuarios.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            tablaUsuarios.Columns.AddRange(new DataGridViewColumn[] { Id, Nombre, Identificacion, Rol, Estado, Editar, Accion });
-            tablaUsuarios.Location = new Point(34, 156);
+            tablaUsuarios.Columns.AddRange(new DataGridViewColumn[] { Id, UserName, Nombre, Identificacion, Telefono, Correo, Rol, Estado, Editar, Accion });
+            tablaUsuarios.Location = new Point(44, 156);
             tablaUsuarios.Name = "tablaUsuarios";
             tablaUsuarios.RowHeadersWidth = 51;
-            tablaUsuarios.Size = new Size(927, 497);
+            tablaUsuarios.Size = new Size(981, 497);
             tablaUsuarios.TabIndex = 4;
             tablaUsuarios.CellClick += tablaUsuarios_CellClick;
+            tablaUsuarios.CellFormatting += tablaUsuarios_CellFormatting;
             // 
             // Id
             // 
@@ -85,6 +90,13 @@
             Id.MinimumWidth = 6;
             Id.Name = "Id";
             Id.Width = 125;
+            // 
+            // UserName
+            // 
+            UserName.HeaderText = "Username";
+            UserName.MinimumWidth = 6;
+            UserName.Name = "UserName";
+            UserName.Width = 125;
             // 
             // Nombre
             // 
@@ -99,6 +111,20 @@
             Identificacion.MinimumWidth = 6;
             Identificacion.Name = "Identificacion";
             Identificacion.Width = 125;
+            // 
+            // Telefono
+            // 
+            Telefono.HeaderText = "Telefono";
+            Telefono.MinimumWidth = 6;
+            Telefono.Name = "Telefono";
+            Telefono.Width = 125;
+            // 
+            // Correo
+            // 
+            Correo.HeaderText = "Correo";
+            Correo.MinimumWidth = 6;
+            Correo.Name = "Correo";
+            Correo.Width = 125;
             // 
             // Rol
             // 
@@ -148,7 +174,7 @@
             panelTitulo.BackColor = Color.FromArgb(0, 0, 64);
             panelTitulo.Location = new Point(-27, 0);
             panelTitulo.Name = "panelTitulo";
-            panelTitulo.Size = new Size(1042, 63);
+            panelTitulo.Size = new Size(1089, 63);
             panelTitulo.TabIndex = 5;
             // 
             // btnAgregar
@@ -157,18 +183,22 @@
             btnAgregar.FlatStyle = FlatStyle.Flat;
             btnAgregar.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnAgregar.ForeColor = Color.White;
-            btnAgregar.Location = new Point(821, 85);
+            btnAgregar.Image = (Image)resources.GetObject("btnAgregar.Image");
+            btnAgregar.Location = new Point(864, 88);
             btnAgregar.Name = "btnAgregar";
-            btnAgregar.Size = new Size(140, 33);
+            btnAgregar.Size = new Size(161, 33);
             btnAgregar.TabIndex = 6;
             btnAgregar.Text = "Agregar";
+            btnAgregar.TextAlign = ContentAlignment.MiddleRight;
+            btnAgregar.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnAgregar.UseVisualStyleBackColor = false;
+            btnAgregar.Click += btnAgregar_Click;
             // 
             // UsuariosForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1008, 681);
+            ClientSize = new Size(1052, 681);
             Controls.Add(btnAgregar);
             Controls.Add(tablaUsuarios);
             Controls.Add(txtBuscador);
@@ -190,8 +220,11 @@
         private Panel panelTitulo;
         private Button btnAgregar;
         private DataGridViewTextBoxColumn Id;
+        private DataGridViewTextBoxColumn UserName;
         private DataGridViewTextBoxColumn Nombre;
         private DataGridViewTextBoxColumn Identificacion;
+        private DataGridViewTextBoxColumn Telefono;
+        private DataGridViewTextBoxColumn Correo;
         private DataGridViewTextBoxColumn Rol;
         private DataGridViewTextBoxColumn Estado;
         private DataGridViewButtonColumn Editar;

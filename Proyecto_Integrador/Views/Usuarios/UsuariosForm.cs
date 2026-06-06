@@ -1,6 +1,7 @@
 ﻿using OpenTK.Graphics;
 using Proyecto_Integrador.Controller;
 using Proyecto_Integrador.Models;
+using Proyecto_Integrador.Views.Usuarios;
 using Proyecto_Integrador.Views.Utils;
 using System;
 using System.Collections.Generic;
@@ -9,6 +10,7 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
+using static System.Collections.Specialized.BitVector32;
 
 namespace Proyecto_Integrador.Views.Inicio
 {
@@ -16,20 +18,28 @@ namespace Proyecto_Integrador.Views.Inicio
     {
         UsuarioController usuarioController = new UsuarioController();
         private ControlsUtils resizer;
-        public UsuariosForm()
+        private Usuario usuarioLogueado;
+        public UsuariosForm(Usuario usuario)
         {
             InitializeComponent();
+            this.usuarioLogueado = usuario;
             this.resizer = new ControlsUtils(this);
         }
         private void cargarUsuarios()
         {
             List<Usuario> usuarios = usuarioController.ObtenerUsuarios();
+            if (usuarioLogueado.userName != "admin")
+            {
+                usuarios = usuarios.Where(u => u.userName != "admin").ToList();
+            }
 
             tablaUsuarios.AutoGenerateColumns = false;
-
             Id.DataPropertyName = "Id";
+            UserName.DataPropertyName = "UserName";
             Nombre.DataPropertyName = "Nombre";
             Identificacion.DataPropertyName = "Identificacion";
+            Telefono.DataPropertyName = "Telefono";
+            Correo.DataPropertyName = "Correo";
             Rol.DataPropertyName = "Rol";
             Estado.DataPropertyName = "EstadoTexto";
 
@@ -84,7 +94,7 @@ namespace Proyecto_Integrador.Views.Inicio
         {
             resizer.ejecutarEscalado();
         }
-         
+
         private void txtBuscador_TextChanged_1(object sender, EventArgs e)
         {
             string filtro = txtBuscador.Text.ToLower();
@@ -103,20 +113,31 @@ namespace Proyecto_Integrador.Views.Inicio
         {
             if (e.RowIndex < 0) return;
 
-            if (tablaUsuarios.Columns[e.ColumnIndex].Name == "Accion")
+            Usuario usuario = (Usuario)tablaUsuarios.Rows[e.RowIndex].DataBoundItem;
+
+
+            if (tablaUsuarios.Columns[e.ColumnIndex].Name == "Editar")
             {
-                Usuario usuario = (Usuario)tablaUsuarios.Rows[e.RowIndex].DataBoundItem;
+                EditarUsuarioForm formEditar = new EditarUsuarioForm(usuario, usuarioLogueado);
+                formEditar.ShowDialog();
+
+                cargarUsuarios();
+            }
+
+            else if (tablaUsuarios.Columns[e.ColumnIndex].Name == "Accion")
+            {
+                if (usuario.id == usuarioLogueado.id)
+                {
+                    MessageBox.Show("No puedes desactivar tu propio usuario mientras tienes la sesión iniciada.","Acción no permitida",MessageBoxButtons.OK,MessageBoxIcon.Warning);
+                    return;
+                }
 
                 string mensaje = usuario.estado
                     ? "¿Seguro que quiere desactivar este usuario?"
                     : "¿Seguro que quiere activar este usuario?";
 
-                DialogResult respuesta = MessageBox.Show(
-                    mensaje,
-                    "Cambiar estado",
-                    MessageBoxButtons.OKCancel,
-                    MessageBoxIcon.Question
-                );
+                DialogResult respuesta = MessageBox.Show(mensaje, "Cambiar estado", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+
 
                 if (respuesta == DialogResult.OK)
                 {
@@ -127,6 +148,33 @@ namespace Proyecto_Integrador.Views.Inicio
                     cargarUsuarios();
                 }
             }
+        }
+
+        private void btnAgregar_Click(object sender, EventArgs e)
+        {
+            AgregarUsuarioForm formAgregar = new AgregarUsuarioForm();
+            formAgregar.ShowDialog();
+
+        }
+
+        private void tablaUsuarios_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (tablaUsuarios.Columns[e.ColumnIndex].Name == "Estado")
+            {
+                string estado = e.Value?.ToString();
+
+                if (estado == "Activo")
+                {
+                    e.CellStyle.ForeColor = Color.Green;
+                    e.CellStyle.Font = new Font("Segoe UI", 9, FontStyle.Bold);
+                }
+                else if (estado == "Inactivo")
+                {
+                    e.CellStyle.ForeColor = Color.Red;
+                    e.CellStyle.Font = new Font("Segoe UI", 9, FontStyle.Bold);
+                }
+            }
+
         }
     }
 }

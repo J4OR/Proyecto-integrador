@@ -120,9 +120,6 @@
   <metadata name="Id.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
-  <metadata name="UserName.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
   <metadata name="Nombre.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
@@ -135,31 +132,7 @@
   <metadata name="Correo.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
-  <metadata name="Rol.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="Estado.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
   <metadata name="Editar.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
-  <metadata name="Accion.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="btnAgregar.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        wAAADsABataJCQAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAG6SURBVEhLnZU/
-        SBxREMbvNApiIhZqaSHESxGuiFqIfyqRQCRFKhvLFEKKJL0gafQESwU7C0MqEQ2kFUSLQNBObGwtohaJ
-        xUGC/sKQUec+93ZXf/DgmJnvm33vze4VCjkB2oB+X22afzBAL7AO/OEW+22xp1p/L4BR4FcwViw3qrpc
-        AF3AuTomcGa1qs8EqKhTCvOqzwQ4UpcUDlWfCVBVlxSqqs/EzzYvp6rPBPimLil8VX0mwGt1SWFC9bkA
-        PqtTAmuqywXwCGgGloFLdfXYktWoNhWgBVi0iwNeeaxssw5s+ZrzWCPwHBgA2tXrDkAnsB+e8gr4AgwC
-        xVBXBD4CP6XWmpdqXR2gCdgLAsU+G1NuvqrJgO28rP7WwJ4ojQvgMTApcXshjyX2A2iI5nahJ1KkbHjt
-        jsTtvp5IzBiKDYY1m0DFa20n10wDPR4fB3ZD7kNs8C4k6rHgtfETktbgfWwwExL12PTabYnnOqJZzSbw
-        2/+X30g86ZIP4lhbg7dSUI9PPqYrmgjYOD+7MfcGrcB3rUzgL/DSRtDPP06e5exF664xv8Zf+xfAWMYa
-        CRrbTQnoAzpqHf/zD7WRQ+PVkCtMAAAAAElFTkSuQmCC
-</value>
-  </data>
 </root>

@@ -246,11 +246,11 @@
             label1.BackColor = Color.FromArgb(0, 21, 52);
             label1.Font = new Font("Segoe UI", 22.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label1.ForeColor = Color.White;
-            label1.Location = new Point(111, 263);
+            label1.Location = new Point(165, 263);
             label1.Name = "label1";
-            label1.Size = new Size(236, 50);
+            label1.Size = new Size(126, 50);
             label1.TabIndex = 22;
-            label1.Text = "MI SISTEMA";
+            label1.Text = "SGMT";
             label1.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // label2
@@ -259,11 +259,11 @@
             label2.BackColor = Color.FromArgb(0, 21, 52);
             label2.Font = new Font("Segoe UI Semibold", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label2.ForeColor = Color.SteelBlue;
-            label2.Location = new Point(79, 313);
+            label2.Location = new Point(69, 313);
             label2.Name = "label2";
-            label2.Size = new Size(321, 31);
+            label2.Size = new Size(344, 62);
             label2.TabIndex = 23;
-            label2.Text = "Sistema de Gestión Integrado";
+            label2.Text = "Sistema de Gestión Movimiento\r\nde tierras\r\n";
             label2.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // label3

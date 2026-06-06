@@ -79,5 +79,17 @@ namespace Proyecto_Integrador.Repository
             List<T> lista = Leer();
             return lista.FirstOrDefault(item => criterio(item));
         }
+        public void Actualizar(Func<T, bool> criterio, Action<T> actualizar)
+        {
+            List<T> lista = Leer();
+
+            T? item = lista.FirstOrDefault(x => criterio(x));
+
+            if (item != null)
+            {
+                actualizar(item);
+                Guardar(lista);
+            }
+        }
     }
 }

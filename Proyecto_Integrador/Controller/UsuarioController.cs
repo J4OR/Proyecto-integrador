@@ -12,7 +12,7 @@ namespace Proyecto_Integrador.Controller
 
         public UsuarioController()
         {
-           this.usuarioRepository = new UsuarioRepository();
+            this.usuarioRepository = new UsuarioRepository();
         }
 
         public int ObtenerSiguienteId()
@@ -38,11 +38,10 @@ namespace Proyecto_Integrador.Controller
         {
             usuarioRepository.Editar(usuario, id);
         }
-        
+
         public Usuario BuscarPorUserName(string userName)
         {
-            List<Usuario> lista = usuarioRepository.Leer();
-            return lista.Find(u => u.userName == userName);
+            return usuarioRepository.Buscar(userName);
         }
 
         public bool ExisteUsuario(string userName)
@@ -55,6 +54,11 @@ namespace Proyecto_Integrador.Controller
         {
             List<Usuario> lista = usuarioRepository.Leer();
             return lista.Any(u => u.identificacion == documento);
+        }
+        public void CambiarEstadoUsuario(int id, bool nuevoEstado)
+        {
+            usuarioRepository.CambiarEstadoUsuarioPorId(id, nuevoEstado);
+
         }
     }
 }

@@ -38,12 +38,11 @@ namespace Proyecto_Integrador.Views
         // Labels de error inline
         private Label lblErrNombre, lblErrDoc, lblErrTel, lblErrCorreo, lblErrUser, lblErrPass;
 
-        private readonly UsuarioController _ctrl;
+        private readonly UsuarioController _ctrl = new UsuarioController();
         private int _idEditando = -1; // -1 = nuevo
 
-        public FormAdminUsuarios(UsuarioController ctrl)
+        public FormAdminUsuarios()
         {
-            _ctrl = ctrl;
             InitializeComponent();
             RefrescarTabla(_ctrl.ObtenerUsuarios());
         }

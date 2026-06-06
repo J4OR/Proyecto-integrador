@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Imaging.Effects;
 using System.Security.Policy;
 using System.Text;
 using System.Windows.Forms;
@@ -19,9 +20,11 @@ namespace Proyecto_Integrador.Views
         public LoginForm()
         {
             InitializeComponent();
-            txtPassword.Text = "123456*";
-            txtUser.Text = "deider";
-            resizer = new ControlsUtils(this);    
+            txtUser.ForeColor = Color.Black;
+            txtPassword.ForeColor = Color.Black;
+            txtUser.Text = "admin";
+            txtPassword.Text = "admin123";
+            this.resizer = new ControlsUtils(this);
             this.WindowState = FormWindowState.Maximized;
 
             pbOjo.Image = Properties.Resources.ojoAbierto;
@@ -30,10 +33,20 @@ namespace Proyecto_Integrador.Views
             pbError2.Visible = false;
 
         }
+        private void RestaurarPlaceholders()
+        {
+            txtUser.Text = "Ingrese su usuario";
+            txtUser.ForeColor = SystemColors.InactiveCaption;
+
+            txtPassword.Text = "Ingrese su contraseña";
+            txtPassword.ForeColor = SystemColors.InactiveCaption;
+            txtPassword.PasswordChar = '\0';
+            pbOjo.Image = Properties.Resources.ojoAbierto;
+        }
 
         private void LoginForm_Resize(object sender, EventArgs e)
         {
-            resizer.ejecutarEscalado();
+            resizer?.ejecutarEscalado();
 
             if (lblError.Visible)
             {
@@ -58,6 +71,10 @@ namespace Proyecto_Integrador.Views
                     pbOjo.Image = Properties.Resources.ojoCerrado;
                 }
             }
+            else
+            {
+                txt.ForeColor = Color.Black;
+            }
         }
 
         private void TextBoxs_Leave(object sender, EventArgs e)
@@ -79,47 +96,6 @@ namespace Proyecto_Integrador.Views
                 }
 
                 txt.ForeColor = SystemColors.InactiveCaption;
-            }
-        }
-        private void txtPassword_Enter(object sender, EventArgs e)
-        {
-            if (txtPassword.Text == "Ingrese su contraseña")
-            {
-                txtPassword.Text = "";
-                txtPassword.PasswordChar = '*';
-                txtPassword.ForeColor = Color.Black;
-                pbOjo.Image = Properties.Resources.ojoCerrado;
-
-            }
-        }
-
-        private void txtPassword_Leave(object sender, EventArgs e)
-        {
-            if (string.IsNullOrWhiteSpace(txtPassword.Text))
-            {
-                txtPassword.Text = "Ingrese su contraseña";
-                txtPassword.PasswordChar = '\0';
-                txtPassword.ForeColor = SystemColors.InactiveCaption;
-                pbOjo.Image = Properties.Resources.ojoAbierto;
-            }
-        }
-
-        private void txtUser_Enter(object sender, EventArgs e)
-        {
-            if (txtUser.Text == "Ingrese su usuario")
-            {
-                txtUser.Text = "";
-                txtUser.ForeColor = Color.Black;
-
-            }
-        }
-
-        private void txtUser_Leave(object sender, EventArgs e)
-        {
-            if (string.IsNullOrWhiteSpace(txtUser.Text))
-            {
-                txtUser.Text = "Ingrese su usuario";
-                txtUser.ForeColor = SystemColors.InactiveCaption;
             }
         }
 
@@ -187,11 +163,11 @@ namespace Proyecto_Integrador.Views
 
                     MessageBox.Show("Inicio de sesión exitoso");
 
-                    FormDashboard formDashboard = new FormDashboard(usuario);
-
                     this.Hide();
+                    FormDashboard formDashboard = new FormDashboard(usuario);
                     formDashboard.ShowDialog();
-                    this.Close();
+                    RestaurarPlaceholders();
+                    this.Show();
 
                 }
                 else
@@ -206,6 +182,7 @@ namespace Proyecto_Integrador.Views
                 mostrarError(mensaje);
             }
         }
+
     }
 
 }

@@ -98,7 +98,7 @@ namespace Proyecto_Integrador.Views
 
         private void AbrirAdminUsuarios(object sender, EventArgs e)
         {
-            AbrirEnContenido(new FormAdminUsuarios(_usuarioCtrl));
+            //AbrirEnContenido(new FormAdminUsuarios(_usuarioCtrl));
         }
     }
 }

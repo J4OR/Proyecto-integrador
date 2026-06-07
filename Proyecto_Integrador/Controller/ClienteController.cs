@@ -42,13 +42,9 @@ namespace Proyecto_Integrador.Controller
             return clienteRepository.ObtenerSiguienteId(lista);
         }
 
-        public List<Cliente> Buscar(string texto)
+        public List<Cliente> Buscador(string texto)
         {
-            List<Cliente> lista = clienteRepository.Leer();
-
-            return lista.FindAll(c =>
-                c.nombre.Contains(texto, StringComparison.OrdinalIgnoreCase) ||
-                c.identificacion.Contains(texto, StringComparison.OrdinalIgnoreCase));
+            return clienteRepository.Buscador(texto);
         }
 
         public bool ExisteCliente(string identificacion)

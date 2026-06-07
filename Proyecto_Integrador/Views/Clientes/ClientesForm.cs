@@ -101,9 +101,10 @@ namespace Proyecto_Integrador.Views
         private void txtBuscador_TextChanged(object sender, EventArgs e)
         {
             string filtro = txtBuscador.Text.ToLower();
-            List<Cliente> clientes = clienteController.ObtenerClientes();
-            var clientesFiltrados = clientes.FindAll(c => c.nombre.ToLower().Contains(filtro) ||
-                c.identificacion.ToLower().Contains(filtro));
+             var clientesFiltrados = clienteController.Buscador(filtro);
+            //List<Cliente> clientes = clienteController.ObtenerClientes();
+            //var clientesFiltrados = clientes.FindAll(c => c.nombre.ToLower().Contains(filtro) ||
+            //    c.identificacion.ToLower().Contains(filtro));
 
             tablaClientes.DataSource = null;
             tablaClientes.DataSource = clientesFiltrados;

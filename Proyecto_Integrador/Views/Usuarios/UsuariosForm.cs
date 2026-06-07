@@ -10,7 +10,7 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
-using static System.Collections.Specialized.BitVector32;
+//using static System.Collections.Specialized.BitVector32;
 
 namespace Proyecto_Integrador.Views.Inicio
 {
@@ -105,6 +105,12 @@ namespace Proyecto_Integrador.Views.Inicio
                 u.rol.ToString().ToLower().Contains(filtro) ||
                 u.estado.ToString().ToLower().Contains(filtro)
             );
+
+            if (usuarioLogueado.userName != "admin")
+            {
+                usuariosFiltrados = usuariosFiltrados.Where(u => u.userName != "admin").ToList();
+            }
+
             tablaUsuarios.DataSource = null;
             tablaUsuarios.DataSource = usuariosFiltrados;
         }
@@ -113,12 +119,12 @@ namespace Proyecto_Integrador.Views.Inicio
         {
             if (e.RowIndex < 0) return;
 
-            Usuario usuario = (Usuario)tablaUsuarios.Rows[e.RowIndex].DataBoundItem;
+            Usuario usuarioSeleccionado = (Usuario)tablaUsuarios.Rows[e.RowIndex].DataBoundItem;
 
 
             if (tablaUsuarios.Columns[e.ColumnIndex].Name == "Editar")
             {
-                EditarUsuarioForm formEditar = new EditarUsuarioForm(usuario, usuarioLogueado);
+                EditarUsuarioForm formEditar = new EditarUsuarioForm(usuarioSeleccionado, usuarioLogueado);
                 formEditar.ShowDialog();
 
                 cargarUsuarios();
@@ -126,13 +132,13 @@ namespace Proyecto_Integrador.Views.Inicio
 
             else if (tablaUsuarios.Columns[e.ColumnIndex].Name == "Accion")
             {
-                if (usuario.id == usuarioLogueado.id)
+                if (usuarioSeleccionado.id == usuarioLogueado.id)
                 {
                     MessageBox.Show("No puedes desactivar tu propio usuario mientras tienes la sesión iniciada.","Acción no permitida",MessageBoxButtons.OK,MessageBoxIcon.Warning);
                     return;
                 }
 
-                string mensaje = usuario.estado
+                string mensaje = usuarioSeleccionado.estado
                     ? "¿Seguro que quiere desactivar este usuario?"
                     : "¿Seguro que quiere activar este usuario?";
 
@@ -141,9 +147,9 @@ namespace Proyecto_Integrador.Views.Inicio
 
                 if (respuesta == DialogResult.OK)
                 {
-                    bool nuevoEstado = !usuario.estado;
+                    bool nuevoEstado = !usuarioSeleccionado.estado;
 
-                    usuarioController.CambiarEstadoUsuario(usuario.id, nuevoEstado);
+                    usuarioController.CambiarEstadoUsuario(usuarioSeleccionado.id, nuevoEstado);
 
                     cargarUsuarios();
                 }
@@ -154,6 +160,7 @@ namespace Proyecto_Integrador.Views.Inicio
         {
             AgregarUsuarioForm formAgregar = new AgregarUsuarioForm();
             formAgregar.ShowDialog();
+            cargarUsuarios();
 
         }
 

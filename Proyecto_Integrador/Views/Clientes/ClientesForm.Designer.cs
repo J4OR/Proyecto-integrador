@@ -37,6 +37,7 @@
             Telefono = new DataGridViewTextBoxColumn();
             Correo = new DataGridViewTextBoxColumn();
             Editar = new DataGridViewButtonColumn();
+            Eliminar = new DataGridViewButtonColumn();
             txtBuscador = new TextBox();
             label1 = new Label();
             panelTitulo = new Panel();
@@ -49,23 +50,25 @@
             btnAgregar.FlatStyle = FlatStyle.Flat;
             btnAgregar.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnAgregar.ForeColor = Color.White;
-            btnAgregar.Location = new Point(914, 85);
+            btnAgregar.Location = new Point(736, 98);
             btnAgregar.Name = "btnAgregar";
             btnAgregar.Size = new Size(140, 33);
             btnAgregar.TabIndex = 11;
             btnAgregar.Text = "Agregar";
             btnAgregar.UseVisualStyleBackColor = false;
+            btnAgregar.Click += btnAgregar_Click;
             // 
             // tablaClientes
             // 
             tablaClientes.AllowUserToAddRows = false;
             tablaClientes.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            tablaClientes.Columns.AddRange(new DataGridViewColumn[] { Id, Nombre, Identificacion, Telefono, Correo, Editar });
+            tablaClientes.Columns.AddRange(new DataGridViewColumn[] { Id, Nombre, Identificacion, Telefono, Correo, Editar, Eliminar });
             tablaClientes.Location = new Point(73, 156);
             tablaClientes.Name = "tablaClientes";
             tablaClientes.RowHeadersWidth = 51;
             tablaClientes.Size = new Size(803, 497);
             tablaClientes.TabIndex = 9;
+            tablaClientes.CellClick += tablaClientes_CellClick;
             // 
             // Id
             // 
@@ -118,6 +121,14 @@
             Editar.UseColumnTextForButtonValue = true;
             Editar.Width = 125;
             // 
+            // Eliminar
+            // 
+            Eliminar.FlatStyle = FlatStyle.Flat;
+            Eliminar.HeaderText = "Eliminar";
+            Eliminar.MinimumWidth = 6;
+            Eliminar.Name = "Eliminar";
+            Eliminar.Width = 125;
+            // 
             // txtBuscador
             // 
             txtBuscador.ForeColor = Color.Black;
@@ -125,6 +136,7 @@
             txtBuscador.Name = "txtBuscador";
             txtBuscador.Size = new Size(235, 27);
             txtBuscador.TabIndex = 8;
+            txtBuscador.TextChanged += txtBuscador_TextChanged;
             // 
             // label1
             // 
@@ -132,7 +144,7 @@
             label1.BackColor = Color.FromArgb(0, 0, 64);
             label1.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label1.ForeColor = Color.White;
-            label1.Location = new Point(429, 9);
+            label1.Location = new Point(352, 9);
             label1.Name = "label1";
             label1.Size = new Size(264, 28);
             label1.TabIndex = 7;
@@ -144,14 +156,14 @@
             panelTitulo.BackColor = Color.FromArgb(0, 0, 64);
             panelTitulo.Location = new Point(1, 0);
             panelTitulo.Name = "panelTitulo";
-            panelTitulo.Size = new Size(1089, 63);
+            panelTitulo.Size = new Size(954, 63);
             panelTitulo.TabIndex = 10;
             // 
             // ClientesForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1101, 681);
+            ClientSize = new Size(951, 681);
             Controls.Add(btnAgregar);
             Controls.Add(tablaClientes);
             Controls.Add(txtBuscador);
@@ -159,7 +171,8 @@
             Controls.Add(panelTitulo);
             Name = "ClientesForm";
             Text = "ClientesForm";
-            Load += this.ClientesForm_Load;
+            Load += ClientesForm_Load;
+            Resize += ClientesForm_Resize;
             ((System.ComponentModel.ISupportInitialize)tablaClientes).EndInit();
             ResumeLayout(false);
             PerformLayout();
@@ -178,5 +191,6 @@
         private DataGridViewTextBoxColumn Telefono;
         private DataGridViewTextBoxColumn Correo;
         private DataGridViewButtonColumn Editar;
+        private DataGridViewButtonColumn Eliminar;
     }
 }

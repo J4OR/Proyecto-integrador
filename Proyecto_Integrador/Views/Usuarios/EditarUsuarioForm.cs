@@ -77,6 +77,11 @@ namespace Proyecto_Integrador.Views.Usuarios
                 MessageBox.Show(mensajeErrores, "Errores de validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
+            if (usuarioController.ExisteUsuario(txtUser.Text))
+            {
+                MessageBox.Show("El nombre de usuario ya existe. Por favor, elige otro.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
 
 
             usuario.nombre = txtNombre.Text;

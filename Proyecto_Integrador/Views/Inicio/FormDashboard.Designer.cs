@@ -255,6 +255,7 @@
             btnMateriales.TextAlign = ContentAlignment.MiddleLeft;
             btnMateriales.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnMateriales.UseVisualStyleBackColor = false;
+            btnMateriales.Click += btnMateriales_Click;
             // 
             // pictureBox1
             // 

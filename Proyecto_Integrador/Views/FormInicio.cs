@@ -71,7 +71,7 @@ namespace Proyecto_Integrador.Views
 
         private void AbrirMateriales(object sender, EventArgs e)
         {
-            AbrirEnContenido(new FormMateriales(_materialCtrl));
+            AbrirEnContenido(new FormMateriales());
         }
 
         private void AbrirCotizaciones(object sender, EventArgs e)

@@ -86,5 +86,10 @@ namespace Proyecto_Integrador.Views
         {
             AbrirFormularioEnPanel(new ClientesForm());
         }
+
+        private void btnMateriales_Click(object sender, EventArgs e)
+        {
+            AbrirFormularioEnPanel(new FormMateriales());
+        }
     }
 }

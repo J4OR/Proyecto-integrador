@@ -17,11 +17,9 @@ namespace Proyecto_Integrador.Views
         private TextBox txtCosto;
         private Button btnCrear;
         private Label lblMsg;
-        private readonly MaterialController _ctrl;
-
-        public FormMateriales(MaterialController ctrl)
+        private MaterialController _ctrl = new MaterialController();
+        public FormMateriales()
         {
-            _ctrl = ctrl;
             InitializeComponent();
             RefrescarTabla();
         }

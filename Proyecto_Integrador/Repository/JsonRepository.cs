@@ -16,7 +16,7 @@ namespace Proyecto_Integrador.Repository
             this.rutaCarpeta = rutaCarpeta;
         }
 
-    
+
         public List<T> Leer()
         {
             List<T> lista = new List<T>();
@@ -91,5 +91,11 @@ namespace Proyecto_Integrador.Repository
                 Guardar(lista);
             }
         }
+        public List<T> BuscarTodos(Func<T, bool> criterio)
+        {
+            List<T> lista = Leer();
+            return lista.Where(item => criterio(item)).ToList();
+
+        }
     }
-}
+   }

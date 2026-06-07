@@ -31,7 +31,12 @@ namespace Proyecto_Integrador.Repository
             lista.Add(cliente);
             jsonRepository.Guardar(lista); ;
         }
-
+        public List<Cliente> Buscador(string texto)
+        {
+            List<Cliente> lista = jsonRepository.Leer();
+            return jsonRepository.BuscarTodos(c => c.nombre.Contains(texto, StringComparison.OrdinalIgnoreCase) ||
+            c.identificacion.Contains(texto, StringComparison.OrdinalIgnoreCase));
+        }
 
         public void Editar(Cliente nuevoCliente, int id)
         {

@@ -38,5 +38,9 @@ namespace Proyecto_Integrador.Repository
             jsonRepository.Editar(nuevoCliente, u => u.id == id);
         }
 
+        public void Eliminar(int id)
+        {
+            jsonRepository.Eliminar(u => u.id == id);
+        }
     }
 }

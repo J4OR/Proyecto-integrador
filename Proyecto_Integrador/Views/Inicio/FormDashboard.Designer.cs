@@ -75,7 +75,7 @@
             // 
             // btnCerrarSesion
             // 
-            btnCerrarSesion.BackColor = Color.FromArgb(0, 0, 80);
+            btnCerrarSesion.BackColor = Color.MidnightBlue;
             btnCerrarSesion.FlatAppearance.BorderSize = 0;
             btnCerrarSesion.FlatStyle = FlatStyle.Flat;
             btnCerrarSesion.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
@@ -93,7 +93,7 @@
             // 
             // panel1
             // 
-            panel1.BackColor = Color.FromArgb(0, 0, 80);
+            panel1.BackColor = Color.MidnightBlue;
             panel1.Controls.Add(lblRol);
             panel1.Controls.Add(lblCorreo);
             panel1.Controls.Add(lblUser);

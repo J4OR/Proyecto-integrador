@@ -29,7 +29,7 @@ namespace Proyecto_Integrador.Controller
         {
             clienteRepository.Editar(cliente, id);
         }
-        
+
         public Cliente BuscarPorNombre(string nombre)
         {
             List<Cliente> lista = clienteRepository.Leer();
@@ -50,5 +50,16 @@ namespace Proyecto_Integrador.Controller
                 c.nombre.Contains(texto, StringComparison.OrdinalIgnoreCase) ||
                 c.identificacion.Contains(texto, StringComparison.OrdinalIgnoreCase));
         }
+
+        public bool ExisteCliente(string identificacion)
+        {
+            List<Cliente> lista = clienteRepository.Leer();
+            return lista.Exists(c => c.identificacion == identificacion);
+        }
+        public void EliminarCliente(int id)
+        {
+            clienteRepository.Eliminar(id);
+        }
+
     }
 }

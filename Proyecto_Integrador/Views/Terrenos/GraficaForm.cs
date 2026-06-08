@@ -9,7 +9,6 @@ using System.Windows.Controls;
 using System.Windows.Forms;
 using System.Windows.Forms.Integration;
 
-
 namespace Proyecto_Integrador.Views.Terrenos
 {
     public partial class GraficaForm : Form

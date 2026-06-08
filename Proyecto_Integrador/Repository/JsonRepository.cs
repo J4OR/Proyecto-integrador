@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Text;
 using System.Text.Json;
+using System.Windows.Shapes;
 
 namespace Proyecto_Integrador.Repository
 {

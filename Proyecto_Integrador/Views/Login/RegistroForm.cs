@@ -38,7 +38,7 @@ namespace Proyecto_Integrador.Views
 
         private void RegistroForm_Resize(object sender, EventArgs e)
         {
-            resizer.ejecutarEscalado();
+            resizer?.ejecutarEscalado();
 
         }
 

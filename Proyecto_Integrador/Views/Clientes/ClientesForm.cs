@@ -95,7 +95,7 @@ namespace Proyecto_Integrador.Views
 
         private void ClientesForm_Resize(object sender, EventArgs e)
         {
-            resize.ejecutarEscalado();
+            resize?.ejecutarEscalado();
         }
 
         private void txtBuscador_TextChanged(object sender, EventArgs e)

@@ -50,6 +50,7 @@
             btnDatos = new Button();
             btnCancelar = new Button();
             btnGuardar = new Button();
+            btnGraficar = new Button();
             panelTitulo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)tablaPuntos).BeginInit();
             ((System.ComponentModel.ISupportInitialize)nupAltura).BeginInit();
@@ -301,11 +302,27 @@
             btnGuardar.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnGuardar.UseVisualStyleBackColor = false;
             // 
+            // btnGraficar
+            // 
+            btnGraficar.BackColor = Color.FromArgb(0, 0, 64);
+            btnGraficar.FlatStyle = FlatStyle.Flat;
+            btnGraficar.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnGraficar.ForeColor = Color.White;
+            btnGraficar.Location = new Point(437, 446);
+            btnGraficar.Name = "btnGraficar";
+            btnGraficar.Size = new Size(119, 33);
+            btnGraficar.TabIndex = 53;
+            btnGraficar.Text = "Graficar";
+            btnGraficar.TextImageRelation = TextImageRelation.ImageBeforeText;
+            btnGraficar.UseVisualStyleBackColor = false;
+            btnGraficar.Click += btnGraficar_Click;
+            // 
             // CalculoForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(982, 626);
+            Controls.Add(btnGraficar);
             Controls.Add(btnCancelar);
             Controls.Add(btnGuardar);
             Controls.Add(btnDatos);
@@ -365,5 +382,6 @@
         private Button btnDatos;
         private Button btnCancelar;
         private Button btnGuardar;
+        private Button btnGraficar;
     }
 }

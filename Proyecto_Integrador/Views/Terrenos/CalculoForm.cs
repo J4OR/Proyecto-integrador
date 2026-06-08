@@ -159,7 +159,7 @@ namespace Proyecto_Integrador.Views.Terrenos
         }
 
         private void CalculoForm_Resize(object sender, EventArgs e)
-        { 
+        {
             resizer?.ejecutarEscalado();
         }
 
@@ -167,6 +167,12 @@ namespace Proyecto_Integrador.Views.Terrenos
         {
             FormDashboard principal = (FormDashboard)this.ParentForm;
             principal.AbrirFormularioEnPanel(new TerrenoForm(principal));
+        }
+
+        private void btnGraficar_Click(object sender, EventArgs e)
+        {
+            GraficaForm graficaForm = new GraficaForm();
+            graficaForm.ShowDialog();
         }
     }
 }

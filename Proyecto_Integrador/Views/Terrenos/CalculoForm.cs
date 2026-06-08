@@ -160,7 +160,7 @@ namespace Proyecto_Integrador.Views.Terrenos
 
         private void CalculoForm_Resize(object sender, EventArgs e)
         { 
-            resizer.ejecutarEscalado();
+            resizer?.ejecutarEscalado();
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)

@@ -32,7 +32,7 @@ namespace Proyecto_Integrador.Views.Terrenos
 
         private void TerrenoForm_Resize(object sender, EventArgs e)
         {
-            resizer.ejecutarEscalado();
+            resizer?.ejecutarEscalado();
         }
     }
 }

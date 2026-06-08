@@ -86,12 +86,16 @@ namespace Proyecto_Integrador.Models
 
                 for (int j = 0; j < nj; j++)
                 {
-                    double diferencia = z[i, j] - cotaCorte;
+                    double profundidad =
+                    Math.Max(cotaCorte - z[i, j], 0);
 
-                    if (diferencia > 0)
-                    {
-                        volumen += wi * SimpsonPeso(j, nj) * diferencia;
-                    }
+                    volumen += wi * SimpsonPeso(j, nj) * profundidad;
+                    //double diferencia = z[i, j] - cotaCorte;
+
+                    //if (diferencia > 0)
+                    //{
+                    //    volumen += wi * SimpsonPeso(j, nj) * diferencia;
+                    //}
                 }
             }
 

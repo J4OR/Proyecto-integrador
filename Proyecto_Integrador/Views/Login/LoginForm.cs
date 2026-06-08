@@ -1,5 +1,6 @@
 ﻿using Proyecto_Integrador.Controller;
 using Proyecto_Integrador.Models;
+using Proyecto_Integrador.Security;
 using Proyecto_Integrador.Views.Utils;
 using System;
 using System.Collections.Generic;
@@ -141,7 +142,7 @@ namespace Proyecto_Integrador.Views
         private void btnIniciarSesion_Click(object sender, EventArgs e)
         {
             string userName = txtUser.Text.Trim();
-            string password = txtPassword.Text.Trim();
+            string password = PasswordHasher.ToSha256(txtPassword.Text.Trim());
 
             Usuario usuario = controller.BuscarPorUserName(userName);
             string mensaje = "";

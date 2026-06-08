@@ -50,5 +50,10 @@ namespace Proyecto_Integrador.Repository
                 usuario => usuario.estado = nuevoEstado
             );
         }
+        public List<Usuario> buscador(string texto)
+        {
+            return jsonRepository.filtrar(u => u.userName.Contains(texto, StringComparison.OrdinalIgnoreCase) || 
+            u.nombre.Contains(texto, StringComparison.OrdinalIgnoreCase) || u.identificacion.Contains(texto, StringComparison.OrdinalIgnoreCase));
+        }
     }
 }

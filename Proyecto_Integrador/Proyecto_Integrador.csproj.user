@@ -34,6 +34,9 @@
     <Compile Update="Views\FormTerreno.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Views\Terreno\TerrenoForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Views\Usuarios\AgregarUsuarioForm.cs">
       <SubType>Form</SubType>
     </Compile>

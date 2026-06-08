@@ -57,7 +57,7 @@ namespace Proyecto_Integrador.Views.Usuarios
             int id = usuarioController.ObtenerSiguienteId();
 
             Usuario nuevoUsuario = new Usuario(id, txtIdentificacion.Text, txtNombre.Text, txtTelefono.Text, txtCorreo.Text,
-            txtUser.Text, txtContraseña.Text);
+            txtUser.Text, PasswordHasher.ToSha256(txtContraseña.Text));
 
             nuevoUsuario.rol = (Rol)cbRol.SelectedItem;
             nuevoUsuario.estado = true;

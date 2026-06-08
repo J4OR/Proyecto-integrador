@@ -237,6 +237,7 @@
             btnTerrenos.TextAlign = ContentAlignment.MiddleLeft;
             btnTerrenos.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnTerrenos.UseVisualStyleBackColor = false;
+            btnTerrenos.Click += btnTerrenos_Click;
             // 
             // btnMateriales
             // 

@@ -1,5 +1,6 @@
 ﻿using Proyecto_Integrador.Models;
 using Proyecto_Integrador.Views.Inicio;
+using Proyecto_Integrador.Views.Terrenos;
 using Proyecto_Integrador.Views.Utils;
 using System;
 using System.Collections.Generic;
@@ -24,7 +25,7 @@ namespace Proyecto_Integrador.Views
             this.WindowState = FormWindowState.Maximized;
 
         }
-        private void AbrirFormularioEnPanel(Form formulario)
+        public void AbrirFormularioEnPanel(Form formulario)
         {
             PanelContenido.Controls.Clear();
 
@@ -34,6 +35,9 @@ namespace Proyecto_Integrador.Views
 
             PanelContenido.Controls.Add(formulario);
             formulario.Show();
+            formulario.PerformLayout();
+
+          
         }
         private void mensajesForm(Usuario usuario)
         {
@@ -90,6 +94,11 @@ namespace Proyecto_Integrador.Views
         private void btnMateriales_Click(object sender, EventArgs e)
         {
             AbrirFormularioEnPanel(new FormMateriales());
+        }
+
+        private void btnTerrenos_Click(object sender, EventArgs e)
+        {
+            AbrirFormularioEnPanel(new TerrenoForm(this));
         }
     }
 }

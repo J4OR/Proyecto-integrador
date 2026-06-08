@@ -6,86 +6,38 @@ using Proyecto_Integrador.Models;
 
 namespace Proyecto_Integrador.Repository
 {
-    internal class TerrenoRepository
+    public class TerrenoRepository
     {
-        private TerrenoController repository;
+        private static readonly string carpeta = "Data";
+        private static readonly string rutaCarpeta = Path.Combine(carpeta, "terrenos.json");
 
-        public Terreno TerrenoActual { get; private set; }
-        public double VolumenCalculado { get; private set; }
-        public double[,] MatrizVisualizacion { get; private set; }
+        private JsonRepository<Terreno> jsonRepository = new JsonRepository<Terreno>(carpeta, rutaCarpeta);
 
-        public TerrenoRepository()
+        public List<Terreno> Leer()
         {
-            repository = new TerrenoController();
-            TerrenoActual = repository.ObtenerTerreno();
+            return jsonRepository.Leer();
         }
 
-        public void LimpiarPuntos()
+        public void Agregar(Terreno terreno)
         {
-            repository.LimpiarPuntos();
-            VolumenCalculado = 0;
-            MatrizVisualizacion = null;
+            List<Terreno> lista = jsonRepository.Leer();
+            lista.Add(terreno);
+            jsonRepository.Guardar(lista); 
         }
 
-        private void ActualizarLimites()
+        public void Editar(Terreno nuevoTerreno, Guid id)
         {
-            if (TerrenoActual.puntos.Count == 0)
-                return;
-
-            double xMin = TerrenoActual.puntos[0].x;
-            double xMax = TerrenoActual.puntos[0].x;
-            double yMin = TerrenoActual.puntos[0].y;
-            double yMax = TerrenoActual.puntos[0].y;
-
-            foreach (PuntoTerreno p in TerrenoActual.puntos)
-            {
-                if (p.x < xMin) xMin = p.x;
-                if (p.x > xMax) xMax = p.x;
-
-                if (p.y < yMin) yMin = p.y;
-                if (p.y > yMax) yMax = p.y;
-            }
-
-            TerrenoActual.XMin = xMin;
-            TerrenoActual.XMax = xMax;
-            TerrenoActual.YMin = yMin;
-            TerrenoActual.YMax = yMax;
+            jsonRepository.Editar(nuevoTerreno, u => u.id == id);
         }
 
-        public void SetNivelCorte(double nivel)
+        public void Eliminar(Guid id)
         {
-            TerrenoActual.NivelCorte = nivel;
+            jsonRepository.Eliminar(u => u.id == id);
         }
 
-        public (bool ok, double volumen, string mensaje) CalcularVolumen()
+        public List<Terreno> Buscador(string texto)
         {
-            if (TerrenoActual.puntos.Count < 3)
-                return (false, 0, "Se necesitan al menos 3 puntos para calcular el volumen.");
-
-            if (TerrenoActual.XMax <= TerrenoActual.XMin ||
-                TerrenoActual.YMax <= TerrenoActual.YMin)
-                return (false, 0, "Los puntos deben definir un área con extensión en X e Y.");
-
-            CalculadoraVolumen calc = new CalculadoraVolumen(TerrenoActual, 50);
-
-            VolumenCalculado = calc.Calcular();
-            MatrizVisualizacion = calc.GenerarMatrizAlturas(20);
-
-            return (
-                true,
-                VolumenCalculado,
-                $"Volumen calculado: {VolumenCalculado:F4} m³"
-            );
-        }
-
-        public double[,] ObtenerMatrizGrafica()
-        {
-            return MatrizVisualizacion;
-        }
-
-        public List<PuntoTerreno> ObtenerPuntos()
-        {
-            return repository.ObtenerPuntos();
+            return jsonRepository.filtrar(t => t.nombre.Contains(texto, StringComparison.OrdinalIgnoreCase));
         }
     }
-}
+    }   

@@ -1,41 +1,39 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Text.Json.Serialization;
 
 namespace Proyecto_Integrador.Models
 {
 
     public class Terreno
     {
-        public string id { get; set; }
-        public string descripcion { get; set; }
-        public List<PuntoTerreno> puntos { get; set; }
+        public Guid id { get; set; }
+        public string nombre { get; set; }
 
-        // Límites del área rectangular analizada
-        public double XMin { get; set; }
-        public double XMax { get; set; }
-        public double YMin { get; set; }
-        public double YMax { get; set; }
+        // Malla de alturas z[i][j] ingresada por el usuario
+        public double[][] cotas { get; set; }
 
-        // Nivel de corte (profundidad objetivo o nivel final deseado)
-        public double NivelCorte { get; set; }
+        // Espaciado entre nodos en X y en Y (metros)
+        public double dx { get; set; }
+        public double dy { get; set; }
+
+        // Nivel de corte / altura de referencia
+        public double alturaReferencia { get; set; }
+
+        // Resultado del cálculo
         public double volumen { get; set; }
 
-        public Terreno(List<PuntoTerreno> puntos, double xMin, double xMax, double yMin, double yMax, double nivelCorte)
+        [JsonConstructor]
+        public Terreno (double[][] cotas, double dx, double dy, double alturaReferencia, double volumen = 0, string nombre = "")
         {
-            this.id = Guid.NewGuid().ToString();
-            this.puntos = puntos;
-            this.XMin = xMin;
-            this.XMax = xMax;
-            this.YMin = yMin;
-            this.YMax = yMax;
-            this.NivelCorte = nivelCorte;
-        }
-
-        public Terreno()
-        {
-            id = Guid.NewGuid().ToString();
-            puntos = new List<PuntoTerreno>();
+            this.id = new Guid();
+            this.nombre = nombre;
+            this.cotas = cotas;
+            this.dx = dx;
+            this.dy = dy;
+            this.alturaReferencia = alturaReferencia;
+            this.volumen = volumen;
         }
     }
 }

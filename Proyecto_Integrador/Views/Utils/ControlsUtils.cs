@@ -54,14 +54,16 @@ namespace Proyecto_Integrador.Views.Utils
 
                 Rectangle original = controlBounds[ctrl];
 
+               
                 ctrl.SetBounds(
                     (int)(original.X * xRatio),
                     (int)(original.Y * yRatio),
                     (int)(original.Width * xRatio),
                     (int)(original.Height * yRatio)
                 );
-
-                if (controlFontSizes.ContainsKey(ctrl))
+ 
+                // NO cambiar la fuente de los NumericUpDown
+                if (!(ctrl is NumericUpDown) && controlFontSizes.ContainsKey(ctrl))
                 {
                     float originalFontSize = controlFontSizes[ctrl];
                     float newFontSize = originalFontSize * fontRatio;
@@ -69,7 +71,7 @@ namespace Proyecto_Integrador.Views.Utils
                     if (newFontSize < 8f)
                         newFontSize = 8f;
 
-                    ctrl.Font = new Font(ctrl.Font.FontFamily, newFontSize, ctrl.Font.Style);
+                    ctrl.Font = new Font( ctrl.Font.FontFamily,newFontSize, ctrl.Font.Style );
                 }
 
                 if (ctrl.HasChildren)

@@ -1,5 +1,6 @@
 ﻿using Proyecto_Integrador.Controller;
 using Proyecto_Integrador.Models;
+using Proyecto_Integrador.Security;
 using Proyecto_Integrador.Validator;
 using Proyecto_Integrador.Views.Utils;
 using System;
@@ -15,9 +16,9 @@ namespace Proyecto_Integrador.Views
 {
     public partial class RegistroForm : Form
     {
-        UsuarioController usuarioController = new UsuarioController();
+        private UsuarioController usuarioController = new UsuarioController();
         private Dictionary<string, Label> labelsError;
-        ControlsUtils resizer;
+        private ControlsUtils resizer;
         public RegistroForm()
         {
             InitializeComponent();
@@ -174,7 +175,7 @@ namespace Proyecto_Integrador.Views
 
             int id = usuarioController.ObtenerSiguienteId();
             Usuario nuevoUsuario = new Usuario(id, txtDocumento.Text, txtNombre.Text,
-                txtTelefono.Text, txtCorreo.Text, txtUsuario.Text, txtContraseña.Text);
+                txtTelefono.Text, txtCorreo.Text, txtUsuario.Text, PasswordHasher.ToSha256(txtContraseña.Text));
             usuarioController.AgregarUsuario(nuevoUsuario);
             MessageBox.Show("Usuario registrado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
             LoginForm loginForm = new LoginForm();

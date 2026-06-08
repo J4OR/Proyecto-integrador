@@ -56,5 +56,9 @@ namespace Proyecto_Integrador.Controller
             usuarioRepository.CambiarEstadoUsuarioPorId(id, nuevoEstado);
 
         }
+        public List<Usuario> Buscador(string texto)
+        {
+            return usuarioRepository.buscador(texto);
+        }
     }
 }

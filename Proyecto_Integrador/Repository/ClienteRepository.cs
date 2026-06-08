@@ -33,8 +33,7 @@ namespace Proyecto_Integrador.Repository
         }
         public List<Cliente> Buscador(string texto)
         {
-            List<Cliente> lista = jsonRepository.Leer();
-            return jsonRepository.BuscarTodos(c => c.nombre.Contains(texto, StringComparison.OrdinalIgnoreCase) ||
+            return jsonRepository.filtrar(c => c.nombre.Contains(texto, StringComparison.OrdinalIgnoreCase) ||
             c.identificacion.Contains(texto, StringComparison.OrdinalIgnoreCase));
         }
 

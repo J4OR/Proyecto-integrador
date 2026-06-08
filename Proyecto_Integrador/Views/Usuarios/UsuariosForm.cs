@@ -98,13 +98,7 @@ namespace Proyecto_Integrador.Views.Inicio
         private void txtBuscador_TextChanged_1(object sender, EventArgs e)
         {
             string filtro = txtBuscador.Text.ToLower();
-            List<Usuario> usuarios = usuarioController.ObtenerUsuarios();
-            var usuariosFiltrados = usuarios.FindAll(u =>
-                u.nombre.ToLower().Contains(filtro) ||
-                u.identificacion.ToLower().Contains(filtro) ||
-                u.rol.ToString().ToLower().Contains(filtro) ||
-                u.estado.ToString().ToLower().Contains(filtro)
-            );
+            var usuariosFiltrados = usuarioController.Buscador(filtro);
 
             if (usuarioLogueado.userName != "admin")
             {

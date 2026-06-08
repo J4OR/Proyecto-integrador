@@ -1,5 +1,6 @@
 ﻿using Proyecto_Integrador.Controller;
 using Proyecto_Integrador.Models;
+using Proyecto_Integrador.Security;
 using Proyecto_Integrador.Validator;
 using System;
 using System.Collections.Generic;
@@ -93,7 +94,7 @@ namespace Proyecto_Integrador.Views.Usuarios
 
             if (panelCambiarContraseña.Visible)
             {
-                usuario.password = txtContraseña.Text;
+                usuario.password = PasswordHasher.ToSha256(txtContraseña.Text);
             }
 
             usuarioController.EditarUsuario(usuario, usuario.id);

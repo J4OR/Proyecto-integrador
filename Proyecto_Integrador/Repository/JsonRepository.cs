@@ -91,7 +91,7 @@ namespace Proyecto_Integrador.Repository
                 Guardar(lista);
             }
         }
-        public List<T> BuscarTodos(Func<T, bool> criterio)
+        public List<T> filtrar(Func<T, bool> criterio)
         {
             List<T> lista = Leer();
             return lista.Where(item => criterio(item)).ToList();

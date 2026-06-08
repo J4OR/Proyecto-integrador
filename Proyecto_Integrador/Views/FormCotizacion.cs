@@ -83,16 +83,16 @@ namespace Proyecto_Integrador.Views.Utils
             }
         }
 
-        private void BtnDesdeTerreno_Click(object sender, EventArgs e)
-        {
-            double vol = _terCtrl.VolumenCalculado;
-            if (vol <= 0)
-            {
-                MessageBox.Show("Primero calcule el volumen en la sección de Terreno.", "Aviso");
-                return;
-            }
-            txtVolumen.Text = vol.ToString("F4");
-        }
+        //private void BtnDesdeTerreno_Click(object sender, EventArgs e)
+        //{
+        //    double vol = _terCtrl.VolumenCalculado;
+        //    if (vol <= 0)
+        //    {
+        //        MessageBox.Show("Primero calcule el volumen en la sección de Terreno.", "Aviso");
+        //        return;
+        //    }
+        //    txtVolumen.Text = vol.ToString("F4");
+        //}
 
         private void BtnGenerar_Click(object sender, EventArgs e)
         {
@@ -121,20 +121,20 @@ namespace Proyecto_Integrador.Views.Utils
                 return;
             }
 
-            var (ok, cot, msg) = _cotCtrl.GenerarCotizacion(cliente, material, vol, txtDescripcion.Text);
+            //var (ok, cot, msg) = _cotCtrl.GenerarCotizacion(cliente, material, vol, txtDescripcion.Text);
 
-            if (ok)
-            {
-                _cotizacionActual = cot;
-                lblMsg.ForeColor = Color.Green;
-                lblMsg.Text = msg;
-                RefrescarHistorial();
-            }
-            else
-            {
-                lblMsg.ForeColor = Color.Red;
-                lblMsg.Text = msg;
-            }
+            //if (ok)
+            //{
+            //    _cotizacionActual = cot;
+            //    lblMsg.ForeColor = Color.Green;
+            //    lblMsg.Text = msg;
+            //    RefrescarHistorial();
+            //}
+            //else
+            //{
+            //    lblMsg.ForeColor = Color.Red;
+            //    lblMsg.Text = msg;
+            //}
         }
 
         private void RefrescarHistorial()

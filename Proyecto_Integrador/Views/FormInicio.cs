@@ -61,7 +61,7 @@ namespace Proyecto_Integrador.Views
 
         private void AbrirTerreno(object sender, EventArgs e)
         {
-            AbrirEnContenido(new FormTerreno(_terrenoCtrl));
+            //AbrirEnContenido(new FormTerreno(_terrenoCtrl));
         }
 
         private void AbrirClientes(object sender, EventArgs e)

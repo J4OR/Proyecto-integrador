@@ -16,7 +16,7 @@ namespace Proyecto_Integrador.Views
 {
     public partial class LoginForm : Form
     {
-        UsuarioController controller = new UsuarioController();
+        private UsuarioController controller = new UsuarioController();
         private ControlsUtils resizer;
         public LoginForm()
         {
@@ -24,14 +24,11 @@ namespace Proyecto_Integrador.Views
             txtUser.ForeColor = Color.Black;
             txtPassword.ForeColor = Color.Black;
             txtUser.Text = "admin";
-            txtPassword.Text = "admin123";
+            txtPassword.Text = "admin123@";
             this.resizer = new ControlsUtils(this);
             this.WindowState = FormWindowState.Maximized;
 
-            pbOjo.Image = Properties.Resources.ojoAbierto;
-            lblError.Visible = false;
-            pbError.Visible = false;
-            pbError2.Visible = false;
+            
 
         }
         private void RestaurarPlaceholders()
@@ -43,6 +40,13 @@ namespace Proyecto_Integrador.Views
             txtPassword.ForeColor = SystemColors.InactiveCaption;
             txtPassword.PasswordChar = '\0';
             pbOjo.Image = Properties.Resources.ojoAbierto;
+        }
+        private void LoginForm_Load(object sender, EventArgs e)
+        {
+            pbOjo.Image = Properties.Resources.ojoAbierto;
+            lblError.Visible = false;
+            pbError.Visible = false;
+            pbError2.Visible = false;
         }
 
         private void LoginForm_Resize(object sender, EventArgs e)
@@ -184,6 +188,7 @@ namespace Proyecto_Integrador.Views
             }
         }
 
+        
     }
 
 }

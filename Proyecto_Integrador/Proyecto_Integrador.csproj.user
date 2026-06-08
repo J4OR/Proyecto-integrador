@@ -31,10 +31,10 @@
     <Compile Update="Views\FormClientes.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Views\FormTerreno.cs">
+    <Compile Update="Views\Terrenos\CalculoForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Views\Terreno\TerrenoForm.cs">
+    <Compile Update="Views\Terrenos\TerrenoForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Views\Usuarios\AgregarUsuarioForm.cs">

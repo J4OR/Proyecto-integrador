@@ -45,25 +45,25 @@ namespace Proyecto_Integrador.Controller
             }
         }
 
-        public (bool ok, Cotizacion cot, string mensaje) GenerarCotizacion(
-    Cliente cliente,
-    Material material,
-    double volumen,
-    string descripcion)
-        {
-            Terreno terreno = new Terreno();
-            terreno.volumen = volumen;
+    //    public (bool ok, Cotizacion cot, string mensaje) GenerarCotizacion(
+    //Cliente cliente,
+    //Material material,
+    //double volumen,
+    //string descripcion)
+    //    {
+    //        Terreno terreno = new Terreno();
+    //        terreno.volumen = volumen;
 
-            Cotizacion cot = new Cotizacion(
-                obtenerId(),
-                cliente,
-                terreno,
-                material
-            );
+    //        Cotizacion cot = new Cotizacion(
+    //            obtenerId(),
+    //            cliente,
+    //            terreno,
+    //            material
+    //        );
 
-            AgregarCotizacion(cot);
+        //    AgregarCotizacion(cot);
 
-            return (true, cot, "Cotización generada correctamente.");
-        }
+        //    return (true, cot, "Cotización generada correctamente.");
+        //}
     }
 }

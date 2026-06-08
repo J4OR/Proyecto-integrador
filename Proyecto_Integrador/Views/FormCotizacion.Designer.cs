@@ -87,7 +87,7 @@ namespace Proyecto_Integrador.Views.Utils
             btnDesdeTerreno.FlatStyle = FlatStyle.Flat;
             btnDesdeTerreno.BackColor = Color.SteelBlue;
             btnDesdeTerreno.ForeColor = Color.White;
-            btnDesdeTerreno.Click += new EventHandler(BtnDesdeTerreno_Click);
+            //btnDesdeTerreno.Click += new EventHandler(BtnDesdeTerreno_Click);
             pl.Controls.Add(btnDesdeTerreno);
             y += 38;
 

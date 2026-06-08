@@ -321,6 +321,7 @@
             FormBorderStyle = FormBorderStyle.FixedSingle;
             Name = "LoginForm";
             Text = "LoginForm";
+            Load += LoginForm_Load;
             Resize += LoginForm_Resize;
             ((System.ComponentModel.ISupportInitialize)pbOjo).EndInit();
             ((System.ComponentModel.ISupportInitialize)pbPassword).EndInit();

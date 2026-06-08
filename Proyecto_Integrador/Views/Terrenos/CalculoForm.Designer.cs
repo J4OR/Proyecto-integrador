@@ -1,6 +1,6 @@
-﻿namespace Proyecto_Integrador.Views.Inicio.Terreno
+﻿namespace Proyecto_Integrador.Views.Terrenos
 {
-    partial class TerrenoForm
+    partial class CalculoForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,9 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CalculoForm));
             panelTitulo = new Panel();
+            label6 = new Label();
             tablaPuntos = new DataGridView();
-            nupCota = new NumericUpDown();
+            nupAltura = new NumericUpDown();
             nupDx = new NumericUpDown();
             nupDy = new NumericUpDown();
             lblResultado = new Label();
@@ -42,8 +44,15 @@
             nupColumnas = new NumericUpDown();
             label5 = new Label();
             btnCalcular = new Button();
+            txtNombre = new TextBox();
+            label7 = new Label();
+            btnCrear = new Button();
+            btnDatos = new Button();
+            btnCancelar = new Button();
+            btnGuardar = new Button();
+            panelTitulo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)tablaPuntos).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)nupCota).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)nupAltura).BeginInit();
             ((System.ComponentModel.ISupportInitialize)nupDx).BeginInit();
             ((System.ComponentModel.ISupportInitialize)nupDy).BeginInit();
             ((System.ComponentModel.ISupportInitialize)nupFilas).BeginInit();
@@ -53,49 +62,64 @@
             // panelTitulo
             // 
             panelTitulo.BackColor = Color.FromArgb(0, 0, 64);
+            panelTitulo.Controls.Add(label6);
             panelTitulo.Location = new Point(0, 0);
             panelTitulo.Name = "panelTitulo";
             panelTitulo.Size = new Size(987, 63);
             panelTitulo.TabIndex = 6;
             // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.BackColor = Color.FromArgb(0, 0, 64);
+            label6.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label6.ForeColor = Color.White;
+            label6.Location = new Point(361, 17);
+            label6.Name = "label6";
+            label6.Size = new Size(195, 28);
+            label6.TabIndex = 8;
+            label6.Text = "Calculo de terrenos";
+            label6.TextAlign = ContentAlignment.MiddleCenter;
+            // 
             // tablaPuntos
             // 
+            tablaPuntos.AllowUserToAddRows = false;
             tablaPuntos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             tablaPuntos.Location = new Point(64, 133);
             tablaPuntos.Name = "tablaPuntos";
-            tablaPuntos.RowHeadersWidth = 51;
-            tablaPuntos.Size = new Size(700, 295);
+            tablaPuntos.RowHeadersWidth = 80;
+            tablaPuntos.Size = new Size(812, 295);
             tablaPuntos.TabIndex = 7;
             // 
-            // nupCota
+            // nupAltura
             // 
-            nupCota.DecimalPlaces = 2;
-            nupCota.Location = new Point(203, 495);
-            nupCota.Maximum = new decimal(new int[] { 9999, 0, 0, 0 });
-            nupCota.Minimum = new decimal(new int[] { 9999, 0, 0, int.MinValue });
-            nupCota.Name = "nupCota";
-            nupCota.Size = new Size(67, 27);
-            nupCota.TabIndex = 11;
+            nupAltura.DecimalPlaces = 2;
+            nupAltura.Location = new Point(203, 498);
+            nupAltura.Maximum = new decimal(new int[] { 9999, 0, 0, 0 });
+            nupAltura.Minimum = new decimal(new int[] { 9999, 0, 0, int.MinValue });
+            nupAltura.Name = "nupAltura";
+            nupAltura.Size = new Size(80, 27);
+            nupAltura.TabIndex = 11;
             // 
             // nupDx
             // 
             nupDx.DecimalPlaces = 2;
-            nupDx.Location = new Point(432, 495);
+            nupDx.Location = new Point(432, 499);
             nupDx.Maximum = new decimal(new int[] { 9999, 0, 0, 0 });
             nupDx.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
             nupDx.Name = "nupDx";
-            nupDx.Size = new Size(77, 27);
+            nupDx.Size = new Size(80, 27);
             nupDx.TabIndex = 12;
             nupDx.Value = new decimal(new int[] { 1, 0, 0, 0 });
             // 
             // nupDy
             // 
             nupDy.DecimalPlaces = 2;
-            nupDy.Location = new Point(667, 495);
+            nupDy.Location = new Point(667, 499);
             nupDy.Maximum = new decimal(new int[] { 9999, 0, 0, 0 });
             nupDy.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
             nupDy.Name = "nupDy";
-            nupDy.Size = new Size(78, 27);
+            nupDy.Size = new Size(80, 27);
             nupDy.TabIndex = 13;
             nupDy.Value = new decimal(new int[] { 1, 0, 0, 0 });
             // 
@@ -103,17 +127,18 @@
             // 
             lblResultado.AutoSize = true;
             lblResultado.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblResultado.ForeColor = Color.FromArgb(0, 0, 64);
             lblResultado.Location = new Point(64, 540);
             lblResultado.Name = "lblResultado";
-            lblResultado.Size = new Size(110, 31);
+            lblResultado.Size = new Size(116, 31);
             lblResultado.TabIndex = 14;
-            lblResultado.Text = "Volumen";
+            lblResultado.Text = "Volumen:";
             // 
             // label1
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label1.Location = new Point(64, 495);
+            label1.Location = new Point(64, 499);
             label1.Name = "label1";
             label1.Size = new Size(133, 23);
             label1.TabIndex = 15;
@@ -123,7 +148,7 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label2.Location = new Point(340, 495);
+            label2.Location = new Point(361, 499);
             label2.Name = "label2";
             label2.Size = new Size(63, 23);
             label2.TabIndex = 16;
@@ -133,7 +158,7 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label3.Location = new Point(588, 495);
+            label3.Location = new Point(598, 499);
             label3.Name = "label3";
             label3.Size = new Size(63, 23);
             label3.TabIndex = 17;
@@ -143,7 +168,7 @@
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label4.Location = new Point(64, 85);
+            label4.Location = new Point(477, 95);
             label4.Name = "label4";
             label4.Size = new Size(46, 23);
             label4.TabIndex = 18;
@@ -151,7 +176,7 @@
             // 
             // nupFilas
             // 
-            nupFilas.Location = new Point(110, 85);
+            nupFilas.Location = new Point(523, 94);
             nupFilas.Maximum = new decimal(new int[] { 20, 0, 0, 0 });
             nupFilas.Minimum = new decimal(new int[] { 3, 0, 0, 0 });
             nupFilas.Name = "nupFilas";
@@ -161,7 +186,7 @@
             // 
             // nupColumnas
             // 
-            nupColumnas.Location = new Point(293, 85);
+            nupColumnas.Location = new Point(706, 95);
             nupColumnas.Maximum = new decimal(new int[] { 20, 0, 0, 0 });
             nupColumnas.Minimum = new decimal(new int[] { 3, 0, 0, 0 });
             nupColumnas.Name = "nupColumnas";
@@ -173,7 +198,7 @@
             // 
             label5.AutoSize = true;
             label5.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label5.Location = new Point(201, 85);
+            label5.Location = new Point(610, 95);
             label5.Name = "label5";
             label5.Size = new Size(90, 23);
             label5.TabIndex = 20;
@@ -192,12 +217,101 @@
             btnCalcular.Text = "Calcular";
             btnCalcular.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnCalcular.UseVisualStyleBackColor = false;
+            btnCalcular.Click += btnCalcular_Click;
             // 
-            // TerrenoForm
+            // txtNombre
+            // 
+            txtNombre.Location = new Point(147, 91);
+            txtNombre.Name = "txtNombre";
+            txtNombre.Size = new Size(236, 27);
+            txtNombre.TabIndex = 23;
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label7.Location = new Point(64, 95);
+            label7.Name = "label7";
+            label7.Size = new Size(77, 23);
+            label7.TabIndex = 24;
+            label7.Text = "Nombre:";
+            // 
+            // btnCrear
+            // 
+            btnCrear.BackColor = Color.FromArgb(0, 0, 64);
+            btnCrear.FlatStyle = FlatStyle.Flat;
+            btnCrear.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnCrear.ForeColor = Color.White;
+            btnCrear.Location = new Point(788, 88);
+            btnCrear.Name = "btnCrear";
+            btnCrear.Size = new Size(88, 30);
+            btnCrear.TabIndex = 25;
+            btnCrear.Text = "Crear";
+            btnCrear.TextImageRelation = TextImageRelation.ImageBeforeText;
+            btnCrear.UseVisualStyleBackColor = false;
+            btnCrear.Click += btnCrear_Click;
+            // 
+            // btnDatos
+            // 
+            btnDatos.BackColor = Color.White;
+            btnDatos.FlatStyle = FlatStyle.Flat;
+            btnDatos.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnDatos.ForeColor = Color.Black;
+            btnDatos.Location = new Point(787, 446);
+            btnDatos.Name = "btnDatos";
+            btnDatos.Size = new Size(89, 33);
+            btnDatos.TabIndex = 26;
+            btnDatos.Text = "Datos";
+            btnDatos.TextImageRelation = TextImageRelation.ImageBeforeText;
+            btnDatos.UseVisualStyleBackColor = false;
+            btnDatos.Click += btnDatos_Click;
+            // 
+            // btnCancelar
+            // 
+            btnCancelar.BackColor = Color.White;
+            btnCancelar.FlatStyle = FlatStyle.Flat;
+            btnCancelar.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnCancelar.ForeColor = Color.Black;
+            btnCancelar.Image = (Image)resources.GetObject("btnCancelar.Image");
+            btnCancelar.Location = new Point(609, 558);
+            btnCancelar.Name = "btnCancelar";
+            btnCancelar.Padding = new Padding(10, 5, 0, 5);
+            btnCancelar.Size = new Size(121, 36);
+            btnCancelar.TabIndex = 52;
+            btnCancelar.Text = "Cancelar";
+            btnCancelar.TextImageRelation = TextImageRelation.ImageBeforeText;
+            btnCancelar.UseVisualStyleBackColor = false;
+            btnCancelar.Click += btnCancelar_Click;
+            // 
+            // btnGuardar
+            // 
+            btnGuardar.BackColor = Color.FromArgb(0, 0, 64);
+            btnGuardar.FlatAppearance.BorderSize = 0;
+            btnGuardar.FlatStyle = FlatStyle.Flat;
+            btnGuardar.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnGuardar.ForeColor = SystemColors.ButtonHighlight;
+            btnGuardar.Image = (Image)resources.GetObject("btnGuardar.Image");
+            btnGuardar.Location = new Point(746, 558);
+            btnGuardar.Name = "btnGuardar";
+            btnGuardar.Padding = new Padding(10, 5, 0, 5);
+            btnGuardar.Size = new Size(130, 36);
+            btnGuardar.TabIndex = 51;
+            btnGuardar.Text = " Guardar";
+            btnGuardar.TextAlign = ContentAlignment.MiddleRight;
+            btnGuardar.TextImageRelation = TextImageRelation.ImageBeforeText;
+            btnGuardar.UseVisualStyleBackColor = false;
+            // 
+            // CalculoForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(982, 626);
+            Controls.Add(btnCancelar);
+            Controls.Add(btnGuardar);
+            Controls.Add(btnDatos);
+            Controls.Add(btnCrear);
+            Controls.Add(label7);
+            Controls.Add(txtNombre);
             Controls.Add(btnCalcular);
             Controls.Add(nupColumnas);
             Controls.Add(label5);
@@ -209,14 +323,17 @@
             Controls.Add(lblResultado);
             Controls.Add(nupDy);
             Controls.Add(nupDx);
-            Controls.Add(nupCota);
+            Controls.Add(nupAltura);
             Controls.Add(tablaPuntos);
             Controls.Add(panelTitulo);
-            Name = "TerrenoForm";
-            Text = "TerrenoForm";
-            Load += this.TerrenoForm_Load;
+            Name = "CalculoForm";
+            Text = "CalculoForm";
+            Load += TerrenoForm_Load;
+            Resize += CalculoForm_Resize;
+            panelTitulo.ResumeLayout(false);
+            panelTitulo.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)tablaPuntos).EndInit();
-            ((System.ComponentModel.ISupportInitialize)nupCota).EndInit();
+            ((System.ComponentModel.ISupportInitialize)nupAltura).EndInit();
             ((System.ComponentModel.ISupportInitialize)nupDx).EndInit();
             ((System.ComponentModel.ISupportInitialize)nupDy).EndInit();
             ((System.ComponentModel.ISupportInitialize)nupFilas).EndInit();
@@ -229,7 +346,7 @@
 
         private Panel panelTitulo;
         private DataGridView tablaPuntos;
-        private NumericUpDown nupCota;
+        private NumericUpDown nupAltura;
         private NumericUpDown nupDx;
         private NumericUpDown nupDy;
         private Label lblResultado;
@@ -241,5 +358,12 @@
         private NumericUpDown nupColumnas;
         private Label label5;
         private Button btnCalcular;
+        private Label label6;
+        private TextBox txtNombre;
+        private Label label7;
+        private Button btnCrear;
+        private Button btnDatos;
+        private Button btnCancelar;
+        private Button btnGuardar;
     }
 }

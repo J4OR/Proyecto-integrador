@@ -5,101 +5,111 @@ using System.Text;
 namespace Proyecto_Integrador.Models
 {
     /// <summary>
-    /// Calcula el volumen de material a remover usando integración numérica doble
-    /// (Regla del Trapecio 2D / método de Simpson compuesto).
+    /// Clase encargada de calcular el volumen de corte de un terreno.
+    /// Usa el método numérico de Simpson 1/3 compuesto en dos dimensiones.
     /// </summary>
-
-    public class CalculadoraVolumen
+    public static class CalculadoraVolumen
     {
-        private readonly Terreno terreno;
-        private readonly int nPasos; // Divisiones de la cuadrícula
-
-        public double VolumenCalculado { get; set; }
-
-        public CalculadoraVolumen(Terreno terreno, int nPasos = 100)
+        /// <summary>
+        /// Calcula el volumen de corte de un terreno usando sus cotas,
+        /// la cota de corte y las distancias entre puntos en X y Y.
+        /// </summary>
+        /// <param name="terreno">
+        /// Terreno que contiene la matriz de cotas, la cota de corte,
+        /// la distancia dx y la distancia dy.
+        /// </param>
+        /// <returns>
+        /// Volumen aproximado de material que está por encima de la cota de corte.
+        /// </returns>
+        public static double CalcularSimpson(Terreno terreno)
         {
-            this.terreno = terreno; 
-            this.nPasos = nPasos;
+            double[,] z = ConvertirAMatriz(terreno.cotas);
+
+            return Simpson(
+                z,
+                terreno.alturaReferencia,
+                terreno.dx,
+                terreno.dy
+            );
         }
 
         /// <summary>
-        /// Interpola la altura Z para un punto (x, y) usando los puntos de terreno conocidos
-        /// mediante distancia inversa ponderada (IDW).
+        /// Convierte una matriz tipo double[][] en una matriz double[,].
+        /// Esto permite guardar las cotas fácilmente en JSON y luego usarlas
+        /// en el cálculo numérico.
         /// </summary>
-        private double InterpolarZ(double x, double y)
+        /// <param name="datos">Matriz de cotas en formato double[][].</param>
+        /// <returns>Matriz de cotas en formato double[,].</returns>
+        private static double[,] ConvertirAMatriz(double[][] datos)
         {
-            double sumaPeso = 0;
-            double sumaZPeso = 0;
-            double epsilon = 1e-10;
+            int filas = datos.Length;
+            int cols = datos[0].Length;
 
-            foreach (var p in terreno.puntos)
+            double[,] matriz = new double[filas, cols];
+
+            for (int i = 0; i < filas; i++)
             {
-                double dist = Math.Sqrt(Math.Pow(x - p.x, 2) + Math.Pow(y - p.y, 2));
-                if (dist < epsilon) return p.z; // Coincide exactamente con un punto
-                double peso = 1.0 / (dist * dist);
-                sumaPeso += peso;
-                sumaZPeso += peso * p.z;
-            }
-
-            return sumaPeso > 0 ? sumaZPeso / sumaPeso : terreno.NivelCorte;
-        }
-
-        /// <summary>
-        /// Calcula el volumen usando integración doble numérica (método del trapecio).
-        /// Integra f(x,y) = max(0, Z_terreno(x,y) - NivelCorte) sobre el área rectangular.
-        /// </summary>
-        public double Calcular()
-        {
-            if (terreno.puntos.Count == 0)
-            {
-                VolumenCalculado = 0;
-                return 0;
-            }
-
-            double dx = (terreno.XMax - terreno.XMin) / nPasos;
-            double dy = (terreno.YMax - terreno.YMin) / nPasos;
-
-            double suma = 0;
-
-            for (int i = 0; i <= nPasos; i++)
-            {
-                double x = terreno.XMin + i * dx;
-                double wx = (i == 0 || i == nPasos) ? 0.5 : 1.0; // Peso trapecio en X
-
-                for (int j = 0; j <= nPasos; j++)
+                for (int j = 0; j < cols; j++)
                 {
-                    double y = terreno.YMin + j * dy;
-                    double wy = (j == 0 || j == nPasos) ? 0.5 : 1.0; // Peso trapecio en Y
-
-                    double z = InterpolarZ(x, y);
-                    double altura = Math.Max(0, z - terreno.NivelCorte);
-
-                    suma += wx * wy * altura;
+                    matriz[i, j] = datos[i][j];
                 }
             }
-
-            VolumenCalculado = suma * dx * dy;
-            return VolumenCalculado;
-        }
-
-        /// <summary>
-        /// Genera una matriz de alturas para visualización gráfica.
-        /// </summary>
-        public double[,] GenerarMatrizAlturas(int resolucion = 20)
-        {
-            var matriz = new double[resolucion, resolucion];
-            double dx = (terreno.XMax - terreno.XMin) / (resolucion - 1);
-            double dy = (terreno.YMax - terreno.YMin) / (resolucion - 1);
-
-            for (int i = 0; i < resolucion; i++)
-                for (int j = 0; j < resolucion; j++)
-                {
-                    double x = terreno.XMin + i * dx;
-                    double y = terreno.YMin + j * dy;
-                    matriz[i, j] = Math.Max(0, InterpolarZ(x, y) - terreno.NivelCorte);
-                }
 
             return matriz;
+        }
+
+        /// <summary>
+        /// Aplica el método de Simpson 1/3 compuesto en dos dimensiones
+        /// para aproximar el volumen de corte del terreno.
+        /// </summary>
+        /// <param name="z">Matriz de cotas del terreno.</param>
+        /// <param name="cotaCorte">Nivel o cota base hasta donde se desea cortar.</param>
+        /// <param name="dx">Distancia entre puntos en la dirección X.</param>
+        /// <param name="dy">Distancia entre puntos en la dirección Y.</param>
+        /// <returns>Volumen aproximado de corte.</returns>
+        private static double Simpson(double[,] z, double cotaCorte, double dx, double dy)
+        {
+            int filas = z.GetLength(0);
+            int cols = z.GetLength(1);
+
+            if (filas < 3 || cols < 3)
+                throw new ArgumentException("Simpson 2D requiere mínimo 3x3 nodos.");
+
+            int ni = filas % 2 == 1 ? filas : filas - 1;
+            int nj = cols % 2 == 1 ? cols : cols - 1;
+
+            double volumen = 0;
+
+            for (int i = 0; i < ni; i++)
+            {
+                double wi = SimpsonPeso(i, ni);
+
+                for (int j = 0; j < nj; j++)
+                {
+                    double diferencia = z[i, j] - cotaCorte;
+
+                    if (diferencia > 0)
+                    {
+                        volumen += wi * SimpsonPeso(j, nj) * diferencia;
+                    }
+                }
+            }
+
+            return volumen * dx * dy / 9.0;
+        }
+
+        /// <summary>
+        /// Devuelve el peso de Simpson 1/3 para un punto de la grilla.
+        /// Los extremos tienen peso 1, los puntos impares peso 4
+        /// y los puntos pares interiores peso 2.
+        /// </summary>
+        /// <param name="k">Índice del punto dentro de la grilla.</param>
+        /// <param name="n">Cantidad total de puntos usados en esa dirección.</param>
+        /// <returns>Peso correspondiente según Simpson 1/3.</returns>
+        private static double SimpsonPeso(int k, int n)
+        {
+            if (k == 0 || k == n - 1) return 1.0;
+            return k % 2 == 1 ? 4.0 : 2.0;
         }
     }
 }

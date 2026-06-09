@@ -175,6 +175,12 @@ namespace Proyecto_Integrador.Views.Terrenos
 
         private void btnGraficar_Click(object sender, EventArgs e)
         {
+            if (alturasGlobal == null)
+            {
+                MessageBox.Show("Primero realiza el cálculo del volumen antes de graficar.",
+                                "Sin datos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
 
             GraficaForm graficaForm = new GraficaForm(alturasGlobal, (double)nupAltura.Value, (double)nupDx.Value, (double)nupDy.Value);
             graficaForm.ShowDialog();

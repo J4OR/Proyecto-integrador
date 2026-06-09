@@ -14,6 +14,13 @@ namespace Proyecto_Integrador.Models
         public double costoTotal { get; set; }
         public DateTime fecha { get; set; }
         public bool estado { get; set; }
+        public string estadoTexto
+        {
+            get
+            {
+                return estado ? "Activo" : "Inactivo";
+            }
+        }
 
 
         public Cotizacion(string id, Cliente cliente, Terreno terreno, Material material, bool estado = true)

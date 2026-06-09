@@ -28,12 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CotizacionesForm));
             btnAgregar = new Button();
-            tablaUsuarios = new DataGridView();
+            tablaCotizaciones = new DataGridView();
             Id = new DataGridViewTextBoxColumn();
+            Fecha = new DataGridViewTextBoxColumn();
             Cliente = new DataGridViewTextBoxColumn();
             Terreno = new DataGridViewTextBoxColumn();
             Material = new DataGridViewTextBoxColumn();
@@ -41,13 +42,13 @@
             Estado = new DataGridViewTextBoxColumn();
             Editar = new DataGridViewButtonColumn();
             Accion = new DataGridViewButtonColumn();
-            txtBuscador = new TextBox();
+            txtBuscar = new TextBox();
             label1 = new Label();
             panelTitulo = new Panel();
-            filtradorFecha = new DateTimePicker();
-            dateTimePicker1 = new DateTimePicker();
-            button1 = new Button();
-            ((System.ComponentModel.ISupportInitialize)tablaUsuarios).BeginInit();
+            FechaInicio = new DateTimePicker();
+            FechaFin = new DateTimePicker();
+            btnBuscar = new Button();
+            ((System.ComponentModel.ISupportInitialize)tablaCotizaciones).BeginInit();
             SuspendLayout();
             // 
             // btnAgregar
@@ -65,17 +66,17 @@
             btnAgregar.UseVisualStyleBackColor = false;
             btnAgregar.Click += btnAgregar_Click;
             // 
-            // tablaUsuarios
+            // tablaCotizaciones
             // 
-            tablaUsuarios.AllowUserToAddRows = false;
-            tablaUsuarios.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            tablaUsuarios.Columns.AddRange(new DataGridViewColumn[] { Id, Cliente, Terreno, Material, Total, Estado, Editar, Accion });
-            tablaUsuarios.Location = new Point(50, 172);
-            tablaUsuarios.Name = "tablaUsuarios";
-            tablaUsuarios.RowHeadersWidth = 51;
-            tablaUsuarios.Size = new Size(1259, 497);
-            tablaUsuarios.TabIndex = 9;
-            tablaUsuarios.CellContentClick += tablaUsuarios_CellContentClick;
+            tablaCotizaciones.AllowUserToAddRows = false;
+            tablaCotizaciones.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            tablaCotizaciones.Columns.AddRange(new DataGridViewColumn[] { Id, Fecha, Cliente, Terreno, Material, Total, Estado, Editar, Accion });
+            tablaCotizaciones.Location = new Point(50, 172);
+            tablaCotizaciones.Name = "tablaCotizaciones";
+            tablaCotizaciones.RowHeadersWidth = 51;
+            tablaCotizaciones.Size = new Size(1259, 497);
+            tablaCotizaciones.TabIndex = 9;
+            tablaCotizaciones.CellClick += tablaCotizaciones_CellClick;
             // 
             // Id
             // 
@@ -83,6 +84,13 @@
             Id.MinimumWidth = 6;
             Id.Name = "Id";
             Id.Width = 125;
+            // 
+            // Fecha
+            // 
+            Fecha.HeaderText = "Fecha";
+            Fecha.MinimumWidth = 6;
+            Fecha.Name = "Fecha";
+            Fecha.Width = 125;
             // 
             // Cliente
             // 
@@ -121,12 +129,12 @@
             // 
             // Editar
             // 
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.BackColor = Color.FromArgb(0, 0, 64);
-            dataGridViewCellStyle3.Font = new Font("Microsoft Sans Serif", 7.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle3.ForeColor = Color.White;
-            dataGridViewCellStyle3.SelectionBackColor = Color.FromArgb(0, 0, 64);
-            Editar.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = Color.FromArgb(0, 0, 64);
+            dataGridViewCellStyle1.Font = new Font("Microsoft Sans Serif", 7.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle1.ForeColor = Color.White;
+            dataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(0, 0, 64);
+            Editar.DefaultCellStyle = dataGridViewCellStyle1;
             Editar.FlatStyle = FlatStyle.Flat;
             Editar.HeaderText = "Editar";
             Editar.MinimumWidth = 6;
@@ -137,24 +145,25 @@
             // 
             // Accion
             // 
-            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.ForeColor = Color.Black;
-            Accion.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.ForeColor = Color.Black;
+            Accion.DefaultCellStyle = dataGridViewCellStyle2;
             Accion.FlatStyle = FlatStyle.Flat;
             Accion.HeaderText = "Activar/Desactivar";
             Accion.MinimumWidth = 6;
             Accion.Name = "Accion";
             Accion.Text = "Activar/Desactivar";
             Accion.UseColumnTextForButtonValue = true;
-            Accion.Width = 125;
+            Accion.Width = 140;
             // 
-            // txtBuscador
+            // txtBuscar
             // 
-            txtBuscador.ForeColor = Color.Black;
-            txtBuscador.Location = new Point(50, 118);
-            txtBuscador.Name = "txtBuscador";
-            txtBuscador.Size = new Size(235, 27);
-            txtBuscador.TabIndex = 8;
+            txtBuscar.ForeColor = Color.Black;
+            txtBuscar.Location = new Point(50, 118);
+            txtBuscar.Name = "txtBuscar";
+            txtBuscar.Size = new Size(235, 27);
+            txtBuscar.TabIndex = 8;
+            txtBuscar.TextChanged += txtBuscar_TextChanged;
             // 
             // label1
             // 
@@ -177,45 +186,46 @@
             panelTitulo.Size = new Size(1418, 63);
             panelTitulo.TabIndex = 10;
             // 
-            // filtradorFecha
+            // FechaInicio
             // 
-            filtradorFecha.Location = new Point(402, 118);
-            filtradorFecha.Name = "filtradorFecha";
-            filtradorFecha.Size = new Size(292, 27);
-            filtradorFecha.TabIndex = 12;
+            FechaInicio.Location = new Point(402, 118);
+            FechaInicio.Name = "FechaInicio";
+            FechaInicio.Size = new Size(292, 27);
+            FechaInicio.TabIndex = 12;
             // 
-            // dateTimePicker1
+            // FechaFin
             // 
-            dateTimePicker1.Location = new Point(725, 118);
-            dateTimePicker1.Name = "dateTimePicker1";
-            dateTimePicker1.Size = new Size(301, 27);
-            dateTimePicker1.TabIndex = 13;
+            FechaFin.Location = new Point(725, 118);
+            FechaFin.Name = "FechaFin";
+            FechaFin.Size = new Size(301, 27);
+            FechaFin.TabIndex = 13;
             // 
-            // button1
+            // btnBuscar
             // 
-            button1.Image = (Image)resources.GetObject("button1.Image");
-            button1.Location = new Point(1032, 116);
-            button1.Name = "button1";
-            button1.Size = new Size(42, 30);
-            button1.TabIndex = 14;
-            button1.UseVisualStyleBackColor = true;
+            btnBuscar.Image = (Image)resources.GetObject("btnBuscar.Image");
+            btnBuscar.Location = new Point(1032, 116);
+            btnBuscar.Name = "btnBuscar";
+            btnBuscar.Size = new Size(42, 30);
+            btnBuscar.TabIndex = 14;
+            btnBuscar.UseVisualStyleBackColor = true;
+            btnBuscar.Click += btnBuscar_Click;
             // 
             // CotizacionesForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1410, 708);
-            Controls.Add(button1);
-            Controls.Add(dateTimePicker1);
-            Controls.Add(filtradorFecha);
+            Controls.Add(btnBuscar);
+            Controls.Add(FechaFin);
+            Controls.Add(FechaInicio);
             Controls.Add(btnAgregar);
-            Controls.Add(tablaUsuarios);
-            Controls.Add(txtBuscador);
+            Controls.Add(tablaCotizaciones);
+            Controls.Add(txtBuscar);
             Controls.Add(label1);
             Controls.Add(panelTitulo);
             Name = "CotizacionesForm";
             Text = "CotizacionesForm";
-            ((System.ComponentModel.ISupportInitialize)tablaUsuarios).EndInit();
+            ((System.ComponentModel.ISupportInitialize)tablaCotizaciones).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -223,12 +233,15 @@
         #endregion
 
         private Button btnAgregar;
-        private DataGridView tablaUsuarios;
-        private TextBox txtBuscador;
+        private DataGridView tablaCotizaciones;
+        private TextBox txtBuscar;
         private Label label1;
         private Panel panelTitulo;
-        private DateTimePicker filtradorFecha;
+        private DateTimePicker FechaInicio;
+        private DateTimePicker FechaFin;
+        private Button btnBuscar;
         private DataGridViewTextBoxColumn Id;
+        private DataGridViewTextBoxColumn Fecha;
         private DataGridViewTextBoxColumn Cliente;
         private DataGridViewTextBoxColumn Terreno;
         private DataGridViewTextBoxColumn Material;
@@ -236,7 +249,5 @@
         private DataGridViewTextBoxColumn Estado;
         private DataGridViewButtonColumn Editar;
         private DataGridViewButtonColumn Accion;
-        private DateTimePicker dateTimePicker1;
-        private Button button1;
     }
 }

@@ -40,7 +40,7 @@ namespace Proyecto_Integrador.Models
         /// </summary>
         /// <param name="datos">Matriz de cotas en formato double[][].</param>
         /// <returns>Matriz de cotas en formato double[,].</returns>
-        private static double[,] ConvertirAMatriz(double[][] datos)
+        public static double[,] ConvertirAMatriz(double[][] datos)
         {
             int filas = datos.Length;
             int cols = datos[0].Length;

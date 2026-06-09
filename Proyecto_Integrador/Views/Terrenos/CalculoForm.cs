@@ -16,13 +16,14 @@ namespace Proyecto_Integrador.Views.Terrenos
     {
         private TerrenoController terrenoController = new TerrenoController();
         private ControlsUtils resizer;
-        private bool cargado = false;
+        double[][] alturasGlobal;
         public CalculoForm()
         {
             InitializeComponent();
             this.resizer = new ControlsUtils(this);
 
         }
+
 
         private void crearTabla(int filas, int columnas)
         {
@@ -56,7 +57,6 @@ namespace Proyecto_Integrador.Views.Terrenos
             crearTabla(3, 3);
             lblResultado.Text = "";
             tablaPuntos.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            cargado = true;
         }
 
         private void btnCrear_Click(object sender, EventArgs e)
@@ -156,6 +156,7 @@ namespace Proyecto_Integrador.Views.Terrenos
                 return;
             }
             lblResultado.Text = $"Volumen = {volumen:F2} m³";
+            alturasGlobal = alturas;
         }
         
         private void CalculoForm_Resize(object sender, EventArgs e)
@@ -171,7 +172,8 @@ namespace Proyecto_Integrador.Views.Terrenos
 
         private void btnGraficar_Click(object sender, EventArgs e)
         {
-            GraficaForm graficaForm = new GraficaForm();
+  
+            GraficaForm graficaForm = new GraficaForm(alturasGlobal, (double) nupAltura.Value , (double) nupDx.Value, (double)nupDy.Value);
             graficaForm.ShowDialog();
         }
     }

@@ -13,6 +13,9 @@
     <Compile Update="Views\Cotizaciones\CotizacionesForm.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Views\Cotizaciones\FormAddCotizacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Views\Inicio\FormDashboard.cs">
       <SubType>Form</SubType>
     </Compile>

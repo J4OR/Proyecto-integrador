@@ -23,8 +23,8 @@ namespace Proyecto_Integrador.Views
             InitializeComponent();
             txtUser.ForeColor = Color.Black;
             txtPassword.ForeColor = Color.Black;
-            txtUser.Text = "admin";
-            txtPassword.Text = "admin123@";
+            txtUser.Text = "deider";
+            txtPassword.Text = "123456*";
 
             this.resizer = new ControlsUtils(this);
             this.WindowState = FormWindowState.Maximized;

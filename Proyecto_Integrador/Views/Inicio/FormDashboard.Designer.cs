@@ -219,6 +219,7 @@
             btnCotizaciones.TextAlign = ContentAlignment.MiddleLeft;
             btnCotizaciones.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnCotizaciones.UseVisualStyleBackColor = false;
+            btnCotizaciones.Click += btnCotizaciones_Click;
             // 
             // btnTerrenos
             // 

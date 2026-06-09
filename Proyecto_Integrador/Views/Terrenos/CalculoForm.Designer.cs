@@ -52,6 +52,8 @@
             btnGuardar = new Button();
             btnGraficar = new Button();
             lblValidacion = new Label();
+            btnExcavaciones = new Button();
+            btnMontañas = new Button();
             panelTitulo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)tablaPuntos).BeginInit();
             ((System.ComponentModel.ISupportInitialize)nupAltura).BeginInit();
@@ -310,7 +312,7 @@
             btnGraficar.FlatStyle = FlatStyle.Flat;
             btnGraficar.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnGraficar.ForeColor = Color.White;
-            btnGraficar.Location = new Point(437, 468);
+            btnGraficar.Location = new Point(239, 468);
             btnGraficar.Name = "btnGraficar";
             btnGraficar.Size = new Size(119, 33);
             btnGraficar.TabIndex = 53;
@@ -330,11 +332,43 @@
             lblValidacion.Text = "Ingresar el nombre del terreno";
             lblValidacion.Visible = false;
             // 
+            // btnExcavaciones
+            // 
+            btnExcavaciones.BackColor = Color.White;
+            btnExcavaciones.FlatStyle = FlatStyle.Flat;
+            btnExcavaciones.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnExcavaciones.ForeColor = Color.Black;
+            btnExcavaciones.Location = new Point(490, 468);
+            btnExcavaciones.Name = "btnExcavaciones";
+            btnExcavaciones.Size = new Size(122, 33);
+            btnExcavaciones.TabIndex = 55;
+            btnExcavaciones.Text = "Excavaciones";
+            btnExcavaciones.TextImageRelation = TextImageRelation.ImageBeforeText;
+            btnExcavaciones.UseVisualStyleBackColor = false;
+            btnExcavaciones.Click += btnExcavaciones_Click;
+            // 
+            // btnMontañas
+            // 
+            btnMontañas.BackColor = Color.White;
+            btnMontañas.FlatStyle = FlatStyle.Flat;
+            btnMontañas.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnMontañas.ForeColor = Color.Black;
+            btnMontañas.Location = new Point(639, 468);
+            btnMontañas.Name = "btnMontañas";
+            btnMontañas.Size = new Size(117, 33);
+            btnMontañas.TabIndex = 56;
+            btnMontañas.Text = "Montañas";
+            btnMontañas.TextImageRelation = TextImageRelation.ImageBeforeText;
+            btnMontañas.UseVisualStyleBackColor = false;
+            btnMontañas.Click += btnMontañas_Click;
+            // 
             // CalculoForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(982, 664);
+            Controls.Add(btnMontañas);
+            Controls.Add(btnExcavaciones);
             Controls.Add(lblValidacion);
             Controls.Add(btnGraficar);
             Controls.Add(btnCancelar);
@@ -398,5 +432,7 @@
         private Button btnGuardar;
         private Button btnGraficar;
         private Label lblValidacion;
+        private Button btnExcavaciones;
+        private Button btnMontañas;
     }
 }

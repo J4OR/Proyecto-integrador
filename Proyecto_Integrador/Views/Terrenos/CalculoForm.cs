@@ -7,7 +7,9 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Net;
 using System.Text;
+using System.Windows.Documents;
 using System.Windows.Forms;
 
 namespace Proyecto_Integrador.Views.Terrenos
@@ -16,7 +18,6 @@ namespace Proyecto_Integrador.Views.Terrenos
     {
         private TerrenoController terrenoController = new TerrenoController();
         private ControlsUtils resizer;
-        double[][] alturasGlobal;
         double volumenTerreno;
         public CalculoForm()
         {
@@ -67,55 +68,49 @@ namespace Proyecto_Integrador.Views.Terrenos
 
         private void btnDatos_Click(object sender, EventArgs e)
         {
-            nupAltura.Value = 10;
-            nupDx.Value = 5;
-            nupDy.Value = 5;
+            var random = new Random();
+
+            // Tipo de terreno aleatorio
+            string[] tipos = { "Plano", "Montañoso", "Excavación", "Ondulado" };
+            string tipo = tipos[random.Next(tipos.Length)];
 
             int filas = tablaPuntos.Rows.Count;
             int cols = tablaPuntos.Columns.Count;
-
-            // Gaussiana 2D: simula un pico de montaña
-            //   base  = 4.5 m  (zona de valle, bajo h=10)
-            //   pico  = 4.5+17 = 21.5 m  (cima, 11.5 m sobre h)
-            //   centro ligeramente descentrado para mayor realismo
-            const double baseZ = 4.5;
-            const double ampl = 17.0;
-            const double cx = 0.45, cy = 0.40;
-            const double sx = 0.28, sy = 0.22;
 
             for (int i = 0; i < filas; i++)
             {
                 for (int j = 0; j < cols; j++)
                 {
-                    double u = cols > 1 ? (double)j / (cols - 1) : 0.5;
-                    double v = filas > 1 ? (double)i / (filas - 1) : 0.5;
-                    double g = ampl * Math.Exp(
-                        -((u - cx) * (u - cx) / (2 * sx * sx)
-                        + (v - cy) * (v - cy) / (2 * sy * sy)));
-                    double valor = baseZ + g;
-                    tablaPuntos.Rows[i].Cells[j].Value = valor.ToString("F2",
-                        System.Globalization.CultureInfo.InvariantCulture);
-                    tablaPuntos.Rows[i].Cells[j].Style.BackColor = System.Drawing.Color.White;
-                }
+                    double valor = tipo switch
+                    {
+                        "Plano" => 2.0 + random.NextDouble() * 2.0,           // 2 - 4 m
+                        "Montañoso" => 5.0 + random.NextDouble() * 20.0,          // 5 - 25 m
+                        "Excavación" => -(1.0 + random.NextDouble() * 8.0),        // -1 a -9 m
+                        "Ondulado" => 3.0 + random.NextDouble() * 10.0,          // 3 - 13 m
+                        _ => random.NextDouble() * 10.0
+                    };
 
+                    tablaPuntos.Rows[i].Cells[j].Value =
+                        valor.ToString("F2", System.Globalization.CultureInfo.InvariantCulture);
+                    tablaPuntos.Rows[i].Cells[j].Style.BackColor = Color.White;
+                }
             }
+
+            lblResultado.Text = $"Datos aleatorios generados — Tipo: {tipo}";
+            lblResultado.ForeColor = Color.DarkBlue;
+            volumenTerreno = 0;
         }
 
-
-
-        private void btnCalcular_Click(object sender, EventArgs e)
+        private double[][]? LeerAlturas()
         {
             tablaPuntos.CurrentCell = null;
             int filas = tablaPuntos.Rows.Count;
             int columnas = tablaPuntos.Columns.Count;
             double[][] alturas = new double[filas][];
             bool error = false;
-            double volumen;
 
             for (int i = 0; i < filas; i++)
-            {
                 alturas[i] = new double[columnas];
-            }
 
             for (int i = 0; i < filas; i++)
             {
@@ -125,17 +120,24 @@ namespace Proyecto_Integrador.Views.Terrenos
                     if (!double.TryParse(celda, System.Globalization.NumberStyles.Any,
                             System.Globalization.CultureInfo.InvariantCulture, out double valor))
                     {
-                        tablaPuntos.Rows[i].Cells[j].Style.BackColor = System.Drawing.Color.LightCoral;
+                        tablaPuntos.Rows[i].Cells[j].Style.BackColor = Color.LightCoral;
                         error = true;
                     }
                     else
                     {
-                        tablaPuntos.Rows[i].Cells[j].Style.BackColor = System.Drawing.Color.White;
+                        tablaPuntos.Rows[i].Cells[j].Style.BackColor = Color.White;
                         alturas[i][j] = valor;
                     }
                 }
             }
-            if (error)
+
+            return error ? null : alturas;
+        }
+
+        private void btnCalcular_Click(object sender, EventArgs e)
+        {
+            double[][] alturas = LeerAlturas();
+            if (alturas == null)
             {
                 lblResultado.Text = "Error: celdas inválidas marcadas en rojo.";
                 lblResultado.ForeColor = System.Drawing.Color.Crimson;
@@ -144,22 +146,18 @@ namespace Proyecto_Integrador.Views.Terrenos
             try
             {
                 Terreno terreno = new Terreno(alturas, (double)nupDx.Value, (double)nupDy.Value, (double)nupAltura.Value);
-                volumen = terrenoController.CalcularVolumen(terreno);
-                terreno.volumen = volumen;
+                double volumen = terrenoController.CalcularVolumen(terreno);
 
+                volumenTerreno = volumen;
 
+                lblResultado.Text = $"Volumen = {volumen:F2} m³";
                 lblResultado.ForeColor = Color.DarkGreen;
             }
             catch (ArgumentException ex)
             {
                 lblResultado.Text = "Error: " + ex.Message;
-                lblResultado.ForeColor = System.Drawing.Color.Crimson;
-                return;
+                lblResultado.ForeColor = Color.Crimson;
             }
-
-            lblResultado.Text = $"Volumen = {volumen:F2} m³";
-            alturasGlobal = alturas;
-            volumenTerreno = volumen;
         }
 
         private void CalculoForm_Resize(object sender, EventArgs e)
@@ -175,38 +173,27 @@ namespace Proyecto_Integrador.Views.Terrenos
 
         private void btnGraficar_Click(object sender, EventArgs e)
         {
-            if (alturasGlobal == null)
-            {
-                MessageBox.Show("Primero realiza el cálculo del volumen antes de graficar.",
-                                "Sin datos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
+            double[][] alturas = LeerAlturas();
 
-            GraficaForm graficaForm = new GraficaForm(alturasGlobal, (double)nupAltura.Value, (double)nupDx.Value, (double)nupDy.Value);
+            GraficaForm graficaForm = new GraficaForm(alturas, (double)nupAltura.Value, (double)nupDx.Value, (double)nupDy.Value);
             graficaForm.ShowDialog();
         }
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            lblValidacion.Visible = false;
+            double[][] altura = LeerAlturas();
 
-            if (string.IsNullOrWhiteSpace(txtNombre.Text))
-            {
-                lblValidacion.Visible = true;
-                return;
-            }
+            lblValidacion.Visible = string.IsNullOrWhiteSpace(txtNombre.Text);
+            if (lblValidacion.Visible) return;
 
             if (volumenTerreno == 0)
             {
                 lblResultado.Text = "Calcula el volumen";
                 lblResultado.ForeColor = Color.Red;
                 return;
-              
             }
 
-            
-            lblValidacion.Visible = false;
-            Terreno terreno = new Terreno(alturasGlobal, (double)nupDx.Value, (double)nupDy.Value,
+            Terreno terreno = new Terreno(altura, (double)nupDx.Value, (double)nupDy.Value,
             (double)nupAltura.Value, volumenTerreno, txtNombre.Text);
 
             terrenoController.AgregarTerreno(terreno);
@@ -215,7 +202,101 @@ namespace Proyecto_Integrador.Views.Terrenos
 
             FormDashboard principal = (FormDashboard)this.ParentForm;
             principal.AbrirFormularioEnPanel(new TerrenoForm(principal));
-            
+
+        }
+
+
+        private void btnExcavaciones_Click(object sender, EventArgs e)
+        {
+            var ejemplos = new Dictionary<string, Func<int, int, double>>()
+            {
+                ["Zanja rectangular"] = (i, j) => 3.0,   // profundidad uniforme
+                ["Pozo circular"] = (i, j) =>
+                {
+                    double u = nupColumnas.Value > 1 ? (double)j / ((double)nupColumnas.Value - 1) - 0.5 : 0;
+                    double v = nupFilas.Value > 1 ? (double)i / ((double)nupFilas.Value - 1) - 0.5 : 0;
+                    double r = Math.Sqrt(u * u + v * v);
+                    return r < 0.35 ? 5.0 + 3.0 * (0.35 - r) / 0.35 : 0.5;  // fondo cónico
+                },
+                ["Corte en talud"] = (i, j) =>
+                {
+                    double u = nupColumnas.Value > 1 ? (double)j / ((double)nupColumnas.Value - 1) : 0;
+                    return 1.0 + 6.0 * u;   // profundidad crece de izquierda a derecha
+                }
+            };
+
+            CargarEjemplo(ejemplos);
+
+        }
+
+        private void btnMontañas_Click(object sender, EventArgs e)
+        {
+            var ejemplos = new Dictionary<string, Func<int, int, double>>()
+            {
+                ["Montaña gaussiana"] = (i, j) =>
+                {
+                    double u = nupColumnas.Value > 1 ? (double)j / ((double)nupColumnas.Value - 1) : 0.5;
+                    double v = nupFilas.Value > 1 ? (double)i / ((double)nupFilas.Value - 1) : 0.5;
+                    return 2.0 + 18.0 * Math.Exp(-((u - 0.5) * (u - 0.5) + (v - 0.5) * (v - 0.5)) / 0.08);
+                },
+                ["Loma alargada"] = (i, j) =>
+                {
+                    double v = nupFilas.Value > 1 ? (double)i / ((double)nupFilas.Value - 1) : 0.5;
+                    return 3.0 + 12.0 * Math.Exp(-(v - 0.5) * (v - 0.5) / 0.05);  // cresta horizontal
+                },
+                ["Terreno ondulado"] = (i, j) =>
+                {
+                    double u = nupColumnas.Value > 1 ? (double)j / ((double)nupColumnas.Value - 1) : 0.5;
+                    double v = nupFilas.Value > 1 ? (double)i / ((double)nupFilas.Value - 1) : 0.5;
+                    return 5.0 + 3.0 * Math.Sin(u * Math.PI * 2) + 2.0 * Math.Cos(v * Math.PI * 2);
+                }
+            };
+
+            CargarEjemplo(ejemplos);
+        }
+        // ── Método compartido: muestra lista y rellena la tabla ───────────────────
+        private void CargarEjemplo(Dictionary<string, Func<int, int, double>> ejemplos)
+        {
+            // Construir mensaje de selección
+            var sb = new System.Text.StringBuilder("Selecciona un ejemplo:\n\n");
+            var keys = new List<string>(ejemplos.Keys);
+            for (int k = 0; k < keys.Count; k++)
+                sb.AppendLine($"  {k + 1}. {keys[k]}");
+
+            string input = Microsoft.VisualBasic.Interaction.InputBox(
+                sb.ToString(), "Ejemplos predefinidos", "1");
+
+            if (!int.TryParse(input.Trim(), out int opcion) || opcion < 1 || opcion > keys.Count)
+            {
+                if (!string.IsNullOrWhiteSpace(input))   // silencio si el usuario canceló
+                    MessageBox.Show("Opción inválida.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            string nombreElegido = keys[opcion - 1];
+            var formula = ejemplos[nombreElegido];
+
+            nupAltura.Value = 10;
+            nupDx.Value = 5;
+            nupDy.Value = 5;
+
+            int filas = tablaPuntos.Rows.Count;
+            int cols = tablaPuntos.Columns.Count;
+
+            for (int i = 0; i < filas; i++)
+            {
+                for (int j = 0; j < cols; j++)
+                {
+                    double valor = formula(i, j);
+                    tablaPuntos.Rows[i].Cells[j].Value =
+                        valor.ToString("F2", System.Globalization.CultureInfo.InvariantCulture);
+                    tablaPuntos.Rows[i].Cells[j].Style.BackColor = Color.White;
+                }
+            }
+
+            // Limpiar resultados anteriores
+            lblResultado.Text = "";
+            volumenTerreno = 0;
         }
     }
 }

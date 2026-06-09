@@ -9,7 +9,7 @@ namespace Proyecto_Integrador.Models
     {
         public string id { get; set; }
         public Cotizacion cotizacion { get; set; } 
-        public DateTime fechaEmision { get; set; }
+        public DateTime fecha { get; set; }
         public bool estado { get; set; }
 
         [JsonConstructor]
@@ -17,7 +17,7 @@ namespace Proyecto_Integrador.Models
         {
             this.id = id;
             this.cotizacion = cotizacion;
-            this.fechaEmision = fechaEmision;
+            this.fecha = fecha;
             this.estado = true;
         }
     }

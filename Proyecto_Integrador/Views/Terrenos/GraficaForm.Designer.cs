@@ -15,198 +15,208 @@ namespace Proyecto_Integrador.Views.Terrenos
 
         private void InitializeComponent()
         {
-            this.components      = new System.ComponentModel.Container();
-            this.panelControles  = new System.Windows.Forms.Panel();
-            this.btnReset        = new System.Windows.Forms.Button();
-            this.chkEtiquetas    = new System.Windows.Forms.CheckBox();
-            this.chkPuntos       = new System.Windows.Forms.CheckBox();
-            this.lblDyVal        = new System.Windows.Forms.Label();
-            this.trkDy           = new System.Windows.Forms.TrackBar();
-            this.lblDy           = new System.Windows.Forms.Label();
-            this.lblDxVal        = new System.Windows.Forms.Label();
-            this.trkDx           = new System.Windows.Forms.TrackBar();
-            this.lblDx           = new System.Windows.Forms.Label();
-            this.lblHVal         = new System.Windows.Forms.Label();
-            this.trkH            = new System.Windows.Forms.TrackBar();
-            this.lblH            = new System.Windows.Forms.Label();
-            this.host            = new System.Windows.Forms.Integration.ElementHost();
-            this.panelControles.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.trkDy)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trkDx)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trkH)).BeginInit();
-            this.SuspendLayout();
-            //
+            panelControles = new Panel();
+            btnReset = new Button();
+            chkEtiquetas = new CheckBox();
+            chkPuntos = new CheckBox();
+            lblDyVal = new Label();
+            trkDy = new TrackBar();
+            lblDy = new Label();
+            lblDxVal = new Label();
+            trkDx = new TrackBar();
+            lblDx = new Label();
+            lblHVal = new Label();
+            trkH = new TrackBar();
+            lblH = new Label();
+            host = new System.Windows.Forms.Integration.ElementHost();
+            panelControles.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)trkDy).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)trkDx).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)trkH).BeginInit();
+            SuspendLayout();
+            // 
             // panelControles
-            //
-            this.panelControles.BackColor = System.Drawing.Color.FromArgb(30, 30, 45);
-            this.panelControles.Controls.Add(this.btnReset);
-            this.panelControles.Controls.Add(this.chkEtiquetas);
-            this.panelControles.Controls.Add(this.chkPuntos);
-            this.panelControles.Controls.Add(this.lblDyVal);
-            this.panelControles.Controls.Add(this.trkDy);
-            this.panelControles.Controls.Add(this.lblDy);
-            this.panelControles.Controls.Add(this.lblDxVal);
-            this.panelControles.Controls.Add(this.trkDx);
-            this.panelControles.Controls.Add(this.lblDx);
-            this.panelControles.Controls.Add(this.lblHVal);
-            this.panelControles.Controls.Add(this.trkH);
-            this.panelControles.Controls.Add(this.lblH);
-            this.panelControles.Dock     = System.Windows.Forms.DockStyle.Right;
-            this.panelControles.Name     = "panelControles";
-            this.panelControles.Size     = new System.Drawing.Size(220, 700);
-            this.panelControles.TabIndex = 1;
-            //
-            // lblH
-            //
-            this.lblH.AutoSize  = true;
-            this.lblH.ForeColor = System.Drawing.Color.White;
-            this.lblH.Location  = new System.Drawing.Point(12, 18);
-            this.lblH.Name      = "lblH";
-            this.lblH.TabIndex  = 0;
-            this.lblH.Text      = "Altura de corte h:";
-            //
-            // trkH
-            //
-            this.trkH.Location      = new System.Drawing.Point(12, 38);
-            this.trkH.Maximum       = 1000;
-            this.trkH.Name          = "trkH";
-            this.trkH.Size          = new System.Drawing.Size(196, 45);
-            this.trkH.TabIndex      = 1;
-            this.trkH.TickFrequency = 100;
-            this.trkH.Scroll       += new System.EventHandler(this.trkH_Scroll);
-            //
-            // lblHVal
-            //
-            this.lblHVal.AutoSize  = true;
-            this.lblHVal.ForeColor = System.Drawing.Color.Yellow;
-            this.lblHVal.Location  = new System.Drawing.Point(12, 86);
-            this.lblHVal.Name      = "lblHVal";
-            this.lblHVal.TabIndex  = 2;
-            this.lblHVal.Text      = "0.0 m";
-            //
-            // lblDx
-            //
-            this.lblDx.AutoSize  = true;
-            this.lblDx.ForeColor = System.Drawing.Color.White;
-            this.lblDx.Location  = new System.Drawing.Point(12, 118);
-            this.lblDx.Name      = "lblDx";
-            this.lblDx.TabIndex  = 3;
-            this.lblDx.Text      = "Paso Δx:";
-            //
-            // trkDx
-            //
-            this.trkDx.Location      = new System.Drawing.Point(12, 138);
-            this.trkDx.Maximum       = 100;
-            this.trkDx.Minimum       = 1;
-            this.trkDx.Name          = "trkDx";
-            this.trkDx.Size          = new System.Drawing.Size(196, 45);
-            this.trkDx.TabIndex      = 4;
-            this.trkDx.TickFrequency = 10;
-            this.trkDx.Value         = 1;
-            this.trkDx.Scroll       += new System.EventHandler(this.trkDx_Scroll);
-            //
-            // lblDxVal
-            //
-            this.lblDxVal.AutoSize  = true;
-            this.lblDxVal.ForeColor = System.Drawing.Color.Yellow;
-            this.lblDxVal.Location  = new System.Drawing.Point(12, 186);
-            this.lblDxVal.Name      = "lblDxVal";
-            this.lblDxVal.TabIndex  = 5;
-            this.lblDxVal.Text      = "0.0 m";
-            //
-            // lblDy
-            //
-            this.lblDy.AutoSize  = true;
-            this.lblDy.ForeColor = System.Drawing.Color.White;
-            this.lblDy.Location  = new System.Drawing.Point(12, 218);
-            this.lblDy.Name      = "lblDy";
-            this.lblDy.TabIndex  = 6;
-            this.lblDy.Text      = "Paso Δy:";
-            //
-            // trkDy
-            //
-            this.trkDy.Location      = new System.Drawing.Point(12, 238);
-            this.trkDy.Maximum       = 100;
-            this.trkDy.Minimum       = 1;
-            this.trkDy.Name          = "trkDy";
-            this.trkDy.Size          = new System.Drawing.Size(196, 45);
-            this.trkDy.TabIndex      = 7;
-            this.trkDy.TickFrequency = 10;
-            this.trkDy.Value         = 1;
-            this.trkDy.Scroll       += new System.EventHandler(this.trkDy_Scroll);
-            //
-            // lblDyVal
-            //
-            this.lblDyVal.AutoSize  = true;
-            this.lblDyVal.ForeColor = System.Drawing.Color.Yellow;
-            this.lblDyVal.Location  = new System.Drawing.Point(12, 286);
-            this.lblDyVal.Name      = "lblDyVal";
-            this.lblDyVal.TabIndex  = 8;
-            this.lblDyVal.Text      = "0.0 m";
-            //
-            // chkPuntos
-            //
-            this.chkPuntos.AutoSize             = true;
-            this.chkPuntos.Checked              = true;
-            this.chkPuntos.CheckState           = System.Windows.Forms.CheckState.Checked;
-            this.chkPuntos.ForeColor            = System.Drawing.Color.White;
-            this.chkPuntos.Location             = new System.Drawing.Point(12, 322);
-            this.chkPuntos.Name                 = "chkPuntos";
-            this.chkPuntos.TabIndex             = 9;
-            this.chkPuntos.Text                 = "Mostrar puntos";
-            this.chkPuntos.UseVisualStyleBackColor = true;
-            this.chkPuntos.CheckedChanged       += new System.EventHandler(this.chkPuntos_CheckedChanged);
-            //
-            // chkEtiquetas
-            //
-            this.chkEtiquetas.AutoSize             = true;
-            this.chkEtiquetas.Checked              = true;
-            this.chkEtiquetas.CheckState           = System.Windows.Forms.CheckState.Checked;
-            this.chkEtiquetas.ForeColor            = System.Drawing.Color.White;
-            this.chkEtiquetas.Location             = new System.Drawing.Point(12, 352);
-            this.chkEtiquetas.Name                 = "chkEtiquetas";
-            this.chkEtiquetas.TabIndex             = 10;
-            this.chkEtiquetas.Text                 = "Mostrar etiquetas";
-            this.chkEtiquetas.UseVisualStyleBackColor = true;
-            this.chkEtiquetas.CheckedChanged       += new System.EventHandler(this.chkEtiquetas_CheckedChanged);
-            //
+            // 
+            panelControles.BackColor = Color.FromArgb(30, 30, 45);
+            panelControles.Controls.Add(btnReset);
+            panelControles.Controls.Add(chkEtiquetas);
+            panelControles.Controls.Add(chkPuntos);
+            panelControles.Controls.Add(lblDyVal);
+            panelControles.Controls.Add(trkDy);
+            panelControles.Controls.Add(lblDy);
+            panelControles.Controls.Add(lblDxVal);
+            panelControles.Controls.Add(trkDx);
+            panelControles.Controls.Add(lblDx);
+            panelControles.Controls.Add(lblHVal);
+            panelControles.Controls.Add(trkH);
+            panelControles.Controls.Add(lblH);
+            panelControles.Dock = DockStyle.Right;
+            panelControles.Location = new Point(900, 0);
+            panelControles.Name = "panelControles";
+            panelControles.Size = new Size(220, 700);
+            panelControles.TabIndex = 1;
+            // 
             // btnReset
-            //
-            this.btnReset.BackColor            = System.Drawing.Color.FromArgb(50, 70, 120);
-            this.btnReset.FlatStyle            = System.Windows.Forms.FlatStyle.Flat;
-            this.btnReset.ForeColor            = System.Drawing.Color.White;
-            this.btnReset.Location             = new System.Drawing.Point(12, 395);
-            this.btnReset.Name                 = "btnReset";
-            this.btnReset.Size                 = new System.Drawing.Size(196, 35);
-            this.btnReset.TabIndex             = 11;
-            this.btnReset.Text                 = "Reset Cámara";
-            this.btnReset.UseVisualStyleBackColor = false;
-            this.btnReset.Click               += new System.EventHandler(this.btnReset_Click);
-            //
+            // 
+            btnReset.BackColor = Color.FromArgb(50, 70, 120);
+            btnReset.FlatStyle = FlatStyle.Flat;
+            btnReset.ForeColor = Color.White;
+            btnReset.Location = new Point(12, 395);
+            btnReset.Name = "btnReset";
+            btnReset.Size = new Size(196, 35);
+            btnReset.TabIndex = 11;
+            btnReset.Text = "Reset Cámara";
+            btnReset.UseVisualStyleBackColor = false;
+            btnReset.Click += btnReset_Click;
+            // 
+            // chkEtiquetas
+            // 
+            chkEtiquetas.AutoSize = true;
+            chkEtiquetas.Checked = true;
+            chkEtiquetas.CheckState = CheckState.Checked;
+            chkEtiquetas.ForeColor = Color.White;
+            chkEtiquetas.Location = new Point(12, 352);
+            chkEtiquetas.Name = "chkEtiquetas";
+            chkEtiquetas.Size = new Size(147, 24);
+            chkEtiquetas.TabIndex = 10;
+            chkEtiquetas.Text = "Mostrar etiquetas";
+            chkEtiquetas.UseVisualStyleBackColor = true;
+            chkEtiquetas.CheckedChanged += chkEtiquetas_CheckedChanged;
+            // 
+            // chkPuntos
+            // 
+            chkPuntos.AutoSize = true;
+            chkPuntos.Checked = true;
+            chkPuntos.CheckState = CheckState.Checked;
+            chkPuntos.ForeColor = Color.White;
+            chkPuntos.Location = new Point(12, 322);
+            chkPuntos.Name = "chkPuntos";
+            chkPuntos.Size = new Size(131, 24);
+            chkPuntos.TabIndex = 9;
+            chkPuntos.Text = "Mostrar puntos";
+            chkPuntos.UseVisualStyleBackColor = true;
+            chkPuntos.CheckedChanged += chkPuntos_CheckedChanged;
+            // 
+            // lblDyVal
+            // 
+            lblDyVal.AutoSize = true;
+            lblDyVal.ForeColor = Color.Yellow;
+            lblDyVal.Location = new Point(12, 286);
+            lblDyVal.Name = "lblDyVal";
+            lblDyVal.Size = new Size(45, 20);
+            lblDyVal.TabIndex = 8;
+            lblDyVal.Text = "0.0 m";
+            // 
+            // trkDy
+            // 
+            trkDy.Location = new Point(12, 238);
+            trkDy.Maximum = 100;
+            trkDy.Minimum = 1;
+            trkDy.Name = "trkDy";
+            trkDy.Size = new Size(196, 56);
+            trkDy.TabIndex = 7;
+            trkDy.TickFrequency = 10;
+            trkDy.Value = 1;
+            trkDy.Scroll += trkDy_Scroll;
+            // 
+            // lblDy
+            // 
+            lblDy.AutoSize = true;
+            lblDy.ForeColor = Color.White;
+            lblDy.Location = new Point(12, 218);
+            lblDy.Name = "lblDy";
+            lblDy.Size = new Size(63, 20);
+            lblDy.TabIndex = 6;
+            lblDy.Text = "Paso Δy:";
+            // 
+            // lblDxVal
+            // 
+            lblDxVal.AutoSize = true;
+            lblDxVal.ForeColor = Color.Yellow;
+            lblDxVal.Location = new Point(12, 186);
+            lblDxVal.Name = "lblDxVal";
+            lblDxVal.Size = new Size(45, 20);
+            lblDxVal.TabIndex = 5;
+            lblDxVal.Text = "0.0 m";
+            // 
+            // trkDx
+            // 
+            trkDx.Location = new Point(12, 138);
+            trkDx.Maximum = 100;
+            trkDx.Minimum = 1;
+            trkDx.Name = "trkDx";
+            trkDx.Size = new Size(196, 56);
+            trkDx.TabIndex = 4;
+            trkDx.TickFrequency = 10;
+            trkDx.Value = 1;
+            trkDx.Scroll += trkDx_Scroll;
+            // 
+            // lblDx
+            // 
+            lblDx.AutoSize = true;
+            lblDx.ForeColor = Color.White;
+            lblDx.Location = new Point(12, 118);
+            lblDx.Name = "lblDx";
+            lblDx.Size = new Size(63, 20);
+            lblDx.TabIndex = 3;
+            lblDx.Text = "Paso Δx:";
+            // 
+            // lblHVal
+            // 
+            lblHVal.AutoSize = true;
+            lblHVal.ForeColor = Color.Yellow;
+            lblHVal.Location = new Point(12, 86);
+            lblHVal.Name = "lblHVal";
+            lblHVal.Size = new Size(45, 20);
+            lblHVal.TabIndex = 2;
+            lblHVal.Text = "0.0 m";
+            // 
+            // trkH
+            // 
+            trkH.Location = new Point(12, 38);
+            trkH.Maximum = 1000;
+            trkH.Name = "trkH";
+            trkH.Size = new Size(196, 56);
+            trkH.TabIndex = 1;
+            trkH.TickFrequency = 100;
+            trkH.Scroll += trkH_Scroll;
+            // 
+            // lblH
+            // 
+            lblH.AutoSize = true;
+            lblH.ForeColor = Color.White;
+            lblH.Location = new Point(12, 18);
+            lblH.Name = "lblH";
+            lblH.Size = new Size(123, 20);
+            lblH.TabIndex = 0;
+            lblH.Text = "Altura de corte h:";
+            // 
             // host
-            //
-            this.host.Dock     = System.Windows.Forms.DockStyle.Fill;
-            this.host.Name     = "host";
-            this.host.TabIndex = 0;
-            this.host.Text     = "host";
-            this.host.Child    = null;
-            //
+            // 
+            host.Dock = DockStyle.Fill;
+            host.Location = new Point(0, 0);
+            host.Name = "host";
+            host.Size = new Size(900, 700);
+            host.TabIndex = 0;
+            host.Text = "host";
+            // 
             // GraficaForm
-            //
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor     = System.Drawing.Color.FromArgb(20, 20, 35);
-            this.ClientSize    = new System.Drawing.Size(1120, 700);
-            this.Controls.Add(this.host);
-            this.Controls.Add(this.panelControles);
-            this.MinimumSize   = new System.Drawing.Size(800, 500);
-            this.Name          = "GraficaForm";
-            this.Text          = "Visualización 3D de Terreno";
-            this.panelControles.ResumeLayout(false);
-            this.panelControles.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.trkDy)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trkDx)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trkH)).EndInit();
-            this.ResumeLayout(false);
+            // 
+            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.FromArgb(20, 20, 35);
+            ClientSize = new Size(1120, 700);
+            Controls.Add(host);
+            Controls.Add(panelControles);
+            MinimumSize = new Size(800, 500);
+            Name = "GraficaForm";
+            Text = "Visualización 3D de Terreno";
+            panelControles.ResumeLayout(false);
+            panelControles.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)trkDy).EndInit();
+            ((System.ComponentModel.ISupportInitialize)trkDx).EndInit();
+            ((System.ComponentModel.ISupportInitialize)trkH).EndInit();
+            ResumeLayout(false);
         }
 
         #endregion

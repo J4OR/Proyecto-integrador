@@ -59,6 +59,7 @@ namespace Proyecto_Integrador.Views.Terrenos
             crearTabla(3, 3);
             lblResultado.Text = "";
             tablaPuntos.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            cbOperacion.DataSource = Enum.GetValues(typeof(TipoOperacion));
         }
 
         private void btnCrear_Click(object sender, EventArgs e)
@@ -146,7 +147,7 @@ namespace Proyecto_Integrador.Views.Terrenos
             }
             try
             {
-                Terreno terreno = new Terreno(alturas, (double)nupDx.Value, (double)nupDy.Value, (double)nupAltura.Value);
+                Terreno terreno = new Terreno((TipoOperacion)cbOperacion.SelectedItem, alturas, (double)nupDx.Value, (double)nupDy.Value, (double)nupAltura.Value);
                 double volumen = terrenoController.CalcularVolumen(terreno);
 
                 volumenTerreno = volumen;
@@ -194,7 +195,7 @@ namespace Proyecto_Integrador.Views.Terrenos
                 return;
             }
 
-            Terreno terreno = new Terreno(altura, (double)nupDx.Value, (double)nupDy.Value,
+            Terreno terreno = new Terreno((TipoOperacion) cbOperacion.SelectedItem, altura, (double)nupDx.Value, (double)nupDy.Value,
             (double)nupAltura.Value, volumenTerreno, txtNombre.Text);
 
             terrenoController.AgregarTerreno(terreno);
@@ -204,100 +205,6 @@ namespace Proyecto_Integrador.Views.Terrenos
             FormDashboard principal = (FormDashboard)this.ParentForm;
             principal.AbrirFormularioEnPanel(new TerrenoForm(principal));
 
-        }
-
-
-        private void btnExcavaciones_Click(object sender, EventArgs e)
-        {
-            var ejemplos = new Dictionary<string, Func<int, int, double>>()
-            {
-                ["Zanja rectangular"] = (i, j) => 3.0,   // profundidad uniforme
-                ["Pozo circular"] = (i, j) =>
-                {
-                    double u = nupColumnas.Value > 1 ? (double)j / ((double)nupColumnas.Value - 1) - 0.5 : 0;
-                    double v = nupFilas.Value > 1 ? (double)i / ((double)nupFilas.Value - 1) - 0.5 : 0;
-                    double r = Math.Sqrt(u * u + v * v);
-                    return r < 0.35 ? 5.0 + 3.0 * (0.35 - r) / 0.35 : 0.5;  // fondo cónico
-                },
-                ["Corte en talud"] = (i, j) =>
-                {
-                    double u = nupColumnas.Value > 1 ? (double)j / ((double)nupColumnas.Value - 1) : 0;
-                    return 1.0 + 6.0 * u;   // profundidad crece de izquierda a derecha
-                }
-            };
-
-            CargarEjemplo(ejemplos);
-
-        }
-
-        private void btnMontañas_Click(object sender, EventArgs e)
-        {
-            var ejemplos = new Dictionary<string, Func<int, int, double>>()
-            {
-                ["Montaña gaussiana"] = (i, j) =>
-                {
-                    double u = nupColumnas.Value > 1 ? (double)j / ((double)nupColumnas.Value - 1) : 0.5;
-                    double v = nupFilas.Value > 1 ? (double)i / ((double)nupFilas.Value - 1) : 0.5;
-                    return 2.0 + 18.0 * Math.Exp(-((u - 0.5) * (u - 0.5) + (v - 0.5) * (v - 0.5)) / 0.08);
-                },
-                ["Loma alargada"] = (i, j) =>
-                {
-                    double v = nupFilas.Value > 1 ? (double)i / ((double)nupFilas.Value - 1) : 0.5;
-                    return 3.0 + 12.0 * Math.Exp(-(v - 0.5) * (v - 0.5) / 0.05);  // cresta horizontal
-                },
-                ["Terreno ondulado"] = (i, j) =>
-                {
-                    double u = nupColumnas.Value > 1 ? (double)j / ((double)nupColumnas.Value - 1) : 0.5;
-                    double v = nupFilas.Value > 1 ? (double)i / ((double)nupFilas.Value - 1) : 0.5;
-                    return 5.0 + 3.0 * Math.Sin(u * Math.PI * 2) + 2.0 * Math.Cos(v * Math.PI * 2);
-                }
-            };
-
-            CargarEjemplo(ejemplos);
-        }
-        // ── Método compartido: muestra lista y rellena la tabla ───────────────────
-        private void CargarEjemplo(Dictionary<string, Func<int, int, double>> ejemplos)
-        {
-            // Construir mensaje de selección
-            var sb = new System.Text.StringBuilder("Selecciona un ejemplo:\n\n");
-            var keys = new List<string>(ejemplos.Keys);
-            for (int k = 0; k < keys.Count; k++)
-                sb.AppendLine($"  {k + 1}. {keys[k]}");
-
-            string input = Microsoft.VisualBasic.Interaction.InputBox(
-                sb.ToString(), "Ejemplos predefinidos", "1");
-
-            if (!int.TryParse(input.Trim(), out int opcion) || opcion < 1 || opcion > keys.Count)
-            {
-                if (!string.IsNullOrWhiteSpace(input))   // silencio si el usuario canceló
-                    MessageBox.Show("Opción inválida.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-            string nombreElegido = keys[opcion - 1];
-            var formula = ejemplos[nombreElegido];
-
-            nupAltura.Value = 10;
-            nupDx.Value = 5;
-            nupDy.Value = 5;
-
-            int filas = tablaPuntos.Rows.Count;
-            int cols = tablaPuntos.Columns.Count;
-
-            for (int i = 0; i < filas; i++)
-            {
-                for (int j = 0; j < cols; j++)
-                {
-                    double valor = formula(i, j);
-                    tablaPuntos.Rows[i].Cells[j].Value =
-                        valor.ToString("F2", System.Globalization.CultureInfo.InvariantCulture);
-                    tablaPuntos.Rows[i].Cells[j].Style.BackColor = Color.White;
-                }
-            }
-
-            // Limpiar resultados anteriores
-            lblResultado.Text = "";
-            volumenTerreno = 0;
         }
     }
 }

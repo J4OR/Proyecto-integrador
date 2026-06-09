@@ -93,6 +93,7 @@ namespace Proyecto_Integrador.Views.Terrenos
                     tablaPuntos.Rows[i].Cells[j].Value =
                         valor.ToString("F2", System.Globalization.CultureInfo.InvariantCulture);
                     tablaPuntos.Rows[i].Cells[j].Style.BackColor = Color.White;
+                    nupAltura.Value = 2;
                 }
             }
 

@@ -54,6 +54,8 @@ namespace Proyecto_Integrador.Models
             int nj = cols % 2 == 1 ? cols : cols - 1;
 
             double volumen = 0;
+            double volumenCorte = 0;
+            double volumenRelleno = 0;
 
             for (int i = 0; i < ni; i++)
             {
@@ -61,13 +63,25 @@ namespace Proyecto_Integrador.Models
 
                 for (int j = 0; j < nj; j++)
                 {
-                    double profundidad = Math.Max(cotaCorte - z[i][j], 0);
 
-                    volumen += wi * SimpsonPeso(j, nj) * profundidad;
+                    double wj = SimpsonPeso(j, nj);
+                    double d = z[i][j] - cotaCorte;
+
+                    if (d > 0)
+                        volumenCorte += wi * wj * d;
+                    else
+                        volumenRelleno += wi * wj * (-d);
+
+                    //double profundidad = Math.Max(cotaCorte - z[i][j], 0);
+
+                    //volumen += wi * SimpsonPeso(j, nj) * profundidad;
                 }
             }
 
-            return volumen * dx * dy / 9.0;
+            //return volumen * dx * dy / 9.0;
+            return volumenCorte *= dx * dy / 9.0;
+            //remover 
+            //return volumenRelleno *= dx * dy / 9.0;
         }
 
 

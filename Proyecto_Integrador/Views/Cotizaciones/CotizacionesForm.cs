@@ -28,17 +28,19 @@ namespace Proyecto_Integrador.Views.Cotizaciones
         {
             cotizaciones = cotizacionController.ObtenerCotizaciones();
 
-            tablaUsuarios.Rows.Clear();
+            tablaCotizaciones.Rows.Clear();
 
             foreach (var c in cotizaciones)
             {
-                tablaUsuarios.Rows.Add(
+                tablaCotizaciones.Rows.Add(
                     c.id,
+                    c.fecha.ToString("dd/MM/yyyy"),
                     c.cliente.nombre,
                     c.terreno.nombre,
                     c.material.nombre,
                     c.costoTotal.ToString("F2"),
-                    c.estado ? "Activa" : "Inactiva"
+                    c.estadoTexto
+
                 );
             }
         }
@@ -52,9 +54,97 @@ namespace Proyecto_Integrador.Views.Cotizaciones
             CargarCotizaciones();
         }
 
-        private void tablaUsuarios_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
 
+
+        private void btnBuscar_Click(object sender, EventArgs e)
+        {
+            DateTime fechaInicio = FechaInicio.Value.Date;
+            DateTime fechaFin = FechaFin.Value.Date.AddDays(1).AddSeconds(-1);
+
+            var cotizacionesFiltradas = cotizaciones
+                .Where(c => c.fecha >= fechaInicio && c.fecha <= fechaFin)
+                .ToList();
+
+            tablaCotizaciones.Rows.Clear();
+
+            foreach (var c in cotizacionesFiltradas)
+            {
+                tablaCotizaciones.Rows.Add(
+                    c.id,
+                    c.cliente.nombre,
+                    c.terreno.nombre,
+                    c.material.nombre,
+                    c.costoTotal.ToString("F2"),
+                    c.fecha.ToString("dd/MM/yyyy"),
+                    c.estado ? "Activa" : "Inactiva"
+                );
+            }
+        }
+
+        private void txtBuscar_TextChanged(object sender, EventArgs e)
+        {
+            string texto = txtBuscar.Text.Trim().ToLower();
+
+            DateTime fechaInicio = FechaInicio.Value.Date;
+            DateTime fechaFin = FechaFin.Value.Date.AddDays(1).AddSeconds(-1);
+
+            var resultado = cotizaciones.Where(c =>
+                c.fecha >= fechaInicio &&
+                c.fecha <= fechaFin &&
+                (
+                    c.id.ToLower().Contains(texto) ||
+                    c.cliente.nombre.ToLower().Contains(texto) ||
+                    c.terreno.nombre.ToLower().Contains(texto) ||
+                    c.material.nombre.ToLower().Contains(texto)
+                )
+            ).ToList();
+
+            tablaCotizaciones.Rows.Clear();
+
+            foreach (var c in resultado)
+            {
+                tablaCotizaciones.Rows.Add(
+                    c.id,
+                    c.cliente.nombre,
+                    c.terreno.nombre,
+                    c.material.nombre,
+                    c.costoTotal.ToString("F2"),
+                    c.fecha.ToString("dd/MM/yyyy"),
+                    c.estado ? "Activa" : "Inactiva"
+                );
+            }
+        }
+
+        private void tablaCotizaciones_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex < 0)
+                return;
+
+            string id = tablaCotizaciones.Rows[e.RowIndex].Cells[0].Value.ToString();
+
+            // Recargar la lista desde el JSON
+            cotizaciones = cotizacionController.ObtenerCotizaciones();
+
+            Cotizacion cotizacionSeleccionada =
+                cotizaciones.FirstOrDefault(c => c.id == id);
+
+            if (cotizacionSeleccionada == null)
+            {
+                MessageBox.Show("No se encontró la cotización con ID: " + id);
+                return;
+            }
+
+            bool nuevoEstado = !cotizacionSeleccionada.estado;
+
+            cotizacionController.CambiarEstado(id, nuevoEstado);
+
+            MessageBox.Show(
+                nuevoEstado
+                ? "Cotización activada."
+                : "Cotización desactivada."
+            );
+
+            CargarCotizaciones();
         }
     }
 }

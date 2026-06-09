@@ -178,8 +178,6 @@ namespace Proyecto_Integrador.Views
                 txtTelefono.Text, txtCorreo.Text, txtUsuario.Text, PasswordHasher.ToSha256(txtContraseña.Text));
             usuarioController.AgregarUsuario(nuevoUsuario);
             MessageBox.Show("Usuario registrado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            LoginForm loginForm = new LoginForm();
-            loginForm.Show();
             this.Close();
         }
 

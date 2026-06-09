@@ -13,25 +13,7 @@
     <Compile Update="Views\Cotizaciones\CotizacionesForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Views\FormAdminUsuarios.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Update="Views\FormCambiarContraseña.cs">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Update="Views\Inicio\FormDashboard.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Update="Views\FormFactura.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Update="Views\FormInicio.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Update="Views\FormMateriales.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Update="Views\FormClientes.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Views\Materiales\AgregarMaterialesForm.cs">
@@ -65,9 +47,6 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Views\Login\RegistroForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Update="Views\FormCotizacion.cs">
       <SubType>Form</SubType>
     </Compile>
   </ItemGroup>

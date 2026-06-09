@@ -5,30 +5,31 @@ using System.Text.Json.Serialization;
 
 namespace Proyecto_Integrador.Models
 {
-
+    public enum TipoOperacion
+    {
+        Remover, Rellenar, Ambos
+    }
     public class Terreno
     {
         public Guid id { get; set; }
         public string nombre { get; set; }
+        public TipoOperacion operacion { get; set; }
 
-        // Malla de alturas z[i][j] ingresada por el usuario
         public double[][] cotas { get; set; }
 
-        // Espaciado entre nodos en X y en Y (metros)
         public double dx { get; set; }
         public double dy { get; set; }
 
-        // Nivel de corte / altura de referencia
         public double alturaReferencia { get; set; }
 
-        // Resultado del cálculo
         public double volumen { get; set; }
 
         [JsonConstructor]
-        public Terreno (double[][] cotas, double dx, double dy, double alturaReferencia, double volumen = 0, string nombre = "")
+        public Terreno (TipoOperacion operacion, double[][] cotas, double dx, double dy, double alturaReferencia, double volumen = 0, string nombre = "")
         {
             this.id = Guid.NewGuid();
             this.nombre = nombre;
+            this.operacion = operacion;
             this.cotas = cotas;
             this.dx = dx;
             this.dy = dy;

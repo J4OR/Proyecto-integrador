@@ -54,6 +54,8 @@
             lblValidacion = new Label();
             btnExcavaciones = new Button();
             btnMontañas = new Button();
+            label8 = new Label();
+            cbOperacion = new ComboBox();
             panelTitulo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)tablaPuntos).BeginInit();
             ((System.ComponentModel.ISupportInitialize)nupAltura).BeginInit();
@@ -69,7 +71,7 @@
             panelTitulo.Controls.Add(label6);
             panelTitulo.Location = new Point(0, 0);
             panelTitulo.Name = "panelTitulo";
-            panelTitulo.Size = new Size(987, 63);
+            panelTitulo.Size = new Size(1017, 63);
             panelTitulo.TabIndex = 6;
             // 
             // label6
@@ -166,7 +168,7 @@
             label3.Name = "label3";
             label3.Size = new Size(63, 23);
             label3.TabIndex = 17;
-            label3.Text = "Δx (m):";
+            label3.Text = "Δy (m):";
             // 
             // label4
             // 
@@ -261,7 +263,7 @@
             btnDatos.FlatStyle = FlatStyle.Flat;
             btnDatos.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnDatos.ForeColor = Color.Black;
-            btnDatos.Location = new Point(787, 468);
+            btnDatos.Location = new Point(902, 155);
             btnDatos.Name = "btnDatos";
             btnDatos.Size = new Size(89, 33);
             btnDatos.TabIndex = 26;
@@ -338,14 +340,13 @@
             btnExcavaciones.FlatStyle = FlatStyle.Flat;
             btnExcavaciones.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnExcavaciones.ForeColor = Color.Black;
-            btnExcavaciones.Location = new Point(490, 468);
+            btnExcavaciones.Location = new Point(885, 282);
             btnExcavaciones.Name = "btnExcavaciones";
             btnExcavaciones.Size = new Size(122, 33);
             btnExcavaciones.TabIndex = 55;
             btnExcavaciones.Text = "Excavaciones";
             btnExcavaciones.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnExcavaciones.UseVisualStyleBackColor = false;
-            btnExcavaciones.Click += btnExcavaciones_Click;
             // 
             // btnMontañas
             // 
@@ -353,20 +354,40 @@
             btnMontañas.FlatStyle = FlatStyle.Flat;
             btnMontañas.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnMontañas.ForeColor = Color.Black;
-            btnMontañas.Location = new Point(639, 468);
+            btnMontañas.Location = new Point(885, 217);
             btnMontañas.Name = "btnMontañas";
             btnMontañas.Size = new Size(117, 33);
             btnMontañas.TabIndex = 56;
             btnMontañas.Text = "Montañas";
             btnMontañas.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnMontañas.UseVisualStyleBackColor = false;
-            btnMontañas.Click += btnMontañas_Click;
+            // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label8.Location = new Point(610, 473);
+            label8.Name = "label8";
+            label8.Size = new Size(93, 23);
+            label8.TabIndex = 57;
+            label8.Text = "Operacion:";
+            // 
+            // cbOperacion
+            // 
+            cbOperacion.FormattingEnabled = true;
+            cbOperacion.Items.AddRange(new object[] { "Remover,", "Rellenar,", "Ambos" });
+            cbOperacion.Location = new Point(718, 468);
+            cbOperacion.Name = "cbOperacion";
+            cbOperacion.Size = new Size(158, 28);
+            cbOperacion.TabIndex = 58;
             // 
             // CalculoForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(982, 664);
+            ClientSize = new Size(1014, 664);
+            Controls.Add(cbOperacion);
+            Controls.Add(label8);
             Controls.Add(btnMontañas);
             Controls.Add(btnExcavaciones);
             Controls.Add(lblValidacion);
@@ -434,5 +455,7 @@
         private Label lblValidacion;
         private Button btnExcavaciones;
         private Button btnMontañas;
+        private Label label8;
+        private ComboBox cbOperacion;
     }
 }

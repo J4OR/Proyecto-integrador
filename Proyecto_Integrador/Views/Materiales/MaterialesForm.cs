@@ -126,5 +126,12 @@ namespace Proyecto_Integrador.Views.Materiales
                 }
             }
         }
+
+        private void btnAgregar_Click(object sender, EventArgs e)
+        {
+            AgregarMaterialesForm formAgregar = new AgregarMaterialesForm();
+            formAgregar.ShowDialog();
+            cargarMateriales();
+        }
     }
 }

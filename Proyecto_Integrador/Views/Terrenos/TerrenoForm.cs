@@ -64,6 +64,7 @@ namespace Proyecto_Integrador.Views.Terrenos
             tablaTerrenos.AutoGenerateColumns = false;
             Id.DataPropertyName = "Id";
             Nombre.DataPropertyName = "Nombre";
+            Operacion.DataPropertyName = "Operacion";
             Cotas.DataPropertyName = "Cotas";
             AlturaReferencia.DataPropertyName = "AlturaReferencia";
             dx.DataPropertyName = "dx";

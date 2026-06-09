@@ -30,17 +30,18 @@
         {
             btnCalculadora = new Button();
             tablaTerrenos = new DataGridView();
+            label1 = new Label();
+            panelTitulo = new Panel();
+            txtBuscador = new TextBox();
             Id = new DataGridViewTextBoxColumn();
             Nombre = new DataGridViewTextBoxColumn();
+            Operacion = new DataGridViewTextBoxColumn();
             Cotas = new DataGridViewTextBoxColumn();
             AlturaReferencia = new DataGridViewTextBoxColumn();
             dx = new DataGridViewTextBoxColumn();
             dy = new DataGridViewTextBoxColumn();
             Volumen = new DataGridViewTextBoxColumn();
             Eliminar = new DataGridViewButtonColumn();
-            label1 = new Label();
-            panelTitulo = new Panel();
-            txtBuscador = new TextBox();
             ((System.ComponentModel.ISupportInitialize)tablaTerrenos).BeginInit();
             panelTitulo.SuspendLayout();
             SuspendLayout();
@@ -64,13 +65,44 @@
             // 
             tablaTerrenos.AllowUserToAddRows = false;
             tablaTerrenos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            tablaTerrenos.Columns.AddRange(new DataGridViewColumn[] { Id, Nombre, Cotas, AlturaReferencia, dx, dy, Volumen, Eliminar });
+            tablaTerrenos.Columns.AddRange(new DataGridViewColumn[] { Id, Nombre, Operacion, Cotas, AlturaReferencia, dx, dy, Volumen, Eliminar });
             tablaTerrenos.Location = new Point(68, 139);
             tablaTerrenos.Name = "tablaTerrenos";
             tablaTerrenos.RowHeadersWidth = 51;
             tablaTerrenos.Size = new Size(978, 497);
             tablaTerrenos.TabIndex = 24;
             tablaTerrenos.CellClick += tablaTerrenos_CellClick;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.BackColor = Color.FromArgb(0, 0, 64);
+            label1.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label1.ForeColor = Color.White;
+            label1.Location = new Point(447, 19);
+            label1.Name = "label1";
+            label1.Size = new Size(270, 28);
+            label1.TabIndex = 25;
+            label1.Text = "Administración de terrenos";
+            label1.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // panelTitulo
+            // 
+            panelTitulo.BackColor = Color.FromArgb(0, 0, 64);
+            panelTitulo.Controls.Add(label1);
+            panelTitulo.Location = new Point(0, 0);
+            panelTitulo.Name = "panelTitulo";
+            panelTitulo.Size = new Size(1141, 63);
+            panelTitulo.TabIndex = 27;
+            // 
+            // txtBuscador
+            // 
+            txtBuscador.ForeColor = Color.Black;
+            txtBuscador.Location = new Point(68, 86);
+            txtBuscador.Name = "txtBuscador";
+            txtBuscador.Size = new Size(235, 27);
+            txtBuscador.TabIndex = 26;
+            txtBuscador.TextChanged += txtBuscador_TextChanged;
             // 
             // Id
             // 
@@ -85,6 +117,13 @@
             Nombre.MinimumWidth = 6;
             Nombre.Name = "Nombre";
             Nombre.Width = 125;
+            // 
+            // Operacion
+            // 
+            Operacion.HeaderText = "Operacion";
+            Operacion.MinimumWidth = 6;
+            Operacion.Name = "Operacion";
+            Operacion.Width = 125;
             // 
             // Cotas
             // 
@@ -129,37 +168,6 @@
             Eliminar.Name = "Eliminar";
             Eliminar.Width = 125;
             // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.BackColor = Color.FromArgb(0, 0, 64);
-            label1.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.ForeColor = Color.White;
-            label1.Location = new Point(447, 19);
-            label1.Name = "label1";
-            label1.Size = new Size(270, 28);
-            label1.TabIndex = 25;
-            label1.Text = "Administración de terrenos";
-            label1.TextAlign = ContentAlignment.MiddleCenter;
-            // 
-            // panelTitulo
-            // 
-            panelTitulo.BackColor = Color.FromArgb(0, 0, 64);
-            panelTitulo.Controls.Add(label1);
-            panelTitulo.Location = new Point(0, 0);
-            panelTitulo.Name = "panelTitulo";
-            panelTitulo.Size = new Size(1141, 63);
-            panelTitulo.TabIndex = 27;
-            // 
-            // txtBuscador
-            // 
-            txtBuscador.ForeColor = Color.Black;
-            txtBuscador.Location = new Point(68, 86);
-            txtBuscador.Name = "txtBuscador";
-            txtBuscador.Size = new Size(235, 27);
-            txtBuscador.TabIndex = 26;
-            txtBuscador.TextChanged += txtBuscador_TextChanged;
-            // 
             // TerrenoForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -184,16 +192,17 @@
 
         private Button btnCalculadora;
         private DataGridView tablaTerrenos;
+        private Label label1;
+        private Panel panelTitulo;
+        private TextBox txtBuscador;
         private DataGridViewTextBoxColumn Id;
         private DataGridViewTextBoxColumn Nombre;
+        private DataGridViewTextBoxColumn Operacion;
         private DataGridViewTextBoxColumn Cotas;
         private DataGridViewTextBoxColumn AlturaReferencia;
         private DataGridViewTextBoxColumn dx;
         private DataGridViewTextBoxColumn dy;
         private DataGridViewTextBoxColumn Volumen;
         private DataGridViewButtonColumn Eliminar;
-        private Label label1;
-        private Panel panelTitulo;
-        private TextBox txtBuscador;
     }
 }

@@ -1,5 +1,6 @@
 ﻿using Proyecto_Integrador.Models;
 using Proyecto_Integrador.Views.Inicio;
+using Proyecto_Integrador.Views.Materiales;
 using Proyecto_Integrador.Views.Terrenos;
 using Proyecto_Integrador.Views.Utils;
 using System;
@@ -93,7 +94,7 @@ namespace Proyecto_Integrador.Views
 
         private void btnMateriales_Click(object sender, EventArgs e)
         {
-            AbrirFormularioEnPanel(new FormMateriales());
+            AbrirFormularioEnPanel(new MaterialesForm());
         }
 
         private void btnTerrenos_Click(object sender, EventArgs e)

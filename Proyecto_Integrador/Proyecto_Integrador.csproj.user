@@ -31,6 +31,15 @@
     <Compile Update="Views\FormClientes.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Views\Materiales\AgregarMaterialesForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Views\Materiales\EditarMaterialForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Views\Materiales\MaterialesForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Views\Terrenos\CalculoForm.cs">
       <SubType>Form</SubType>
     </Compile>

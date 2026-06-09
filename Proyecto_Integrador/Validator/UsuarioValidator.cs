@@ -9,7 +9,6 @@ namespace Proyecto_Integrador.Validator
 {
     internal class UsuarioValidator
     {
-        UsuarioController usuarioController = new UsuarioController();
         public static Dictionary<string, string> Validar(string nombre, string telefono, string documento,
         string correo, string usuario, string contraseña, string confirmar)
         {

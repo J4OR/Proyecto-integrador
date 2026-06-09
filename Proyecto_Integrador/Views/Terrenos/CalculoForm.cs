@@ -17,6 +17,7 @@ namespace Proyecto_Integrador.Views.Terrenos
         private TerrenoController terrenoController = new TerrenoController();
         private ControlsUtils resizer;
         double[][] alturasGlobal;
+        double volumenTerreno;
         public CalculoForm()
         {
             InitializeComponent();
@@ -155,10 +156,12 @@ namespace Proyecto_Integrador.Views.Terrenos
                 lblResultado.ForeColor = System.Drawing.Color.Crimson;
                 return;
             }
+
             lblResultado.Text = $"Volumen = {volumen:F2} m³";
             alturasGlobal = alturas;
+            volumenTerreno = volumen;
         }
-        
+
         private void CalculoForm_Resize(object sender, EventArgs e)
         {
             resizer?.ejecutarEscalado();
@@ -172,9 +175,41 @@ namespace Proyecto_Integrador.Views.Terrenos
 
         private void btnGraficar_Click(object sender, EventArgs e)
         {
-  
-            GraficaForm graficaForm = new GraficaForm(alturasGlobal, (double) nupAltura.Value , (double) nupDx.Value, (double)nupDy.Value);
+
+            GraficaForm graficaForm = new GraficaForm(alturasGlobal, (double)nupAltura.Value, (double)nupDx.Value, (double)nupDy.Value);
             graficaForm.ShowDialog();
+        }
+
+        private void btnGuardar_Click(object sender, EventArgs e)
+        {
+            lblValidacion.Visible = false;
+
+            if (string.IsNullOrWhiteSpace(txtNombre.Text))
+            {
+                lblValidacion.Visible = true;
+                return;
+            }
+
+            if (volumenTerreno == 0)
+            {
+                lblResultado.Text = "Calcula el volumen";
+                lblResultado.ForeColor = Color.Red;
+                return;
+              
+            }
+
+            
+            lblValidacion.Visible = false;
+            Terreno terreno = new Terreno(alturasGlobal, (double)nupDx.Value, (double)nupDy.Value,
+            (double)nupAltura.Value, volumenTerreno, txtNombre.Text);
+
+            terrenoController.AgregarTerreno(terreno);
+            MessageBox.Show("terren agregado correctamente.", "Agregar terreno", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            this.DialogResult = DialogResult.OK;
+
+            FormDashboard principal = (FormDashboard)this.ParentForm;
+            principal.AbrirFormularioEnPanel(new TerrenoForm(principal));
+            
         }
     }
 }

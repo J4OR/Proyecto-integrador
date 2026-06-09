@@ -13,12 +13,11 @@ namespace Proyecto_Integrador.Repository
 
         JsonRepository<Material> jsonRepository = new JsonRepository<Material>(carpeta, rutaCarpeta);
 
-        public int ObtenerSiguienteId(List<Material> lista)
+        public int ObtenerSiguienteId()
         {
-            if (lista.Count == 0)
-                return 1;
-            else
-                return lista.Max(m => m.id) + 1;
+            List<Material> lista = new List<Material>();
+            return lista.Count + 1; 
+            
         }
 
         public List<Material> Leer()
@@ -37,5 +36,18 @@ namespace Proyecto_Integrador.Repository
         {
             jsonRepository.Editar(nuevoMaterial, u => u.id == id);
         }
+
+        public List<Material> buscador(string texto)
+        {
+            return jsonRepository.filtrar(m => m.nombre.Contains(texto, StringComparison.OrdinalIgnoreCase));
+        }
+
+        public void CambiarEstado(int id, bool nuevoEstado)
+        {
+            jsonRepository.Actualizar( 
+                m => m.id == id,
+                m => m.estado = nuevoEstado);
+        }
+
     }
 }

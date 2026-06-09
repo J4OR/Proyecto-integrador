@@ -31,6 +31,18 @@ namespace Proyecto_Integrador.Repository
         {
             jsonRepository.Editar(nuevaCotizacion, c => c.id == id);
         }
+        public List<Cotizacion> buscador(string texto)
+        {
+            return jsonRepository.filtrar(c => c.cliente.identificacion.Contains(texto, StringComparison.OrdinalIgnoreCase) ||
+            c.id.Contains(texto, StringComparison.OrdinalIgnoreCase));
+        }
+
+        public void cambiarEstado(bool nuevoEstado, string id)
+        {
+            jsonRepository.Actualizar(
+                m => m.id == id,
+                m => m.estado = nuevoEstado);
+        }
 
     }
 }

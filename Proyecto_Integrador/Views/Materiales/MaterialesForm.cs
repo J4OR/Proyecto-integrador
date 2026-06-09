@@ -64,7 +64,7 @@ namespace Proyecto_Integrador.Views.Materiales
             Id.DataPropertyName = "Id";
             Nombre.DataPropertyName = "Nombre";
             PrecioUnidad.DataPropertyName = "PrecioUnidad";
-            EstadoTexto.DataPropertyName = "EstadoTexto";
+            Estado.DataPropertyName = "EstadoTexto";
 
             tablaMateriales.DataSource = null;
             tablaMateriales.DataSource = materiales;
@@ -132,6 +132,25 @@ namespace Proyecto_Integrador.Views.Materiales
             AgregarMaterialesForm formAgregar = new AgregarMaterialesForm();
             formAgregar.ShowDialog();
             cargarMateriales();
+        }
+
+        private void tablaMateriales_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (tablaMateriales.Columns[e.ColumnIndex].Name == "Estado")
+            {
+                string estado = e.Value?.ToString();
+
+                if (estado == "Activo")
+                {
+                    e.CellStyle.ForeColor = Color.Green;
+                    e.CellStyle.Font = new Font("Segoe UI", 9, FontStyle.Bold);
+                }
+                else if (estado == "Inactivo")
+                {
+                    e.CellStyle.ForeColor = Color.Red;
+                    e.CellStyle.Font = new Font("Segoe UI", 9, FontStyle.Bold);
+                }
+            }
         }
     }
 }

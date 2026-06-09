@@ -32,38 +32,14 @@ namespace Proyecto_Integrador.Controller
             cotizacionRepository.Agregar(cotizacion);
         }
 
-        public void CambiarEstado(string id)
+        public void CambiarEstado(string id, bool nuevoEstado)
         {
-            List<Cotizacion> lista = cotizacionRepository.Leer();
-
-            Cotizacion cot = lista.FirstOrDefault(c => c.id == id);
-
-            if (cot != null)
-            {
-                cot.estado = !cot.estado;
-                cotizacionRepository.Editar(cot, id);
-            }
+            cotizacionRepository.cambiarEstado(nuevoEstado, id);
         }
 
-    //    public (bool ok, Cotizacion cot, string mensaje) GenerarCotizacion(
-    //Cliente cliente,
-    //Material material,
-    //double volumen,
-    //string descripcion)
-    //    {
-    //        Terreno terreno = new Terreno();
-    //        terreno.volumen = volumen;
-
-    //        Cotizacion cot = new Cotizacion(
-    //            obtenerId(),
-    //            cliente,
-    //            terreno,
-    //            material
-    //        );
-
-        //    AgregarCotizacion(cot);
-
-        //    return (true, cot, "Cotización generada correctamente.");
-        //}
+        public List<Cotizacion> buscador(string texto)
+        {
+            return cotizacionRepository.buscador(texto);
+        }
     }
 }

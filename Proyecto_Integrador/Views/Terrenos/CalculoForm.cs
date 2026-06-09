@@ -157,7 +157,7 @@ namespace Proyecto_Integrador.Views.Terrenos
             }
             lblResultado.Text = $"Volumen = {volumen:F2} m³";
         }
-
+        
         private void CalculoForm_Resize(object sender, EventArgs e)
         {
             resizer?.ejecutarEscalado();

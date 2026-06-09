@@ -28,17 +28,18 @@
         /// </summary>
         private void InitializeComponent()
         {
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             txtBuscador = new TextBox();
             panelTitulo = new Panel();
             label1 = new Label();
             tablaMateriales = new DataGridView();
+            btnAgregar = new Button();
             Id = new DataGridViewTextBoxColumn();
             Nombre = new DataGridViewTextBoxColumn();
             PrecioUnidad = new DataGridViewTextBoxColumn();
-            EstadoTexto = new DataGridViewTextBoxColumn();
+            Estado = new DataGridViewTextBoxColumn();
             Editar = new DataGridViewButtonColumn();
             Accion = new DataGridViewButtonColumn();
-            btnAgregar = new Button();
             panelTitulo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)tablaMateriales).BeginInit();
             SuspendLayout();
@@ -78,13 +79,29 @@
             // 
             tablaMateriales.AllowUserToAddRows = false;
             tablaMateriales.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            tablaMateriales.Columns.AddRange(new DataGridViewColumn[] { Id, Nombre, PrecioUnidad, EstadoTexto, Editar, Accion });
+            tablaMateriales.Columns.AddRange(new DataGridViewColumn[] { Id, Nombre, PrecioUnidad, Estado, Editar, Accion });
             tablaMateriales.Location = new Point(89, 168);
             tablaMateriales.Name = "tablaMateriales";
             tablaMateriales.RowHeadersWidth = 51;
             tablaMateriales.Size = new Size(802, 497);
             tablaMateriales.TabIndex = 29;
             tablaMateriales.CellClick += tablaMateriales_CellClick;
+            tablaMateriales.CellFormatting += tablaMateriales_CellFormatting;
+            // 
+            // btnAgregar
+            // 
+            btnAgregar.BackColor = Color.FromArgb(0, 0, 64);
+            btnAgregar.FlatStyle = FlatStyle.Flat;
+            btnAgregar.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnAgregar.ForeColor = Color.White;
+            btnAgregar.Location = new Point(772, 111);
+            btnAgregar.Name = "btnAgregar";
+            btnAgregar.Size = new Size(119, 33);
+            btnAgregar.TabIndex = 28;
+            btnAgregar.Text = "Agregar";
+            btnAgregar.TextImageRelation = TextImageRelation.ImageBeforeText;
+            btnAgregar.UseVisualStyleBackColor = false;
+            btnAgregar.Click += btnAgregar_Click;
             // 
             // Id
             // 
@@ -107,12 +124,12 @@
             PrecioUnidad.Name = "PrecioUnidad";
             PrecioUnidad.Width = 125;
             // 
-            // EstadoTexto
+            // Estado
             // 
-            EstadoTexto.HeaderText = "Estado";
-            EstadoTexto.MinimumWidth = 6;
-            EstadoTexto.Name = "EstadoTexto";
-            EstadoTexto.Width = 125;
+            Estado.HeaderText = "Estado";
+            Estado.MinimumWidth = 6;
+            Estado.Name = "Estado";
+            Estado.Width = 125;
             // 
             // Editar
             // 
@@ -123,25 +140,17 @@
             // 
             // Accion
             // 
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.Font = new Font("Microsoft Sans Serif", 7.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle1.ForeColor = Color.Black;
+            Accion.DefaultCellStyle = dataGridViewCellStyle1;
+            Accion.FlatStyle = FlatStyle.Flat;
             Accion.HeaderText = "Activar/Desactivar";
             Accion.MinimumWidth = 6;
             Accion.Name = "Accion";
+            Accion.Text = "Activar/Desactivar";
+            Accion.UseColumnTextForButtonValue = true;
             Accion.Width = 125;
-            // 
-            // btnAgregar
-            // 
-            btnAgregar.BackColor = Color.FromArgb(0, 0, 64);
-            btnAgregar.FlatStyle = FlatStyle.Flat;
-            btnAgregar.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnAgregar.ForeColor = Color.White;
-            btnAgregar.Location = new Point(772, 111);
-            btnAgregar.Name = "btnAgregar";
-            btnAgregar.Size = new Size(119, 33);
-            btnAgregar.TabIndex = 28;
-            btnAgregar.Text = "Agregar";
-            btnAgregar.TextImageRelation = TextImageRelation.ImageBeforeText;
-            btnAgregar.UseVisualStyleBackColor = false;
-            btnAgregar.Click += btnAgregar_Click;
             // 
             // MaterialesForm
             // 
@@ -173,7 +182,7 @@
         private DataGridViewTextBoxColumn Id;
         private DataGridViewTextBoxColumn Nombre;
         private DataGridViewTextBoxColumn PrecioUnidad;
-        private DataGridViewTextBoxColumn EstadoTexto;
+        private DataGridViewTextBoxColumn Estado;
         private DataGridViewButtonColumn Editar;
         private DataGridViewButtonColumn Accion;
     }

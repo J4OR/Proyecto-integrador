@@ -43,7 +43,7 @@ namespace Proyecto_Integrador.Views.Materiales
 
             materialController.AgregarMaterial(material);
 
-            MessageBox.Show("Cliente agregado correctamente.", "Agregar cliente", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show("Material agregado correctamente.", "Agregar Material", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             this.DialogResult = DialogResult.OK;
             this.Close();

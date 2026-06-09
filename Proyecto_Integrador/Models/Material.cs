@@ -20,7 +20,7 @@ namespace Proyecto_Integrador.Models
         }
 
         [JsonConstructor]
-        public Material(int id, string nombre, double precioUnidad, bool estado)
+        public Material(int id, string nombre, double precioUnidad, bool estado = true)
         {
             this.id = id;
             this.nombre = nombre;

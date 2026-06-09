@@ -1,4 +1,5 @@
 using Proyecto_Integrador.Views;
+using Proyecto_Integrador.Views.Cotizaciones;
 
 namespace Proyecto_Integrador
 {

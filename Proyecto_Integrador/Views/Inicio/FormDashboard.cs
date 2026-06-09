@@ -1,4 +1,5 @@
 ﻿using Proyecto_Integrador.Models;
+using Proyecto_Integrador.Views.Cotizaciones;
 using Proyecto_Integrador.Views.Inicio;
 using Proyecto_Integrador.Views.Materiales;
 using Proyecto_Integrador.Views.Terrenos;
@@ -38,7 +39,7 @@ namespace Proyecto_Integrador.Views
             formulario.Show();
             formulario.PerformLayout();
 
-          
+
         }
         private void mensajesForm(Usuario usuario)
         {
@@ -100,6 +101,11 @@ namespace Proyecto_Integrador.Views
         private void btnTerrenos_Click(object sender, EventArgs e)
         {
             AbrirFormularioEnPanel(new TerrenoForm(this));
+        }
+
+        private void btnCotizaciones_Click(object sender, EventArgs e)
+        {
+            AbrirFormularioEnPanel(new CotizacionesForm());
         }
     }
 }

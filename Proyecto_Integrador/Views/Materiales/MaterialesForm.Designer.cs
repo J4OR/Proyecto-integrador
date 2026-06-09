@@ -141,6 +141,7 @@
             btnAgregar.Text = "Agregar";
             btnAgregar.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnAgregar.UseVisualStyleBackColor = false;
+            btnAgregar.Click += btnAgregar_Click;
             // 
             // MaterialesForm
             // 

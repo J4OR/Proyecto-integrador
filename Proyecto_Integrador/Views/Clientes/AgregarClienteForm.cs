@@ -14,7 +14,6 @@ namespace Proyecto_Integrador.Views.Clientes
     public partial class AgregarClienteForm : Form
     {
         private ClienteController clienteController = new ClienteController();
-        private ClienteValidator clienteValidator = new ClienteValidator();
         public AgregarClienteForm()
         {
             InitializeComponent();

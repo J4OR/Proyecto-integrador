@@ -204,7 +204,7 @@ namespace Proyecto_Integrador.Views.Terrenos
             (double)nupAltura.Value, volumenTerreno, txtNombre.Text);
 
             terrenoController.AgregarTerreno(terreno);
-            MessageBox.Show("terren agregado correctamente.", "Agregar terreno", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show("terreno agregado correctamente.", "Agregar terreno", MessageBoxButtons.OK, MessageBoxIcon.Information);
             this.DialogResult = DialogResult.OK;
 
             FormDashboard principal = (FormDashboard)this.ParentForm;

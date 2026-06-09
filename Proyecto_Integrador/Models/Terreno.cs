@@ -27,7 +27,7 @@ namespace Proyecto_Integrador.Models
         [JsonConstructor]
         public Terreno (double[][] cotas, double dx, double dy, double alturaReferencia, double volumen = 0, string nombre = "")
         {
-            this.id = new Guid();
+            this.id = Guid.NewGuid();
             this.nombre = nombre;
             this.cotas = cotas;
             this.dx = dx;

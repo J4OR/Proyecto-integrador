@@ -23,39 +23,13 @@ namespace Proyecto_Integrador.Models
         /// </returns>
         public static double CalcularSimpson(Terreno terreno)
         {
-            double[,] z = ConvertirAMatriz(terreno.cotas);
 
             return Simpson(
-                z,
+                terreno.cotas,
                 terreno.alturaReferencia,
                 terreno.dx,
                 terreno.dy
             );
-        }
-
-        /// <summary>
-        /// Convierte una matriz tipo double[][] en una matriz double[,].
-        /// Esto permite guardar las cotas fácilmente en JSON y luego usarlas
-        /// en el cálculo numérico.
-        /// </summary>
-        /// <param name="datos">Matriz de cotas en formato double[][].</param>
-        /// <returns>Matriz de cotas en formato double[,].</returns>
-        public static double[,] ConvertirAMatriz(double[][] datos)
-        {
-            int filas = datos.Length;
-            int cols = datos[0].Length;
-
-            double[,] matriz = new double[filas, cols];
-
-            for (int i = 0; i < filas; i++)
-            {
-                for (int j = 0; j < cols; j++)
-                {
-                    matriz[i, j] = datos[i][j];
-                }
-            }
-
-            return matriz;
         }
 
         /// <summary>
@@ -67,10 +41,11 @@ namespace Proyecto_Integrador.Models
         /// <param name="dx">Distancia entre puntos en la dirección X.</param>
         /// <param name="dy">Distancia entre puntos en la dirección Y.</param>
         /// <returns>Volumen aproximado de corte.</returns>
-        private static double Simpson(double[,] z, double cotaCorte, double dx, double dy)
+
+        private static double Simpson(double[][] z, double cotaCorte, double dx, double dy)
         {
-            int filas = z.GetLength(0);
-            int cols = z.GetLength(1);
+            int filas = z.Length;
+            int cols = z[0].Length;
 
             if (filas < 3 || cols < 3)
                 throw new ArgumentException("Simpson 2D requiere mínimo 3x3 nodos.");
@@ -86,21 +61,15 @@ namespace Proyecto_Integrador.Models
 
                 for (int j = 0; j < nj; j++)
                 {
-                    double profundidad =
-                    Math.Max(cotaCorte - z[i, j], 0);
+                    double profundidad = Math.Max(cotaCorte - z[i][j], 0);
 
                     volumen += wi * SimpsonPeso(j, nj) * profundidad;
-                    //double diferencia = z[i, j] - cotaCorte;
-
-                    //if (diferencia > 0)
-                    //{
-                    //    volumen += wi * SimpsonPeso(j, nj) * diferencia;
-                    //}
                 }
             }
 
             return volumen * dx * dy / 9.0;
         }
+
 
         /// <summary>
         /// Devuelve el peso de Simpson 1/3 para un punto de la grilla.

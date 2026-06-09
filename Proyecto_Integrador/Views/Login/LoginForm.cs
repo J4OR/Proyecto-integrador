@@ -25,6 +25,7 @@ namespace Proyecto_Integrador.Views
             txtPassword.ForeColor = Color.Black;
             txtUser.Text = "admin";
             txtPassword.Text = "admin123@";
+
             this.resizer = new ControlsUtils(this);
             this.WindowState = FormWindowState.Maximized;
 
@@ -43,6 +44,12 @@ namespace Proyecto_Integrador.Views
         }
         private void LoginForm_Load(object sender, EventArgs e)
         {
+            if(txtPassword.Text != "Ingrese su contraseña")
+            {
+                pbOjo.Image = Properties.Resources.ojoCerrado;
+                txtPassword.PasswordChar = '*';
+
+            }
             pbOjo.Image = Properties.Resources.ojoAbierto;
             lblError.Visible = false;
             pbError.Visible = false;

@@ -7,7 +7,7 @@ using System.Text;
 namespace Proyecto_Integrador.Controller
 {
     public class MaterialController
-    {  
+    {
         private MaterialRepository materialRepository;
 
         public MaterialController()
@@ -32,14 +32,21 @@ namespace Proyecto_Integrador.Controller
 
         public int ObtenerSiguienteId()
         {
-            List<Material> lista = materialRepository.Leer();
-            return materialRepository.ObtenerSiguienteId(lista);
+            return materialRepository.ObtenerSiguienteId();
         }
 
         public bool ExisteMaterial(string nombre)
         {
             List<Material> lista = materialRepository.Leer();
             return lista.Any(m => m.nombre == nombre);
+        } 
+        public List<Material> buscador(string texto)
+        {
+            return materialRepository.buscador(texto);
+        }
+        public void cambiarEstado(bool nuevoEstado, int id)
+        {
+            materialRepository.CambiarEstado(id, nuevoEstado);
         }
     }
 }

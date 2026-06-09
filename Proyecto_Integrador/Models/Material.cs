@@ -11,6 +11,13 @@ namespace Proyecto_Integrador.Models
         public string nombre { get; set; }
         public double precioUnidad { get; set; }
         public bool estado { get; set; }
+        public string estadoTexto
+        {
+            get
+            {
+                return estado ? "Activo" : "Inactivo";
+            }
+        }
 
         [JsonConstructor]
         public Material(int id, string nombre, double precioUnidad, bool estado)

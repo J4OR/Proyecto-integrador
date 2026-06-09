@@ -25,11 +25,6 @@ namespace Proyecto_Integrador.Controller
             TerrenoRepository.Agregar(terreno);
         }
 
-        public void EditarTerreno(Terreno terreno, Guid id)
-        {
-            terreno.volumen = CalculadoraVolumen.CalcularSimpson(terreno);
-            TerrenoRepository.Editar(terreno, id);
-        }
         public void EliminarTerreno(Guid id)
         {
             TerrenoRepository.Eliminar(id);
@@ -40,7 +35,7 @@ namespace Proyecto_Integrador.Controller
         }
         public double CalcularVolumen(Terreno terreno)
         {
-            return CalculadoraVolumen.CalcularSimpson(terreno);
+            return CalculadoraVolumen.Calcular(terreno);
         }
     }
 }

@@ -28,11 +28,11 @@ namespace Proyecto_Integrador.Views.Cotizaciones
         {
             cotizaciones = cotizacionController.ObtenerCotizaciones();
 
-            tablaCotizaciones.Rows.Clear();
+            tablaFacturas.Rows.Clear();
 
             foreach (var c in cotizaciones)
             {
-                tablaCotizaciones.Rows.Add(
+                tablaFacturas.Rows.Add(
                     c.id,
                     c.fecha.ToString("dd/MM/yyyy"),
                     c.cliente.nombre,
@@ -65,11 +65,11 @@ namespace Proyecto_Integrador.Views.Cotizaciones
                 .Where(c => c.fecha >= fechaInicio && c.fecha <= fechaFin)
                 .ToList();
 
-            tablaCotizaciones.Rows.Clear();
+            tablaFacturas.Rows.Clear();
 
             foreach (var c in cotizacionesFiltradas)
             {
-                tablaCotizaciones.Rows.Add(
+                tablaFacturas.Rows.Add(
                     c.id,
                     c.cliente.nombre,
                     c.terreno.nombre,
@@ -99,11 +99,11 @@ namespace Proyecto_Integrador.Views.Cotizaciones
                 )
             ).ToList();
 
-            tablaCotizaciones.Rows.Clear();
+            tablaFacturas.Rows.Clear();
 
             foreach (var c in resultado)
             {
-                tablaCotizaciones.Rows.Add(
+                tablaFacturas.Rows.Add(
                     c.id,
                     c.cliente.nombre,
                     c.terreno.nombre,
@@ -120,7 +120,7 @@ namespace Proyecto_Integrador.Views.Cotizaciones
             if (e.RowIndex < 0)
                 return;
 
-            string id = tablaCotizaciones.Rows[e.RowIndex].Cells[0].Value.ToString();
+            string id = tablaFacturas.Rows[e.RowIndex].Cells[0].Value.ToString();
 
             // Recargar la lista desde el JSON
             cotizaciones = cotizacionController.ObtenerCotizaciones();

@@ -28,10 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AgregarFacturaForm));
             panelTitulo = new Panel();
             panel1 = new Panel();
             label4 = new Label();
-            textBox1 = new TextBox();
+            txtId = new TextBox();
             dtpFecha = new DateTimePicker();
             label3 = new Label();
             label2 = new Label();
@@ -41,23 +42,27 @@
             label8 = new Label();
             txtCorreo = new TextBox();
             label9 = new Label();
-            txtIdentificaion = new TextBox();
+            txtIdentificacion = new TextBox();
             label7 = new Label();
             txtNombre = new TextBox();
             label6 = new Label();
             label5 = new Label();
             dtvgItems = new DataGridView();
-            textBox2 = new TextBox();
-            label10 = new Label();
-            cbCotizaciones = new ComboBox();
-            label11 = new Label();
             Descripcion = new DataGridViewTextBoxColumn();
             PrecioUnitario = new DataGridViewTextBoxColumn();
             Material = new DataGridViewTextBoxColumn();
             Volumen = new DataGridViewTextBoxColumn();
             Total = new DataGridViewTextBoxColumn();
-            button1 = new Button();
-            label12 = new Label();
+            txtObservaciones = new TextBox();
+            label10 = new Label();
+            cbCotizaciones = new ComboBox();
+            label11 = new Label();
+            btnCargar = new Button();
+            lblSubtotal = new Label();
+            lblIva = new Label();
+            lblTotal = new Label();
+            btnCancelar = new Button();
+            btnGuardar = new Button();
             panelTitulo.SuspendLayout();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
@@ -78,7 +83,7 @@
             // 
             panel1.BackColor = Color.White;
             panel1.Controls.Add(label4);
-            panel1.Controls.Add(textBox1);
+            panel1.Controls.Add(txtId);
             panel1.Controls.Add(dtpFecha);
             panel1.Controls.Add(label3);
             panel1.Controls.Add(label2);
@@ -98,12 +103,12 @@
             label4.TabIndex = 4;
             label4.Text = "Fecha:";
             // 
-            // textBox1
+            // txtId
             // 
-            textBox1.Location = new Point(49, 32);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(160, 27);
-            textBox1.TabIndex = 3;
+            txtId.Location = new Point(49, 32);
+            txtId.Name = "txtId";
+            txtId.Size = new Size(160, 27);
+            txtId.TabIndex = 3;
             // 
             // dtpFecha
             // 
@@ -155,7 +160,7 @@
             panel2.Controls.Add(label8);
             panel2.Controls.Add(txtCorreo);
             panel2.Controls.Add(label9);
-            panel2.Controls.Add(txtIdentificaion);
+            panel2.Controls.Add(txtIdentificacion);
             panel2.Controls.Add(label7);
             panel2.Controls.Add(txtNombre);
             panel2.Controls.Add(label6);
@@ -201,12 +206,12 @@
             label9.TabIndex = 9;
             label9.Text = "Correo:";
             // 
-            // txtIdentificaion
+            // txtIdentificacion
             // 
-            txtIdentificaion.Location = new Point(588, 41);
-            txtIdentificaion.Name = "txtIdentificaion";
-            txtIdentificaion.Size = new Size(200, 27);
-            txtIdentificaion.TabIndex = 8;
+            txtIdentificacion.Location = new Point(588, 41);
+            txtIdentificacion.Name = "txtIdentificacion";
+            txtIdentificacion.Size = new Size(200, 27);
+            txtIdentificacion.TabIndex = 8;
             // 
             // label7
             // 
@@ -252,6 +257,7 @@
             // dtvgItems
             // 
             dtvgItems.AllowUserToAddRows = false;
+            dtvgItems.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllHeaders;
             dtvgItems.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dtvgItems.Columns.AddRange(new DataGridViewColumn[] { Descripcion, PrecioUnitario, Material, Volumen, Total });
             dtvgItems.Location = new Point(12, 299);
@@ -261,45 +267,6 @@
             dtvgItems.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dtvgItems.Size = new Size(1143, 271);
             dtvgItems.TabIndex = 34;
-            // 
-            // textBox2
-            // 
-            textBox2.Location = new Point(12, 599);
-            textBox2.Multiline = true;
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(601, 86);
-            textBox2.TabIndex = 35;
-            // 
-            // label10
-            // 
-            label10.AutoSize = true;
-            label10.BackColor = Color.Transparent;
-            label10.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label10.ForeColor = Color.FromArgb(0, 0, 64);
-            label10.Location = new Point(12, 573);
-            label10.Name = "label10";
-            label10.Size = new Size(125, 23);
-            label10.TabIndex = 36;
-            label10.Text = "Observaciones";
-            // 
-            // cbCotizaciones
-            // 
-            cbCotizaciones.FormattingEnabled = true;
-            cbCotizaciones.Location = new Point(859, 144);
-            cbCotizaciones.Name = "cbCotizaciones";
-            cbCotizaciones.Size = new Size(231, 28);
-            cbCotizaciones.TabIndex = 13;
-            // 
-            // label11
-            // 
-            label11.AutoSize = true;
-            label11.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label11.ForeColor = Color.FromArgb(0, 0, 64);
-            label11.Location = new Point(749, 147);
-            label11.Name = "label11";
-            label11.Size = new Size(96, 20);
-            label11.TabIndex = 37;
-            label11.Text = "Cotizaciones";
             // 
             // Descripcion
             // 
@@ -314,7 +281,7 @@
             PrecioUnitario.HeaderText = "Precio Unitario";
             PrecioUnitario.MinimumWidth = 6;
             PrecioUnitario.Name = "PrecioUnitario";
-            PrecioUnitario.Width = 136;
+            PrecioUnitario.Width = 125;
             // 
             // Material
             // 
@@ -338,41 +305,145 @@
             Total.ReadOnly = true;
             Total.Width = 125;
             // 
-            // button1
+            // txtObservaciones
             // 
-            button1.Location = new Point(1096, 140);
-            button1.Name = "button1";
-            button1.Size = new Size(59, 34);
-            button1.TabIndex = 38;
-            button1.Text = "C";
-            button1.UseVisualStyleBackColor = true;
+            txtObservaciones.Location = new Point(12, 599);
+            txtObservaciones.Multiline = true;
+            txtObservaciones.Name = "txtObservaciones";
+            txtObservaciones.Size = new Size(601, 86);
+            txtObservaciones.TabIndex = 35;
             // 
-            // label12
+            // label10
             // 
-            label12.AutoSize = true;
-            label12.Location = new Point(776, 629);
-            label12.Name = "label12";
-            label12.Size = new Size(58, 20);
-            label12.TabIndex = 39;
-            label12.Text = "label12";
+            label10.AutoSize = true;
+            label10.BackColor = Color.Transparent;
+            label10.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label10.ForeColor = Color.FromArgb(0, 0, 64);
+            label10.Location = new Point(12, 573);
+            label10.Name = "label10";
+            label10.Size = new Size(125, 23);
+            label10.TabIndex = 36;
+            label10.Text = "Observaciones";
+            // 
+            // cbCotizaciones
+            // 
+            cbCotizaciones.DisplayMember = "1";
+            cbCotizaciones.FormattingEnabled = true;
+            cbCotizaciones.Location = new Point(859, 144);
+            cbCotizaciones.Name = "cbCotizaciones";
+            cbCotizaciones.Size = new Size(231, 28);
+            cbCotizaciones.TabIndex = 13;
+            // 
+            // label11
+            // 
+            label11.AutoSize = true;
+            label11.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label11.ForeColor = Color.FromArgb(0, 0, 64);
+            label11.Location = new Point(749, 147);
+            label11.Name = "label11";
+            label11.Size = new Size(96, 20);
+            label11.TabIndex = 37;
+            label11.Text = "Cotizaciones";
+            // 
+            // btnCargar
+            // 
+            btnCargar.Location = new Point(1096, 140);
+            btnCargar.Name = "btnCargar";
+            btnCargar.Size = new Size(59, 34);
+            btnCargar.TabIndex = 38;
+            btnCargar.Text = "C";
+            btnCargar.UseVisualStyleBackColor = true;
+            btnCargar.Click += btnCargar_Click;
+            // 
+            // lblSubtotal
+            // 
+            lblSubtotal.AutoSize = true;
+            lblSubtotal.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblSubtotal.Location = new Point(697, 600);
+            lblSubtotal.Name = "lblSubtotal";
+            lblSubtotal.Size = new Size(148, 23);
+            lblSubtotal.TabIndex = 39;
+            lblSubtotal.Text = "Subtotal:     $ 0,00";
+            // 
+            // lblIva
+            // 
+            lblIva.AutoSize = true;
+            lblIva.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblIva.Location = new Point(697, 632);
+            lblIva.Name = "lblIva";
+            lblIva.Size = new Size(148, 23);
+            lblIva.TabIndex = 40;
+            lblIva.Text = "Iva (19%):    $ 0,00";
+            // 
+            // lblTotal
+            // 
+            lblTotal.AutoSize = true;
+            lblTotal.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblTotal.ForeColor = Color.FromArgb(0, 0, 64);
+            lblTotal.Location = new Point(697, 662);
+            lblTotal.Name = "lblTotal";
+            lblTotal.Size = new Size(153, 28);
+            lblTotal.TabIndex = 41;
+            lblTotal.Text = "Total:     $ 0,00";
+            // 
+            // btnCancelar
+            // 
+            btnCancelar.BackColor = Color.White;
+            btnCancelar.FlatStyle = FlatStyle.Flat;
+            btnCancelar.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnCancelar.ForeColor = Color.Black;
+            btnCancelar.Image = (Image)resources.GetObject("btnCancelar.Image");
+            btnCancelar.Location = new Point(854, 709);
+            btnCancelar.Name = "btnCancelar";
+            btnCancelar.Padding = new Padding(10, 5, 0, 5);
+            btnCancelar.Size = new Size(121, 36);
+            btnCancelar.TabIndex = 52;
+            btnCancelar.Text = "Cancelar";
+            btnCancelar.TextImageRelation = TextImageRelation.ImageBeforeText;
+            btnCancelar.UseVisualStyleBackColor = false;
+            btnCancelar.Click += btnCancelar_Click;
+            // 
+            // btnGuardar
+            // 
+            btnGuardar.BackColor = Color.FromArgb(0, 0, 64);
+            btnGuardar.FlatAppearance.BorderSize = 0;
+            btnGuardar.FlatStyle = FlatStyle.Flat;
+            btnGuardar.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnGuardar.ForeColor = SystemColors.ButtonHighlight;
+            btnGuardar.Image = (Image)resources.GetObject("btnGuardar.Image");
+            btnGuardar.Location = new Point(991, 709);
+            btnGuardar.Name = "btnGuardar";
+            btnGuardar.Padding = new Padding(10, 5, 0, 5);
+            btnGuardar.Size = new Size(130, 36);
+            btnGuardar.TabIndex = 51;
+            btnGuardar.Text = " Guardar";
+            btnGuardar.TextAlign = ContentAlignment.MiddleRight;
+            btnGuardar.TextImageRelation = TextImageRelation.ImageBeforeText;
+            btnGuardar.UseVisualStyleBackColor = false;
+            btnGuardar.Click += btnGuardar_Click;
             // 
             // AgregarFacturaForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1167, 709);
-            Controls.Add(label12);
-            Controls.Add(button1);
+            ClientSize = new Size(1167, 767);
+            Controls.Add(btnCancelar);
+            Controls.Add(btnGuardar);
+            Controls.Add(lblTotal);
+            Controls.Add(lblIva);
+            Controls.Add(lblSubtotal);
+            Controls.Add(btnCargar);
             Controls.Add(label11);
             Controls.Add(cbCotizaciones);
             Controls.Add(label10);
-            Controls.Add(textBox2);
+            Controls.Add(txtObservaciones);
             Controls.Add(dtvgItems);
             Controls.Add(panel2);
             Controls.Add(panelTitulo);
             Name = "AgregarFacturaForm";
             Text = "AgregarFacturaForm";
             Load += AgregarFacturaForm_Load;
+            Resize += AgregarFacturaForm_Resize;
             panelTitulo.ResumeLayout(false);
             panelTitulo.PerformLayout();
             panel1.ResumeLayout(false);
@@ -394,7 +465,7 @@
         private Label label3;
         private Label label2;
         private Label label4;
-        private TextBox textBox1;
+        private TextBox txtId;
         private Label label5;
         private Label label6;
         private TextBox txtNombre;
@@ -402,19 +473,23 @@
         private Label label8;
         private TextBox txtCorreo;
         private Label label9;
-        private TextBox txtIdentificaion;
+        private TextBox txtIdentificacion;
         private Label label7;
         private DataGridView dtvgItems;
-        private TextBox textBox2;
+        private TextBox txtObservaciones;
         private Label label10;
         private ComboBox cbCotizaciones;
         private Label label11;
+        private Button btnCargar;
+        private Label lblSubtotal;
         private DataGridViewTextBoxColumn Descripcion;
         private DataGridViewTextBoxColumn PrecioUnitario;
         private DataGridViewTextBoxColumn Material;
         private DataGridViewTextBoxColumn Volumen;
         private DataGridViewTextBoxColumn Total;
-        private Button button1;
-        private Label label12;
+        private Label lblIva;
+        private Label lblTotal;
+        private Button btnCancelar;
+        private Button btnGuardar;
     }
 }

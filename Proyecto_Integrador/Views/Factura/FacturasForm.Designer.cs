@@ -1,6 +1,6 @@
-﻿namespace Proyecto_Integrador.Views.Cotizaciones
+﻿namespace Proyecto_Integrador.Views.Factura
 {
-    partial class CotizacionesForm
+    partial class FacturasForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,28 +28,49 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CotizacionesForm));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FacturasForm));
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            btnBuscar = new Button();
+            FechaFin = new DateTimePicker();
+            FechaInicio = new DateTimePicker();
             btnAgregar = new Button();
-            tablaFacturas = new DataGridView();
+            tablaCotizaciones = new DataGridView();
             txtBuscar = new TextBox();
             label1 = new Label();
             panelTitulo = new Panel();
-            FechaInicio = new DateTimePicker();
-            FechaFin = new DateTimePicker();
-            btnBuscar = new Button();
             Id = new DataGridViewTextBoxColumn();
-            Fecha = new DataGridViewTextBoxColumn();
             Cliente = new DataGridViewTextBoxColumn();
-            Terreno = new DataGridViewTextBoxColumn();
-            Material = new DataGridViewTextBoxColumn();
-            Total = new DataGridViewTextBoxColumn();
+            Fecha = new DataGridViewTextBoxColumn();
             Estado = new DataGridViewTextBoxColumn();
-            Ver = new DataGridViewButtonColumn();
+            Total = new DataGridViewTextBoxColumn();
+            Editar = new DataGridViewButtonColumn();
             Accion = new DataGridViewButtonColumn();
-            ((System.ComponentModel.ISupportInitialize)tablaFacturas).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)tablaCotizaciones).BeginInit();
             SuspendLayout();
+            // 
+            // btnBuscar
+            // 
+            btnBuscar.Image = (Image)resources.GetObject("btnBuscar.Image");
+            btnBuscar.Location = new Point(875, 108);
+            btnBuscar.Name = "btnBuscar";
+            btnBuscar.Size = new Size(42, 30);
+            btnBuscar.TabIndex = 22;
+            btnBuscar.UseVisualStyleBackColor = true;
+            // 
+            // FechaFin
+            // 
+            FechaFin.Location = new Point(568, 110);
+            FechaFin.Name = "FechaFin";
+            FechaFin.Size = new Size(301, 27);
+            FechaFin.TabIndex = 21;
+            // 
+            // FechaInicio
+            // 
+            FechaInicio.Location = new Point(245, 110);
+            FechaInicio.Name = "FechaInicio";
+            FechaInicio.Size = new Size(292, 27);
+            FechaInicio.TabIndex = 20;
             // 
             // btnAgregar
             // 
@@ -57,35 +78,32 @@
             btnAgregar.FlatStyle = FlatStyle.Flat;
             btnAgregar.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnAgregar.ForeColor = Color.White;
-            btnAgregar.Location = new Point(1169, 118);
+            btnAgregar.Location = new Point(1012, 110);
             btnAgregar.Name = "btnAgregar";
             btnAgregar.Size = new Size(140, 33);
-            btnAgregar.TabIndex = 11;
+            btnAgregar.TabIndex = 19;
             btnAgregar.Text = "Nueva Cotizacion";
             btnAgregar.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnAgregar.UseVisualStyleBackColor = false;
-            btnAgregar.Click += btnAgregar_Click;
             // 
-            // tablaFacturas
+            // tablaCotizaciones
             // 
-            tablaFacturas.AllowUserToAddRows = false;
-            tablaFacturas.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            tablaFacturas.Columns.AddRange(new DataGridViewColumn[] { Id, Fecha, Cliente, Terreno, Material, Total, Estado, Ver, Accion });
-            tablaFacturas.Location = new Point(50, 172);
-            tablaFacturas.Name = "tablaFacturas";
-            tablaFacturas.RowHeadersWidth = 51;
-            tablaFacturas.Size = new Size(1259, 497);
-            tablaFacturas.TabIndex = 9;
-            tablaFacturas.CellClick += tablaCotizaciones_CellClick;
+            tablaCotizaciones.AllowUserToAddRows = false;
+            tablaCotizaciones.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            tablaCotizaciones.Columns.AddRange(new DataGridViewColumn[] { Id, Cliente, Fecha, Estado, Total, Editar, Accion });
+            tablaCotizaciones.Location = new Point(22, 185);
+            tablaCotizaciones.Name = "tablaCotizaciones";
+            tablaCotizaciones.RowHeadersWidth = 51;
+            tablaCotizaciones.Size = new Size(1259, 497);
+            tablaCotizaciones.TabIndex = 17;
             // 
             // txtBuscar
             // 
             txtBuscar.ForeColor = Color.Black;
-            txtBuscar.Location = new Point(50, 118);
+            txtBuscar.Location = new Point(31, 152);
             txtBuscar.Name = "txtBuscar";
             txtBuscar.Size = new Size(235, 27);
-            txtBuscar.TabIndex = 8;
-            txtBuscar.TextChanged += txtBuscar_TextChanged;
+            txtBuscar.TabIndex = 16;
             // 
             // label1
             // 
@@ -93,46 +111,20 @@
             label1.BackColor = Color.FromArgb(0, 0, 64);
             label1.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label1.ForeColor = Color.White;
-            label1.Location = new Point(427, 12);
+            label1.Location = new Point(270, 4);
             label1.Name = "label1";
             label1.Size = new Size(308, 28);
-            label1.TabIndex = 7;
+            label1.TabIndex = 15;
             label1.Text = "Administración de cotizaciones";
             label1.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // panelTitulo
             // 
             panelTitulo.BackColor = Color.FromArgb(0, 0, 64);
-            panelTitulo.Location = new Point(0, 0);
+            panelTitulo.Location = new Point(-157, -8);
             panelTitulo.Name = "panelTitulo";
             panelTitulo.Size = new Size(1418, 63);
-            panelTitulo.TabIndex = 10;
-            // 
-            // FechaInicio
-            // 
-            FechaInicio.Format = DateTimePickerFormat.Short;
-            FechaInicio.Location = new Point(474, 119);
-            FechaInicio.Name = "FechaInicio";
-            FechaInicio.Size = new Size(125, 27);
-            FechaInicio.TabIndex = 12;
-            // 
-            // FechaFin
-            // 
-            FechaFin.Format = DateTimePickerFormat.Short;
-            FechaFin.Location = new Point(632, 118);
-            FechaFin.Name = "FechaFin";
-            FechaFin.Size = new Size(141, 27);
-            FechaFin.TabIndex = 13;
-            // 
-            // btnBuscar
-            // 
-            btnBuscar.Image = (Image)resources.GetObject("btnBuscar.Image");
-            btnBuscar.Location = new Point(792, 115);
-            btnBuscar.Name = "btnBuscar";
-            btnBuscar.Size = new Size(42, 30);
-            btnBuscar.TabIndex = 14;
-            btnBuscar.UseVisualStyleBackColor = true;
-            btnBuscar.Click += btnBuscar_Click;
+            panelTitulo.TabIndex = 18;
             // 
             // Id
             // 
@@ -141,13 +133,6 @@
             Id.Name = "Id";
             Id.Width = 125;
             // 
-            // Fecha
-            // 
-            Fecha.HeaderText = "Fecha";
-            Fecha.MinimumWidth = 6;
-            Fecha.Name = "Fecha";
-            Fecha.Width = 125;
-            // 
             // Cliente
             // 
             Cliente.HeaderText = "Cliente";
@@ -155,26 +140,12 @@
             Cliente.Name = "Cliente";
             Cliente.Width = 125;
             // 
-            // Terreno
+            // Fecha
             // 
-            Terreno.HeaderText = "Terreno";
-            Terreno.MinimumWidth = 6;
-            Terreno.Name = "Terreno";
-            Terreno.Width = 125;
-            // 
-            // Material
-            // 
-            Material.HeaderText = "Material";
-            Material.MinimumWidth = 6;
-            Material.Name = "Material";
-            Material.Width = 125;
-            // 
-            // Total
-            // 
-            Total.HeaderText = "Total";
-            Total.MinimumWidth = 6;
-            Total.Name = "Total";
-            Total.Width = 125;
+            Fecha.HeaderText = "Fecha";
+            Fecha.MinimumWidth = 6;
+            Fecha.Name = "Fecha";
+            Fecha.Width = 125;
             // 
             // Estado
             // 
@@ -183,21 +154,28 @@
             Estado.Name = "Estado";
             Estado.Width = 125;
             // 
-            // Ver
+            // Total
+            // 
+            Total.HeaderText = "Total";
+            Total.MinimumWidth = 6;
+            Total.Name = "Total";
+            Total.Width = 125;
+            // 
+            // Editar
             // 
             dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = Color.FromArgb(0, 0, 64);
             dataGridViewCellStyle1.Font = new Font("Microsoft Sans Serif", 7.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
             dataGridViewCellStyle1.ForeColor = Color.White;
             dataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(0, 0, 64);
-            Ver.DefaultCellStyle = dataGridViewCellStyle1;
-            Ver.FlatStyle = FlatStyle.Flat;
-            Ver.HeaderText = "Ver";
-            Ver.MinimumWidth = 6;
-            Ver.Name = "Ver";
-            Ver.Text = "Ver";
-            Ver.UseColumnTextForButtonValue = true;
-            Ver.Width = 125;
+            Editar.DefaultCellStyle = dataGridViewCellStyle1;
+            Editar.FlatStyle = FlatStyle.Flat;
+            Editar.HeaderText = "Editar";
+            Editar.MinimumWidth = 6;
+            Editar.Name = "Editar";
+            Editar.Text = "Editar";
+            Editar.UseColumnTextForButtonValue = true;
+            Editar.Width = 125;
             // 
             // Accion
             // 
@@ -212,44 +190,42 @@
             Accion.UseColumnTextForButtonValue = true;
             Accion.Width = 140;
             // 
-            // CotizacionesForm
+            // FacturasForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1410, 708);
+            ClientSize = new Size(1312, 717);
             Controls.Add(btnBuscar);
             Controls.Add(FechaFin);
             Controls.Add(FechaInicio);
             Controls.Add(btnAgregar);
-            Controls.Add(tablaFacturas);
+            Controls.Add(tablaCotizaciones);
             Controls.Add(txtBuscar);
             Controls.Add(label1);
             Controls.Add(panelTitulo);
-            Name = "CotizacionesForm";
-            Text = "CotizacionesForm";
-            ((System.ComponentModel.ISupportInitialize)tablaFacturas).EndInit();
+            Name = "FacturasForm";
+            Text = "FacturasForm";
+            ((System.ComponentModel.ISupportInitialize)tablaCotizaciones).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
 
+        private Button btnBuscar;
+        private DateTimePicker FechaFin;
+        private DateTimePicker FechaInicio;
         private Button btnAgregar;
-        private DataGridView tablaFacturas;
+        private DataGridView tablaCotizaciones;
+        private DataGridViewTextBoxColumn Id;
+        private DataGridViewTextBoxColumn Cliente;
+        private DataGridViewTextBoxColumn Fecha;
+        private DataGridViewTextBoxColumn Estado;
+        private DataGridViewTextBoxColumn Total;
+        private DataGridViewButtonColumn Editar;
+        private DataGridViewButtonColumn Accion;
         private TextBox txtBuscar;
         private Label label1;
         private Panel panelTitulo;
-        private DateTimePicker FechaInicio;
-        private DateTimePicker FechaFin;
-        private Button btnBuscar;
-        private DataGridViewTextBoxColumn Id;
-        private DataGridViewTextBoxColumn Fecha;
-        private DataGridViewTextBoxColumn Cliente;
-        private DataGridViewTextBoxColumn Terreno;
-        private DataGridViewTextBoxColumn Material;
-        private DataGridViewTextBoxColumn Total;
-        private DataGridViewTextBoxColumn Estado;
-        private DataGridViewButtonColumn Ver;
-        private DataGridViewButtonColumn Accion;
     }
 }

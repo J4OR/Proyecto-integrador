@@ -10,7 +10,7 @@ using Proyecto_Integrador.Models;
 
 namespace Proyecto_Integrador.Views.Cotizaciones
 {
-    public partial class FormAddCotizacion : Form
+    public partial class FormEditarCotizacion : Form
     {
         private TerrenoController terrenoController;
         private List<Terreno> terrenos;
@@ -22,8 +22,9 @@ namespace Proyecto_Integrador.Views.Cotizaciones
         private List<Material> materialList;
 
         private CotizacionController cotizacionController;
+        private Cotizacion cotizacionActual;
 
-        public FormAddCotizacion()
+        public FormEditarCotizacion(Cotizacion cotizacion)
         {
             InitializeComponent();
 
@@ -31,6 +32,8 @@ namespace Proyecto_Integrador.Views.Cotizaciones
             this.FormBorderStyle = FormBorderStyle.FixedDialog;
             this.MinimizeBox = false;
             this.MaximizeBox = false;
+
+            cotizacionActual = cotizacion;
 
             terrenoController = new TerrenoController();
             terrenos = terrenoController.ObtenerTerrenos();
@@ -44,92 +47,58 @@ namespace Proyecto_Integrador.Views.Cotizaciones
             cotizacionController = new CotizacionController();
 
             foreach (var material in materialList)
-            {
-                BoxMaterial.Items.Add(material.nombre);
-            }
+                cmbMaterial.Items.Add(material.nombre);
 
             foreach (var terreno in terrenos)
-            {
-                comboBox2.Items.Add(terreno.nombre);
-            }
+                cmbTerreno.Items.Add(terreno.nombre);
 
             foreach (var cliente in clienteList)
-            {
-                BoxCliente.Items.Add(cliente.nombre);
-            }
+                cmbCliente.Items.Add(cliente.nombre);
+
+            // Pre-seleccionar valores actuales
+            cmbCliente.SelectedItem = cotizacion.cliente.nombre;
+            cmbTerreno.SelectedItem = cotizacion.terreno.nombre;
+            cmbMaterial.SelectedItem = cotizacion.material.nombre;
+            txtVolumen.Text = cotizacion.terreno.volumen.ToString("F4");
         }
 
-        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
+        private void cmbTerreno_SelectedIndexChanged(object sender, EventArgs e)
         {
-            string nombreSeleccionado = comboBox2.Text;
-
-            Terreno terreno = terrenos.FirstOrDefault(t => t.nombre == nombreSeleccionado);
-
+            Terreno terreno = terrenos.FirstOrDefault(t => t.nombre == cmbTerreno.Text);
             if (terreno != null)
-            {
-                textBox1.Text = terreno.volumen.ToString("F4");
-            }
+                txtVolumen.Text = terreno.volumen.ToString("F4");
         }
 
-        private void BoxCliente_SelectedIndexChanged(object sender, EventArgs e)
+        private void btnGuardar_Click(object sender, EventArgs e)
         {
-
-        }
-
-        private void BoxMaterial_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void AddCotizacion_Click(object sender, EventArgs e)
-        {
-            Terreno terreno = terrenos.FirstOrDefault(t => t.nombre == comboBox2.Text);
-            Cliente cliente = clienteList.FirstOrDefault(c => c.nombre == BoxCliente.Text);
-            Material material = materialList.FirstOrDefault(m => m.nombre == BoxMaterial.Text);
+            Terreno terreno = terrenos.FirstOrDefault(t => t.nombre == cmbTerreno.Text);
+            Cliente cliente = clienteList.FirstOrDefault(c => c.nombre == cmbCliente.Text);
+            Material material = materialList.FirstOrDefault(m => m.nombre == cmbMaterial.Text);
 
             if (terreno == null)
             {
                 MessageBox.Show("Seleccione un terreno.");
                 return;
             }
-
             if (cliente == null)
             {
                 MessageBox.Show("Seleccione un cliente.");
                 return;
             }
-
             if (material == null)
             {
                 MessageBox.Show("Seleccione un material.");
                 return;
             }
 
-            CotizacionController cotizacionController = new CotizacionController();
+            cotizacionActual.cliente = cliente;
+            cotizacionActual.terreno = terreno;
+            cotizacionActual.material = material;
+            cotizacionActual.costoTotal = material.precioUnidad * terreno.volumen;
 
-            string id = cotizacionController.obtenerId();
+            cotizacionController.ActualizarCotizacion(cotizacionActual);
 
-            Cotizacion nuevaCotizacion = new Cotizacion(
-                id,
-                cliente,
-                terreno,
-                material
-            );
-
-            cotizacionController.AgregarCotizacion(nuevaCotizacion);
-
-            MessageBox.Show("Cotización agregada correctamente.");
-
+            MessageBox.Show("Cotización actualizada correctamente.");
             this.DialogResult = DialogResult.OK;
             this.Close();
         }

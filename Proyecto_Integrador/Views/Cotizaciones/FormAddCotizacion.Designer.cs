@@ -40,6 +40,8 @@
             BoxMaterial = new ComboBox();
             AddCotizacion = new Button();
             label2 = new Label();
+            btnCancelar = new Button();
+            label3 = new Label();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
@@ -47,7 +49,7 @@
             // BoxCliente
             // 
             BoxCliente.FormattingEnabled = true;
-            BoxCliente.Location = new Point(191, 86);
+            BoxCliente.Location = new Point(191, 83);
             BoxCliente.Name = "BoxCliente";
             BoxCliente.Size = new Size(272, 28);
             BoxCliente.TabIndex = 0;
@@ -89,7 +91,7 @@
             // lblCliente
             // 
             lblCliente.AutoSize = true;
-            lblCliente.Location = new Point(44, 89);
+            lblCliente.Location = new Point(44, 86);
             lblCliente.Name = "lblCliente";
             lblCliente.Size = new Size(55, 20);
             lblCliente.TabIndex = 55;
@@ -115,16 +117,16 @@
             // 
             // textBox1
             // 
-            textBox1.Location = new Point(191, 135);
+            textBox1.Location = new Point(191, 180);
             textBox1.Name = "textBox1";
-            textBox1.Size = new Size(250, 27);
+            textBox1.Size = new Size(272, 27);
             textBox1.TabIndex = 58;
             textBox1.TextChanged += textBox1_TextChanged;
             // 
             // BoxMaterial
             // 
             BoxMaterial.FormattingEnabled = true;
-            BoxMaterial.Location = new Point(191, 183);
+            BoxMaterial.Location = new Point(191, 222);
             BoxMaterial.Name = "BoxMaterial";
             BoxMaterial.Size = new Size(272, 28);
             BoxMaterial.TabIndex = 59;
@@ -132,29 +134,51 @@
             // 
             // AddCotizacion
             // 
-            AddCotizacion.Location = new Point(369, 232);
+            AddCotizacion.BackColor = Color.FromArgb(0, 0, 64);
+            AddCotizacion.ForeColor = SystemColors.ButtonHighlight;
+            AddCotizacion.Location = new Point(243, 256);
             AddCotizacion.Name = "AddCotizacion";
             AddCotizacion.Size = new Size(94, 29);
             AddCotizacion.TabIndex = 60;
             AddCotizacion.Text = "Agregar";
-            AddCotizacion.UseVisualStyleBackColor = true;
+            AddCotizacion.UseVisualStyleBackColor = false;
             AddCotizacion.Click += AddCotizacion_Click;
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(44, 186);
+            label2.Location = new Point(44, 225);
             label2.Name = "label2";
             label2.Size = new Size(64, 20);
             label2.TabIndex = 61;
             label2.Text = "Material";
+            // 
+            // btnCancelar
+            // 
+            btnCancelar.Location = new Point(369, 256);
+            btnCancelar.Name = "btnCancelar";
+            btnCancelar.Size = new Size(94, 29);
+            btnCancelar.TabIndex = 61;
+            btnCancelar.Text = "Cancelar";
+            btnCancelar.UseVisualStyleBackColor = true;
+            btnCancelar.Click += btnCancelar_Click;
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Location = new Point(44, 183);
+            label3.Name = "label3";
+            label3.Size = new Size(67, 20);
+            label3.TabIndex = 62;
+            label3.Text = "Volumen";
             // 
             // FormAddCotizacion
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
-            ClientSize = new Size(519, 284);
+            ClientSize = new Size(519, 297);
+            Controls.Add(label3);
             Controls.Add(label2);
             Controls.Add(AddCotizacion);
             Controls.Add(BoxMaterial);
@@ -164,6 +188,7 @@
             Controls.Add(lblCliente);
             Controls.Add(panel1);
             Controls.Add(BoxCliente);
+            Controls.Add(btnCancelar);
             Name = "FormAddCotizacion";
             Text = "FormAddCotizacion";
             panel1.ResumeLayout(false);
@@ -186,5 +211,7 @@
         private ComboBox BoxMaterial;
         private Button AddCotizacion;
         private Label label2;
+        private Button btnCancelar;
+        private Label label3;
     }
 }

@@ -156,7 +156,7 @@ namespace Proyecto_Integrador.Views
 
             MostrarError(labelsError, errores);
 
-            if (errores.Count > 0) return; // si hay errores no guarda
+            if (errores.Count > 0) return; 
 
             if (usuarioController.ExisteUsuario(txtUsuario.Text))
             {

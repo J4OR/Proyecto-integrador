@@ -1,8 +1,10 @@
 ﻿using Proyecto_Integrador.Models;
 using Proyecto_Integrador.Views.Cotizaciones;
+using Proyecto_Integrador.Views.Facturas;
 using Proyecto_Integrador.Views.Inicio;
 using Proyecto_Integrador.Views.Materiales;
 using Proyecto_Integrador.Views.Terrenos;
+using Proyecto_Integrador.Views.Usuarios;
 using Proyecto_Integrador.Views.Utils;
 using System;
 using System.Collections.Generic;
@@ -48,11 +50,6 @@ namespace Proyecto_Integrador.Views
             lblUser.Text = usuario.userName;
             lblCorreo.Text = usuario.correo;
             lblRol.Text = $"[{usuario.rol}]";
-        }
-
-        private void btnFactura_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void FormDashboard_Load(object sender, EventArgs e)
@@ -106,6 +103,18 @@ namespace Proyecto_Integrador.Views
         private void btnCotizaciones_Click(object sender, EventArgs e)
         {
             AbrirFormularioEnPanel(new CotizacionesForm());
+        }
+        private void btnFactura_Click(object sender, EventArgs e)
+        {
+            AbrirFormularioEnPanel(new FacturasForm(this));
+        }
+
+     
+
+        private void btnCambiarContraseña_Click_1(object sender, EventArgs e)
+        {
+            CambiarContraseñaForm cambiarContraseñaForm = new CambiarContraseñaForm(usuarioLogueado);
+            cambiarContraseñaForm.ShowDialog();
         }
     }
 }

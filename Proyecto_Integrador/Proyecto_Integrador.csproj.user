@@ -1,6 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
+    <Compile Update="Views\Facturas\AgregarFacturaForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Views\Clientes\AgregarClienteForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -16,13 +19,7 @@
     <Compile Update="Views\Cotizaciones\FormAddCotizacion.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Views\Cotizaciones\FormEditarCotizacion.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Update="Views\Factura\AgregarFacturaForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Update="Views\Factura\FacturasForm.cs">
+    <Compile Update="Views\Facturas\FacturasForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Views\Inicio\FormDashboard.cs">
@@ -47,6 +44,9 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Views\Usuarios\AgregarUsuarioForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Views\Usuarios\CambiarContraseñaForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Views\Usuarios\EditarUsuarioForm.cs">

@@ -155,7 +155,7 @@
             btnUsuarios.ForeColor = Color.White;
             btnUsuarios.Image = (Image)resources.GetObject("btnUsuarios.Image");
             btnUsuarios.ImageAlign = ContentAlignment.MiddleLeft;
-            btnUsuarios.Location = new Point(22, 179);
+            btnUsuarios.Location = new Point(22, 188);
             btnUsuarios.Name = "btnUsuarios";
             btnUsuarios.Size = new Size(355, 52);
             btnUsuarios.TabIndex = 7;
@@ -182,6 +182,7 @@
             btnCambiarContraseña.TextAlign = ContentAlignment.MiddleLeft;
             btnCambiarContraseña.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnCambiarContraseña.UseVisualStyleBackColor = false;
+            btnCambiarContraseña.Click += btnCambiarContraseña_Click_1;
             // 
             // btnFactura
             // 

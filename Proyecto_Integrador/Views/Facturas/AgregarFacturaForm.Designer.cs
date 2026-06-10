@@ -1,4 +1,4 @@
-﻿namespace Proyecto_Integrador.Views
+﻿namespace Proyecto_Integrador.Views.Facturas
 {
     partial class AgregarFacturaForm
     {

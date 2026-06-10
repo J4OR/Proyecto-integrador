@@ -41,10 +41,5 @@ namespace Proyecto_Integrador.Controller
         {
             return cotizacionRepository.buscador(texto);
         }
-
-        public void ActualizarCotizacion(Cotizacion cotizacion)
-        {
-            cotizacionRepository.Editar(cotizacion, cotizacion.id);
-        }
     }
 }

@@ -62,7 +62,6 @@ namespace Proyecto_Integrador.Views.Utils
                     (int)(original.Height * yRatio)
                 );
  
-                // NO cambiar la fuente de los NumericUpDown
                 if (!(ctrl is NumericUpDown) && controlFontSizes.ContainsKey(ctrl))
                 {
                     float originalFontSize = controlFontSizes[ctrl];

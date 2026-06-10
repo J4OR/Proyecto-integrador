@@ -188,7 +188,7 @@
             nupFilas.Name = "nupFilas";
             nupFilas.Size = new Size(50, 27);
             nupFilas.TabIndex = 19;
-            nupFilas.Value = new decimal(new int[] { 3, 0, 0, 0 });
+            nupFilas.Value = new decimal(new int[] { 4, 0, 0, 0 });
             // 
             // nupColumnas
             // 
@@ -198,7 +198,7 @@
             nupColumnas.Name = "nupColumnas";
             nupColumnas.Size = new Size(50, 27);
             nupColumnas.TabIndex = 21;
-            nupColumnas.Value = new decimal(new int[] { 3, 0, 0, 0 });
+            nupColumnas.Value = new decimal(new int[] { 4, 0, 0, 0 });
             // 
             // label5
             // 
@@ -263,9 +263,9 @@
             btnDatos.FlatStyle = FlatStyle.Flat;
             btnDatos.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnDatos.ForeColor = Color.Black;
-            btnDatos.Location = new Point(902, 155);
+            btnDatos.Location = new Point(885, 155);
             btnDatos.Name = "btnDatos";
-            btnDatos.Size = new Size(89, 33);
+            btnDatos.Size = new Size(117, 33);
             btnDatos.TabIndex = 26;
             btnDatos.Text = "Datos";
             btnDatos.TextImageRelation = TextImageRelation.ImageBeforeText;
@@ -347,6 +347,7 @@
             btnExcavaciones.Text = "Excavaciones";
             btnExcavaciones.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnExcavaciones.UseVisualStyleBackColor = false;
+            btnExcavaciones.Click += btnExcavaciones_Click;
             // 
             // btnMontañas
             // 
@@ -361,6 +362,7 @@
             btnMontañas.Text = "Montañas";
             btnMontañas.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnMontañas.UseVisualStyleBackColor = false;
+            btnMontañas.Click += btnMontañas_Click;
             // 
             // label8
             // 
@@ -380,6 +382,7 @@
             cbOperacion.Name = "cbOperacion";
             cbOperacion.Size = new Size(158, 28);
             cbOperacion.TabIndex = 58;
+            cbOperacion.SelectedIndexChanged += cbOperacion_SelectedIndexChanged;
             // 
             // CalculoForm
             // 

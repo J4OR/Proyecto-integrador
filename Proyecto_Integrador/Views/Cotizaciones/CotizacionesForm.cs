@@ -122,8 +122,11 @@ namespace Proyecto_Integrador.Views.Cotizaciones
 
             string id = tablaCotizaciones.Rows[e.RowIndex].Cells[0].Value.ToString();
 
+            // Recargar la lista desde el JSON
             cotizaciones = cotizacionController.ObtenerCotizaciones();
-            Cotizacion cotizacionSeleccionada = cotizaciones.FirstOrDefault(c => c.id == id);
+
+            Cotizacion cotizacionSeleccionada =
+                cotizaciones.FirstOrDefault(c => c.id == id);
 
             if (cotizacionSeleccionada == null)
             {
@@ -131,23 +134,17 @@ namespace Proyecto_Integrador.Views.Cotizaciones
                 return;
             }
 
-            // Columna 7 = Editar
-            if (e.ColumnIndex == 7)
-            {
-                FormEditarCotizacion frmEditar = new FormEditarCotizacion(cotizacionSeleccionada);
-                frmEditar.ShowDialog();
-                CargarCotizaciones();
-                return;
-            }
+            bool nuevoEstado = !cotizacionSeleccionada.estado;
 
-            // Columna 8 = Activar/Desactivar
-            if (e.ColumnIndex == 8)
-            {
-                bool nuevoEstado = !cotizacionSeleccionada.estado;
-                cotizacionController.CambiarEstado(id, nuevoEstado);
-                MessageBox.Show(nuevoEstado ? "Cotización activada." : "Cotización desactivada.");
-                CargarCotizaciones();
-            }
+            cotizacionController.CambiarEstado(id, nuevoEstado);
+
+            MessageBox.Show(
+                nuevoEstado
+                ? "Cotización activada."
+                : "Cotización desactivada."
+            );
+
+            CargarCotizaciones();
         }
     }
 }

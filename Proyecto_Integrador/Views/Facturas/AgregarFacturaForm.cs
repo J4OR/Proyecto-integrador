@@ -1,6 +1,7 @@
 ﻿using Proyecto_Integrador.Controller;
 using Proyecto_Integrador.Models;
 using Proyecto_Integrador.Utils;
+using Proyecto_Integrador.Views.Terrenos;
 using Proyecto_Integrador.Views.Utils;
 using System;
 using System.Collections.Generic;
@@ -10,7 +11,7 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 
-namespace Proyecto_Integrador.Views
+namespace Proyecto_Integrador.Views.Facturas
 {
     public partial class AgregarFacturaForm : Form
     {
@@ -35,7 +36,7 @@ namespace Proyecto_Integrador.Views
             dtvgItems.DefaultCellStyle.Font = new Font("Arial", 9F);
             dtvgItems.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(240, 245, 255);
             dtvgItems.GridColor = Color.FromArgb(200, 210, 230);
-            Total.DefaultCellStyle.Format = "C2";
+            Total.DefaultCellStyle.Format = "C0";
             PrecioUnitario.DefaultCellStyle.Format = "N2";
         }
         private void AgregarFacturaForm_Load(object sender, EventArgs e)
@@ -77,7 +78,7 @@ namespace Proyecto_Integrador.Views
             {
                 TipoOperacion.Remover => "Excavación y retiro de material - " + cotizacion.terreno.nombre,
                 TipoOperacion.Rellenar => "Relleno de material - " + cotizacion.terreno.nombre,
-                TipoOperacion.Ambos => "Movimiento de tierra - " + cotizacion.terreno.nombre,
+                TipoOperacion.Mixto => "Movimiento de tierra - " + cotizacion.terreno.nombre,
                 _ => cotizacion.terreno.nombre
             };
 
@@ -105,9 +106,9 @@ namespace Proyecto_Integrador.Views
             double iva = subtotal * 0.19;
             double total = subtotal + iva;
 
-            lblSubtotal.Text = $"Subtotal:     {subtotal.ToString("C2")}";
-            lblIva.Text = $"Iva (19%):     {iva.ToString("C2")}";
-            lblTotal.Text = $" TOTAL:    {total.ToString("C2")}";
+            lblSubtotal.Text = $"Subtotal:     {subtotal.ToString("C0")}";
+            lblIva.Text = $"Iva (19%):     {iva.ToString("C0")}";
+            lblTotal.Text = $" TOTAL:    {total.ToString("C0")}";
         }
 
         private void btnGuardar_Click(object sender, EventArgs e)
@@ -128,7 +129,7 @@ namespace Proyecto_Integrador.Views
             double iva = subtotal * 0.19;
             double total = subtotal + iva;
 
-            Factura factura = new Factura(txtId.Text, dtpFecha.Value, cotizacion, iva, subtotal, total, txtObservaciones.Text);
+            Factura factura = new Factura(txtId.Text, dtpFecha.Value, cotizacion, Math.Round(total), Math.Round(subtotal), Math.Round(total), txtObservaciones.Text);
             facturaController.AgregarFactura(factura);
 
             using var sfd = new SaveFileDialog
@@ -157,7 +158,8 @@ namespace Proyecto_Integrador.Views
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
-
+            FormDashboard principal = (FormDashboard)this.ParentForm;
+            principal.AbrirFormularioEnPanel(new FacturasForm(principal));
         }
     }
 }

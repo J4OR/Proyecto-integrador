@@ -56,7 +56,7 @@ namespace Proyecto_Integrador.Views.Terrenos
         }
         private void TerrenoForm_Load(object sender, EventArgs e)
         {
-            crearTabla(3, 3);
+            crearTabla(4, 4);
             lblResultado.Text = "";
             tablaPuntos.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             cbOperacion.DataSource = Enum.GetValues(typeof(TipoOperacion));
@@ -97,6 +97,7 @@ namespace Proyecto_Integrador.Views.Terrenos
                     nupAltura.Value = 2;
                 }
             }
+
 
             lblResultado.Text = $"Datos aleatorios generados — Tipo: {tipo}";
             lblResultado.ForeColor = Color.DarkBlue;
@@ -195,8 +196,8 @@ namespace Proyecto_Integrador.Views.Terrenos
                 return;
             }
 
-            Terreno terreno = new Terreno((TipoOperacion) cbOperacion.SelectedItem, altura, (double)nupDx.Value, (double)nupDy.Value,
-            (double)nupAltura.Value, volumenTerreno, txtNombre.Text);
+            Terreno terreno = new Terreno((TipoOperacion)cbOperacion.SelectedItem, altura, (double)nupDx.Value, (double)nupDy.Value,
+            (double)nupAltura.Value, Math.Round(volumenTerreno, 2), txtNombre.Text);
 
             terrenoController.AgregarTerreno(terreno);
             MessageBox.Show("terreno agregado correctamente.", "Agregar terreno", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -205,6 +206,125 @@ namespace Proyecto_Integrador.Views.Terrenos
             FormDashboard principal = (FormDashboard)this.ParentForm;
             principal.AbrirFormularioEnPanel(new TerrenoForm(principal));
 
+        }
+
+        private void cbOperacion_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if ((TipoOperacion)cbOperacion.SelectedItem == TipoOperacion.Excavar)
+            {
+                double[][] alturas = LeerAlturas();
+
+                if (alturas != null)
+                {
+                    double alturaMaxima = alturas.SelectMany(fila => fila).Max();
+
+                    nupAltura.Value = (decimal)alturaMaxima;
+                }
+            }
+            if((TipoOperacion)cbOperacion.SelectedItem == TipoOperacion.Remover)
+            {
+                double[][] alturas = LeerAlturas();
+
+                if (alturas != null)
+                {
+                    double alturaMinima = alturas.SelectMany(fila => fila).Min();
+
+                    nupAltura.Value = (decimal)alturaMinima;
+                }
+
+            }
+        }
+
+        private void btnMontañas_Click(object sender, EventArgs e)
+        {
+            nupDx.Value = 5;
+            nupDy.Value = 5;
+            nupAltura.Value = 0;
+            Random random = new Random();
+
+            int filas = tablaPuntos.Rows.Count;
+            int columnas = tablaPuntos.Columns.Count;
+
+            double[,] alturas = new double[filas, columnas];
+
+            int cantidadPicos = random.Next(1, 6);
+
+            for (int p = 0; p < cantidadPicos; p++)
+            {
+                double picoX = random.NextDouble() * (columnas - 1);
+                double picoY = random.NextDouble() * (filas - 1);
+
+                double alturaPico = random.Next(10, 40);
+
+                double ancho = random.Next(2, 8);
+
+                for (int i = 0; i < filas; i++)
+                {
+                    for (int j = 0; j < columnas; j++)
+                    {
+                        double distancia2 =
+                            Math.Pow(j - picoX, 2) +
+                            Math.Pow(i - picoY, 2);
+
+                        alturas[i, j] +=
+                            alturaPico *
+                            Math.Exp(-distancia2 / (2 * ancho * ancho));
+                    }
+                }
+            }
+
+            for (int i = 0; i < filas; i++)
+            {
+                for (int j = 0; j < columnas; j++)
+                {
+                    alturas[i, j] += random.NextDouble() * 2;
+
+                    tablaPuntos.Rows[i].Cells[j].Value =
+                        alturas[i, j].ToString("F2",
+                        System.Globalization.CultureInfo.InvariantCulture);
+                }
+            }
+
+            lblResultado.Text = "Terreno montañoso generado";
+            lblResultado.ForeColor = Color.DarkBlue;
+        }
+
+        private void btnExcavaciones_Click(object sender, EventArgs e)
+        { 
+            Random random = new Random();
+
+            int filas = tablaPuntos.Rows.Count;
+            int columnas = tablaPuntos.Columns.Count;
+
+            double centroX = (columnas - 1) / 2.0;
+            double centroY = (filas - 1) / 2.0;
+
+            double profundidad = random.Next(4, 9); // 4 a 8 metros
+            double alturaBorde = random.Next(1, 4); // bordes
+
+            for (int i = 0; i < filas; i++)
+            {
+                for (int j = 0; j < columnas; j++)
+                {
+                    double distancia = Math.Sqrt(
+                        Math.Pow(j - centroX, 2) +
+                        Math.Pow(i - centroY, 2));
+
+                    double altura =
+                        alturaBorde +
+                        distancia * 1.2 -
+                        profundidad;
+
+                    altura += (random.NextDouble() - 0.5) * 0.5;
+
+                    tablaPuntos.Rows[i].Cells[j].Value =
+                        altura.ToString("F2",
+                        System.Globalization.CultureInfo.InvariantCulture);
+                }
+            }
+
+            lblResultado.Text = "Excavación tipo piscina generada";
+            lblResultado.ForeColor = Color.DarkBlue;
         }
     }
 }

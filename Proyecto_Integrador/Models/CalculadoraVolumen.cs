@@ -4,18 +4,25 @@ using System.Text;
 
 namespace Proyecto_Integrador.Models
 {
+    ///// <summary>
+    ///// Aplica el método de Simpson 1/3 compuesto en dos dimensiones
+    ///// para aproximar el volumen de corte del terreno.
+    ///// </summary>
+    ///// <param name="z">Matriz de cotas del terreno.</param>
+    ///// <param name="cotaCorte">Nivel o cota base hasta donde se desea cortar.</param>
+    ///// <param name="dx">Distancia entre puntos en la dirección X.</param>
+    ///// <param name="dy">Distancia entre puntos en la dirección Y.</param>
+    ///// <returns>Volumen aproximado de corte.</returns>
     public static class CalculadoraVolumen
     {
-        // Llamada principal — el if vive aquí, no en Simpson
         public static double Calcular(Terreno terreno)
         {
             if (terreno.operacion == TipoOperacion.Remover)
                 return CalcularCorte(terreno);
 
-            if (terreno.operacion == TipoOperacion.Rellenar)
+            if (terreno.operacion == TipoOperacion.Rellenar || terreno.operacion == TipoOperacion.Excavar)
                 return CalcularRelleno(terreno);
 
-            // Ambos
             return CalcularCorte(terreno) + CalcularRelleno(terreno);
         }
 
@@ -63,107 +70,20 @@ namespace Proyecto_Integrador.Models
 
             return acum * dx * dy / 9.0;
         }
-
+        ///// <summary>
+        ///// Devuelve el peso de Simpson 1/3 para un punto de la grilla.
+        ///// Los extremos tienen peso 1, los puntos impares peso 4
+        ///// y los puntos pares interiores peso 2.
+        ///// </summary>
+        ///// <param name="k">Índice del punto dentro de la grilla.</param>
+        ///// <param name="n">Cantidad total de puntos usados en esa dirección.</param>
+        ///// <returns>Peso correspondiente según Simpson 1/3.</returns>
+        //private static double SimpsonPeso(int k, int n)
         private static double SimpsonPeso(int k, int n)
         {
             if (k == 0 || k == n - 1) return 1.0;
             return k % 2 == 1 ? 4.0 : 2.0;
         }
     }
-    /// <summary>
-    /// Clase encargada de calcular el volumen de corte de un terreno.
-    /// Usa el método numérico de Simpson 1/3 compuesto en dos dimensiones.
-    /// </summary>
-    //public static class CalculadoraVolumen
-    //{
-
-    /// <summary>
-    /// Calcula el volumen de corte de un terreno usando sus cotas,
-    /// la cota de corte y las distancias entre puntos en X y Y.
-    /// </summary>
-    /// <param name="terreno">
-    /// Terreno que contiene la matriz de cotas, la cota de corte,
-    /// la distancia dx y la distancia dy.
-    /// </param>
-    /// <returns>
-    /// Volumen aproximado de material que está por encima de la cota de corte.
-    /// </returns>
-    //public static double CalcularSimpson(Terreno terreno)
-    //{
-
-    //    return Simpson(
-    //        terreno.cotas,
-    //        terreno.alturaReferencia,
-    //        terreno.dx,
-    //        terreno.dy
-    //    );
-    //}
-
-    ///// <summary>
-    ///// Aplica el método de Simpson 1/3 compuesto en dos dimensiones
-    ///// para aproximar el volumen de corte del terreno.
-    ///// </summary>
-    ///// <param name="z">Matriz de cotas del terreno.</param>
-    ///// <param name="cotaCorte">Nivel o cota base hasta donde se desea cortar.</param>
-    ///// <param name="dx">Distancia entre puntos en la dirección X.</param>
-    ///// <param name="dy">Distancia entre puntos en la dirección Y.</param>
-    ///// <returns>Volumen aproximado de corte.</returns>
-
-    //private static double Simpson(double[][] z, double cotaCorte, double dx, double dy)
-    //{
-    //    int filas = z.Length;
-    //    int cols = z[0].Length;
-
-    //    if (filas < 3 || cols < 3)
-    //        throw new ArgumentException("Simpson 2D requiere mínimo 3x3 nodos.");
-
-    //    int ni = filas % 2 == 1 ? filas : filas - 1;
-    //    int nj = cols % 2 == 1 ? cols : cols - 1;
-
-    //    double volumen = 0;
-    //    double volumenCorte = 0;
-    //    double volumenRelleno = 0;
-
-    //    for (int i = 0; i < ni; i++)
-    //    {
-    //        double wi = SimpsonPeso(i, ni);
-
-    //        for (int j = 0; j < nj; j++)
-    //        {
-
-    //            double wj = SimpsonPeso(j, nj);
-    //            double d = z[i][j] - cotaCorte;
-
-    //            if (d > 0)
-    //                volumenCorte += wi * wj * d;
-    //            else
-    //                volumenRelleno += wi * wj * (-d);
-
-    //            //double profundidad = Math.Max(cotaCorte - z[i][j], 0);
-
-    //            //volumen += wi * SimpsonPeso(j, nj) * profundidad;
-    //        }
-    //    }
-
-    //    //return volumen * dx * dy / 9.0;
-    //    //return volumenCorte *= dx * dy / 9.0;
-    //    //remover 
-    //    return volumenRelleno *= dx * dy / 9.0;
-    //}
-
-
-    ///// <summary>
-    ///// Devuelve el peso de Simpson 1/3 para un punto de la grilla.
-    ///// Los extremos tienen peso 1, los puntos impares peso 4
-    ///// y los puntos pares interiores peso 2.
-    ///// </summary>
-    ///// <param name="k">Índice del punto dentro de la grilla.</param>
-    ///// <param name="n">Cantidad total de puntos usados en esa dirección.</param>
-    ///// <returns>Peso correspondiente según Simpson 1/3.</returns>
-    //private static double SimpsonPeso(int k, int n)
-    //{
-    //    if (k == 0 || k == n - 1) return 1.0;
-    //    return k % 2 == 1 ? 4.0 : 2.0;
-    //}
-    //}
+    
 }

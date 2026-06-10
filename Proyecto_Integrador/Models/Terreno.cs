@@ -7,7 +7,7 @@ namespace Proyecto_Integrador.Models
 {
     public enum TipoOperacion
     {
-        Remover, Rellenar, Ambos
+        Excavar, Remover, Rellenar, Mixto
     }
     public class Terreno
     {

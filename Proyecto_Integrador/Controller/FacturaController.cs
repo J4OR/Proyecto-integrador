@@ -31,5 +31,13 @@ namespace Proyecto_Integrador.Controller
         {
             facturaRepository.Agregar(factura);
         }
+        public void cambiarEstado(string id, bool nuevoEstado)
+        {
+            facturaRepository.cambiarEstado(id, nuevoEstado);
+        }
+        public List<Factura> buscador(string texto)
+        {
+            return facturaRepository.buscador(texto);
+        }
     }
 }

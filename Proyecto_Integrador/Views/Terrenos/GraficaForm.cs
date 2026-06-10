@@ -13,10 +13,10 @@ namespace Proyecto_Integrador.Views.Terrenos
     public partial class GraficaForm : Form
     {
         private readonly double[][] _alturas;
-        private double _h, _dx, _dy;
+        private double h, _dx, _dy;
         private HelixViewport3D _viewport;
         private double _zMin, _zMax;
-        private double _hSliderMin, _hSliderMax;
+        private double hSliderMin, hSliderMax;
         private bool _mostrarPuntos = true;
         private bool _mostrarEtiquetas = true;
         private bool _inicializando = true;
@@ -26,11 +26,12 @@ namespace Proyecto_Integrador.Views.Terrenos
         public GraficaForm(double[][] alturas, double h, double dx, double dy)
         {
             _alturas = alturas;
-            _h = h;
-            _dx = dx;
+            this.h = h;
+            this._dx = dx;
             _dy = dy;
 
             InitializeComponent();
+            this.WindowState = FormWindowState.Maximized;
 
             _viewport = new HelixViewport3D
             {
@@ -68,12 +69,12 @@ namespace Proyecto_Integrador.Views.Terrenos
         private void InitSliders()
         {
             double rangoZ = Math.Max(_zMax - _zMin, 0.001);
-            _hSliderMin = _zMin - rangoZ * 0.3;
-            _hSliderMax = _zMax + rangoZ * 0.3;
+            hSliderMin = _zMin - rangoZ * 0.3;
+            hSliderMax = _zMax + rangoZ * 0.3;
 
             trkH.Value = Math.Max(0, Math.Min(1000,
-                (int)((_h - _hSliderMin) / (_hSliderMax - _hSliderMin) * 1000)));
-            lblHVal.Text = $"{_h:F1} m";
+                (int)((h - hSliderMin) / (hSliderMax - hSliderMin) * 1000)));
+            lblHVal.Text = $"{h:F1} m";
 
             trkDx.Value = Math.Max(1, Math.Min(100, (int)(_dx * 2)));
             lblDxVal.Text = $"{_dx:F1} m";
@@ -90,8 +91,8 @@ namespace Proyecto_Integrador.Views.Terrenos
         private void trkH_Scroll(object sender, EventArgs e)
         {
             if (_inicializando) return;
-            _h = _hSliderMin + (double)trkH.Value / 1000.0 * (_hSliderMax - _hSliderMin);
-            lblHVal.Text = $"{_h:F1} m";
+            h = hSliderMin + (double)trkH.Value / 1000.0 * (hSliderMax - hSliderMin);
+            lblHVal.Text = $"{h:F1} m";
             RebuildScene();
         }
 
@@ -288,8 +289,8 @@ namespace Proyecto_Integrador.Views.Terrenos
             // 7. Etiqueta del plano de corte h
             _viewport.Children.Add(new BillboardTextVisual3D
             {
-                Text = $"  h = {_h:F1} m  ",
-                Position = new Point3D(xMax + offLbl, yMax / 2.0, _h),
+                Text = $"  h = {h:F1} m  ",
+                Position = new Point3D(xMax + offLbl, yMax / 2.0, h),
                 FontSize = 13,
                 Foreground = new SolidColorBrush(Color.FromRgb(255, 230, 50)),
                 Background = new SolidColorBrush(Color.FromArgb(150, 50, 40, 0))
@@ -361,10 +362,10 @@ namespace Proyecto_Integrador.Views.Terrenos
 
             // 10. Plano de corte h (semitransparente, dos caras)
             var mbPlano = new MeshBuilder();
-            mbPlano.AddTriangle(ToV3(0, 0, _h), ToV3(xMax, 0, _h), ToV3(xMax, yMax, _h));
-            mbPlano.AddTriangle(ToV3(0, 0, _h), ToV3(xMax, yMax, _h), ToV3(0, yMax, _h));
-            mbPlano.AddTriangle(ToV3(0, 0, _h), ToV3(xMax, yMax, _h), ToV3(xMax, 0, _h));
-            mbPlano.AddTriangle(ToV3(0, 0, _h), ToV3(0, yMax, _h), ToV3(xMax, yMax, _h));
+            mbPlano.AddTriangle(ToV3(0, 0, h), ToV3(xMax, 0, h), ToV3(xMax, yMax, h));
+            mbPlano.AddTriangle(ToV3(0, 0, h), ToV3(xMax, yMax, h), ToV3(0, yMax, h));
+            mbPlano.AddTriangle(ToV3(0, 0, h), ToV3(xMax, yMax, h), ToV3(xMax, 0, h));
+            mbPlano.AddTriangle(ToV3(0, 0, h), ToV3(0, yMax, h), ToV3(xMax, yMax, h));
             AddMesh(mbPlano, new DiffuseMaterial(
                 new SolidColorBrush(Color.FromArgb(95, 240, 220, 80))));
 
@@ -375,10 +376,10 @@ namespace Proyecto_Integrador.Views.Terrenos
                 Thickness = 2.5,
                 Points = new Point3DCollection
                 {
-                    new Point3D(0,    0,    _h), new Point3D(xMax, 0,    _h),
-                    new Point3D(xMax, 0,    _h), new Point3D(xMax, yMax, _h),
-                    new Point3D(xMax, yMax, _h), new Point3D(0,    yMax, _h),
-                    new Point3D(0,    yMax, _h), new Point3D(0,    0,    _h)
+                    new Point3D(0,    0,    h), new Point3D(xMax, 0,    h),
+                    new Point3D(xMax, 0,    h), new Point3D(xMax, yMax, h),
+                    new Point3D(xMax, yMax, h), new Point3D(0,    yMax, h),
+                    new Point3D(0,    yMax, h), new Point3D(0,    0,    h)
                 }
             });
         }
@@ -403,7 +404,7 @@ namespace Proyecto_Integrador.Views.Terrenos
             if (rango < 0.001) return Color.FromRgb(150, 150, 150);
 
             double t = Math.Max(0, Math.Min(1, (z - zMin) / rango));
-            double tH = Math.Max(0, Math.Min(1, (_h - zMin) / rango));
+            double tH = Math.Max(0, Math.Min(1, (h - zMin) / rango));
 
             if (t <= tH)
             {

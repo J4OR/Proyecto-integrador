@@ -1,49 +1,58 @@
-﻿using System;
+﻿using Proyecto_Integrador.Controller;
+using Proyecto_Integrador.Models;
+using Proyecto_Integrador.Repository;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
-using Proyecto_Integrador.Controller;
-using Proyecto_Integrador.Models;
 
 namespace Proyecto_Integrador.Views.Cotizaciones
 {
     public partial class CotizacionesForm : Form
     {
-        private CotizacionController cotizacionController;
+        private CotizacionController cotizacionController = new CotizacionController();
+        private ClienteController clienteController = new ClienteController();
         private List<Cotizacion> cotizaciones;
 
         public CotizacionesForm()
         {
             InitializeComponent();
 
-            cotizacionController = new CotizacionController();
+            
 
             CargarCotizaciones();
         }
 
         private void CargarCotizaciones()
         {
-            cotizaciones = cotizacionController.ObtenerCotizaciones();
 
             tablaCotizaciones.Rows.Clear();
 
+            var clientes = clienteController.ObtenerClientes();
+            var cotizaciones = cotizacionController.ObtenerCotizaciones();
+
             foreach (var c in cotizaciones)
             {
+                var cliente = clientes.FirstOrDefault(cliente => cliente.id == c.cliente.id);
+
                 tablaCotizaciones.Rows.Add(
                     c.id,
-                    c.fecha.ToString("dd/MM/yyyy"),
-                    c.cliente.nombre,
+                    cliente != null ? cliente.nombre : "Sin cliente",
                     c.terreno.nombre,
                     c.material.nombre,
+                    c.fecha.ToString("dd/MM/yyyy"),
                     c.costoTotal.ToString("F2"),
-                    c.estadoTexto
-
+                    c.estado ? "Activo" : "Inactivo"
                 );
             }
         }
+            
+
+
+            
 
         private void btnAgregar_Click(object sender, EventArgs e)
         {

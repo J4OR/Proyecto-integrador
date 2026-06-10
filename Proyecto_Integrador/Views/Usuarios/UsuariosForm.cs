@@ -1,16 +1,10 @@
-﻿using OpenTK.Graphics;
-using Proyecto_Integrador.Controller;
+﻿using Proyecto_Integrador.Controller;
 using Proyecto_Integrador.Models;
 using Proyecto_Integrador.Views.Usuarios;
 using Proyecto_Integrador.Views.Utils;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Text;
-using System.Windows.Forms;
-//using static System.Collections.Specialized.BitVector32;
+
+
 
 namespace Proyecto_Integrador.Views.Inicio
 {
@@ -27,25 +21,26 @@ namespace Proyecto_Integrador.Views.Inicio
         }
         private void cargarUsuarios()
         {
+            tablaUsuarios.Rows.Clear();
+
             List<Usuario> usuarios = usuarioController.ObtenerUsuarios();
-            if (usuarioLogueado.userName != "admin")
+
+            foreach (var u in usuarios)
             {
-                usuarios = usuarios.Where(u => u.userName != "admin").ToList();
+                if (usuarioLogueado.userName != "admin" && u.userName == "admin")
+                    continue;
+
+                tablaUsuarios.Rows.Add(
+                    u.id,
+                    u.userName,
+                    u.nombre,
+                    u.identificacion,
+                    u.telefono,
+                    u.correo,
+                    u.rol,
+                    u.estado ? "Activo" : "Inactivo"
+                );
             }
-
-            tablaUsuarios.AutoGenerateColumns = false;
-            Id.DataPropertyName = "Id";
-            UserName.DataPropertyName = "UserName";
-            Nombre.DataPropertyName = "Nombre";
-            Identificacion.DataPropertyName = "Identificacion";
-            Telefono.DataPropertyName = "Telefono";
-            Correo.DataPropertyName = "Correo";
-            Rol.DataPropertyName = "Rol";
-            Estado.DataPropertyName = "EstadoTexto";
-
-            tablaUsuarios.DataSource = null;
-            tablaUsuarios.DataSource = usuarios;
-
         }
         private void EstilizarTabla()
         {

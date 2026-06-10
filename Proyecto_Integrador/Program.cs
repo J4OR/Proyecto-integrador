@@ -9,6 +9,7 @@ namespace Proyecto_Integrador
         [STAThread]
         static void Main()
         {
+
             ApplicationConfiguration.Initialize();
             Application.Run(new LoginForm());
         }

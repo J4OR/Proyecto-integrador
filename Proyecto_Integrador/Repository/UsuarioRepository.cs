@@ -15,13 +15,6 @@ namespace Proyecto_Integrador.Repository
 
         JsonRepository<Usuario> jsonRepository = new JsonRepository<Usuario>(carpeta, rutaCarpeta);
 
-
-        public int ObtenerSiguienteId()
-        {
-            List<Usuario> lista = jsonRepository.Leer();
-            return lista.Count + 1;
-        }
-
         public List<Usuario> Leer()
         {
             return jsonRepository.Leer();
@@ -36,7 +29,7 @@ namespace Proyecto_Integrador.Repository
         }
 
 
-        public void Editar(Usuario nuevoUsuario, int id)
+        public void Editar(Usuario nuevoUsuario, Guid id)
         {
             jsonRepository.Editar(nuevoUsuario, u => u.id == id);
         }
@@ -45,7 +38,7 @@ namespace Proyecto_Integrador.Repository
         {
             return jsonRepository.Buscar(u => u.userName == userName);
         }
-        public void CambiarEstadoUsuarioPorId(int id, bool nuevoEstado)
+        public void CambiarEstadoUsuarioPorId(Guid id, bool nuevoEstado)
         {
             jsonRepository.Actualizar(
                 usuario => usuario.id == id,

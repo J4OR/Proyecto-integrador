@@ -38,8 +38,7 @@ namespace Proyecto_Integrador.Views.Clientes
                 MessageBox.Show("El número de identificación ya existe. Por favor, ingrese otro.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            int id = clienteController.ObtenerSiguienteId();
-            Cliente nuevoCliente = new Cliente(id, txtIdentificacion.Text, txtNombre.Text, txtTelefono.Text, txtCorreo.Text);
+            Cliente nuevoCliente = new Cliente(txtIdentificacion.Text, txtNombre.Text, txtTelefono.Text, txtCorreo.Text);
 
             clienteController.AgregarCliente(nuevoCliente);
 

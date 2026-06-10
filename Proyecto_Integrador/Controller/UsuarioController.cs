@@ -15,11 +15,6 @@ namespace Proyecto_Integrador.Controller
             this.usuarioRepository = new UsuarioRepository();
         }
 
-        public int ObtenerSiguienteId()
-        {
-            return usuarioRepository.ObtenerSiguienteId();
-        }
-
         public List<Usuario> ObtenerUsuarios()
         {
             return usuarioRepository.Leer();
@@ -30,7 +25,7 @@ namespace Proyecto_Integrador.Controller
             usuarioRepository.Agregar(usuario);
         }
 
-        public void EditarUsuario(Usuario usuario, int id)
+        public void EditarUsuario(Usuario usuario, Guid id)
         {
             usuarioRepository.Editar(usuario, id);
         }
@@ -51,7 +46,7 @@ namespace Proyecto_Integrador.Controller
             List<Usuario> lista = usuarioRepository.Leer();
             return lista.Any(u => u.identificacion == documento);
         }
-        public void CambiarEstadoUsuario(int id, bool nuevoEstado)
+        public void CambiarEstadoUsuario(Guid id, bool nuevoEstado)
         {
             usuarioRepository.CambiarEstadoUsuarioPorId(id, nuevoEstado);
 

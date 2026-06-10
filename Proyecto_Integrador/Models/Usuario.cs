@@ -19,7 +19,7 @@ namespace Proyecto_Integrador.Models
             }
         }
         [JsonConstructor]
-        public Usuario(int id, string identificacion, string nombre, string telefono, string correo, string userName, string password, Rol rol=Rol.Usuario, bool estado=true) : base(id, identificacion, nombre, telefono, correo)
+        public Usuario(string identificacion, string nombre, string telefono, string correo, string userName, string password, Rol rol=Rol.Usuario, bool estado=true) : base(identificacion, nombre, telefono, correo)
         {
             this.userName = userName;
             this.password = password;

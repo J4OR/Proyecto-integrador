@@ -29,8 +29,20 @@ namespace Proyecto_Integrador.Views
             this.resizer = new ControlsUtils(this);
             this.WindowState = FormWindowState.Maximized;
 
-            
 
+        }
+
+        private void CrearAdminSiNoExiste()
+        {
+            List<Usuario> usuarios = controller.ObtenerUsuarios();
+
+
+            if (usuarios.Count == 0 )
+            {
+                Usuario admin = new Usuario("1234567891", "Admin-User", "1234567891", 
+                    "Admin@gmail.com", "admin", PasswordHasher.ToSha256("admin123@"), Rol.Administrador);
+                controller.AgregarUsuario(admin);
+            }
         }
         private void RestaurarPlaceholders()
         {
@@ -54,6 +66,7 @@ namespace Proyecto_Integrador.Views
             lblError.Visible = false;
             pbError.Visible = false;
             pbError2.Visible = false;
+            CrearAdminSiNoExiste();
         }
 
         private void LoginForm_Resize(object sender, EventArgs e)

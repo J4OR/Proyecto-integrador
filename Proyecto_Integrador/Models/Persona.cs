@@ -7,7 +7,7 @@ namespace Proyecto_Integrador.Models
 {
     public class Persona
     {
-        public int id { get; set; }
+        public Guid id { get; set; }
         public string identificacion { get; set; }
         public string nombre { get; set; }
         public string telefono { get; set; }
@@ -16,9 +16,9 @@ namespace Proyecto_Integrador.Models
 
 
         [JsonConstructor]
-        public Persona(int id, string identificacion, string nombre, string telefono, string correo)
+        public Persona(string identificacion, string nombre, string telefono, string correo)
         {
-            this.id = id;
+            this.id = Guid.NewGuid();
             this.identificacion = identificacion;
             this.nombre = nombre;
             this.telefono = telefono;

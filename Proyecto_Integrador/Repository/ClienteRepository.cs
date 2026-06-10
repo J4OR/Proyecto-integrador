@@ -13,13 +13,6 @@ namespace Proyecto_Integrador.Repository
 
         JsonRepository<Cliente> jsonRepository = new JsonRepository<Cliente>(carpeta, rutaCarpeta);
 
-        public int ObtenerSiguienteId(List<Cliente> lista)
-        {
-            if (lista.Count == 0)
-                return 1;
-            else
-                return lista.Max(c => c.id) + 1;
-        }
 
         public List<Cliente> Leer()
         {
@@ -38,12 +31,12 @@ namespace Proyecto_Integrador.Repository
             c.identificacion.Contains(texto, StringComparison.OrdinalIgnoreCase));
         }
 
-        public void Editar(Cliente nuevoCliente, int id)
+        public void Editar(Cliente nuevoCliente, Guid id)
         {
             jsonRepository.Editar(nuevoCliente, u => u.id == id);
         }
 
-        public void Eliminar(int id)
+        public void Eliminar(Guid id)
         {
             jsonRepository.Eliminar(u => u.id == id);
         }

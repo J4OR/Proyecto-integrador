@@ -6,8 +6,8 @@ namespace Proyecto_Integrador.Models
 {
     public class Cliente : Persona
     {
-        public Cliente(int id, string identificacion, string nombre, string telefono, string correo) 
-        : base(id, identificacion, nombre, telefono, correo)
+        public Cliente( string identificacion, string nombre, string telefono, string correo) 
+        : base(identificacion, nombre, telefono, correo)
         {
         }
     }

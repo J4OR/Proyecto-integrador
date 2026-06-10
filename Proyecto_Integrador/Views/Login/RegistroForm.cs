@@ -173,8 +173,7 @@ namespace Proyecto_Integrador.Views
             }
 
 
-            int id = usuarioController.ObtenerSiguienteId();
-            Usuario nuevoUsuario = new Usuario(id, txtDocumento.Text, txtNombre.Text,
+            Usuario nuevoUsuario = new Usuario(txtDocumento.Text, txtNombre.Text,
                 txtTelefono.Text, txtCorreo.Text, txtUsuario.Text, PasswordHasher.ToSha256(txtContraseña.Text));
             usuarioController.AgregarUsuario(nuevoUsuario);
             MessageBox.Show("Usuario registrado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);

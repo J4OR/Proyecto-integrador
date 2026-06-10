@@ -40,10 +40,10 @@
             FechaFin = new DateTimePicker();
             btnBuscar = new Button();
             Id = new DataGridViewTextBoxColumn();
-            Fecha = new DataGridViewTextBoxColumn();
             Cliente = new DataGridViewTextBoxColumn();
             Terreno = new DataGridViewTextBoxColumn();
             Material = new DataGridViewTextBoxColumn();
+            Fecha = new DataGridViewTextBoxColumn();
             Total = new DataGridViewTextBoxColumn();
             Estado = new DataGridViewTextBoxColumn();
             Editar = new DataGridViewButtonColumn();
@@ -70,7 +70,7 @@
             // 
             tablaCotizaciones.AllowUserToAddRows = false;
             tablaCotizaciones.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            tablaCotizaciones.Columns.AddRange(new DataGridViewColumn[] { Id, Fecha, Cliente, Terreno, Material, Total, Estado, Editar, Accion });
+            tablaCotizaciones.Columns.AddRange(new DataGridViewColumn[] { Id, Cliente, Terreno, Material, Fecha, Total, Estado, Editar, Accion });
             tablaCotizaciones.Location = new Point(50, 172);
             tablaCotizaciones.Name = "tablaCotizaciones";
             tablaCotizaciones.RowHeadersWidth = 51;
@@ -141,13 +141,6 @@
             Id.Name = "Id";
             Id.Width = 125;
             // 
-            // Fecha
-            // 
-            Fecha.HeaderText = "Fecha";
-            Fecha.MinimumWidth = 6;
-            Fecha.Name = "Fecha";
-            Fecha.Width = 125;
-            // 
             // Cliente
             // 
             Cliente.HeaderText = "Cliente";
@@ -168,6 +161,13 @@
             Material.MinimumWidth = 6;
             Material.Name = "Material";
             Material.Width = 125;
+            // 
+            // Fecha
+            // 
+            Fecha.HeaderText = "Fecha";
+            Fecha.MinimumWidth = 6;
+            Fecha.Name = "Fecha";
+            Fecha.Width = 125;
             // 
             // Total
             // 
@@ -243,10 +243,10 @@
         private DateTimePicker FechaFin;
         private Button btnBuscar;
         private DataGridViewTextBoxColumn Id;
-        private DataGridViewTextBoxColumn Fecha;
         private DataGridViewTextBoxColumn Cliente;
         private DataGridViewTextBoxColumn Terreno;
         private DataGridViewTextBoxColumn Material;
+        private DataGridViewTextBoxColumn Fecha;
         private DataGridViewTextBoxColumn Total;
         private DataGridViewTextBoxColumn Estado;
         private DataGridViewButtonColumn Editar;

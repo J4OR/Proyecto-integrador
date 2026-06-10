@@ -19,6 +19,12 @@
     <Compile Update="Views\Cotizaciones\FormEditarCotizacion.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Views\Factura\AgregarFacturaForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Views\Factura\FacturasForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Views\Inicio\FormDashboard.cs">
       <SubType>Form</SubType>
     </Compile>

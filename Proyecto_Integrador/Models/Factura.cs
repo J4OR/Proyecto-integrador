@@ -16,7 +16,6 @@ namespace Proyecto_Integrador.Models
         public double total { get; set; }
 
         public bool estado { get; set; }
-        public string RutaPdf { get; set; } = " C:\\Users\\jorte\\OneDrive\\Documentos\\Pdfs_Proyecto";
 
         public string IdentificacionCliente
         {

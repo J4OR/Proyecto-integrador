@@ -11,6 +11,7 @@ namespace Proyecto_Integrador.Utils
     {
         private readonly Factura factura;
         private readonly DataGridView grid;
+        private static readonly string ruta = "C:\\Users\\jorte\\OneDrive\\Documentos\\Pdfs_Proyecto";
 
         public GeneradorFacturaPDF(Factura factura, DataGridView grid)
         {
@@ -184,7 +185,7 @@ namespace Proyecto_Integrador.Utils
                     });
                 });
             })
-            .GeneratePdf(rutaPdf);
+            .GeneratePdf(ruta);
         }
     }
 }

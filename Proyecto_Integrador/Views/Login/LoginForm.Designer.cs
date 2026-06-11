@@ -40,7 +40,6 @@
             lblSubtitulo = new Label();
             txtPassword = new TextBox();
             lblTitulo = new Label();
-            btnRegistrar = new Button();
             panelLinea = new Panel();
             lblError = new Label();
             pbError = new PictureBox();
@@ -106,9 +105,9 @@
             btnIniciarSesion.FlatStyle = FlatStyle.Flat;
             btnIniciarSesion.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnIniciarSesion.ForeColor = SystemColors.ButtonHighlight;
-            btnIniciarSesion.Location = new Point(579, 631);
+            btnIniciarSesion.Location = new Point(579, 597);
             btnIniciarSesion.Name = "btnIniciarSesion";
-            btnIniciarSesion.Size = new Size(155, 44);
+            btnIniciarSesion.Size = new Size(470, 44);
             btnIniciarSesion.TabIndex = 11;
             btnIniciarSesion.Text = "Iniciar sesion";
             btnIniciarSesion.UseVisualStyleBackColor = false;
@@ -154,7 +153,7 @@
             // 
             lblSubtitulo.AutoSize = true;
             lblSubtitulo.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblSubtitulo.Location = new Point(671, 96);
+            lblSubtitulo.Location = new Point(679, 96);
             lblSubtitulo.Name = "lblSubtitulo";
             lblSubtitulo.Size = new Size(280, 25);
             lblSubtitulo.TabIndex = 13;
@@ -178,31 +177,17 @@
             // 
             lblTitulo.AutoSize = true;
             lblTitulo.Font = new Font("Segoe UI", 22.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblTitulo.Location = new Point(683, 33);
+            lblTitulo.Location = new Point(692, 33);
             lblTitulo.Name = "lblTitulo";
             lblTitulo.Size = new Size(254, 50);
             lblTitulo.TabIndex = 12;
             lblTitulo.Text = "Iniciar Sesión";
             // 
-            // btnRegistrar
-            // 
-            btnRegistrar.BackColor = Color.Blue;
-            btnRegistrar.FlatStyle = FlatStyle.Flat;
-            btnRegistrar.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnRegistrar.ForeColor = SystemColors.ButtonHighlight;
-            btnRegistrar.Location = new Point(859, 631);
-            btnRegistrar.Name = "btnRegistrar";
-            btnRegistrar.Size = new Size(155, 44);
-            btnRegistrar.TabIndex = 17;
-            btnRegistrar.Text = "Registrar";
-            btnRegistrar.UseVisualStyleBackColor = false;
-            btnRegistrar.Click += btnRegistrar_Click;
-            // 
             // panelLinea
             // 
             panelLinea.BackColor = Color.Gray;
             panelLinea.BorderStyle = BorderStyle.Fixed3D;
-            panelLinea.Location = new Point(579, 513);
+            panelLinea.Location = new Point(589, 513);
             panelLinea.Name = "panelLinea";
             panelLinea.Size = new Size(460, 2);
             panelLinea.TabIndex = 16;
@@ -212,7 +197,7 @@
             lblError.AutoSize = true;
             lblError.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblError.ForeColor = Color.FromArgb(192, 0, 0);
-            lblError.Location = new Point(793, 548);
+            lblError.Location = new Point(805, 549);
             lblError.Name = "lblError";
             lblError.Size = new Size(20, 23);
             lblError.TabIndex = 19;
@@ -222,7 +207,7 @@
             // 
             pbError.BackColor = Color.Transparent;
             pbError.Image = (Image)resources.GetObject("pbError.Image");
-            pbError.Location = new Point(758, 548);
+            pbError.Location = new Point(769, 549);
             pbError.Name = "pbError";
             pbError.Size = new Size(29, 23);
             pbError.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -233,7 +218,7 @@
             // 
             pbError2.BackColor = Color.Transparent;
             pbError2.Image = (Image)resources.GetObject("pbError2.Image");
-            pbError2.Location = new Point(819, 548);
+            pbError2.Location = new Point(831, 549);
             pbError2.Name = "pbError2";
             pbError2.Size = new Size(29, 23);
             pbError2.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -312,7 +297,6 @@
             Controls.Add(panelLinea);
             Controls.Add(lblSubtitulo);
             Controls.Add(btnIniciarSesion);
-            Controls.Add(btnRegistrar);
             Controls.Add(lblUsuario);
             Controls.Add(txtUser);
             Controls.Add(lblContraseña);
@@ -345,7 +329,6 @@
         private Label lblSubtitulo;
         private TextBox txtPassword;
         private Label lblTitulo;
-        private Button btnRegistrar;
         private Panel panelLinea;
         private Label lblError;
         private PictureBox pbError;

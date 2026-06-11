@@ -157,27 +157,6 @@ namespace Proyecto_Integrador.Views.Facturas
                 }
 
             }
-            else if (tablaFacturas.Columns[e.ColumnIndex].Name == "Ver")
-            {
-
-                if (string.IsNullOrWhiteSpace(facturaSeleccionada.RutaPdf))
-                {
-                    MessageBox.Show("La factura no tiene PDF asociado.");
-                    return;
-                }
-
-                if (!File.Exists(facturaSeleccionada.RutaPdf))
-                {
-                    MessageBox.Show("No se encontró el archivo PDF.");
-                    return;
-                }
-
-                Process.Start(new ProcessStartInfo
-                {
-                    FileName = facturaSeleccionada.RutaPdf,
-                    UseShellExecute = true
-                });
-            }
         
         }
     }

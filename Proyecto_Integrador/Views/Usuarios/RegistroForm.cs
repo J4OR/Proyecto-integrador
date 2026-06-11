@@ -12,7 +12,7 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 
-namespace Proyecto_Integrador.Views
+namespace Proyecto_Integrador.Views.Usuarios
 {
     public partial class RegistroForm : Form
     {
@@ -24,6 +24,14 @@ namespace Proyecto_Integrador.Views
             InitializeComponent();
             resizer = new ControlsUtils(this);
             this.WindowState = FormWindowState.Maximized;
+            txtNombre.TextChanged += (s, e) => ValidarEnTiempoReal();
+            txtTelefono.TextChanged += (s, e) => ValidarEnTiempoReal();
+            txtDocumento.TextChanged += (s, e) => ValidarEnTiempoReal();
+            txtCorreo.TextChanged += (s, e) => ValidarEnTiempoReal();
+            txtUsuario.TextChanged += (s, e) => ValidarEnTiempoReal();
+            txtContraseña.TextChanged += (s, e) => ValidarEnTiempoReal();
+            txtConfirmar.TextChanged += (s, e) => ValidarEnTiempoReal();
+
             labelsError = new Dictionary<string, Label>
             {
                 { "txtNombre",     lblErrorNombre     },
@@ -40,6 +48,21 @@ namespace Proyecto_Integrador.Views
         {
             resizer?.ejecutarEscalado();
 
+        }
+
+        private void ValidarEnTiempoReal()
+        {
+            var errores = UsuarioValidator.Validar(
+                txtNombre.Text,
+                txtTelefono.Text,
+                txtDocumento.Text,
+                txtCorreo.Text,
+                txtUsuario.Text,
+                txtContraseña.Text,
+                txtConfirmar.Text
+            );
+
+            MostrarError(labelsError, errores);
         }
 
         private void TextBoxs_Enter(object sender, EventArgs e)
@@ -156,7 +179,7 @@ namespace Proyecto_Integrador.Views
 
             MostrarError(labelsError, errores);
 
-            if (errores.Count > 0) return; 
+            if (errores.Count > 0) return;
 
             if (usuarioController.ExisteUsuario(txtUsuario.Text))
             {

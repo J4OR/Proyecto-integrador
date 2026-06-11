@@ -53,6 +53,9 @@ namespace Proyecto_Integrador.Validator
             // CONTRASEÑA
             if (string.IsNullOrWhiteSpace(contraseña) || contraseña == "Ingrese la contraseña")
                 errores["txtContraseña"] = "La contraseña es obligatoria.";
+            else if(!Regex.IsMatch(contraseña, @"[A-Z]"))
+            errores["txtContraseña"] = "Debe tener una mayúscula";
+
             else if (contraseña.Length < 6)
                 errores["txtContraseña"] = "La contraseña debe tener mínimo 6 caracteres.";
             else if (!Regex.IsMatch(contraseña, @"[0-9]"))

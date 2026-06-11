@@ -147,7 +147,7 @@ namespace Proyecto_Integrador.Views.Inicio
 
         private void btnAgregar_Click(object sender, EventArgs e)
         {
-            AgregarUsuarioForm formAgregar = new AgregarUsuarioForm();
+            RegistroForm formAgregar = new RegistroForm();
             formAgregar.ShowDialog();
             cargarUsuarios();
 

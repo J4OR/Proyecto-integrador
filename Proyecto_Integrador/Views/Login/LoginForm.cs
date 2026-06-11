@@ -137,13 +137,7 @@ namespace Proyecto_Integrador.Views
                 pbOjo.Image = Properties.Resources.ojoCerrado;
             }
         }
-        private void btnRegistrar_Click(object sender, EventArgs e)
-        {
-            RegistroForm registroForm = new RegistroForm();
-            registroForm.FormClosed += (s, e) => this.Show();
-            this.Hide();
-            registroForm.ShowDialog();
-        }
+     
         private void ajustarPosicionError()
         {
             int separacion = 8;

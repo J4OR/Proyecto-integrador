@@ -30,10 +30,9 @@ namespace Proyecto_Integrador.Controller
             clienteRepository.Editar(cliente, id);
         }
 
-        public Cliente BuscarPorNombre(string nombre)
+        public Cliente Buscar(string identificacion)
         {
-            List<Cliente> lista = clienteRepository.Leer();
-            return lista.Find(c => c.nombre == nombre);
+            return clienteRepository.buscar(identificacion);
         }
 
         public List<Cliente> Buscador(string texto)

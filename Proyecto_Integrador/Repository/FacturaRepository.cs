@@ -10,7 +10,7 @@ namespace Proyecto_Integrador.Repository
     public class FacturaRepository
     {
         private static readonly string carpeta = "Data";
-        private static readonly string rutaCarpeta = Path.Combine("Data", "facturas.json");
+        private static readonly string rutaCarpeta = Path.Combine(carpeta, "facturas.json");
         JsonRepository<Factura> jsonRepository = new JsonRepository<Factura>(carpeta, rutaCarpeta);
 
         public List<Factura> Leer()

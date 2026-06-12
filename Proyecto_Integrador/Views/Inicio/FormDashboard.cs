@@ -106,7 +106,7 @@ namespace Proyecto_Integrador.Views
         }
         private void btnFactura_Click(object sender, EventArgs e)
         {
-            AbrirFormularioEnPanel(new FacturasForm(this));
+            AbrirFormularioEnPanel(new FacturasForm(this, usuarioLogueado));
         }
 
      

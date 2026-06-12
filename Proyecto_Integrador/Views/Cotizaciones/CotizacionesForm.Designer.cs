@@ -28,17 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CotizacionesForm));
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CotizacionesForm));
             btnAgregar = new Button();
             tablaCotizaciones = new DataGridView();
-            txtBuscar = new TextBox();
-            label1 = new Label();
-            panelTitulo = new Panel();
-            FechaInicio = new DateTimePicker();
-            FechaFin = new DateTimePicker();
-            btnBuscar = new Button();
             Id = new DataGridViewTextBoxColumn();
             Cliente = new DataGridViewTextBoxColumn();
             Terreno = new DataGridViewTextBoxColumn();
@@ -48,6 +42,12 @@
             Estado = new DataGridViewTextBoxColumn();
             Editar = new DataGridViewButtonColumn();
             Accion = new DataGridViewButtonColumn();
+            txtBuscar = new TextBox();
+            label1 = new Label();
+            panelTitulo = new Panel();
+            FechaInicio = new DateTimePicker();
+            FechaFin = new DateTimePicker();
+            btnBuscar = new Button();
             ((System.ComponentModel.ISupportInitialize)tablaCotizaciones).BeginInit();
             SuspendLayout();
             // 
@@ -77,62 +77,6 @@
             tablaCotizaciones.Size = new Size(1259, 497);
             tablaCotizaciones.TabIndex = 9;
             tablaCotizaciones.CellClick += tablaCotizaciones_CellClick;
-            // 
-            // txtBuscar
-            // 
-            txtBuscar.ForeColor = Color.Black;
-            txtBuscar.Location = new Point(50, 118);
-            txtBuscar.Name = "txtBuscar";
-            txtBuscar.Size = new Size(235, 27);
-            txtBuscar.TabIndex = 8;
-            txtBuscar.TextChanged += txtBuscar_TextChanged;
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.BackColor = Color.FromArgb(0, 0, 64);
-            label1.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.ForeColor = Color.White;
-            label1.Location = new Point(427, 12);
-            label1.Name = "label1";
-            label1.Size = new Size(308, 28);
-            label1.TabIndex = 7;
-            label1.Text = "Administración de cotizaciones";
-            label1.TextAlign = ContentAlignment.MiddleCenter;
-            // 
-            // panelTitulo
-            // 
-            panelTitulo.BackColor = Color.FromArgb(0, 0, 64);
-            panelTitulo.Location = new Point(0, 0);
-            panelTitulo.Name = "panelTitulo";
-            panelTitulo.Size = new Size(1418, 63);
-            panelTitulo.TabIndex = 10;
-            // 
-            // FechaInicio
-            // 
-            FechaInicio.Format = DateTimePickerFormat.Short;
-            FechaInicio.Location = new Point(474, 119);
-            FechaInicio.Name = "FechaInicio";
-            FechaInicio.Size = new Size(125, 27);
-            FechaInicio.TabIndex = 12;
-            // 
-            // FechaFin
-            // 
-            FechaFin.Format = DateTimePickerFormat.Short;
-            FechaFin.Location = new Point(632, 118);
-            FechaFin.Name = "FechaFin";
-            FechaFin.Size = new Size(141, 27);
-            FechaFin.TabIndex = 13;
-            // 
-            // btnBuscar
-            // 
-            btnBuscar.Image = (Image)resources.GetObject("btnBuscar.Image");
-            btnBuscar.Location = new Point(792, 115);
-            btnBuscar.Name = "btnBuscar";
-            btnBuscar.Size = new Size(42, 30);
-            btnBuscar.TabIndex = 14;
-            btnBuscar.UseVisualStyleBackColor = true;
-            btnBuscar.Click += btnBuscar_Click;
             // 
             // Id
             // 
@@ -212,6 +156,62 @@
             Accion.UseColumnTextForButtonValue = true;
             Accion.Width = 140;
             // 
+            // txtBuscar
+            // 
+            txtBuscar.ForeColor = Color.Black;
+            txtBuscar.Location = new Point(50, 118);
+            txtBuscar.Name = "txtBuscar";
+            txtBuscar.Size = new Size(235, 27);
+            txtBuscar.TabIndex = 8;
+            txtBuscar.TextChanged += txtBuscar_TextChanged;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.BackColor = Color.FromArgb(0, 0, 64);
+            label1.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label1.ForeColor = Color.White;
+            label1.Location = new Point(427, 12);
+            label1.Name = "label1";
+            label1.Size = new Size(308, 28);
+            label1.TabIndex = 7;
+            label1.Text = "Administración de cotizaciones";
+            label1.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // panelTitulo
+            // 
+            panelTitulo.BackColor = Color.FromArgb(0, 0, 64);
+            panelTitulo.Location = new Point(0, 0);
+            panelTitulo.Name = "panelTitulo";
+            panelTitulo.Size = new Size(1418, 63);
+            panelTitulo.TabIndex = 10;
+            // 
+            // FechaInicio
+            // 
+            FechaInicio.Format = DateTimePickerFormat.Short;
+            FechaInicio.Location = new Point(474, 119);
+            FechaInicio.Name = "FechaInicio";
+            FechaInicio.Size = new Size(125, 27);
+            FechaInicio.TabIndex = 12;
+            // 
+            // FechaFin
+            // 
+            FechaFin.Format = DateTimePickerFormat.Short;
+            FechaFin.Location = new Point(632, 118);
+            FechaFin.Name = "FechaFin";
+            FechaFin.Size = new Size(141, 27);
+            FechaFin.TabIndex = 13;
+            // 
+            // btnBuscar
+            // 
+            btnBuscar.Image = (Image)resources.GetObject("btnBuscar.Image");
+            btnBuscar.Location = new Point(792, 115);
+            btnBuscar.Name = "btnBuscar";
+            btnBuscar.Size = new Size(42, 30);
+            btnBuscar.TabIndex = 14;
+            btnBuscar.UseVisualStyleBackColor = true;
+            btnBuscar.Click += btnBuscar_Click;
+            // 
             // CotizacionesForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -227,6 +227,7 @@
             Controls.Add(panelTitulo);
             Name = "CotizacionesForm";
             Text = "CotizacionesForm";
+            Load += CotizacionesForm_Load;
             ((System.ComponentModel.ISupportInitialize)tablaCotizaciones).EndInit();
             ResumeLayout(false);
             PerformLayout();

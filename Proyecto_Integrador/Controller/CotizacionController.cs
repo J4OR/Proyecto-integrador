@@ -41,5 +41,6 @@ namespace Proyecto_Integrador.Controller
         {
             return cotizacionRepository.buscador(texto);
         }
+
     }
 }

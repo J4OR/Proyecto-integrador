@@ -30,18 +30,16 @@
         {
             btnCalculadora = new Button();
             tablaTerrenos = new DataGridView();
+            Id = new DataGridViewTextBoxColumn();
+            Nombre = new DataGridViewTextBoxColumn();
+            Cliente = new DataGridViewTextBoxColumn();
+            Operacion = new DataGridViewTextBoxColumn();
+            Volumen = new DataGridViewTextBoxColumn();
+            Ver = new DataGridViewButtonColumn();
+            Eliminar = new DataGridViewButtonColumn();
             label1 = new Label();
             panelTitulo = new Panel();
             txtBuscador = new TextBox();
-            Id = new DataGridViewTextBoxColumn();
-            Nombre = new DataGridViewTextBoxColumn();
-            Operacion = new DataGridViewTextBoxColumn();
-            Cotas = new DataGridViewTextBoxColumn();
-            AlturaReferencia = new DataGridViewTextBoxColumn();
-            dx = new DataGridViewTextBoxColumn();
-            dy = new DataGridViewTextBoxColumn();
-            Volumen = new DataGridViewTextBoxColumn();
-            Eliminar = new DataGridViewButtonColumn();
             ((System.ComponentModel.ISupportInitialize)tablaTerrenos).BeginInit();
             panelTitulo.SuspendLayout();
             SuspendLayout();
@@ -65,13 +63,65 @@
             // 
             tablaTerrenos.AllowUserToAddRows = false;
             tablaTerrenos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            tablaTerrenos.Columns.AddRange(new DataGridViewColumn[] { Id, Nombre, Operacion, Cotas, AlturaReferencia, dx, dy, Volumen, Eliminar });
-            tablaTerrenos.Location = new Point(68, 139);
+            tablaTerrenos.Columns.AddRange(new DataGridViewColumn[] { Id, Nombre, Cliente, Operacion, Volumen, Ver, Eliminar });
+            tablaTerrenos.Location = new Point(115, 139);
             tablaTerrenos.Name = "tablaTerrenos";
             tablaTerrenos.RowHeadersWidth = 51;
-            tablaTerrenos.Size = new Size(978, 497);
+            tablaTerrenos.Size = new Size(931, 497);
             tablaTerrenos.TabIndex = 24;
             tablaTerrenos.CellClick += tablaTerrenos_CellClick;
+            // 
+            // Id
+            // 
+            Id.HeaderText = "Id";
+            Id.MinimumWidth = 6;
+            Id.Name = "Id";
+            Id.Width = 125;
+            // 
+            // Nombre
+            // 
+            Nombre.HeaderText = "Nombre";
+            Nombre.MinimumWidth = 6;
+            Nombre.Name = "Nombre";
+            Nombre.Width = 125;
+            // 
+            // Cliente
+            // 
+            Cliente.HeaderText = "Cliente";
+            Cliente.MinimumWidth = 6;
+            Cliente.Name = "Cliente";
+            Cliente.Width = 125;
+            // 
+            // Operacion
+            // 
+            Operacion.HeaderText = "Operacion";
+            Operacion.MinimumWidth = 6;
+            Operacion.Name = "Operacion";
+            Operacion.Width = 125;
+            // 
+            // Volumen
+            // 
+            Volumen.HeaderText = "Volumen";
+            Volumen.MinimumWidth = 6;
+            Volumen.Name = "Volumen";
+            Volumen.Width = 125;
+            // 
+            // Ver
+            // 
+            Ver.HeaderText = "Ver";
+            Ver.MinimumWidth = 6;
+            Ver.Name = "Ver";
+            Ver.Text = "Ver";
+            Ver.UseColumnTextForButtonValue = true;
+            Ver.Width = 125;
+            // 
+            // Eliminar
+            // 
+            Eliminar.FlatStyle = FlatStyle.Flat;
+            Eliminar.HeaderText = "Eliminar";
+            Eliminar.MinimumWidth = 6;
+            Eliminar.Name = "Eliminar";
+            Eliminar.Width = 125;
             // 
             // label1
             // 
@@ -104,70 +154,6 @@
             txtBuscador.TabIndex = 26;
             txtBuscador.TextChanged += txtBuscador_TextChanged;
             // 
-            // Id
-            // 
-            Id.HeaderText = "Id";
-            Id.MinimumWidth = 6;
-            Id.Name = "Id";
-            Id.Width = 125;
-            // 
-            // Nombre
-            // 
-            Nombre.HeaderText = "Nombre";
-            Nombre.MinimumWidth = 6;
-            Nombre.Name = "Nombre";
-            Nombre.Width = 125;
-            // 
-            // Operacion
-            // 
-            Operacion.HeaderText = "Operacion";
-            Operacion.MinimumWidth = 6;
-            Operacion.Name = "Operacion";
-            Operacion.Width = 125;
-            // 
-            // Cotas
-            // 
-            Cotas.HeaderText = "Cotas";
-            Cotas.MinimumWidth = 6;
-            Cotas.Name = "Cotas";
-            Cotas.Width = 125;
-            // 
-            // AlturaReferencia
-            // 
-            AlturaReferencia.HeaderText = "Altura";
-            AlturaReferencia.MinimumWidth = 6;
-            AlturaReferencia.Name = "AlturaReferencia";
-            AlturaReferencia.Width = 125;
-            // 
-            // dx
-            // 
-            dx.HeaderText = "dx";
-            dx.MinimumWidth = 6;
-            dx.Name = "dx";
-            dx.Width = 125;
-            // 
-            // dy
-            // 
-            dy.HeaderText = "dy";
-            dy.MinimumWidth = 6;
-            dy.Name = "dy";
-            dy.Width = 125;
-            // 
-            // Volumen
-            // 
-            Volumen.HeaderText = "Volumen";
-            Volumen.MinimumWidth = 6;
-            Volumen.Name = "Volumen";
-            Volumen.Width = 125;
-            // 
-            // Eliminar
-            // 
-            Eliminar.FlatStyle = FlatStyle.Flat;
-            Eliminar.HeaderText = "Eliminar";
-            Eliminar.MinimumWidth = 6;
-            Eliminar.Name = "Eliminar";
-            Eliminar.Width = 125;
-            // 
             // TerrenoForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -197,12 +183,10 @@
         private TextBox txtBuscador;
         private DataGridViewTextBoxColumn Id;
         private DataGridViewTextBoxColumn Nombre;
+        private DataGridViewTextBoxColumn Cliente;
         private DataGridViewTextBoxColumn Operacion;
-        private DataGridViewTextBoxColumn Cotas;
-        private DataGridViewTextBoxColumn AlturaReferencia;
-        private DataGridViewTextBoxColumn dx;
-        private DataGridViewTextBoxColumn dy;
         private DataGridViewTextBoxColumn Volumen;
+        private DataGridViewButtonColumn Ver;
         private DataGridViewButtonColumn Eliminar;
     }
 }

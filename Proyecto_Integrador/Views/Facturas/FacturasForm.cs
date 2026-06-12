@@ -21,27 +21,37 @@ namespace Proyecto_Integrador.Views.Facturas
         private FacturaController facturaController = new FacturaController();
         private ControlsUtils resizer;
         private FormDashboard formularioPrincipal;
+        private Usuario usuarioLogueado;
 
-        public FacturasForm(FormDashboard formulario)
+        public FacturasForm(FormDashboard formulario, Usuario usuarioLogueado)
         {
             InitializeComponent();
+            this.usuarioLogueado = usuarioLogueado;
             this.formularioPrincipal = formulario;
             this.resizer = new ControlsUtils(this);
         }
+        private void cargarEnTabla(List<Factura> facturas)
+        {
+            tablaFacturas.Rows.Clear();
+            foreach (var f in facturas)
+            {
+                int fila = tablaFacturas.Rows.Add(
+                    f.id,
+                    f.cotizacion.cliente.identificacion,
+                    f.descripcion,
+                    f.total,
+                    f.estado ? "Activo" : "Inactivo",
+                    f.fecha
+                );
+                tablaFacturas.Rows[fila].Tag = f;
+            }
+        }
         private void cargarFacturas()
         {
+            tablaFacturas.Rows.Clear();
             List<Factura> facturas = facturaController.ObtenerFacturas();
-            tablaFacturas.AutoGenerateColumns = false;
-            Id.DataPropertyName = "Id";
-            Cliente.DataPropertyName = "IdentificacionCliente";
-            Descripcion.DataPropertyName = "Descripcion";
-            Total.DataPropertyName = "Total";
-            Estado.DataPropertyName = "EstadoNmbre";
-            Fecha.DataPropertyName = "Fecha";
-
-            tablaFacturas.DataSource = null;
-            tablaFacturas.DataSource = facturas;
-
+            cargarEnTabla(facturas);
+           
         }
 
         private void EstilizarTabla()
@@ -85,25 +95,29 @@ namespace Proyecto_Integrador.Views.Facturas
             tablaFacturas.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             cargarFacturas();
             EstilizarTabla();
+
+            if (usuarioLogueado.rol == Rol.Administrador)
+            {
+                tablaFacturas.Columns["Accion"].Visible = true;
+            }
+            else
+            {
+                tablaFacturas.Columns["Accion"].Visible = false;
+            }
+
         }
 
         private void txtBuscar_TextChanged(object sender, EventArgs e)
         {
             string filtro = txtBuscador.Text.ToLower();
             var facturasFiltradas = facturaController.buscador(filtro);
-
-            tablaFacturas.DataSource = null;
-            tablaFacturas.DataSource = facturasFiltradas;
+            cargarEnTabla(facturasFiltradas);
         }
 
         private void btnFecha_Click(object sender, EventArgs e)
         {
-            DateTime desde = fechaFin.Value;
-            DateTime hasta = fechaInicio.Value;
-            var facturaFiltradas = facturaController.filtrarPorFechas(desde, hasta);
-
-            tablaFacturas.DataSource = null;
-            tablaFacturas.DataSource = facturaFiltradas;
+            var facturaFiltradas = facturaController.filtrarPorFechas(fechaInicio.Value, fechaFin.Value);
+            cargarEnTabla(facturaFiltradas);
 
         }
 
@@ -129,14 +143,14 @@ namespace Proyecto_Integrador.Views.Facturas
 
         private void btnCrearFactura_Click(object sender, EventArgs e)
         {
-            formularioPrincipal.AbrirFormularioEnPanel(new AgregarFacturaForm());
+            formularioPrincipal.AbrirFormularioEnPanel(new AgregarFacturaForm(usuarioLogueado));
         }
 
         private void tablaFacturas_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex < 0) return;
 
-            Factura facturaSeleccionada = (Factura)tablaFacturas.Rows[e.RowIndex].DataBoundItem;
+            Factura facturaSeleccionada = (Factura)tablaFacturas.Rows[e.RowIndex].Tag;
 
             if (tablaFacturas.Columns[e.ColumnIndex].Name == "Accion")
             {

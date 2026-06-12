@@ -19,6 +19,9 @@
     <Compile Update="Views\Cotizaciones\FormAddCotizacion.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Views\Facturas\BuscadorCotizacionesForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Views\Facturas\FacturasForm.cs">
       <SubType>Form</SubType>
     </Compile>

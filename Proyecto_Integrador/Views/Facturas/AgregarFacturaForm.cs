@@ -3,6 +3,7 @@ using Proyecto_Integrador.Models;
 using Proyecto_Integrador.Utils;
 using Proyecto_Integrador.Views.Terrenos;
 using Proyecto_Integrador.Views.Utils;
+using SharpDX;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -18,9 +19,12 @@ namespace Proyecto_Integrador.Views.Facturas
         private CotizacionController cotizacionController = new CotizacionController();
         private FacturaController facturaController = new FacturaController();
         private ControlsUtils resizer;
-        public AgregarFacturaForm()
+        private string facturaDescripcion;
+        private Usuario usuarioLogueado;
+        public AgregarFacturaForm(Usuario usuario)
         {
             InitializeComponent();
+            this.usuarioLogueado = usuario;
             this.resizer = new ControlsUtils(this);
             txtId.Text = facturaController.obtenerId();
             txtId.ForeColor = Color.DarkBlue;
@@ -81,6 +85,8 @@ namespace Proyecto_Integrador.Views.Facturas
                 TipoOperacion.Mixto => "Movimiento de tierra - " + cotizacion.terreno.nombre,
                 _ => cotizacion.terreno.nombre
             };
+            facturaDescripcion = descripcion;
+
 
             int i = dtvgItems.Rows.Add();
             dtvgItems.Rows[i].Cells["Descripcion"].Value = descripcion;
@@ -129,26 +135,25 @@ namespace Proyecto_Integrador.Views.Facturas
             double iva = subtotal * 0.19;
             double total = subtotal + iva;
 
-            Factura factura = new Factura(txtId.Text, dtpFecha.Value, cotizacion, Math.Round(total), Math.Round(subtotal), Math.Round(total), txtObservaciones.Text);
+            Factura factura = new Factura(txtId.Text, facturaDescripcion, dtpFecha.Value, cotizacion, Math.Round(total), Math.Round(subtotal), Math.Round(total), txtObservaciones.Text);
             facturaController.AgregarFactura(factura);
 
-            using var sfd = new SaveFileDialog
-            {
-                Filter = "PDF|*.pdf",
-                FileName = $"Factura_{factura.id}.pdf"
-            };
+            new GeneradorFacturaPDF(factura, dtvgItems).Exportar();
 
-            if (sfd.ShowDialog() == DialogResult.OK)
+
+            DialogResult resultado = MessageBox.Show(
+                "Factura guardada y PDF generado en Documentos/facturas_pdf.",
+                "Éxito",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Information
+            );
+
+            if (resultado == DialogResult.OK)
             {
-                new GeneradorFacturaPDF(factura, dtvgItems).Exportar(sfd.FileName);
-                MessageBox.Show("Factura guardada y PDF generado.", "Éxito",
-                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+                FormDashboard principal = (FormDashboard)this.ParentForm;
+                principal.AbrirFormularioEnPanel(new FacturasForm(principal, usuarioLogueado));
             }
-            else
-            {
-                MessageBox.Show("Factura guardada sin PDF.", "Éxito",
-                    MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
+
         }
 
         private void AgregarFacturaForm_Resize(object sender, EventArgs e)
@@ -159,7 +164,7 @@ namespace Proyecto_Integrador.Views.Facturas
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             FormDashboard principal = (FormDashboard)this.ParentForm;
-            principal.AbrirFormularioEnPanel(new FacturasForm(principal));
+            principal.AbrirFormularioEnPanel(new FacturasForm(principal,usuarioLogueado));
         }
     }
 }

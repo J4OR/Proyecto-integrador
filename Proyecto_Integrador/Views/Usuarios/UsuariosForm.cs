@@ -19,12 +19,9 @@ namespace Proyecto_Integrador.Views.Inicio
             this.usuarioLogueado = usuario;
             this.resizer = new ControlsUtils(this);
         }
-        private void cargarUsuarios()
+        private void cargarEnTabla(List<Usuario> usuarios)
         {
             tablaUsuarios.Rows.Clear();
-
-            List<Usuario> usuarios = usuarioController.ObtenerUsuarios();
-
             foreach (var u in usuarios)
             {
                 if (usuarioLogueado.userName != "admin" && u.userName == "admin")
@@ -42,6 +39,13 @@ namespace Proyecto_Integrador.Views.Inicio
                 );
                 tablaUsuarios.Rows[fila].Tag = u;
             }
+        }
+        private void cargarUsuarios()
+        {
+            tablaUsuarios.Rows.Clear();
+
+            List<Usuario> usuarios = usuarioController.ObtenerUsuarios();
+            cargarEnTabla(usuarios);
         }
         private void EstilizarTabla()
         {
@@ -101,8 +105,7 @@ namespace Proyecto_Integrador.Views.Inicio
                 usuariosFiltrados = usuariosFiltrados.Where(u => u.userName != "admin").ToList();
             }
 
-            tablaUsuarios.DataSource = null;
-            tablaUsuarios.DataSource = usuariosFiltrados;
+            cargarEnTabla(usuariosFiltrados);
         }
 
         private void tablaUsuarios_CellClick(object sender, DataGridViewCellEventArgs e)

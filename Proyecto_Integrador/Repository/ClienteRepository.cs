@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Runtime.InteropServices.JavaScript;
 using System.Text;
 
 namespace Proyecto_Integrador.Repository
@@ -30,7 +31,10 @@ namespace Proyecto_Integrador.Repository
             return jsonRepository.filtrar(c => c.nombre.Contains(texto, StringComparison.OrdinalIgnoreCase) ||
             c.identificacion.Contains(texto, StringComparison.OrdinalIgnoreCase));
         }
-
+        public Cliente buscar (string identificacion)
+        {
+            return jsonRepository.Buscar(c=> c.identificacion == identificacion);
+        }
         public void Editar(Cliente nuevoCliente, Guid id)
         {
             jsonRepository.Editar(nuevoCliente, u => u.id == id);

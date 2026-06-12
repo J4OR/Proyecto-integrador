@@ -38,7 +38,8 @@ namespace Proyecto_Integrador.Repository
 
         public List<Terreno> Buscador(string texto)
         {
-            return jsonRepository.filtrar(t => t.nombre.Contains(texto, StringComparison.OrdinalIgnoreCase));
+            return jsonRepository.filtrar(t => t.nombre.Contains(texto, StringComparison.OrdinalIgnoreCase) ||
+            t.cliente.identificacion.Contains(texto,StringComparison.OrdinalIgnoreCase));
         }
     }
-    }   
+   }   

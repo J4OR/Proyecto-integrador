@@ -56,6 +56,9 @@
             btnMontañas = new Button();
             label8 = new Label();
             cbOperacion = new ComboBox();
+            lblValidacionCliente = new Label();
+            label10 = new Label();
+            txtCliente = new TextBox();
             panelTitulo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)tablaPuntos).BeginInit();
             ((System.ComponentModel.ISupportInitialize)nupAltura).BeginInit();
@@ -91,7 +94,7 @@
             // 
             tablaPuntos.AllowUserToAddRows = false;
             tablaPuntos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            tablaPuntos.Location = new Point(64, 155);
+            tablaPuntos.Location = new Point(64, 220);
             tablaPuntos.Name = "tablaPuntos";
             tablaPuntos.RowHeadersWidth = 80;
             tablaPuntos.Size = new Size(812, 295);
@@ -100,7 +103,7 @@
             // nupAltura
             // 
             nupAltura.DecimalPlaces = 2;
-            nupAltura.Location = new Point(203, 520);
+            nupAltura.Location = new Point(203, 585);
             nupAltura.Maximum = new decimal(new int[] { 9999, 0, 0, 0 });
             nupAltura.Minimum = new decimal(new int[] { 9999, 0, 0, int.MinValue });
             nupAltura.Name = "nupAltura";
@@ -110,7 +113,7 @@
             // nupDx
             // 
             nupDx.DecimalPlaces = 2;
-            nupDx.Location = new Point(432, 521);
+            nupDx.Location = new Point(432, 586);
             nupDx.Maximum = new decimal(new int[] { 9999, 0, 0, 0 });
             nupDx.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
             nupDx.Name = "nupDx";
@@ -121,7 +124,7 @@
             // nupDy
             // 
             nupDy.DecimalPlaces = 2;
-            nupDy.Location = new Point(667, 521);
+            nupDy.Location = new Point(667, 586);
             nupDy.Maximum = new decimal(new int[] { 9999, 0, 0, 0 });
             nupDy.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
             nupDy.Name = "nupDy";
@@ -134,7 +137,7 @@
             lblResultado.AutoSize = true;
             lblResultado.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblResultado.ForeColor = Color.FromArgb(0, 0, 64);
-            lblResultado.Location = new Point(64, 562);
+            lblResultado.Location = new Point(64, 627);
             lblResultado.Name = "lblResultado";
             lblResultado.Size = new Size(116, 31);
             lblResultado.TabIndex = 14;
@@ -144,7 +147,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label1.Location = new Point(64, 521);
+            label1.Location = new Point(64, 586);
             label1.Name = "label1";
             label1.Size = new Size(133, 23);
             label1.TabIndex = 15;
@@ -154,7 +157,7 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label2.Location = new Point(361, 521);
+            label2.Location = new Point(361, 586);
             label2.Name = "label2";
             label2.Size = new Size(63, 23);
             label2.TabIndex = 16;
@@ -164,7 +167,7 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label3.Location = new Point(598, 521);
+            label3.Location = new Point(598, 586);
             label3.Name = "label3";
             label3.Size = new Size(63, 23);
             label3.TabIndex = 17;
@@ -216,7 +219,7 @@
             btnCalcular.FlatStyle = FlatStyle.Flat;
             btnCalcular.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnCalcular.ForeColor = Color.White;
-            btnCalcular.Location = new Point(64, 468);
+            btnCalcular.Location = new Point(64, 533);
             btnCalcular.Name = "btnCalcular";
             btnCalcular.Size = new Size(119, 33);
             btnCalcular.TabIndex = 22;
@@ -263,7 +266,7 @@
             btnDatos.FlatStyle = FlatStyle.Flat;
             btnDatos.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnDatos.ForeColor = Color.Black;
-            btnDatos.Location = new Point(885, 155);
+            btnDatos.Location = new Point(885, 220);
             btnDatos.Name = "btnDatos";
             btnDatos.Size = new Size(117, 33);
             btnDatos.TabIndex = 26;
@@ -279,7 +282,7 @@
             btnCancelar.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnCancelar.ForeColor = Color.Black;
             btnCancelar.Image = (Image)resources.GetObject("btnCancelar.Image");
-            btnCancelar.Location = new Point(609, 580);
+            btnCancelar.Location = new Point(609, 645);
             btnCancelar.Name = "btnCancelar";
             btnCancelar.Padding = new Padding(10, 5, 0, 5);
             btnCancelar.Size = new Size(121, 36);
@@ -297,7 +300,7 @@
             btnGuardar.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnGuardar.ForeColor = SystemColors.ButtonHighlight;
             btnGuardar.Image = (Image)resources.GetObject("btnGuardar.Image");
-            btnGuardar.Location = new Point(746, 580);
+            btnGuardar.Location = new Point(746, 645);
             btnGuardar.Name = "btnGuardar";
             btnGuardar.Padding = new Padding(10, 5, 0, 5);
             btnGuardar.Size = new Size(130, 36);
@@ -314,7 +317,7 @@
             btnGraficar.FlatStyle = FlatStyle.Flat;
             btnGraficar.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnGraficar.ForeColor = Color.White;
-            btnGraficar.Location = new Point(239, 468);
+            btnGraficar.Location = new Point(239, 533);
             btnGraficar.Name = "btnGraficar";
             btnGraficar.Size = new Size(119, 33);
             btnGraficar.TabIndex = 53;
@@ -340,7 +343,7 @@
             btnExcavaciones.FlatStyle = FlatStyle.Flat;
             btnExcavaciones.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnExcavaciones.ForeColor = Color.Black;
-            btnExcavaciones.Location = new Point(885, 282);
+            btnExcavaciones.Location = new Point(885, 347);
             btnExcavaciones.Name = "btnExcavaciones";
             btnExcavaciones.Size = new Size(122, 33);
             btnExcavaciones.TabIndex = 55;
@@ -355,7 +358,7 @@
             btnMontañas.FlatStyle = FlatStyle.Flat;
             btnMontañas.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnMontañas.ForeColor = Color.Black;
-            btnMontañas.Location = new Point(885, 217);
+            btnMontañas.Location = new Point(885, 282);
             btnMontañas.Name = "btnMontañas";
             btnMontañas.Size = new Size(117, 33);
             btnMontañas.TabIndex = 56;
@@ -368,7 +371,7 @@
             // 
             label8.AutoSize = true;
             label8.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label8.Location = new Point(610, 473);
+            label8.Location = new Point(610, 538);
             label8.Name = "label8";
             label8.Size = new Size(93, 23);
             label8.TabIndex = 57;
@@ -378,17 +381,48 @@
             // 
             cbOperacion.FormattingEnabled = true;
             cbOperacion.Items.AddRange(new object[] { "Remover,", "Rellenar,", "Ambos" });
-            cbOperacion.Location = new Point(718, 468);
+            cbOperacion.Location = new Point(718, 533);
             cbOperacion.Name = "cbOperacion";
             cbOperacion.Size = new Size(158, 28);
             cbOperacion.TabIndex = 58;
             cbOperacion.SelectedIndexChanged += cbOperacion_SelectedIndexChanged;
             // 
+            // lblValidacionCliente
+            // 
+            lblValidacionCliente.AutoSize = true;
+            lblValidacionCliente.ForeColor = Color.Red;
+            lblValidacionCliente.Location = new Point(147, 183);
+            lblValidacionCliente.Name = "lblValidacionCliente";
+            lblValidacionCliente.Size = new Size(245, 20);
+            lblValidacionCliente.TabIndex = 61;
+            lblValidacionCliente.Text = "Ingresar la identificacion del cliente";
+            lblValidacionCliente.Visible = false;
+            // 
+            // label10
+            // 
+            label10.AutoSize = true;
+            label10.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label10.Location = new Point(64, 157);
+            label10.Name = "label10";
+            label10.Size = new Size(67, 23);
+            label10.TabIndex = 60;
+            label10.Text = "Cliente:";
+            // 
+            // txtCliente
+            // 
+            txtCliente.Location = new Point(147, 153);
+            txtCliente.Name = "txtCliente";
+            txtCliente.Size = new Size(236, 27);
+            txtCliente.TabIndex = 59;
+            // 
             // CalculoForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1014, 664);
+            ClientSize = new Size(1014, 753);
+            Controls.Add(lblValidacionCliente);
+            Controls.Add(label10);
+            Controls.Add(txtCliente);
             Controls.Add(cbOperacion);
             Controls.Add(label8);
             Controls.Add(btnMontañas);
@@ -460,5 +494,8 @@
         private Button btnMontañas;
         private Label label8;
         private ComboBox cbOperacion;
+        private Label lblValidacionCliente;
+        private Label label10;
+        private TextBox txtCliente;
     }
 }

@@ -1,4 +1,5 @@
-﻿using System.Windows.Forms;
+﻿using System.IO;
+using System.Windows.Forms;
 using Proyecto_Integrador.Models;
 using QuestPDF.Fluent;
 using QuestPDF.Helpers;
@@ -11,16 +12,19 @@ namespace Proyecto_Integrador.Utils
     {
         private readonly Factura factura;
         private readonly DataGridView grid;
-        private static readonly string ruta = "C:\\Users\\jorte\\OneDrive\\Documentos\\Pdfs_Proyecto";
+        private readonly string carpeta = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "facturas_pdf");
+        private readonly string ruta;
 
         public GeneradorFacturaPDF(Factura factura, DataGridView grid)
         {
             this.factura = factura ?? throw new System.ArgumentNullException(nameof(factura));
             this.grid = grid ?? throw new System.ArgumentNullException(nameof(grid));
             QuestPDF.Settings.License = LicenseType.Community;
+            Directory.CreateDirectory(carpeta);
+            ruta = Path.Combine(carpeta, $"{factura.id}.pdf");
         }
 
-        public void Exportar(string rutaPdf)
+        public void Exportar()
         {
             // Validaciones tempranas para identificar la causa raíz y evitar NullReferenceException
             if (factura == null)
@@ -31,6 +35,7 @@ namespace Proyecto_Integrador.Utils
             var fechaText = factura.fecha.ToString("d/MM/yyyy");
             var cliente = factura.cotizacion?.cliente;
             var observacion = factura.observacion ?? "";
+            var descripcion = factura.descripcion ?? "";
             double subtotal = factura.subtotal;
             double iva = factura.precioIva;
             double total = factura.total;

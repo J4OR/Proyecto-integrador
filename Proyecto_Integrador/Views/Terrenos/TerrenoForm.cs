@@ -23,6 +23,22 @@ namespace Proyecto_Integrador.Views.Terrenos
             this.resizer = new ControlsUtils(this);
             this.formularioPrincipal = formulario;
         }
+        private void cargarEnTabla(List<Terreno> terrenos)
+        {
+            tablaTerrenos.Rows.Clear();
+            foreach (var t in terrenos)
+            {
+
+                int fila = tablaTerrenos.Rows.Add(
+                    t.id,
+                    t.nombre,
+                    t.cliente.identificacion,
+                    t.operacion,
+                    t.volumen
+                );
+                tablaTerrenos.Rows[fila].Tag = t;
+            }
+        }
         private void EstilizarTabla()
         {
             tablaTerrenos.BackgroundColor = Color.White;
@@ -61,19 +77,9 @@ namespace Proyecto_Integrador.Views.Terrenos
         public void cargarTerrenos()
         {
             List<Terreno> terrenos = terrenoController.ObtenerTerrenos();
-            tablaTerrenos.AutoGenerateColumns = false;
-            Id.DataPropertyName = "Id";
-            Nombre.DataPropertyName = "Nombre";
-            Operacion.DataPropertyName = "Operacion";
-            Cotas.DataPropertyName = "Cotas";
-            AlturaReferencia.DataPropertyName = "AlturaReferencia";
-            dx.DataPropertyName = "dx";
-            dy.DataPropertyName = "dy";
-            Volumen.DataPropertyName = "Volumen";
-
-            tablaTerrenos.DataSource = null;
-            tablaTerrenos.DataSource = terrenos;
+            cargarEnTabla(terrenos);
         }
+
         private void btnCalculadora_Click(object sender, EventArgs e)
         {
             formularioPrincipal.AbrirFormularioEnPanel(new CalculoForm());
@@ -97,8 +103,7 @@ namespace Proyecto_Integrador.Views.Terrenos
 
             var TerrenosFiltrados = terrenoController.Buscador(filtro);
 
-            tablaTerrenos.DataSource = null;
-            tablaTerrenos.DataSource = TerrenosFiltrados;
+            cargarEnTabla(TerrenosFiltrados);
 
         }
 
@@ -107,7 +112,7 @@ namespace Proyecto_Integrador.Views.Terrenos
 
             if (e.RowIndex < 0) return;
 
-            Terreno TerrenoSeleccionado = (Terreno)tablaTerrenos.Rows[e.RowIndex].DataBoundItem;
+            Terreno TerrenoSeleccionado = (Terreno)tablaTerrenos.Rows[e.RowIndex].Tag;
 
             if (tablaTerrenos.Columns[e.ColumnIndex].Name == "Eliminar")
             {
@@ -117,6 +122,12 @@ namespace Proyecto_Integrador.Views.Terrenos
                     terrenoController.EliminarTerreno(TerrenoSeleccionado.id);
                     cargarTerrenos();
                 }
+            }
+            if (tablaTerrenos.Columns[e.ColumnIndex].Name == "Ver")
+            {
+                GraficaForm grafica = new GraficaForm(TerrenoSeleccionado.cotas, TerrenoSeleccionado.alturaReferencia,
+                    TerrenoSeleccionado.dx, TerrenoSeleccionado.dy);
+                grafica.ShowDialog();
             }
         }
     }

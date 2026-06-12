@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Runtime.ConstrainedExecution;
 using System.Text;
 using System.Windows.Forms;
 
@@ -20,10 +21,6 @@ namespace Proyecto_Integrador.Views.Cotizaciones
         public CotizacionesForm()
         {
             InitializeComponent();
-
-            
-
-            CargarCotizaciones();
         }
 
         private void CargarCotizaciones()
@@ -49,10 +46,7 @@ namespace Proyecto_Integrador.Views.Cotizaciones
                 );
             }
         }
-            
 
-
-            
 
         private void btnAgregar_Click(object sender, EventArgs e)
         {
@@ -62,7 +56,41 @@ namespace Proyecto_Integrador.Views.Cotizaciones
 
             CargarCotizaciones();
         }
+        private void EstilizarTabla()
+        {
+            tablaCotizaciones.BackgroundColor = Color.White;
+            tablaCotizaciones.BorderStyle = BorderStyle.None;
+            tablaCotizaciones.RowHeadersVisible = false;
+            tablaCotizaciones.AllowUserToAddRows = false;
+            tablaCotizaciones.EnableHeadersVisualStyles = false;
 
+            tablaCotizaciones.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
+            tablaCotizaciones.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+            tablaCotizaciones.GridColor = Color.FromArgb(220, 220, 220);
+
+            tablaCotizaciones.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(245, 245, 245);
+            tablaCotizaciones.ColumnHeadersDefaultCellStyle.ForeColor = Color.Black;
+            tablaCotizaciones.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI", 9, FontStyle.Bold);
+
+            tablaCotizaciones.DefaultCellStyle.BackColor = Color.White;
+            tablaCotizaciones.DefaultCellStyle.ForeColor = Color.Black;
+            tablaCotizaciones.DefaultCellStyle.Font = new Font("Segoe UI", 9);
+            tablaCotizaciones.DefaultCellStyle.SelectionBackColor = Color.FromArgb(235, 243, 255);
+            tablaCotizaciones.DefaultCellStyle.SelectionForeColor = Color.Black;
+
+            tablaCotizaciones.RowTemplate.Height = 36;
+            tablaCotizaciones.ColumnHeadersHeight = 34;
+
+            Editar.Text = "Editar";
+            Editar.UseColumnTextForButtonValue = true;
+            Editar.FlatStyle = FlatStyle.Flat;
+            Editar.DefaultCellStyle.BackColor = Color.FromArgb(0, 0, 64);
+            Editar.DefaultCellStyle.ForeColor = Color.White;
+            Editar.DefaultCellStyle.SelectionBackColor = Color.FromArgb(0, 0, 64);
+            Editar.DefaultCellStyle.SelectionForeColor = Color.White;
+            Editar.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            Editar.Width = 90;
+        }
 
 
         private void btnBuscar_Click(object sender, EventArgs e)
@@ -153,6 +181,12 @@ namespace Proyecto_Integrador.Views.Cotizaciones
                 : "Cotización desactivada."
             );
 
+            CargarCotizaciones();
+        }
+
+        private void CotizacionesForm_Load(object sender, EventArgs e)
+        {
+            EstilizarTabla();
             CargarCotizaciones();
         }
     }

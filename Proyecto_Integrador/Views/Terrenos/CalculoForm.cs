@@ -18,6 +18,7 @@ namespace Proyecto_Integrador.Views.Terrenos
     {
         private TerrenoController terrenoController = new TerrenoController();
         private ControlsUtils resizer;
+        private ClienteController clienteController = new ClienteController();
         double volumenTerreno;
         public CalculoForm()
         {
@@ -188,16 +189,19 @@ namespace Proyecto_Integrador.Views.Terrenos
 
             lblValidacion.Visible = string.IsNullOrWhiteSpace(txtNombre.Text);
             if (lblValidacion.Visible) return;
+            lblValidacionCliente.Visible = string.IsNullOrWhiteSpace(txtCliente.Text);
+            if (lblValidacionCliente.Visible) return;
 
-            if (volumenTerreno == 0)
+            Cliente clienteEncontrado= clienteController.Buscar(txtCliente.Text);
+
+            if (!clienteController.ExisteCliente(clienteEncontrado.identificacion))
             {
-                lblResultado.Text = "Calcula el volumen";
-                lblResultado.ForeColor = Color.Red;
+                lblValidacionCliente.Text = "El cliente no existe";
                 return;
             }
 
             Terreno terreno = new Terreno((TipoOperacion)cbOperacion.SelectedItem, altura, (double)nupDx.Value, (double)nupDy.Value,
-            (double)nupAltura.Value, Math.Round(volumenTerreno, 2), txtNombre.Text);
+            (double)nupAltura.Value, Math.Round(volumenTerreno, 2), txtNombre.Text, clienteEncontrado);
 
             terrenoController.AgregarTerreno(terreno);
             MessageBox.Show("terreno agregado correctamente.", "Agregar terreno", MessageBoxButtons.OK, MessageBoxIcon.Information);

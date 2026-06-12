@@ -13,6 +13,7 @@ namespace Proyecto_Integrador.Models
     {
         public Guid id { get; set; }
         public string nombre { get; set; }
+        public Cliente cliente { get; set; }
         public TipoOperacion operacion { get; set; }
 
         public double[][] cotas { get; set; }
@@ -25,7 +26,8 @@ namespace Proyecto_Integrador.Models
         public double volumen { get; set; }
 
         [JsonConstructor]
-        public Terreno (TipoOperacion operacion, double[][] cotas, double dx, double dy, double alturaReferencia, double volumen = 0, string nombre = "")
+        public Terreno (TipoOperacion operacion, double[][] cotas, double dx, double dy, double alturaReferencia, 
+            double volumen = 0, string nombre = "", Cliente cliente = null)
         {
             this.id = Guid.NewGuid();
             this.nombre = nombre;
@@ -35,6 +37,7 @@ namespace Proyecto_Integrador.Models
             this.dy = dy;
             this.alturaReferencia = alturaReferencia;
             this.volumen = volumen;
+            this.cliente = cliente;
         }
     }
 }

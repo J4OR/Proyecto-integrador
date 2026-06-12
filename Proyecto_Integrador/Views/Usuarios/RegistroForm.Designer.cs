@@ -68,6 +68,9 @@
             lblSubtitulo = new Label();
             btnCancelar = new Button();
             btnGuardar = new Button();
+            lblRol = new Label();
+            pbRol = new PictureBox();
+            cbRol = new ComboBox();
             ((System.ComponentModel.ISupportInitialize)pbUser).BeginInit();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pbOjo2).BeginInit();
@@ -80,6 +83,7 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pbRol).BeginInit();
             SuspendLayout();
             // 
             // txtNombre
@@ -93,6 +97,7 @@
             txtNombre.Size = new Size(383, 45);
             txtNombre.TabIndex = 7;
             txtNombre.Text = "Ingrese el nombre completo";
+            txtNombre.TextChanged += TextBox_TextChanged;
             txtNombre.Enter += TextBoxs_Enter;
             txtNombre.Leave += TextBoxs_Leave;
             // 
@@ -123,6 +128,9 @@
             panel1.BackColor = SystemColors.ControlLightLight;
             panel1.BackgroundImageLayout = ImageLayout.None;
             panel1.BorderStyle = BorderStyle.FixedSingle;
+            panel1.Controls.Add(lblRol);
+            panel1.Controls.Add(pbRol);
+            panel1.Controls.Add(cbRol);
             panel1.Controls.Add(lblErrorConfirmar);
             panel1.Controls.Add(lblErrorContraseña);
             panel1.Controls.Add(lblErrorUsuario);
@@ -302,6 +310,7 @@
             txtConfirmar.Size = new Size(383, 45);
             txtConfirmar.TabIndex = 35;
             txtConfirmar.Text = "Confirma la contraseña";
+            txtConfirmar.TextChanged += TextBox_TextChanged;
             txtConfirmar.Enter += TextBoxs_Enter;
             txtConfirmar.Leave += TextBoxs_Leave;
             // 
@@ -338,6 +347,7 @@
             txtContraseña.Size = new Size(382, 45);
             txtContraseña.TabIndex = 32;
             txtContraseña.Text = "Ingrese la contraseña";
+            txtContraseña.TextChanged += TextBox_TextChanged;
             txtContraseña.Enter += TextBoxs_Enter;
             txtContraseña.Leave += TextBoxs_Leave;
             // 
@@ -385,6 +395,7 @@
             txtUsuario.Size = new Size(383, 45);
             txtUsuario.TabIndex = 28;
             txtUsuario.Text = "Ingrese el nombre de usuario";
+            txtUsuario.TextChanged += TextBox_TextChanged;
             txtUsuario.Enter += TextBoxs_Enter;
             txtUsuario.Leave += TextBoxs_Leave;
             // 
@@ -421,6 +432,7 @@
             txtDocumento.Size = new Size(382, 45);
             txtDocumento.TabIndex = 24;
             txtDocumento.Text = "Ingrese el documento de identidad";
+            txtDocumento.TextChanged += TextBox_TextChanged;
             txtDocumento.Enter += TextBoxs_Enter;
             txtDocumento.Leave += TextBoxs_Leave;
             // 
@@ -457,6 +469,7 @@
             txtCorreo.Size = new Size(383, 45);
             txtCorreo.TabIndex = 21;
             txtCorreo.Text = "Ingrese el correo electrónico";
+            txtCorreo.TextChanged += TextBox_TextChanged;
             txtCorreo.Enter += TextBoxs_Enter;
             txtCorreo.Leave += TextBoxs_Leave;
             // 
@@ -493,6 +506,7 @@
             txtTelefono.Size = new Size(382, 45);
             txtTelefono.TabIndex = 18;
             txtTelefono.Text = "Ingrese el número de telefono";
+            txtTelefono.TextChanged += TextBox_TextChanged;
             txtTelefono.Enter += TextBoxs_Enter;
             txtTelefono.Leave += TextBoxs_Leave;
             // 
@@ -588,6 +602,39 @@
             btnGuardar.UseVisualStyleBackColor = false;
             btnGuardar.Click += btnGuardar_Click;
             // 
+            // lblRol
+            // 
+            lblRol.AutoSize = true;
+            lblRol.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblRol.ForeColor = Color.Black;
+            lblRol.Location = new Point(540, 602);
+            lblRol.Name = "lblRol";
+            lblRol.Size = new Size(39, 25);
+            lblRol.TabIndex = 55;
+            lblRol.Text = "Rol";
+            // 
+            // pbRol
+            // 
+            pbRol.BackColor = Color.Transparent;
+            pbRol.Image = (Image)resources.GetObject("pbRol.Image");
+            pbRol.Location = new Point(540, 645);
+            pbRol.Name = "pbRol";
+            pbRol.Size = new Size(42, 44);
+            pbRol.SizeMode = PictureBoxSizeMode.StretchImage;
+            pbRol.TabIndex = 54;
+            pbRol.TabStop = false;
+            // 
+            // cbRol
+            // 
+            cbRol.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            cbRol.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            cbRol.FormattingEnabled = true;
+            cbRol.Items.AddRange(new object[] { "Usuario", "Administrador" });
+            cbRol.Location = new Point(588, 650);
+            cbRol.Name = "cbRol";
+            cbRol.Size = new Size(372, 39);
+            cbRol.TabIndex = 53;
+            // 
             // RegistroForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -598,7 +645,7 @@
             Controls.Add(panel1);
             Name = "RegistroForm";
             Text = "RegistroForm";
-            Resize += RegistroForm_Resize;
+            Load += RegistroForm_Load;
             ((System.ComponentModel.ISupportInitialize)pbUser).EndInit();
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
@@ -613,6 +660,7 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pbRol).EndInit();
             ResumeLayout(false);
         }
 
@@ -656,5 +704,8 @@
         private Label lblErrorTelefono;
         private Label lblErrorNombre;
         private Panel panel2;
+        private Label lblRol;
+        private PictureBox pbRol;
+        private ComboBox cbRol;
     }
 }

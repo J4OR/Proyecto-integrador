@@ -49,6 +49,9 @@
     <Compile Update="Views\Usuarios\CambiarContraseñaForm.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Views\Usuarios\EditarForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Views\Usuarios\EditarUsuarioForm.cs">
       <SubType>Form</SubType>
     </Compile>

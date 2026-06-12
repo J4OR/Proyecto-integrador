@@ -2,11 +2,9 @@
 using Proyecto_Integrador.Models;
 using Proyecto_Integrador.Security;
 using Proyecto_Integrador.Validator;
-using Proyecto_Integrador.Views.Utils;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.ComponentModel.DataAnnotations;
 using System.Data;
 using System.Drawing;
 using System.Text;
@@ -14,20 +12,28 @@ using System.Windows.Forms;
 
 namespace Proyecto_Integrador.Views.Usuarios
 {
-    public partial class RegistroForm : Form
+    public partial class EditarForm : Form
     {
         private UsuarioController usuarioController = new UsuarioController();
         private Dictionary<string, Label> labelsError;
-        public RegistroForm()
+        private Usuario usuario;
+        private Usuario usuarioLogueado;
+        bool cambiarPassword => panelCambiarContraseña.Visible;
+
+        public EditarForm(Usuario usuario, Usuario usuarioLogueado)
         {
             InitializeComponent();
-            cbRol.SelectedItem = 1; 
+            cbRol.DataSource = Enum.GetValues(typeof(Rol));
+            this.usuario = usuario;
+            this.usuarioLogueado = usuarioLogueado;
             this.StartPosition = FormStartPosition.CenterParent;
             this.FormBorderStyle = FormBorderStyle.FixedDialog;
             this.MinimizeBox = false;
             this.MaximizeBox = false;
+            cbRol.SelectedIndex = 0;
         }
-        private void RegistroForm_Load(object sender, EventArgs e)
+
+        private void EditarForm_Load(object sender, EventArgs e)
         {
             labelsError = new Dictionary<string, Label>
             {
@@ -39,10 +45,43 @@ namespace Proyecto_Integrador.Views.Usuarios
                 { "txtContraseña", lblErrorContraseña },
                 { "txtConfirmar",  lblErrorConfirmar  }
             };
-            cbRol.DataSource = Enum.GetValues(typeof(Rol));
+            if (usuarioLogueado.id == usuario.id)
+            {
+                lblRol.Visible = false;
+                cbRol.Visible = false;
+            }
+            if (usuarioLogueado.userName == "admin" && usuarioLogueado.id == usuario.id)
+            {
+                lblErrorUsuario.Visible = false;
+                txtUsuario.Visible = false;
+                lblUsuario.Visible = false;
+                pbUsuario.Visible = false;
+                pbRol.Visible = false;
+                cbRol.Visible = false;
+                lblRol.Visible = false;
+            }
+            cargarDatos();
         }
 
-        private void TextBox_TextChanged( object sender, EventArgs e)
+        private void cargarDatos()
+        {
+            txtNombre.Text = usuario.nombre;
+            txtTelefono.Text = usuario.telefono;
+            txtDocumento.Text = usuario.identificacion;
+            txtCorreo.Text = usuario.correo;
+            txtUsuario.Text = usuario.userName;
+            cbRol.SelectedItem = usuario.rol;
+
+
+            txtNombre.ForeColor = Color.Black;
+            txtTelefono.ForeColor = Color.Black;
+            txtDocumento.ForeColor = Color.Black;
+            txtCorreo.ForeColor = Color.Black;
+            txtUsuario.ForeColor = Color.Black;
+
+        }
+
+        private void TextBoxs_TextChanged(object sender, EventArgs e)
         {
             var errores = UsuarioValidator.Validar(txtNombre.Text, txtTelefono.Text, txtDocumento.Text, txtCorreo.Text,
                 txtUsuario.Text, txtContraseña.Text, txtConfirmar.Text, true);
@@ -161,34 +200,55 @@ namespace Proyecto_Integrador.Views.Usuarios
                 }
             }
         }
+
         private void btnGuardar_Click(object sender, EventArgs e)
         {
             var errores = UsuarioValidator.Validar(
             txtNombre.Text, txtTelefono.Text, txtDocumento.Text, txtCorreo.Text,
-            txtUsuario.Text, txtContraseña.Text, txtConfirmar.Text, false);
+            txtUsuario.Text, cambiarPassword ? txtContraseña.Text : "", cambiarPassword ? txtConfirmar.Text : "", false);
+
+            if (!panelCambiarContraseña.Visible)
+            {
+                errores.Remove("txtContraseña");
+                errores.Remove("txtConfirmar");
+            }
+
+            if (panelCambiarContraseña.Visible &&
+                !string.IsNullOrWhiteSpace(txtContraseña.Text))
+            {
+                usuario.password = PasswordHasher.ToSha256(txtContraseña.Text);
+            }
+
 
             MostrarError(labelsError, errores);
 
             if (errores.Count > 0) return;
 
-            if (usuarioController.ExisteUsuario(txtUsuario.Text))
+
+            if (usuario.userName != "admin" &&
+                usuarioController.ExisteUsuario(txtUsuario.Text) && txtUsuario.Text != usuario.userName)
             {
                 labelsError["txtUsuario"].Text = "Este nombre de usuario ya está en uso.";
                 labelsError["txtUsuario"].Visible = true;
                 return;
             }
 
-            if (usuarioController.ExisteDocumento(txtDocumento.Text))
+            if (usuarioController.ExisteDocumento(txtDocumento.Text) &&
+                txtDocumento.Text != usuarioLogueado.identificacion && txtDocumento.Text != usuario.identificacion)
             {
                 labelsError["txtDocumento"].Text = "Este documento ya está registrado.";
                 labelsError["txtDocumento"].Visible = true;
                 return;
             }
+            usuario.nombre = txtNombre.Text;
+            usuario.telefono = txtTelefono.Text;
+            usuario.identificacion = txtDocumento.Text;
+            usuario.correo = txtCorreo.Text;
+            usuario.userName = txtUsuario.Text;
+            usuario.rol = (Rol)cbRol.SelectedItem;
 
-            Usuario nuevoUsuario = new Usuario(txtDocumento.Text, txtNombre.Text,
-                txtTelefono.Text, txtCorreo.Text, txtUsuario.Text, PasswordHasher.ToSha256(txtContraseña.Text), (Rol)cbRol.SelectedItem);
-            usuarioController.AgregarUsuario(nuevoUsuario);
-            MessageBox.Show("Usuario registrado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            usuarioController.EditarUsuario(usuario, usuario.id);
+            MessageBox.Show("Usuario editado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
             this.Close();
         }
 
@@ -196,5 +256,19 @@ namespace Proyecto_Integrador.Views.Usuarios
         {
             this.Close();
         }
+
+        private void btnCambiarContraseña_Click(object sender, EventArgs e)
+        {
+            panelCambiarContraseña.Visible = !panelCambiarContraseña.Visible;
+
+            if (!panelCambiarContraseña.Visible)
+            {
+                txtContraseña.Text = "Ingrese la contraseña";
+                txtConfirmar.Text = "Confirma la contraseña";
+            }
+
+        }
+
+        
     }
 }

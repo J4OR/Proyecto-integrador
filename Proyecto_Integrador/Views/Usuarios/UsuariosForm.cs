@@ -30,7 +30,7 @@ namespace Proyecto_Integrador.Views.Inicio
                 if (usuarioLogueado.userName != "admin" && u.userName == "admin")
                     continue;
 
-                tablaUsuarios.Rows.Add(
+                int fila = tablaUsuarios.Rows.Add(
                     u.id,
                     u.userName,
                     u.nombre,
@@ -40,6 +40,7 @@ namespace Proyecto_Integrador.Views.Inicio
                     u.rol,
                     u.estado ? "Activo" : "Inactivo"
                 );
+                tablaUsuarios.Rows[fila].Tag = u;
             }
         }
         private void EstilizarTabla()
@@ -108,12 +109,12 @@ namespace Proyecto_Integrador.Views.Inicio
         {
             if (e.RowIndex < 0) return;
 
-            Usuario usuarioSeleccionado = (Usuario)tablaUsuarios.Rows[e.RowIndex].DataBoundItem;
+            Usuario usuarioSeleccionado = (Usuario)tablaUsuarios.Rows[e.RowIndex].Tag;
 
 
             if (tablaUsuarios.Columns[e.ColumnIndex].Name == "Editar")
             {
-                EditarUsuarioForm formEditar = new EditarUsuarioForm(usuarioSeleccionado, usuarioLogueado);
+                EditarForm formEditar = new EditarForm(usuarioSeleccionado, usuarioLogueado);
                 formEditar.ShowDialog();
 
                 cargarUsuarios();

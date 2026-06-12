@@ -21,6 +21,7 @@ namespace Proyecto_Integrador.Views.Usuarios
         public EditarUsuarioForm(Usuario usuario, Usuario usuarioLogueado)
         {
             InitializeComponent();
+            cbRol.DataSource = Enum.GetValues(typeof(Rol));
             this.StartPosition = FormStartPosition.CenterParent;
             this.FormBorderStyle = FormBorderStyle.FixedDialog;
             this.MinimizeBox = false;
@@ -51,6 +52,7 @@ namespace Proyecto_Integrador.Views.Usuarios
             {
                 lblRol.Visible = false;
                 cbRol.Visible = false;
+                
             }
 
             cargarDatos();

@@ -148,7 +148,7 @@
             // txtBuscador
             // 
             txtBuscador.ForeColor = Color.Black;
-            txtBuscador.Location = new Point(68, 86);
+            txtBuscador.Location = new Point(115, 86);
             txtBuscador.Name = "txtBuscador";
             txtBuscador.Size = new Size(235, 27);
             txtBuscador.TabIndex = 26;

@@ -41,6 +41,27 @@ namespace Proyecto_Integrador.Controller
         {
             return cotizacionRepository.buscador(texto);
         }
-
+        public double CalcularSubTotalItem(Terreno terreno, Material material)
+        {
+            return terreno.volumen * material.precioUnidad;
+        }
+        public double CalcularIvaItem(Terreno terreno, Material material, double porcentajeIva)
+        {
+            return CalcularSubTotalItem(terreno, material) * porcentajeIva / 100;
+        }
+        public double CalcularSubTotal(List<Terreno> terrenos, List<Material> materiales)
+        {
+            double subTotal = 0;
+            for (int i = 0; i < terrenos.Count; i++)
+                subTotal += CalcularSubTotalItem(terrenos[i], materiales[i]);
+            return subTotal;
+        }
+        public double CalcularIvaTotal(List<Terreno> terrenos, List<Material> materiales, double porcentajeIva)
+        {
+            double ivaTotal = 0;
+            for (int i = 0; i < terrenos.Count; i++)
+                ivaTotal += CalcularIvaItem(terrenos[i], materiales[i], porcentajeIva);
+            return ivaTotal;
+        }
     }
 }

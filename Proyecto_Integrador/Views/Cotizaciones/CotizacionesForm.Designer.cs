@@ -28,26 +28,24 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CotizacionesForm));
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CotizacionesForm));
             btnAgregar = new Button();
             tablaCotizaciones = new DataGridView();
-            Id = new DataGridViewTextBoxColumn();
-            Cliente = new DataGridViewTextBoxColumn();
-            Terreno = new DataGridViewTextBoxColumn();
-            Material = new DataGridViewTextBoxColumn();
-            Fecha = new DataGridViewTextBoxColumn();
-            Total = new DataGridViewTextBoxColumn();
-            Estado = new DataGridViewTextBoxColumn();
-            Editar = new DataGridViewButtonColumn();
-            Accion = new DataGridViewButtonColumn();
             txtBuscar = new TextBox();
             label1 = new Label();
             panelTitulo = new Panel();
             FechaInicio = new DateTimePicker();
             FechaFin = new DateTimePicker();
             btnBuscar = new Button();
+            Id = new DataGridViewTextBoxColumn();
+            Cliente = new DataGridViewTextBoxColumn();
+            Total = new DataGridViewTextBoxColumn();
+            Estado = new DataGridViewTextBoxColumn();
+            Fecha = new DataGridViewTextBoxColumn();
+            Editar = new DataGridViewButtonColumn();
+            Accion = new DataGridViewButtonColumn();
             ((System.ComponentModel.ISupportInitialize)tablaCotizaciones).BeginInit();
             SuspendLayout();
             // 
@@ -70,91 +68,13 @@
             // 
             tablaCotizaciones.AllowUserToAddRows = false;
             tablaCotizaciones.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            tablaCotizaciones.Columns.AddRange(new DataGridViewColumn[] { Id, Cliente, Terreno, Material, Fecha, Total, Estado, Editar, Accion });
+            tablaCotizaciones.Columns.AddRange(new DataGridViewColumn[] { Id, Cliente, Total, Estado, Fecha, Editar, Accion });
             tablaCotizaciones.Location = new Point(50, 172);
             tablaCotizaciones.Name = "tablaCotizaciones";
             tablaCotizaciones.RowHeadersWidth = 51;
             tablaCotizaciones.Size = new Size(1259, 497);
             tablaCotizaciones.TabIndex = 9;
             tablaCotizaciones.CellClick += tablaCotizaciones_CellClick;
-            // 
-            // Id
-            // 
-            Id.HeaderText = "Id";
-            Id.MinimumWidth = 6;
-            Id.Name = "Id";
-            Id.Width = 125;
-            // 
-            // Cliente
-            // 
-            Cliente.HeaderText = "Cliente";
-            Cliente.MinimumWidth = 6;
-            Cliente.Name = "Cliente";
-            Cliente.Width = 125;
-            // 
-            // Terreno
-            // 
-            Terreno.HeaderText = "Terreno";
-            Terreno.MinimumWidth = 6;
-            Terreno.Name = "Terreno";
-            Terreno.Width = 125;
-            // 
-            // Material
-            // 
-            Material.HeaderText = "Material";
-            Material.MinimumWidth = 6;
-            Material.Name = "Material";
-            Material.Width = 125;
-            // 
-            // Fecha
-            // 
-            Fecha.HeaderText = "Fecha";
-            Fecha.MinimumWidth = 6;
-            Fecha.Name = "Fecha";
-            Fecha.Width = 125;
-            // 
-            // Total
-            // 
-            Total.HeaderText = "Total";
-            Total.MinimumWidth = 6;
-            Total.Name = "Total";
-            Total.Width = 125;
-            // 
-            // Estado
-            // 
-            Estado.HeaderText = "Estado";
-            Estado.MinimumWidth = 6;
-            Estado.Name = "Estado";
-            Estado.Width = 125;
-            // 
-            // Editar
-            // 
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = Color.FromArgb(0, 0, 64);
-            dataGridViewCellStyle1.Font = new Font("Microsoft Sans Serif", 7.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle1.ForeColor = Color.White;
-            dataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(0, 0, 64);
-            Editar.DefaultCellStyle = dataGridViewCellStyle1;
-            Editar.FlatStyle = FlatStyle.Flat;
-            Editar.HeaderText = "Editar";
-            Editar.MinimumWidth = 6;
-            Editar.Name = "Editar";
-            Editar.Text = "Editar";
-            Editar.UseColumnTextForButtonValue = true;
-            Editar.Width = 125;
-            // 
-            // Accion
-            // 
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.ForeColor = Color.Black;
-            Accion.DefaultCellStyle = dataGridViewCellStyle2;
-            Accion.FlatStyle = FlatStyle.Flat;
-            Accion.HeaderText = "Activar/Desactivar";
-            Accion.MinimumWidth = 6;
-            Accion.Name = "Accion";
-            Accion.Text = "Activar/Desactivar";
-            Accion.UseColumnTextForButtonValue = true;
-            Accion.Width = 140;
             // 
             // txtBuscar
             // 
@@ -163,7 +83,7 @@
             txtBuscar.Name = "txtBuscar";
             txtBuscar.Size = new Size(235, 27);
             txtBuscar.TabIndex = 8;
-            txtBuscar.TextChanged += txtBuscar_TextChanged;
+
             // 
             // label1
             // 
@@ -212,6 +132,70 @@
             btnBuscar.UseVisualStyleBackColor = true;
             btnBuscar.Click += btnBuscar_Click;
             // 
+            // Id
+            // 
+            Id.HeaderText = "Id";
+            Id.MinimumWidth = 6;
+            Id.Name = "Id";
+            Id.Width = 125;
+            // 
+            // Cliente
+            // 
+            Cliente.HeaderText = "Cliente";
+            Cliente.MinimumWidth = 6;
+            Cliente.Name = "Cliente";
+            Cliente.Width = 125;
+            // 
+            // Total
+            // 
+            Total.HeaderText = "Total";
+            Total.MinimumWidth = 6;
+            Total.Name = "Total";
+            Total.Width = 125;
+            // 
+            // Estado
+            // 
+            Estado.HeaderText = "Estado";
+            Estado.MinimumWidth = 6;
+            Estado.Name = "Estado";
+            Estado.Width = 125;
+            // 
+            // Fecha
+            // 
+            Fecha.HeaderText = "Fecha";
+            Fecha.MinimumWidth = 6;
+            Fecha.Name = "Fecha";
+            Fecha.Width = 125;
+            // 
+            // Editar
+            // 
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = Color.FromArgb(0, 0, 64);
+            dataGridViewCellStyle1.Font = new Font("Microsoft Sans Serif", 7.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle1.ForeColor = Color.White;
+            dataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(0, 0, 64);
+            Editar.DefaultCellStyle = dataGridViewCellStyle1;
+            Editar.FlatStyle = FlatStyle.Flat;
+            Editar.HeaderText = "Editar";
+            Editar.MinimumWidth = 6;
+            Editar.Name = "Editar";
+            Editar.Text = "Editar";
+            Editar.UseColumnTextForButtonValue = true;
+            Editar.Width = 125;
+            // 
+            // Accion
+            // 
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.ForeColor = Color.Black;
+            Accion.DefaultCellStyle = dataGridViewCellStyle2;
+            Accion.FlatStyle = FlatStyle.Flat;
+            Accion.HeaderText = "Activar/Desactivar";
+            Accion.MinimumWidth = 6;
+            Accion.Name = "Accion";
+            Accion.Text = "Activar/Desactivar";
+            Accion.UseColumnTextForButtonValue = true;
+            Accion.Width = 140;
+            // 
             // CotizacionesForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -245,11 +229,9 @@
         private Button btnBuscar;
         private DataGridViewTextBoxColumn Id;
         private DataGridViewTextBoxColumn Cliente;
-        private DataGridViewTextBoxColumn Terreno;
-        private DataGridViewTextBoxColumn Material;
-        private DataGridViewTextBoxColumn Fecha;
         private DataGridViewTextBoxColumn Total;
         private DataGridViewTextBoxColumn Estado;
+        private DataGridViewTextBoxColumn Fecha;
         private DataGridViewButtonColumn Editar;
         private DataGridViewButtonColumn Accion;
     }

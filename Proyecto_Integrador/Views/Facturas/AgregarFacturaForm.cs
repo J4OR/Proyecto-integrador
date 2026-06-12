@@ -78,22 +78,29 @@ namespace Proyecto_Integrador.Views.Facturas
 
             dtvgItems.Rows.Clear();
 
-            string descripcion = cotizacion.terreno.operacion switch
+            dtvgItems.Rows.Clear();
+
+            for (int i = 0; i < cotizacion.terrenos.Count; i++)
             {
-                TipoOperacion.Remover => "Excavación y retiro de material - " + cotizacion.terreno.nombre,
-                TipoOperacion.Rellenar => "Relleno de material - " + cotizacion.terreno.nombre,
-                TipoOperacion.Mixto => "Movimiento de tierra - " + cotizacion.terreno.nombre,
-                _ => cotizacion.terreno.nombre
-            };
-            facturaDescripcion = descripcion;
+                var terreno = cotizacion.terrenos[i];
+                var material = cotizacion.materiales[i];
 
+                string descripcion = terreno.operacion switch
+                {
+                    TipoOperacion.Remover => "Excavación y retiro de material - " + terreno.nombre,
+                    TipoOperacion.Rellenar => "Relleno de material - " + terreno.nombre,
+                    TipoOperacion.Mixto => "Movimiento de tierra - " + terreno.nombre,
+                    _ => terreno.nombre
+                };
 
-            int i = dtvgItems.Rows.Add();
-            dtvgItems.Rows[i].Cells["Descripcion"].Value = descripcion;
-            dtvgItems.Rows[i].Cells["PrecioUnitario"].Value = cotizacion.material.precioUnidad;
-            dtvgItems.Rows[i].Cells["Material"].Value = cotizacion.material.nombre;
-            dtvgItems.Rows[i].Cells["Volumen"].Value = cotizacion.terreno.volumen;
-            dtvgItems.Rows[i].Cells["Total"].Value = cotizacion.material.precioUnidad * cotizacion.terreno.volumen;
+                int fila = dtvgItems.Rows.Add();
+
+                dtvgItems.Rows[fila].Cells["Descripcion"].Value = descripcion;
+                dtvgItems.Rows[fila].Cells["PrecioUnitario"].Value = material.precioUnidad;
+                dtvgItems.Rows[fila].Cells["Material"].Value = material.nombre;
+                dtvgItems.Rows[fila].Cells["Volumen"].Value = terreno.volumen;
+                dtvgItems.Rows[fila].Cells["Total"].Value = material.precioUnidad * terreno.volumen;
+            }
 
             ActualizarTotales();
 

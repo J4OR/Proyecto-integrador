@@ -23,13 +23,11 @@ namespace Proyecto_Integrador.Views.Cotizaciones
             InitializeComponent();
         }
 
-        private void CargarCotizaciones()
-        {
-
-            tablaCotizaciones.Rows.Clear();
+        private void cargarEnTabla(List<Cotizacion> cotizaciones)
+        {tablaCotizaciones.Rows.Clear();
 
             var clientes = clienteController.ObtenerClientes();
-            var cotizaciones = cotizacionController.ObtenerCotizaciones();
+
 
             foreach (var c in cotizaciones)
             {
@@ -38,21 +36,26 @@ namespace Proyecto_Integrador.Views.Cotizaciones
                 tablaCotizaciones.Rows.Add(
                     c.id,
                     cliente != null ? cliente.nombre : "Sin cliente",
-                    c.terreno.nombre,
-                    c.material.nombre,
                     c.fecha.ToString("dd/MM/yyyy"),
-                    c.costoTotal.ToString("F2"),
+                    c.total.ToString("F2"),
                     c.estado ? "Activo" : "Inactivo"
                 );
             }
+
+        }
+        private void CargarCotizaciones()
+        {
+            var cotizaciones = cotizacionController.ObtenerCotizaciones();
+            cargarEnTabla(cotizaciones);
+
         }
 
 
         private void btnAgregar_Click(object sender, EventArgs e)
         {
-            FormAddCotizacion frm = new FormAddCotizacion();
+            AgregarCotizacionForm agregar = new AgregarCotizacionForm();
 
-            frm.ShowDialog();
+            agregar.ShowDialog();
 
             CargarCotizaciones();
         }
@@ -102,55 +105,42 @@ namespace Proyecto_Integrador.Views.Cotizaciones
                 .Where(c => c.fecha >= fechaInicio && c.fecha <= fechaFin)
                 .ToList();
 
-            tablaCotizaciones.Rows.Clear();
-
-            foreach (var c in cotizacionesFiltradas)
-            {
-                tablaCotizaciones.Rows.Add(
-                    c.id,
-                    c.cliente.nombre,
-                    c.terreno.nombre,
-                    c.material.nombre,
-                    c.costoTotal.ToString("F2"),
-                    c.fecha.ToString("dd/MM/yyyy"),
-                    c.estado ? "Activa" : "Inactiva"
-                );
-            }
+            cargarEnTabla(cotizacionesFiltradas);
         }
 
-        private void txtBuscar_TextChanged(object sender, EventArgs e)
-        {
-            string texto = txtBuscar.Text.Trim().ToLower();
+        //private void txtbuscar_textchanged(object sender, eventargs e)
+        //{
+        //    string texto = txtbuscar.text.trim().tolower();
 
-            DateTime fechaInicio = FechaInicio.Value.Date;
-            DateTime fechaFin = FechaFin.Value.Date.AddDays(1).AddSeconds(-1);
+        //    datetime fechainicio = fechainicio.value.date;
+        //    datetime fechafin = fechafin.value.date.adddays(1).addseconds(-1);
 
-            var resultado = cotizaciones.Where(c =>
-                c.fecha >= fechaInicio &&
-                c.fecha <= fechaFin &&
-                (
-                    c.id.ToLower().Contains(texto) ||
-                    c.cliente.nombre.ToLower().Contains(texto) ||
-                    c.terreno.nombre.ToLower().Contains(texto) ||
-                    c.material.nombre.ToLower().Contains(texto)
-                )
-            ).ToList();
+        //    var resultado = cotizaciones.where(c =>
+        //        c.fecha >= fechainicio &&
+        //        c.fecha <= fechafin &&
+        //        (
+        //            c.id.tolower().contains(texto) ||
+        //            c.cliente.nombre.tolower().contains(texto) ||
+        //            c.terreno.nombre.tolower().contains(texto) ||
+        //            c.material.nombre.tolower().contains(texto)
+        //        )
+        //    ).tolist();
 
-            tablaCotizaciones.Rows.Clear();
+        //    tablacotizaciones.rows.clear();
 
-            foreach (var c in resultado)
-            {
-                tablaCotizaciones.Rows.Add(
-                    c.id,
-                    c.cliente.nombre,
-                    c.terreno.nombre,
-                    c.material.nombre,
-                    c.costoTotal.ToString("F2"),
-                    c.fecha.ToString("dd/MM/yyyy"),
-                    c.estado ? "Activa" : "Inactiva"
-                );
-            }
-        }
+        //    foreach (var c in resultado)
+        //    {
+        //        tablacotizaciones.rows.add(
+        //            c.id,
+        //            c.cliente.nombre,
+        //            c.terreno.nombre,
+        //            c.material.nombre,
+        //            c.costototal.tostring("f2"),
+        //            c.fecha.tostring("dd/mm/yyyy"),
+        //            c.estado ? "activa" : "inactiva"
+        //        );
+        //    }
+        //}
 
         private void tablaCotizaciones_CellClick(object sender, DataGridViewCellEventArgs e)
         {

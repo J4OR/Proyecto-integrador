@@ -9,28 +9,27 @@ namespace Proyecto_Integrador.Models
     {
         public string id { get; set; }
         public Cliente cliente { get; set; }
-        public Terreno terreno { get; set; }
-        public Material material { get; set; }
-        public double costoTotal { get; set; }
+        public List<Terreno> terrenos { get; set; }
+        public List<Material> materiales { get; set; }
+        public double PrecioIva { get; set; }
+        public double subTotal { get; set; }
+        public double total { get; set; }
         public DateTime fecha { get; set; }
         public bool estado { get; set; }
-        public string estadoTexto
-        {
-            get
-            {
-                return estado ? "Activo" : "Inactivo";
-            }
-        }
 
+        [JsonConstructor]
 
-        public Cotizacion(string id, Cliente cliente, Terreno terreno, Material material, bool estado = true)
+        public Cotizacion(string id, Cliente cliente, List<Terreno> terrenos, List<Material> materiales, double precioIva, 
+        double subtotal, double total, bool estado = true)
         {
             this.id = id;
             this.cliente = cliente;
-            this.terreno = terreno;
-            this.material = material;
-            this.costoTotal = material.precioUnidad * terreno.volumen;
-            this.fecha = DateTime.Now;
+            this.terrenos = terrenos;
+            this.materiales = materiales;
+            this.PrecioIva = precioIva;
+            this.subTotal = subtotal;
+            this.total = total;
+            this.fecha = fecha;
             this.estado = estado;
         }
     }

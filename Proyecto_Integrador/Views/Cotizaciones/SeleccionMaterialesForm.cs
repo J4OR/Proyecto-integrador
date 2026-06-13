@@ -29,9 +29,6 @@ namespace Proyecto_Integrador.Views.Cotizaciones
         private void cargarEnTabla(List<Material> materiales)
         {
             tablaMateriales.Rows.Clear();
-
-
-
             foreach (var m in materiales)
             {
                 int fila = tablaMateriales.Rows.Add(

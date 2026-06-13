@@ -20,7 +20,7 @@ namespace Proyecto_Integrador.Models
         [JsonConstructor]
 
         public Cotizacion(string id, Cliente cliente, List<Terreno> terrenos, List<Material> materiales, double precioIva, 
-        double subtotal, double total, bool estado = true)
+        double subtotal, double total, DateTime fecha, bool estado = true)
         {
             this.id = id;
             this.cliente = cliente;

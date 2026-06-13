@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CotizacionesForm));
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
             btnAgregar = new Button();
             tablaCotizaciones = new DataGridView();
             txtBuscar = new TextBox();
@@ -41,6 +41,7 @@
             btnBuscar = new Button();
             Id = new DataGridViewTextBoxColumn();
             Cliente = new DataGridViewTextBoxColumn();
+            CC = new DataGridViewTextBoxColumn();
             Total = new DataGridViewTextBoxColumn();
             Estado = new DataGridViewTextBoxColumn();
             Fecha = new DataGridViewTextBoxColumn();
@@ -68,13 +69,14 @@
             // 
             tablaCotizaciones.AllowUserToAddRows = false;
             tablaCotizaciones.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            tablaCotizaciones.Columns.AddRange(new DataGridViewColumn[] { Id, Cliente, Total, Estado, Fecha, Editar, Accion });
+            tablaCotizaciones.Columns.AddRange(new DataGridViewColumn[] { Id, Cliente, CC, Total, Estado, Fecha, Editar, Accion });
             tablaCotizaciones.Location = new Point(50, 172);
             tablaCotizaciones.Name = "tablaCotizaciones";
             tablaCotizaciones.RowHeadersWidth = 51;
             tablaCotizaciones.Size = new Size(1259, 497);
             tablaCotizaciones.TabIndex = 9;
             tablaCotizaciones.CellClick += tablaCotizaciones_CellClick;
+            tablaCotizaciones.CellContentClick += tablaCotizaciones_CellContentClick;
             // 
             // txtBuscar
             // 
@@ -83,7 +85,6 @@
             txtBuscar.Name = "txtBuscar";
             txtBuscar.Size = new Size(235, 27);
             txtBuscar.TabIndex = 8;
-
             // 
             // label1
             // 
@@ -146,6 +147,13 @@
             Cliente.Name = "Cliente";
             Cliente.Width = 125;
             // 
+            // CC
+            // 
+            CC.HeaderText = "CC";
+            CC.MinimumWidth = 6;
+            CC.Name = "CC";
+            CC.Width = 125;
+            // 
             // Total
             // 
             Total.HeaderText = "Total";
@@ -169,12 +177,12 @@
             // 
             // Editar
             // 
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = Color.FromArgb(0, 0, 64);
-            dataGridViewCellStyle1.Font = new Font("Microsoft Sans Serif", 7.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle1.ForeColor = Color.White;
-            dataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(0, 0, 64);
-            Editar.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = Color.FromArgb(0, 0, 64);
+            dataGridViewCellStyle3.Font = new Font("Microsoft Sans Serif", 7.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle3.ForeColor = Color.White;
+            dataGridViewCellStyle3.SelectionBackColor = Color.FromArgb(0, 0, 64);
+            Editar.DefaultCellStyle = dataGridViewCellStyle3;
             Editar.FlatStyle = FlatStyle.Flat;
             Editar.HeaderText = "Editar";
             Editar.MinimumWidth = 6;
@@ -185,9 +193,9 @@
             // 
             // Accion
             // 
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.ForeColor = Color.Black;
-            Accion.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.ForeColor = Color.Black;
+            Accion.DefaultCellStyle = dataGridViewCellStyle4;
             Accion.FlatStyle = FlatStyle.Flat;
             Accion.HeaderText = "Activar/Desactivar";
             Accion.MinimumWidth = 6;
@@ -229,6 +237,7 @@
         private Button btnBuscar;
         private DataGridViewTextBoxColumn Id;
         private DataGridViewTextBoxColumn Cliente;
+        private DataGridViewTextBoxColumn CC;
         private DataGridViewTextBoxColumn Total;
         private DataGridViewTextBoxColumn Estado;
         private DataGridViewTextBoxColumn Fecha;

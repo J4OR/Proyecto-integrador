@@ -21,10 +21,12 @@ namespace Proyecto_Integrador.Views.Cotizaciones
         public CotizacionesForm()
         {
             InitializeComponent();
+            tablaCotizaciones.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }
 
         private void cargarEnTabla(List<Cotizacion> cotizaciones)
-        {tablaCotizaciones.Rows.Clear();
+        {
+            tablaCotizaciones.Rows.Clear();
 
             var clientes = clienteController.ObtenerClientes();
 
@@ -36,12 +38,12 @@ namespace Proyecto_Integrador.Views.Cotizaciones
                 tablaCotizaciones.Rows.Add(
                     c.id,
                     cliente != null ? cliente.nombre : "Sin cliente",
-                    c.fecha.ToString("dd/MM/yyyy"),
+                    cliente != null ? cliente.identificacion : null,
                     c.total.ToString("F2"),
-                    c.estado ? "Activo" : "Inactivo"
+                    c.estado ? "Activo" : "Inactivo",
+                    c.fecha.ToString("dd/MM/yyyy")
                 );
             }
-
         }
         private void CargarCotizaciones()
         {
@@ -178,6 +180,11 @@ namespace Proyecto_Integrador.Views.Cotizaciones
         {
             EstilizarTabla();
             CargarCotizaciones();
+        }
+
+        private void tablaCotizaciones_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

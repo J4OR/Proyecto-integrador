@@ -4,6 +4,9 @@
     <Compile Update="Views\Cotizaciones\AgregarCotizacionForm.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Views\Cotizaciones\SeleccionMaterialesForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Views\Facturas\AgregarFacturaForm.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -15,7 +15,7 @@ namespace Proyecto_Integrador.Repository
 
         public int ObtenerSiguienteId()
         {
-            List<Material> lista = new List<Material>();
+            List<Material> lista = Leer();
             return lista.Count + 1; 
             
         }

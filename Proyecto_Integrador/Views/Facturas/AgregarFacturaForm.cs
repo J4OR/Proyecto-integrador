@@ -28,6 +28,11 @@ namespace Proyecto_Integrador.Views.Facturas
             this.resizer = new ControlsUtils(this);
             txtId.Text = facturaController.obtenerId();
             txtId.ForeColor = Color.DarkBlue;
+            dtvgItems.RowTemplate.Height = 50;
+            dtvgItems.ColumnHeadersHeight = 45;
+            dtvgItems.DefaultCellStyle.Font = new Font("Segoe UI", 11);
+            dtvgItems.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            dtvgItems.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }
 
         private void ConfigurarDGV()
@@ -78,9 +83,20 @@ namespace Proyecto_Integrador.Views.Facturas
 
             dtvgItems.Rows.Clear();
 
-            dtvgItems.Rows.Clear();
 
-            for (int i = 0; i < cotizacion.terrenos.Count; i++)
+            int cantidad = Math.Min(
+                cotizacion.terrenos?.Count ?? 0,
+                cotizacion.materiales?.Count ?? 0
+            );
+
+            if (cantidad == 0)
+            {
+                MessageBox.Show("La cotización no tiene materiales o terrenos.");
+                return;
+            }
+
+
+            for (int i = 0; i < cantidad; i++)
             {
                 var terreno = cotizacion.terrenos[i];
                 var material = cotizacion.materiales[i];

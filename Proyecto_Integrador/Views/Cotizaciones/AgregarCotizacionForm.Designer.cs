@@ -42,6 +42,13 @@
             panel2 = new Panel();
             btnBuscarCliente = new Button();
             dgvItems = new DataGridView();
+            Descripcion = new DataGridViewTextBoxColumn();
+            Material = new DataGridViewComboBoxColumn();
+            PrecioUnitario = new DataGridViewTextBoxColumn();
+            Volumen = new DataGridViewTextBoxColumn();
+            SubTotal = new DataGridViewTextBoxColumn();
+            Iva = new DataGridViewTextBoxColumn();
+            Total = new DataGridViewTextBoxColumn();
             label1 = new Label();
             panel1 = new Panel();
             label4 = new Label();
@@ -55,15 +62,9 @@
             lblTotal = new Label();
             btnGuardar = new Button();
             panel3 = new Panel();
-            button1 = new Button();
+            btnCalcular = new Button();
+            btnMateriales = new Button();
             label14 = new Label();
-            Descripcion = new DataGridViewTextBoxColumn();
-            Material = new DataGridViewComboBoxColumn();
-            PrecioUnitario = new DataGridViewTextBoxColumn();
-            Volumen = new DataGridViewTextBoxColumn();
-            SubTotal = new DataGridViewTextBoxColumn();
-            Iva = new DataGridViewTextBoxColumn();
-            Total = new DataGridViewTextBoxColumn();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvItems).BeginInit();
             panel1.SuspendLayout();
@@ -212,6 +213,59 @@
             dgvItems.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvItems.Size = new Size(1143, 295);
             dgvItems.TabIndex = 56;
+            dgvItems.CellValueChanged += dgvItems_CellValueChanged;
+            dgvItems.CurrentCellDirtyStateChanged += dgvItems_CurrentCellDirtyStateChanged;
+            // 
+            // Descripcion
+            // 
+            Descripcion.HeaderText = "Descripcion del servicio";
+            Descripcion.MinimumWidth = 6;
+            Descripcion.Name = "Descripcion";
+            Descripcion.Width = 200;
+            // 
+            // Material
+            // 
+            Material.HeaderText = "Material";
+            Material.MinimumWidth = 6;
+            Material.Name = "Material";
+            Material.Width = 125;
+            // 
+            // PrecioUnitario
+            // 
+            PrecioUnitario.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
+            PrecioUnitario.HeaderText = "Precio Unitario";
+            PrecioUnitario.MinimumWidth = 6;
+            PrecioUnitario.Name = "PrecioUnitario";
+            PrecioUnitario.Width = 125;
+            // 
+            // Volumen
+            // 
+            Volumen.HeaderText = "Volumen";
+            Volumen.MinimumWidth = 6;
+            Volumen.Name = "Volumen";
+            Volumen.Width = 125;
+            // 
+            // SubTotal
+            // 
+            SubTotal.HeaderText = "SubTotal";
+            SubTotal.MinimumWidth = 6;
+            SubTotal.Name = "SubTotal";
+            SubTotal.Width = 125;
+            // 
+            // Iva
+            // 
+            Iva.HeaderText = "Iva";
+            Iva.MinimumWidth = 6;
+            Iva.Name = "Iva";
+            Iva.Width = 125;
+            // 
+            // Total
+            // 
+            Total.HeaderText = "Total";
+            Total.MinimumWidth = 6;
+            Total.Name = "Total";
+            Total.ReadOnly = true;
+            Total.Width = 125;
             // 
             // label1
             // 
@@ -345,25 +399,38 @@
             btnGuardar.TextAlign = ContentAlignment.MiddleRight;
             btnGuardar.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnGuardar.UseVisualStyleBackColor = false;
+            btnGuardar.Click += btnGuardar_Click;
             // 
             // panel3
             // 
             panel3.BackColor = Color.AliceBlue;
-            panel3.Controls.Add(button1);
+            panel3.Controls.Add(btnCalcular);
+            panel3.Controls.Add(btnMateriales);
             panel3.Controls.Add(label14);
             panel3.Location = new Point(10, 250);
             panel3.Name = "panel3";
             panel3.Size = new Size(1143, 76);
             panel3.TabIndex = 66;
             // 
-            // button1
+            // btnCalcular
             // 
-            button1.Location = new Point(133, 4);
-            button1.Name = "button1";
-            button1.Size = new Size(190, 34);
-            button1.TabIndex = 60;
-            button1.Text = "Seleccionar Materiales";
-            button1.UseVisualStyleBackColor = true;
+            btnCalcular.Location = new Point(1015, 42);
+            btnCalcular.Name = "btnCalcular";
+            btnCalcular.Size = new Size(128, 34);
+            btnCalcular.TabIndex = 61;
+            btnCalcular.Text = "Calcular";
+            btnCalcular.UseVisualStyleBackColor = true;
+            btnCalcular.Click += btnCalcular_Click;
+            // 
+            // btnMateriales
+            // 
+            btnMateriales.Location = new Point(133, 4);
+            btnMateriales.Name = "btnMateriales";
+            btnMateriales.Size = new Size(190, 34);
+            btnMateriales.TabIndex = 60;
+            btnMateriales.Text = "Seleccionar Materiales";
+            btnMateriales.UseVisualStyleBackColor = true;
+            btnMateriales.Click += btnMateriales_Click;
             // 
             // label14
             // 
@@ -376,57 +443,6 @@
             label14.Size = new Size(93, 23);
             label14.TabIndex = 1;
             label14.Text = "Materiales";
-            // 
-            // Descripcion
-            // 
-            Descripcion.HeaderText = "Descripcion del servicio";
-            Descripcion.MinimumWidth = 6;
-            Descripcion.Name = "Descripcion";
-            Descripcion.Width = 200;
-            // 
-            // Material
-            // 
-            Material.HeaderText = "Material";
-            Material.MinimumWidth = 6;
-            Material.Name = "Material";
-            Material.Width = 125;
-            // 
-            // PrecioUnitario
-            // 
-            PrecioUnitario.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
-            PrecioUnitario.HeaderText = "Precio Unitario";
-            PrecioUnitario.MinimumWidth = 6;
-            PrecioUnitario.Name = "PrecioUnitario";
-            PrecioUnitario.Width = 136;
-            // 
-            // Volumen
-            // 
-            Volumen.HeaderText = "Volumen";
-            Volumen.MinimumWidth = 6;
-            Volumen.Name = "Volumen";
-            Volumen.Width = 125;
-            // 
-            // SubTotal
-            // 
-            SubTotal.HeaderText = "SubTotal";
-            SubTotal.MinimumWidth = 6;
-            SubTotal.Name = "SubTotal";
-            SubTotal.Width = 125;
-            // 
-            // Iva
-            // 
-            Iva.HeaderText = "Iva";
-            Iva.MinimumWidth = 6;
-            Iva.Name = "Iva";
-            Iva.Width = 125;
-            // 
-            // Total
-            // 
-            Total.HeaderText = "Total";
-            Total.MinimumWidth = 6;
-            Total.Name = "Total";
-            Total.ReadOnly = true;
-            Total.Width = 125;
             // 
             // AgregarCotizacionForm
             // 
@@ -485,7 +501,7 @@
         private Label lblTotal;
         private Button btnGuardar;
         private Panel panel3;
-        private Button button1;
+        private Button btnMateriales;
         private Label label14;
         private DataGridViewTextBoxColumn Descripcion;
         private DataGridViewComboBoxColumn Material;
@@ -494,5 +510,6 @@
         private DataGridViewTextBoxColumn SubTotal;
         private DataGridViewTextBoxColumn Iva;
         private DataGridViewTextBoxColumn Total;
+        private Button btnCalcular;
     }
 }

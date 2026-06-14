@@ -56,12 +56,15 @@ namespace Proyecto_Integrador.Views
         {
             if (lblRol.Text.Contains("Admin"))
             {
+                btnCambiarContraseña.Visible = false;
                 btnUsuarios.Visible = true;
             }
             else
             {
                 btnUsuarios.Visible = false;
+                btnCambiarContraseña.Visible = true;
             }
+            
         }
 
         private void FormDashboard_Resize(object sender, EventArgs e)
@@ -109,8 +112,7 @@ namespace Proyecto_Integrador.Views
             AbrirFormularioEnPanel(new FacturasForm(this, usuarioLogueado));
         }
 
-     
-
+    
         private void btnCambiarContraseña_Click_1(object sender, EventArgs e)
         {
             CambiarContraseñaForm cambiarContraseñaForm = new CambiarContraseñaForm(usuarioLogueado);

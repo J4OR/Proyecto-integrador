@@ -51,7 +51,6 @@ namespace Proyecto_Integrador.Views.Facturas
             tablaFacturas.Rows.Clear();
             List<Factura> facturas = facturaController.ObtenerFacturas();
             cargarEnTabla(facturas);
-           
         }
 
         private void EstilizarTabla()

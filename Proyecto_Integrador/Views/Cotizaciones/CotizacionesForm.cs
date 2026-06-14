@@ -98,51 +98,13 @@ namespace Proyecto_Integrador.Views.Cotizaciones
         }
 
 
-        private void btnBuscar_Click(object sender, EventArgs e)
+        private void btnFiltrarFecha_Click(object sender, EventArgs e)
         {
-            DateTime fechaInicio = FechaInicio.Value.Date;
-            DateTime fechaFin = FechaFin.Value.Date.AddDays(1).AddSeconds(-1);
-
-            var cotizacionesFiltradas = cotizaciones
-                .Where(c => c.fecha >= fechaInicio && c.fecha <= fechaFin)
-                .ToList();
-
+            var cotizacionesFiltradas = cotizacionController.filtrarPorFechas(fechaInicio.Value, fechaFin.Value);
             cargarEnTabla(cotizacionesFiltradas);
         }
 
-        //private void txtbuscar_textchanged(object sender, eventargs e)
-        //{
-        //    string texto = txtbuscar.text.trim().tolower();
 
-        //    datetime fechainicio = fechainicio.value.date;
-        //    datetime fechafin = fechafin.value.date.adddays(1).addseconds(-1);
-
-        //    var resultado = cotizaciones.where(c =>
-        //        c.fecha >= fechainicio &&
-        //        c.fecha <= fechafin &&
-        //        (
-        //            c.id.tolower().contains(texto) ||
-        //            c.cliente.nombre.tolower().contains(texto) ||
-        //            c.terreno.nombre.tolower().contains(texto) ||
-        //            c.material.nombre.tolower().contains(texto)
-        //        )
-        //    ).tolist();
-
-        //    tablacotizaciones.rows.clear();
-
-        //    foreach (var c in resultado)
-        //    {
-        //        tablacotizaciones.rows.add(
-        //            c.id,
-        //            c.cliente.nombre,
-        //            c.terreno.nombre,
-        //            c.material.nombre,
-        //            c.costototal.tostring("f2"),
-        //            c.fecha.tostring("dd/mm/yyyy"),
-        //            c.estado ? "activa" : "inactiva"
-        //        );
-        //    }
-        //}
 
         private void tablaCotizaciones_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -151,7 +113,6 @@ namespace Proyecto_Integrador.Views.Cotizaciones
 
             string id = tablaCotizaciones.Rows[e.RowIndex].Cells[0].Value.ToString();
 
-            // Recargar la lista desde el JSON
             cotizaciones = cotizacionController.ObtenerCotizaciones();
 
             Cotizacion cotizacionSeleccionada =
@@ -185,6 +146,23 @@ namespace Proyecto_Integrador.Views.Cotizaciones
         private void tablaCotizaciones_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+
+        private void txtBuscar_TextChanged(object sender, EventArgs e)
+        {
+            string filtro = txtBuscador.Text.ToLower();
+            var cotizacionesFiltradas = cotizacionController.buscador(filtro);
+            cargarEnTabla(cotizacionesFiltradas);
+        }
+
+        private void FechaFin_ValueChanged(object sender, EventArgs e)
+        {
+            fechaFin.MinDate = fechaInicio.Value.Date;
+
+            if (fechaFin.Value < fechaInicio.Value)
+            {
+                fechaFin.Value = fechaInicio.Value;
+            }
         }
     }
 }

@@ -21,6 +21,13 @@ namespace Proyecto_Integrador.Views.Cotizaciones
         public AgregarCotizacionForm()
         {
             InitializeComponent();
+            this.StartPosition = FormStartPosition.CenterParent;
+            this.FormBorderStyle = FormBorderStyle.FixedDialog;
+            this.MinimizeBox = false;
+            this.MaximizeBox = false;
+        }
+        private void AgregarCotizacionForm_Load(object sender, EventArgs e)
+        {
             txtId.Text = cotizacionController.obtenerId();
             txtId.ForeColor = Color.DarkBlue;
 
@@ -29,7 +36,6 @@ namespace Proyecto_Integrador.Views.Cotizaciones
             dgvItems.DefaultCellStyle.Font = new Font("Segoe UI", 11);
             dgvItems.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
             dgvItems.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-
         }
         private void CargarTerrenosEnGrid()
         {
@@ -151,10 +157,18 @@ namespace Proyecto_Integrador.Views.Cotizaciones
             decimal sumaSubtotal = 0;
             decimal sumaIva = 0;
             decimal sumaTotal = 0;
+            bool hayMaterialSeleccionado = false;
 
             foreach (DataGridViewRow fila in dgvItems.Rows)
             {
                 if (fila.IsNewRow) continue;
+
+                var valorMaterial = fila.Cells["Material"].Value;
+
+                if (valorMaterial != null && !string.IsNullOrEmpty(valorMaterial.ToString()))
+                {
+                    hayMaterialSeleccionado = true;
+                }
 
                 decimal precio = 0;
                 decimal volumen = 0;
@@ -177,9 +191,17 @@ namespace Proyecto_Integrador.Views.Cotizaciones
                 sumaTotal += total;
             }
 
-            lblSubtotal.Text = "$ " + sumaSubtotal.ToString("N2");
-            lblIva.Text = "$ " + sumaIva.ToString("N2");
-            lblTotal.Text = "$ " + sumaTotal.ToString("N2");
+            if (!hayMaterialSeleccionado)
+            {
+                MessageBox.Show("Selecciona al menos un material en la tabla.", "Aviso",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+
+            lblSubtotal.Text = "Subtotal:     $ " + sumaSubtotal.ToString("N2");
+            lblIva.Text = "IVA:            $ " + sumaIva.ToString("N2");
+            lblTotal.Text = "Total:      $ " + sumaTotal.ToString("N2");
 
         }
 
@@ -208,13 +230,12 @@ namespace Proyecto_Integrador.Views.Cotizaciones
             {
                 if (fila.IsNewRow) continue;
 
-                // ✅ Obtener terreno
                 if (fila.Tag is Terreno terreno)
                 {
                     terrenos.Add(terreno);
                 }
 
-                // ✅ 🔥 CORRECCIÓN IMPORTANTE: obtener material correctamente
+
                 var valor = fila.Cells["Material"].Value;
 
                 if (valor != null)
@@ -228,10 +249,11 @@ namespace Proyecto_Integrador.Views.Cotizaciones
                     }
                 }
 
-                // ✅ Obtener valores numéricos
+
                 double subtotal = 0;
                 double iva = 0;
                 double total = 0;
+
 
                 double.TryParse(fila.Cells["SubTotal"]?.Value?.ToString(), out subtotal);
                 double.TryParse(fila.Cells["Iva"]?.Value?.ToString(), out iva);
@@ -240,34 +262,30 @@ namespace Proyecto_Integrador.Views.Cotizaciones
                 subtotalGeneral += subtotal;
                 ivaGeneral += iva;
                 totalGeneral += total;
+                if (total == 0)
+                {
+                    MessageBox.Show("Calcule la cotizacion");
+                    return;
+                }
             }
 
-            // ✅ VALIDAR que sí haya materiales
             if (materiales.Count == 0)
             {
                 MessageBox.Show("No se seleccionaron materiales.");
                 return;
             }
 
-            // ✅ Crear cotización
-            Cotizacion cotizacion = new Cotizacion(
-                txtId.Text,
-                clienteSeleccionado,
-                terrenos,
-                materiales,
-                ivaGeneral,
-                subtotalGeneral,
-                totalGeneral,
-                dtpFecha.Value
-            );
 
-            // ✅ Guardar en controller
+            Cotizacion cotizacion = new Cotizacion(txtId.Text, clienteSeleccionado, terrenos, materiales, ivaGeneral, subtotalGeneral,
+                totalGeneral, dtpFecha.Value);
+
             cotizacionController.AgregarCotizacion(cotizacion);
 
-            MessageBox.Show("Cotización guardada correctamente ✅");
+            MessageBox.Show("Cotización guardada correctamente");
             this.Close();
         }
 
+       
     }
 }
     

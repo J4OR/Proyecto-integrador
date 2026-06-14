@@ -34,8 +34,8 @@
             Nombre = new DataGridViewTextBoxColumn();
             PrecioUnidad = new DataGridViewTextBoxColumn();
             Estado = new DataGridViewTextBoxColumn();
-            txtBuscador = new TextBox();
             Agregar = new DataGridViewCheckBoxColumn();
+            txtBuscador = new TextBox();
             btnGuardar = new Button();
             ((System.ComponentModel.ISupportInitialize)tablaMateriales).BeginInit();
             SuspendLayout();
@@ -50,6 +50,8 @@
             tablaMateriales.RowHeadersWidth = 51;
             tablaMateriales.Size = new Size(627, 375);
             tablaMateriales.TabIndex = 30;
+            tablaMateriales.CellValueChanged += tablaMateriales_CellValueChanged;
+            tablaMateriales.CurrentCellDirtyStateChanged += tablaMateriales_CurrentCellDirtyStateChanged;
             // 
             // Id
             // 
@@ -79,6 +81,13 @@
             Estado.Name = "Estado";
             Estado.Width = 125;
             // 
+            // Agregar
+            // 
+            Agregar.HeaderText = "Agregar";
+            Agregar.MinimumWidth = 6;
+            Agregar.Name = "Agregar";
+            Agregar.Width = 125;
+            // 
             // txtBuscador
             // 
             txtBuscador.ForeColor = Color.Black;
@@ -87,13 +96,6 @@
             txtBuscador.Size = new Size(235, 27);
             txtBuscador.TabIndex = 31;
             txtBuscador.TextChanged += txtBuscador_TextChanged;
-            // 
-            // Agregar
-            // 
-            Agregar.HeaderText = "Agregar";
-            Agregar.MinimumWidth = 6;
-            Agregar.Name = "Agregar";
-            Agregar.Width = 125;
             // 
             // btnGuardar
             // 

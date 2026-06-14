@@ -21,6 +21,7 @@ namespace Proyecto_Integrador.Views.Facturas
         private ControlsUtils resizer;
         private string facturaDescripcion;
         private Usuario usuarioLogueado;
+        private Cotizacion cotizacionSeleccionada;
         public AgregarFacturaForm(Usuario usuario)
         {
             InitializeComponent();
@@ -68,21 +69,32 @@ namespace Proyecto_Integrador.Views.Facturas
 
         private void btnCargar_Click(object sender, EventArgs e)
         {
-            if (cbCotizaciones.SelectedItem is not Cotizacion cotizacion)
+
+            BuscadorCotizacionesForm form = new BuscadorCotizacionesForm();
+
+            if (form.ShowDialog() == DialogResult.OK)
             {
-                MessageBox.Show("Selecciona una cotización primero.");
-                return;
+                cotizacionSeleccionada = form.CotizacionSeleccionada;
+
+                if (cotizacionSeleccionada != null)
+                {
+                    txtCotizacion.Text = cotizacionSeleccionada.id;
+
+                    CargarCotizacion(cotizacionSeleccionada);
+                }
             }
 
 
+        }
+
+        private void CargarCotizacion(Cotizacion cotizacion)
+        {
             txtNombre.Text = cotizacion.cliente?.nombre ?? "";
             txtIdentificacion.Text = cotizacion.cliente?.identificacion ?? "";
             txtCorreo.Text = cotizacion.cliente?.correo ?? "";
             txtTelefono.Text = cotizacion.cliente?.telefono ?? "";
 
-
             dtvgItems.Rows.Clear();
-
 
             int cantidad = Math.Min(
                 cotizacion.terrenos?.Count ?? 0,
@@ -94,7 +106,6 @@ namespace Proyecto_Integrador.Views.Facturas
                 MessageBox.Show("La cotización no tiene materiales o terrenos.");
                 return;
             }
-
 
             for (int i = 0; i < cantidad; i++)
             {
@@ -119,8 +130,8 @@ namespace Proyecto_Integrador.Views.Facturas
             }
 
             ActualizarTotales();
-
         }
+
 
         private void ActualizarTotales()
         {

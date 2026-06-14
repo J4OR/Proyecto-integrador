@@ -355,7 +355,7 @@
             // 
             lblSubtotal.AutoSize = true;
             lblSubtotal.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblSubtotal.Location = new Point(673, 642);
+            lblSubtotal.Location = new Point(608, 642);
             lblSubtotal.Name = "lblSubtotal";
             lblSubtotal.Size = new Size(148, 23);
             lblSubtotal.TabIndex = 61;
@@ -365,7 +365,7 @@
             // 
             lblIva.AutoSize = true;
             lblIva.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblIva.Location = new Point(673, 674);
+            lblIva.Location = new Point(608, 674);
             lblIva.Name = "lblIva";
             lblIva.Size = new Size(148, 23);
             lblIva.TabIndex = 62;
@@ -376,7 +376,7 @@
             lblTotal.AutoSize = true;
             lblTotal.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblTotal.ForeColor = Color.FromArgb(0, 0, 64);
-            lblTotal.Location = new Point(673, 704);
+            lblTotal.Location = new Point(608, 704);
             lblTotal.Name = "lblTotal";
             lblTotal.Size = new Size(153, 28);
             lblTotal.TabIndex = 63;
@@ -460,6 +460,7 @@
             Controls.Add(panelTitulo);
             Name = "AgregarCotizacionForm";
             Text = "AgregarCotizacionForm";
+            Load += AgregarCotizacionForm_Load;
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dgvItems).EndInit();

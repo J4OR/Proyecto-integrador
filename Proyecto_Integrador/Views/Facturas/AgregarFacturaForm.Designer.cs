@@ -63,6 +63,7 @@
             lblTotal = new Label();
             btnCancelar = new Button();
             btnGuardar = new Button();
+            txtCotizacion = new TextBox();
             panelTitulo.SuspendLayout();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
@@ -163,6 +164,7 @@
             panel2.Controls.Add(txtIdentificacion);
             panel2.Controls.Add(label7);
             panel2.Controls.Add(txtNombre);
+            panel2.Controls.Add(cbCotizaciones);
             panel2.Controls.Add(label6);
             panel2.Controls.Add(label5);
             panel2.Location = new Point(12, 178);
@@ -329,7 +331,7 @@
             // 
             cbCotizaciones.DisplayMember = "1";
             cbCotizaciones.FormattingEnabled = true;
-            cbCotizaciones.Location = new Point(859, 144);
+            cbCotizaciones.Location = new Point(856, 25);
             cbCotizaciones.Name = "cbCotizaciones";
             cbCotizaciones.Size = new Size(231, 28);
             cbCotizaciones.TabIndex = 13;
@@ -339,7 +341,7 @@
             label11.AutoSize = true;
             label11.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label11.ForeColor = Color.FromArgb(0, 0, 64);
-            label11.Location = new Point(749, 147);
+            label11.Location = new Point(822, 147);
             label11.Name = "label11";
             label11.Size = new Size(96, 20);
             label11.TabIndex = 37;
@@ -422,11 +424,19 @@
             btnGuardar.UseVisualStyleBackColor = false;
             btnGuardar.Click += btnGuardar_Click;
             // 
+            // txtCotizacion
+            // 
+            txtCotizacion.Location = new Point(924, 144);
+            txtCotizacion.Name = "txtCotizacion";
+            txtCotizacion.Size = new Size(166, 27);
+            txtCotizacion.TabIndex = 53;
+            // 
             // AgregarFacturaForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1167, 767);
+            Controls.Add(txtCotizacion);
             Controls.Add(btnCancelar);
             Controls.Add(btnGuardar);
             Controls.Add(lblTotal);
@@ -434,7 +444,6 @@
             Controls.Add(lblSubtotal);
             Controls.Add(btnCargar);
             Controls.Add(label11);
-            Controls.Add(cbCotizaciones);
             Controls.Add(label10);
             Controls.Add(txtObservaciones);
             Controls.Add(dtvgItems);
@@ -491,5 +500,6 @@
         private Label lblTotal;
         private Button btnCancelar;
         private Button btnGuardar;
+        private TextBox txtCotizacion;
     }
 }

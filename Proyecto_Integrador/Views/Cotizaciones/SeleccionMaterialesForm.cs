@@ -1,13 +1,5 @@
 ﻿using Proyecto_Integrador.Controller;
 using Proyecto_Integrador.Models;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
-using System.Windows.Forms;
-
 
 namespace Proyecto_Integrador.Views.Cotizaciones
 {
@@ -15,6 +7,7 @@ namespace Proyecto_Integrador.Views.Cotizaciones
     {
         public List<Material> MaterialesSeleccionados = new List<Material>();
         private MaterialController materialController = new MaterialController();
+        private List<int> seleccionadosIds = new List<int>();
         public SeleccionMaterialesForm()
         {
             InitializeComponent();
@@ -25,18 +18,23 @@ namespace Proyecto_Integrador.Views.Cotizaciones
             tablaMateriales.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }
 
-
+        private void tablaMateriales_CurrentCellDirtyStateChanged(object sender, EventArgs e)
+        {
+            if (tablaMateriales.IsCurrentCellDirty)
+                tablaMateriales.CommitEdit(DataGridViewDataErrorContexts.Commit);
+        }
         private void cargarEnTabla(List<Material> materiales)
         {
             tablaMateriales.Rows.Clear();
             foreach (var m in materiales)
             {
+                bool seleccionado = seleccionadosIds.Contains(m.id);
                 int fila = tablaMateriales.Rows.Add(
                 m.id,
                 m.nombre,
                 m.precioUnidad,
                 m.estado ? "Activo" : "Inactivo",
-                false
+                seleccionado
                 );
                 tablaMateriales.Rows[fila].Tag = m;
             }
@@ -110,5 +108,27 @@ namespace Proyecto_Integrador.Views.Cotizaciones
             this.DialogResult = DialogResult.OK;
             this.Close();
         }
+
+        private void tablaMateriales_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+
+            if (e.RowIndex < 0) return;
+
+            if (tablaMateriales.Columns[e.ColumnIndex].Name == "Agregar")
+            {
+                var fila = tablaMateriales.Rows[e.RowIndex];
+                var material = (Material)fila.Tag;
+
+                bool marcado = fila.Cells["Agregar"].Value != null &&
+                               (bool)fila.Cells["Agregar"].Value;
+
+                if (marcado)
+                    seleccionadosIds.Add(material.id);
+                else
+                    seleccionadosIds.Remove(material.id);
+            }
+        }
+
+    
     }
 }

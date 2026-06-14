@@ -49,6 +49,10 @@ namespace Proyecto_Integrador.Controller
         {
             return CalcularSubTotalItem(terreno, material) * porcentajeIva / 100;
         }
+        public List<Cotizacion> filtrarPorFechas(DateTime inicio, DateTime fin)
+        {
+            return cotizacionRepository.filtrarPorFecha(inicio, fin);
+        }
         public double CalcularSubTotal(List<Terreno> terrenos, List<Material> materiales)
         {
             double subTotal = 0;

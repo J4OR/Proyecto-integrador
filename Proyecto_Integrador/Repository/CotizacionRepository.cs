@@ -26,7 +26,12 @@ namespace Proyecto_Integrador.Repository
             lista.Add(cotizacion);
             jsonRepository.Guardar(lista); ;
         }
-
+        public List<Cotizacion> filtrarPorFecha(DateTime fechaInicio, DateTime fechaFin)
+        {
+            return jsonRepository.filtrar(f =>
+                f.fecha.Date >= fechaInicio.Date &&
+                f.fecha.Date <= fechaFin.Date);
+        }
         public void Editar(Cotizacion nuevaCotizacion, string id)
         {
             jsonRepository.Editar(nuevaCotizacion, c => c.id == id);

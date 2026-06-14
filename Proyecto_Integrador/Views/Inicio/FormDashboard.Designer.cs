@@ -182,6 +182,7 @@
             btnCambiarContraseña.TextAlign = ContentAlignment.MiddleLeft;
             btnCambiarContraseña.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnCambiarContraseña.UseVisualStyleBackColor = false;
+            btnCambiarContraseña.Visible = false;
             btnCambiarContraseña.Click += btnCambiarContraseña_Click_1;
             // 
             // btnFactura

@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BuscadorCotizacionesForm));
             tablaCotizaciones = new DataGridView();
             Id = new DataGridViewTextBoxColumn();
             Cliente = new DataGridViewTextBoxColumn();
@@ -36,7 +36,9 @@
             Total = new DataGridViewTextBoxColumn();
             Estado = new DataGridViewTextBoxColumn();
             Fecha = new DataGridViewTextBoxColumn();
-            Editar = new DataGridViewButtonColumn();
+            btnFiltrarFecha = new Button();
+            fechaFin = new DateTimePicker();
+            fechaInicio = new DateTimePicker();
             txtBuscador = new TextBox();
             ((System.ComponentModel.ISupportInitialize)tablaCotizaciones).BeginInit();
             SuspendLayout();
@@ -45,12 +47,13 @@
             // 
             tablaCotizaciones.AllowUserToAddRows = false;
             tablaCotizaciones.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            tablaCotizaciones.Columns.AddRange(new DataGridViewColumn[] { Id, Cliente, CC, Total, Estado, Fecha, Editar });
-            tablaCotizaciones.Location = new Point(82, 78);
+            tablaCotizaciones.Columns.AddRange(new DataGridViewColumn[] { Id, Cliente, CC, Total, Estado, Fecha });
+            tablaCotizaciones.Location = new Point(82, 101);
             tablaCotizaciones.Name = "tablaCotizaciones";
             tablaCotizaciones.RowHeadersWidth = 51;
-            tablaCotizaciones.Size = new Size(991, 497);
+            tablaCotizaciones.Size = new Size(934, 497);
             tablaCotizaciones.TabIndex = 10;
+            tablaCotizaciones.CellDoubleClick += tablaCotizaciones_CellDoubleClick;
             // 
             // Id
             // 
@@ -94,39 +97,55 @@
             Fecha.Name = "Fecha";
             Fecha.Width = 125;
             // 
-            // Editar
+            // btnFiltrarFecha
             // 
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = Color.FromArgb(0, 0, 64);
-            dataGridViewCellStyle2.Font = new Font("Microsoft Sans Serif", 7.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle2.ForeColor = Color.White;
-            dataGridViewCellStyle2.SelectionBackColor = Color.FromArgb(0, 0, 64);
-            Editar.DefaultCellStyle = dataGridViewCellStyle2;
-            Editar.FlatStyle = FlatStyle.Flat;
-            Editar.HeaderText = "Editar";
-            Editar.MinimumWidth = 6;
-            Editar.Name = "Editar";
-            Editar.Text = "Editar";
-            Editar.UseColumnTextForButtonValue = true;
-            Editar.Width = 125;
+            btnFiltrarFecha.Image = (Image)resources.GetObject("btnFiltrarFecha.Image");
+            btnFiltrarFecha.Location = new Point(824, 36);
+            btnFiltrarFecha.Name = "btnFiltrarFecha";
+            btnFiltrarFecha.Size = new Size(42, 30);
+            btnFiltrarFecha.TabIndex = 18;
+            btnFiltrarFecha.UseVisualStyleBackColor = true;
+            btnFiltrarFecha.Click += btnFiltrarFecha_Click;
+            // 
+            // fechaFin
+            // 
+            fechaFin.Format = DateTimePickerFormat.Short;
+            fechaFin.Location = new Point(664, 39);
+            fechaFin.Name = "fechaFin";
+            fechaFin.Size = new Size(141, 27);
+            fechaFin.TabIndex = 17;
+            fechaFin.ValueChanged += fechaFin_ValueChanged;
+            // 
+            // fechaInicio
+            // 
+            fechaInicio.Format = DateTimePickerFormat.Short;
+            fechaInicio.Location = new Point(506, 40);
+            fechaInicio.Name = "fechaInicio";
+            fechaInicio.Size = new Size(125, 27);
+            fechaInicio.TabIndex = 16;
             // 
             // txtBuscador
             // 
             txtBuscador.ForeColor = Color.Black;
-            txtBuscador.Location = new Point(82, 34);
+            txtBuscador.Location = new Point(82, 42);
             txtBuscador.Name = "txtBuscador";
             txtBuscador.Size = new Size(235, 27);
-            txtBuscador.TabIndex = 32;
+            txtBuscador.TabIndex = 15;
+            txtBuscador.TextChanged += txtBuscador_TextChanged;
             // 
             // BuscadorCotizacionesForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1178, 635);
+            Controls.Add(btnFiltrarFecha);
+            Controls.Add(fechaFin);
+            Controls.Add(fechaInicio);
             Controls.Add(txtBuscador);
             Controls.Add(tablaCotizaciones);
             Name = "BuscadorCotizacionesForm";
             Text = "BuscadorCotizacionesForm";
+            Load += BuscadorCotizacionesForm_Load;
             ((System.ComponentModel.ISupportInitialize)tablaCotizaciones).EndInit();
             ResumeLayout(false);
             PerformLayout();
@@ -141,7 +160,9 @@
         private DataGridViewTextBoxColumn Total;
         private DataGridViewTextBoxColumn Estado;
         private DataGridViewTextBoxColumn Fecha;
-        private DataGridViewButtonColumn Editar;
+        private Button btnFiltrarFecha;
+        private DateTimePicker fechaFin;
+        private DateTimePicker fechaInicio;
         private TextBox txtBuscador;
     }
 }

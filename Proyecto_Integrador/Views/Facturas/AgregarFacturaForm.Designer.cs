@@ -55,7 +55,6 @@
             Total = new DataGridViewTextBoxColumn();
             txtObservaciones = new TextBox();
             label10 = new Label();
-            cbCotizaciones = new ComboBox();
             label11 = new Label();
             btnCargar = new Button();
             lblSubtotal = new Label();
@@ -164,7 +163,6 @@
             panel2.Controls.Add(txtIdentificacion);
             panel2.Controls.Add(label7);
             panel2.Controls.Add(txtNombre);
-            panel2.Controls.Add(cbCotizaciones);
             panel2.Controls.Add(label6);
             panel2.Controls.Add(label5);
             panel2.Location = new Point(12, 178);
@@ -327,15 +325,6 @@
             label10.TabIndex = 36;
             label10.Text = "Observaciones";
             // 
-            // cbCotizaciones
-            // 
-            cbCotizaciones.DisplayMember = "1";
-            cbCotizaciones.FormattingEnabled = true;
-            cbCotizaciones.Location = new Point(856, 25);
-            cbCotizaciones.Name = "cbCotizaciones";
-            cbCotizaciones.Size = new Size(231, 28);
-            cbCotizaciones.TabIndex = 13;
-            // 
             // label11
             // 
             label11.AutoSize = true;
@@ -487,7 +476,6 @@
         private DataGridView dtvgItems;
         private TextBox txtObservaciones;
         private Label label10;
-        private ComboBox cbCotizaciones;
         private Label label11;
         private Button btnCargar;
         private Label lblSubtotal;

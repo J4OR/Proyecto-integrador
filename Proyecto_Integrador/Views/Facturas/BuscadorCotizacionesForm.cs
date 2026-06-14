@@ -27,11 +27,10 @@ namespace Proyecto_Integrador.Views.Facturas
         private void cargarEnTabla(List<Cotizacion> cotizaciones)
         {
             tablaCotizaciones.Rows.Clear();
+            var cotizacionesActivas = cotizaciones.Where(c => c.estado == true).ToList();
 
-
-            foreach (var c in cotizaciones)
+            foreach (var c in cotizacionesActivas)
             {
-
 
                 tablaCotizaciones.Rows.Add(
                     c.id,
@@ -46,8 +45,7 @@ namespace Proyecto_Integrador.Views.Facturas
         private void CargarCotizaciones()
         {
             var cotizaciones = cotizacionController.ObtenerCotizaciones();
-            var cotizacionesActivas = cotizaciones.Where(c => c.estado == true).ToList();
-            cargarEnTabla(cotizacionesActivas);
+            cargarEnTabla(cotizaciones);
 
         }
         private void EstilizarTabla()
@@ -78,6 +76,7 @@ namespace Proyecto_Integrador.Views.Facturas
 
         private void BuscadorCotizacionesForm_Load(object sender, EventArgs e)
         {
+            tablaCotizaciones.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             CargarCotizaciones();
             EstilizarTabla();
         }
@@ -119,6 +118,25 @@ namespace Proyecto_Integrador.Views.Facturas
             {
                 this.DialogResult = DialogResult.OK;
                 this.Close();
+            }
+        }
+
+        private void tablaCotizaciones_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (tablaCotizaciones.Columns[e.ColumnIndex].Name == "Estado")
+            {
+                string estado = e.Value?.ToString();
+
+                if (estado == "Activo")
+                {
+                    e.CellStyle.ForeColor = Color.Green;
+                    e.CellStyle.Font = new Font("Segoe UI", 9, FontStyle.Bold);
+                }
+                else if (estado == "Inactivo")
+                {
+                    e.CellStyle.ForeColor = Color.Red;
+                    e.CellStyle.Font = new Font("Segoe UI", 9, FontStyle.Bold);
+                }
             }
         }
     }

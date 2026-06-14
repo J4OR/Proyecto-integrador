@@ -55,17 +55,9 @@ namespace Proyecto_Integrador.Views.Facturas
             ConfigurarDGV();
             dtvgItems.Rows.Add();
             dtvgItems.Columns["Total"].ReadOnly = true;
-            cargarCombox();
         }
 
-        private void cargarCombox()
-        {
-            List<Cotizacion> cotizaciones = cotizacionController.ObtenerCotizaciones();
-            cbCotizaciones.DataSource = null;
-            cbCotizaciones.DataSource = cotizaciones;
-            cbCotizaciones.DisplayMember = "Id";
-            cbCotizaciones.ValueMember = "id";
-        }
+  
 
         private void btnCargar_Click(object sender, EventArgs e)
         {
@@ -114,12 +106,13 @@ namespace Proyecto_Integrador.Views.Facturas
 
                 string descripcion = terreno.operacion switch
                 {
-                    TipoOperacion.Remover => "Excavación y retiro de material - " + terreno.nombre,
+                    TipoOperacion.Excavar => "Excavación de material - " + terreno.nombre,
+                    TipoOperacion.Remover => "Retiro de material - " + terreno.nombre,
                     TipoOperacion.Rellenar => "Relleno de material - " + terreno.nombre,
                     TipoOperacion.Mixto => "Movimiento de tierra - " + terreno.nombre,
                     _ => terreno.nombre
                 };
-
+                facturaDescripcion += "- " + descripcion + "\n";
                 int fila = dtvgItems.Rows.Add();
 
                 dtvgItems.Rows[fila].Cells["Descripcion"].Value = descripcion;
@@ -153,11 +146,13 @@ namespace Proyecto_Integrador.Views.Facturas
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            if (cbCotizaciones.SelectedItem is not Cotizacion cotizacion)
+
+            if (cotizacionSeleccionada == null)
             {
                 MessageBox.Show("Selecciona una cotización primero.");
                 return;
             }
+
 
             double subtotal = 0;
             foreach (DataGridViewRow row in dtvgItems.Rows)
@@ -169,14 +164,16 @@ namespace Proyecto_Integrador.Views.Facturas
             double iva = subtotal * 0.19;
             double total = subtotal + iva;
 
-            Factura factura = new Factura(txtId.Text, facturaDescripcion, dtpFecha.Value, cotizacion, Math.Round(total), Math.Round(subtotal), Math.Round(total), txtObservaciones.Text);
+
+
+            Factura factura = new Factura(txtId.Text, facturaDescripcion, dtpFecha.Value, cotizacionSeleccionada, Math.Round(total), Math.Round(subtotal), Math.Round(total), txtObservaciones.Text);
             facturaController.AgregarFactura(factura);
 
             new GeneradorFacturaPDF(factura, dtvgItems).Exportar();
 
 
             DialogResult resultado = MessageBox.Show(
-                "Factura guardada y PDF generado en Documentos/facturas_pdf.",
+                "Factura guardada y PDF generado.",
                 "Éxito",
                 MessageBoxButtons.OK,
                 MessageBoxIcon.Information

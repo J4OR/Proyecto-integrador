@@ -39,7 +39,7 @@ namespace Proyecto_Integrador.Repository
         public List<Cotizacion> buscador(string texto)
         {
             return jsonRepository.filtrar(c => c.cliente.identificacion.Contains(texto, StringComparison.OrdinalIgnoreCase) ||
-            c.id.Contains(texto, StringComparison.OrdinalIgnoreCase));
+            c.cliente.nombre.Contains(texto, StringComparison.OrdinalIgnoreCase));
         }
 
         public void cambiarEstado(bool nuevoEstado, string id)

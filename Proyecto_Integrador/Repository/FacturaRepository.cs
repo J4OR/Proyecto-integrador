@@ -26,7 +26,8 @@ namespace Proyecto_Integrador.Repository
         }
         public List<Factura> buscador(string texto)
         {
-            return jsonRepository.filtrar(f => f.cotizacion.cliente.identificacion.Contains(texto, StringComparison.OrdinalIgnoreCase));
+            return jsonRepository.filtrar(f => f.cotizacion.cliente.identificacion.Contains(texto, StringComparison.OrdinalIgnoreCase) ||
+            f.cotizacion.cliente.nombre.Contains(texto, StringComparison.OrdinalIgnoreCase));
         }
         public void cambiarEstado(string id, bool nuevoEstado)
         {

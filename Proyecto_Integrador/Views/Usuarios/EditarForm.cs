@@ -50,15 +50,20 @@ namespace Proyecto_Integrador.Views.Usuarios
                 lblRol.Visible = false;
                 cbRol.Visible = false;
             }
+            if (usuario.rol == Rol.Administrador)
+            {
+                pbRol.Visible = false;
+                cbRol.Visible = false;
+                lblRol.Visible = false;
+            }
+
             if (usuarioLogueado.userName == "admin" && usuarioLogueado.id == usuario.id)
             {
                 lblErrorUsuario.Visible = false;
                 txtUsuario.Visible = false;
                 lblUsuario.Visible = false;
                 pbUsuario.Visible = false;
-                pbRol.Visible = false;
-                cbRol.Visible = false;
-                lblRol.Visible = false;
+              
             }
             cargarDatos();
         }

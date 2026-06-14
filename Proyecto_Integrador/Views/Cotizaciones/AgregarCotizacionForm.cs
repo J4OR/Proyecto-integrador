@@ -26,6 +26,19 @@ namespace Proyecto_Integrador.Views.Cotizaciones
             this.MinimizeBox = false;
             this.MaximizeBox = false;
         }
+        private void ConfigurarDGV()
+        {
+            dgvItems.EnableHeadersVisualStyles = false;
+            dgvItems.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(0, 70, 130);
+            dgvItems.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+            dgvItems.ColumnHeadersDefaultCellStyle.Font = new Font("Arial", 9F, FontStyle.Bold);
+            dgvItems.ColumnHeadersDefaultCellStyle.SelectionBackColor = Color.FromArgb(0, 70, 130);
+            dgvItems.DefaultCellStyle.Font = new Font("Arial", 9F);
+            dgvItems.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(240, 245, 255);
+            dgvItems.GridColor = Color.FromArgb(200, 210, 230);
+            Total.DefaultCellStyle.Format = "C0";
+            PrecioUnitario.DefaultCellStyle.Format = "N2";
+        }
         private void AgregarCotizacionForm_Load(object sender, EventArgs e)
         {
             txtId.Text = cotizacionController.obtenerId();
@@ -36,6 +49,7 @@ namespace Proyecto_Integrador.Views.Cotizaciones
             dgvItems.DefaultCellStyle.Font = new Font("Segoe UI", 11);
             dgvItems.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
             dgvItems.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            ConfigurarDGV();
         }
         private void CargarTerrenosEnGrid()
         {
@@ -285,7 +299,22 @@ namespace Proyecto_Integrador.Views.Cotizaciones
             this.Close();
         }
 
-       
+        private void dgvItems_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex < 0) return;
+
+            DialogResult resultado = MessageBox.Show(
+                "¿Desea eliminar esta fila?",
+                "Confirmar",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question
+            );
+
+            if (resultado == DialogResult.Yes)
+            {
+                dgvItems.Rows.RemoveAt(e.RowIndex);
+            }
+        }
     }
 }
     

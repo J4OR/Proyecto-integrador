@@ -192,13 +192,29 @@ namespace Proyecto_Integrador.Views.Terrenos
             lblValidacionCliente.Visible = string.IsNullOrWhiteSpace(txtCliente.Text);
             if (lblValidacionCliente.Visible) return;
 
-            Cliente clienteEncontrado= clienteController.Buscar(txtCliente.Text);
+
+            Cliente clienteEncontrado = clienteController.Buscar(txtCliente.Text);
+
+            if (clienteEncontrado == null)
+            {
+                lblValidacionCliente.Text = "El cliente no existe";
+                lblValidacionCliente.Visible = true;
+                return;
+            }
 
             if (!clienteController.ExisteCliente(clienteEncontrado.identificacion))
             {
                 lblValidacionCliente.Text = "El cliente no existe";
                 return;
             }
+
+            if (volumenTerreno <= 0)
+            {
+                MessageBox.Show("Debe calcular el volumen antes de guardar.", "Aviso",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
 
             Terreno terreno = new Terreno((TipoOperacion)cbOperacion.SelectedItem, altura, (double)nupDx.Value, (double)nupDy.Value,
             (double)nupAltura.Value, Math.Round(volumenTerreno, 2), txtNombre.Text, clienteEncontrado);

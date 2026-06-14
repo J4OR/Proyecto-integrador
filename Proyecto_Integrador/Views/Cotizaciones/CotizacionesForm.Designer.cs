@@ -35,7 +35,7 @@
             tablaCotizaciones = new DataGridView();
             Id = new DataGridViewTextBoxColumn();
             Cliente = new DataGridViewTextBoxColumn();
-            CC = new DataGridViewTextBoxColumn();
+            Identificacion = new DataGridViewTextBoxColumn();
             Total = new DataGridViewTextBoxColumn();
             Estado = new DataGridViewTextBoxColumn();
             Fecha = new DataGridViewTextBoxColumn();
@@ -69,14 +69,14 @@
             // 
             tablaCotizaciones.AllowUserToAddRows = false;
             tablaCotizaciones.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            tablaCotizaciones.Columns.AddRange(new DataGridViewColumn[] { Id, Cliente, CC, Total, Estado, Fecha, Editar, Accion });
+            tablaCotizaciones.Columns.AddRange(new DataGridViewColumn[] { Id, Cliente, Identificacion, Total, Estado, Fecha, Editar, Accion });
             tablaCotizaciones.Location = new Point(50, 172);
             tablaCotizaciones.Name = "tablaCotizaciones";
             tablaCotizaciones.RowHeadersWidth = 51;
             tablaCotizaciones.Size = new Size(1259, 508);
             tablaCotizaciones.TabIndex = 9;
             tablaCotizaciones.CellClick += tablaCotizaciones_CellClick;
-            tablaCotizaciones.CellContentClick += tablaCotizaciones_CellContentClick;
+            tablaCotizaciones.CellFormatting += tablaCotizaciones_CellFormatting;
             // 
             // Id
             // 
@@ -92,12 +92,12 @@
             Cliente.Name = "Cliente";
             Cliente.Width = 125;
             // 
-            // CC
+            // Identificacion
             // 
-            CC.HeaderText = "CC";
-            CC.MinimumWidth = 6;
-            CC.Name = "CC";
-            CC.Width = 125;
+            Identificacion.HeaderText = "Identificacion";
+            Identificacion.MinimumWidth = 6;
+            Identificacion.Name = "Identificacion";
+            Identificacion.Width = 125;
             // 
             // Total
             // 
@@ -239,7 +239,7 @@
         private Button btnFiltrarFecha;
         private DataGridViewTextBoxColumn Id;
         private DataGridViewTextBoxColumn Cliente;
-        private DataGridViewTextBoxColumn CC;
+        private DataGridViewTextBoxColumn Identificacion;
         private DataGridViewTextBoxColumn Total;
         private DataGridViewTextBoxColumn Estado;
         private DataGridViewTextBoxColumn Fecha;

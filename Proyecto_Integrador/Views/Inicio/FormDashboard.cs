@@ -105,7 +105,7 @@ namespace Proyecto_Integrador.Views
 
         private void btnCotizaciones_Click(object sender, EventArgs e)
         {
-            AbrirFormularioEnPanel(new CotizacionesForm());
+            AbrirFormularioEnPanel(new CotizacionesForm(usuarioLogueado));
         }
         private void btnFactura_Click(object sender, EventArgs e)
         {

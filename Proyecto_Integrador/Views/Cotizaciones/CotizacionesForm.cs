@@ -17,10 +17,12 @@ namespace Proyecto_Integrador.Views.Cotizaciones
         private CotizacionController cotizacionController = new CotizacionController();
         private ClienteController clienteController = new ClienteController();
         private List<Cotizacion> cotizaciones;
+        private Usuario usuarioLogueado;
 
-        public CotizacionesForm()
+        public CotizacionesForm(Usuario usuario)
         {
             InitializeComponent();
+            this.usuarioLogueado = usuario;
             tablaCotizaciones.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }
 
@@ -111,41 +113,40 @@ namespace Proyecto_Integrador.Views.Cotizaciones
             if (e.RowIndex < 0)
                 return;
 
-            string id = tablaCotizaciones.Rows[e.RowIndex].Cells[0].Value.ToString();
+            Cotizacion cotizacionSeleccionada = (Cotizacion)tablaCotizaciones.Rows[e.RowIndex].Tag;
 
-            cotizaciones = cotizacionController.ObtenerCotizaciones();
-
-            Cotizacion cotizacionSeleccionada =
-                cotizaciones.FirstOrDefault(c => c.id == id);
-
-            if (cotizacionSeleccionada == null)
+            if (tablaCotizaciones.Columns[e.ColumnIndex].Name == "Accion")
             {
-                MessageBox.Show("No se encontró la cotización con ID: " + id);
-                return;
+                string mensaje = cotizacionSeleccionada.estado
+                    ? "¿Seguro que quiere desactivar esta factura?"
+                    : "¿Seguro que quiere activar esta factura?";
+
+                DialogResult respuesta = MessageBox.Show(mensaje, "Cambiar estado", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+
+
+                if (respuesta == DialogResult.OK)
+                {
+                    bool nuevoEstado = !cotizacionSeleccionada.estado;
+
+                    cotizacionController.CambiarEstado(cotizacionSeleccionada.id, nuevoEstado);
+
+                    CargarCotizaciones();
+                }
             }
-
-            bool nuevoEstado = !cotizacionSeleccionada.estado;
-
-            cotizacionController.CambiarEstado(id, nuevoEstado);
-
-            MessageBox.Show(
-                nuevoEstado
-                ? "Cotización activada."
-                : "Cotización desactivada."
-            );
-
-            CargarCotizaciones();
         }
 
         private void CotizacionesForm_Load(object sender, EventArgs e)
         {
             EstilizarTabla();
             CargarCotizaciones();
-        }
-
-        private void tablaCotizaciones_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
+            if (usuarioLogueado.rol == Rol.Administrador)
+            {
+                tablaCotizaciones.Columns["Accion"].Visible = true;
+            }
+            else
+            {
+                tablaCotizaciones.Columns["Accion"].Visible = false;
+            }
         }
 
         private void txtBuscar_TextChanged(object sender, EventArgs e)
@@ -162,6 +163,25 @@ namespace Proyecto_Integrador.Views.Cotizaciones
             if (fechaFin.Value < fechaInicio.Value)
             {
                 fechaFin.Value = fechaInicio.Value;
+            }
+        }
+
+        private void tablaCotizaciones_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (tablaCotizaciones.Columns[e.ColumnIndex].Name == "Estado")
+            {
+                string estado = e.Value?.ToString();
+
+                if (estado == "Activo")
+                {
+                    e.CellStyle.ForeColor = Color.Green;
+                    e.CellStyle.Font = new Font("Segoe UI", 9, FontStyle.Bold);
+                }
+                else if (estado == "Inactivo")
+                {
+                    e.CellStyle.ForeColor = Color.Red;
+                    e.CellStyle.Font = new Font("Segoe UI", 9, FontStyle.Bold);
+                }
             }
         }
     }

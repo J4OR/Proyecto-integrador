@@ -192,7 +192,7 @@
             // 
             // btnBuscarCliente
             // 
-            btnBuscarCliente.Location = new Point(166, 4);
+            btnBuscarCliente.Location = new Point(794, 37);
             btnBuscarCliente.Name = "btnBuscarCliente";
             btnBuscarCliente.Size = new Size(157, 34);
             btnBuscarCliente.TabIndex = 60;
@@ -213,6 +213,7 @@
             dgvItems.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvItems.Size = new Size(1143, 295);
             dgvItems.TabIndex = 56;
+            dgvItems.CellContentDoubleClick += dgvItems_CellContentDoubleClick;
             dgvItems.CellValueChanged += dgvItems_CellValueChanged;
             dgvItems.CurrentCellDirtyStateChanged += dgvItems_CurrentCellDirtyStateChanged;
             // 

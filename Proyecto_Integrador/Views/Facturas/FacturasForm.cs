@@ -37,6 +37,7 @@ namespace Proyecto_Integrador.Views.Facturas
             {
                 int fila = tablaFacturas.Rows.Add(
                     f.id,
+                    f.cotizacion.cliente.nombre,
                     f.cotizacion.cliente.identificacion,
                     f.descripcion,
                     f.total,
@@ -170,7 +171,31 @@ namespace Proyecto_Integrador.Views.Facturas
                 }
 
             }
-        
+            if (tablaFacturas.Columns[e.ColumnIndex].Name == "Ver")
+            {
+                GeneradorFacturaPDF.Abrir(facturaSeleccionada.id);
+                return;
+            }
+
+        }
+
+        private void tablaFacturas_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (tablaFacturas.Columns[e.ColumnIndex].Name == "Estado")
+            {
+                string estado = e.Value?.ToString();
+
+                if (estado == "Activo")
+                {
+                    e.CellStyle.ForeColor = Color.Green;
+                    e.CellStyle.Font = new Font("Segoe UI", 9, FontStyle.Bold);
+                }
+                else if (estado == "Inactivo")
+                {
+                    e.CellStyle.ForeColor = Color.Red;
+                    e.CellStyle.Font = new Font("Segoe UI", 9, FontStyle.Bold);
+                }
+            }
         }
     }
 }

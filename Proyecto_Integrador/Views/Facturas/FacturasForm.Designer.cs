@@ -42,6 +42,7 @@
             btnBuscar = new Button();
             Id = new DataGridViewTextBoxColumn();
             Cliente = new DataGridViewTextBoxColumn();
+            Identificacion = new DataGridViewTextBoxColumn();
             Descripcion = new DataGridViewTextBoxColumn();
             Total = new DataGridViewTextBoxColumn();
             Estado = new DataGridViewTextBoxColumn();
@@ -98,13 +99,14 @@
             // 
             tablaFacturas.AllowUserToAddRows = false;
             tablaFacturas.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            tablaFacturas.Columns.AddRange(new DataGridViewColumn[] { Id, Cliente, Descripcion, Total, Estado, Fecha, Ver, Accion });
+            tablaFacturas.Columns.AddRange(new DataGridViewColumn[] { Id, Cliente, Identificacion, Descripcion, Total, Estado, Fecha, Ver, Accion });
             tablaFacturas.Location = new Point(98, 186);
             tablaFacturas.Name = "tablaFacturas";
             tablaFacturas.RowHeadersWidth = 51;
             tablaFacturas.Size = new Size(996, 497);
             tablaFacturas.TabIndex = 17;
             tablaFacturas.CellClick += tablaFacturas_CellClick;
+            tablaFacturas.CellFormatting += tablaFacturas_CellFormatting;
             // 
             // txtBuscador
             // 
@@ -160,6 +162,13 @@
             Cliente.MinimumWidth = 6;
             Cliente.Name = "Cliente";
             Cliente.Width = 125;
+            // 
+            // Identificacion
+            // 
+            Identificacion.HeaderText = "Identificacion";
+            Identificacion.MinimumWidth = 6;
+            Identificacion.Name = "Identificacion";
+            Identificacion.Width = 125;
             // 
             // Descripcion
             // 
@@ -255,6 +264,7 @@
         private Button btnBuscar;
         private DataGridViewTextBoxColumn Id;
         private DataGridViewTextBoxColumn Cliente;
+        private DataGridViewTextBoxColumn Identificacion;
         private DataGridViewTextBoxColumn Descripcion;
         private DataGridViewTextBoxColumn Total;
         private DataGridViewTextBoxColumn Estado;

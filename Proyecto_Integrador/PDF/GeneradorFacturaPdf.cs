@@ -1,9 +1,10 @@
-﻿using System.IO;
-using System.Windows.Forms;
-using Proyecto_Integrador.Models;
+﻿using Proyecto_Integrador.Models;
 using QuestPDF.Fluent;
 using QuestPDF.Helpers;
 using QuestPDF.Infrastructure;
+using System.Diagnostics;
+using System.IO;
+using System.Windows.Forms;
 using Document = QuestPDF.Fluent.Document;
 
 namespace Proyecto_Integrador.Utils
@@ -12,7 +13,7 @@ namespace Proyecto_Integrador.Utils
     {
         private readonly Factura factura;
         private readonly DataGridView grid;
-        private readonly string carpeta = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "facturas_pdf");
+        private readonly static string carpeta = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "facturas_pdf");
         private readonly string ruta;
 
         public GeneradorFacturaPDF(Factura factura, DataGridView grid)
@@ -21,7 +22,27 @@ namespace Proyecto_Integrador.Utils
             this.grid = grid ?? throw new System.ArgumentNullException(nameof(grid));
             QuestPDF.Settings.License = LicenseType.Community;
             Directory.CreateDirectory(carpeta);
-            ruta = Path.Combine(carpeta, $"{factura.id}.pdf");
+            this.ruta = Path.Combine(carpeta, $"{factura.id}.pdf");
+        }
+        public static void Abrir(string idFactura)
+        {
+            string ruta = Path.Combine(carpeta, $"{idFactura}.pdf");
+            if (!File.Exists(ruta))
+            {
+                MessageBox.Show("No se encontró el PDF de esta factura.", "Archivo no encontrado",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            try
+            {
+                Process.Start(new ProcessStartInfo(ruta) { UseShellExecute = true });
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"No se pudo abrir el archivo:\n{ex.Message}", "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         public void Exportar()

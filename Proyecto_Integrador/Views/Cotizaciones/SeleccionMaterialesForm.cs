@@ -26,7 +26,8 @@ namespace Proyecto_Integrador.Views.Cotizaciones
         private void cargarEnTabla(List<Material> materiales)
         {
             tablaMateriales.Rows.Clear();
-            foreach (var m in materiales)
+            var materialesActivos = materiales.Where(c => c.estado == true).ToList();
+            foreach (var m in materialesActivos)
             {
                 bool seleccionado = seleccionadosIds.Contains(m.id);
                 int fila = tablaMateriales.Rows.Add(

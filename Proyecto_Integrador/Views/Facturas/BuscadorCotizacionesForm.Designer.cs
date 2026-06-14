@@ -48,12 +48,13 @@
             tablaCotizaciones.AllowUserToAddRows = false;
             tablaCotizaciones.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             tablaCotizaciones.Columns.AddRange(new DataGridViewColumn[] { Id, Cliente, CC, Total, Estado, Fecha });
-            tablaCotizaciones.Location = new Point(82, 101);
+            tablaCotizaciones.Location = new Point(131, 101);
             tablaCotizaciones.Name = "tablaCotizaciones";
             tablaCotizaciones.RowHeadersWidth = 51;
             tablaCotizaciones.Size = new Size(934, 497);
             tablaCotizaciones.TabIndex = 10;
             tablaCotizaciones.CellDoubleClick += tablaCotizaciones_CellDoubleClick;
+            tablaCotizaciones.CellFormatting += tablaCotizaciones_CellFormatting;
             // 
             // Id
             // 
@@ -100,7 +101,7 @@
             // btnFiltrarFecha
             // 
             btnFiltrarFecha.Image = (Image)resources.GetObject("btnFiltrarFecha.Image");
-            btnFiltrarFecha.Location = new Point(824, 36);
+            btnFiltrarFecha.Location = new Point(966, 42);
             btnFiltrarFecha.Name = "btnFiltrarFecha";
             btnFiltrarFecha.Size = new Size(42, 30);
             btnFiltrarFecha.TabIndex = 18;
@@ -110,7 +111,7 @@
             // fechaFin
             // 
             fechaFin.Format = DateTimePickerFormat.Short;
-            fechaFin.Location = new Point(664, 39);
+            fechaFin.Location = new Point(819, 42);
             fechaFin.Name = "fechaFin";
             fechaFin.Size = new Size(141, 27);
             fechaFin.TabIndex = 17;
@@ -119,7 +120,7 @@
             // fechaInicio
             // 
             fechaInicio.Format = DateTimePickerFormat.Short;
-            fechaInicio.Location = new Point(506, 40);
+            fechaInicio.Location = new Point(688, 40);
             fechaInicio.Name = "fechaInicio";
             fechaInicio.Size = new Size(125, 27);
             fechaInicio.TabIndex = 16;
@@ -127,7 +128,7 @@
             // txtBuscador
             // 
             txtBuscador.ForeColor = Color.Black;
-            txtBuscador.Location = new Point(82, 42);
+            txtBuscador.Location = new Point(131, 42);
             txtBuscador.Name = "txtBuscador";
             txtBuscador.Size = new Size(235, 27);
             txtBuscador.TabIndex = 15;
@@ -137,6 +138,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             ClientSize = new Size(1178, 635);
             Controls.Add(btnFiltrarFecha);
             Controls.Add(fechaFin);

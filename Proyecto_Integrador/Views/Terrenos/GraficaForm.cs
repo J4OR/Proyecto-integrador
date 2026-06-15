@@ -12,8 +12,8 @@ namespace Proyecto_Integrador.Views.Terrenos
 {
     public partial class GraficaForm : Form
     {
-        private readonly double[][] _alturas;
-        private double h, _dx, _dy;
+        private readonly double[][] alturas;
+        private double h, dx, dy;
         private HelixViewport3D _viewport;
         private double _zMin, _zMax;
         private double hSliderMin, hSliderMax;
@@ -25,10 +25,10 @@ namespace Proyecto_Integrador.Views.Terrenos
 
         public GraficaForm(double[][] alturas, double h, double dx, double dy)
         {
-            _alturas = alturas;
+            this.alturas = alturas;
             this.h = h;
-            this._dx = dx;
-            _dy = dy;
+            this.dx = dx;
+            this.dy = dy;
 
             InitializeComponent();
             this.WindowState = FormWindowState.Maximized;
@@ -76,11 +76,11 @@ namespace Proyecto_Integrador.Views.Terrenos
                 (int)((h - hSliderMin) / (hSliderMax - hSliderMin) * 1000)));
             lblHVal.Text = $"{h:F1} m";
 
-            trkDx.Value = Math.Max(1, Math.Min(100, (int)(_dx * 2)));
-            lblDxVal.Text = $"{_dx:F1} m";
+            trkDx.Value = Math.Max(1, Math.Min(100, (int)(dx * 2)));
+            lblDxVal.Text = $"{dx:F1} m";
 
-            trkDy.Value = Math.Max(1, Math.Min(100, (int)(_dy * 2)));
-            lblDyVal.Text = $"{_dy:F1} m";
+            trkDy.Value = Math.Max(1, Math.Min(100, (int)(dy * 2)));
+            lblDyVal.Text = $"{dy:F1} m";
 
             chkPuntos.Checked = _mostrarPuntos;
             chkEtiquetas.Checked = _mostrarEtiquetas;
@@ -99,16 +99,16 @@ namespace Proyecto_Integrador.Views.Terrenos
         private void trkDx_Scroll(object sender, EventArgs e)
         {
             if (_inicializando) return;
-            _dx = trkDx.Value / 2.0;
-            lblDxVal.Text = $"{_dx:F1} m";
+            dx = trkDx.Value / 2.0;
+            lblDxVal.Text = $"{dx:F1} m";
             RebuildScene();
         }
 
         private void trkDy_Scroll(object sender, EventArgs e)
         {
             if (_inicializando) return;
-            _dy = trkDy.Value / 2.0;
-            lblDyVal.Text = $"{_dy:F1} m";
+            dy = trkDy.Value / 2.0;
+            lblDyVal.Text = $"{dy:F1} m";
             RebuildScene();
         }
 
@@ -135,17 +135,17 @@ namespace Proyecto_Integrador.Views.Terrenos
 
         private void BuildScene()
         {
-            int filas = _alturas.Length;
-            int cols = filas > 0 ? _alturas[0].Length : 0;
-            double xMax = (cols - 1) * _dx;
-            double yMax = (filas - 1) * _dy;
+            int filas = alturas.Length;
+            int cols = filas > 0 ? alturas[0].Length : 0;
+            double xMax = (cols - 1) * dx;
+            double yMax = (filas - 1) * dy;
 
             double zMin = double.MaxValue, zMax = double.MinValue;
             for (int i = 0; i < filas; i++)
                 for (int j = 0; j < cols; j++)
                 {
-                    if (_alturas[i][j] < zMin) zMin = _alturas[i][j];
-                    if (_alturas[i][j] > zMax) zMax = _alturas[i][j];
+                    if (alturas[i][j] < zMin) zMin = alturas[i][j];
+                    if (alturas[i][j] > zMax) zMax = alturas[i][j];
                 }
             _zMin = zMin;
             _zMax = zMax;
@@ -153,20 +153,20 @@ namespace Proyecto_Integrador.Views.Terrenos
             double rangoZ = Math.Max(zMax - zMin, 0.001);
             double zBase = zMin - rangoZ * 0.12;
             double lift = rangoZ * 0.008 + 0.02;
-            double rSfera = Math.Min(_dx, _dy) * 0.07;
-            double offLbl = Math.Min(_dx, _dy) * 0.65;
+            double rSfera = Math.Min(dx, dy) * 0.07;
+            double offLbl = Math.Min(dx, dy) * 0.65;
 
             // 1. Terreno con subdivisión bilineal (SUB×SUB por celda)
             for (int i = 0; i < filas - 1; i++)
             {
                 for (int j = 0; j < cols - 1; j++)
                 {
-                    double x0 = j * _dx, x1 = (j + 1) * _dx;
-                    double y0 = i * _dy, y1 = (i + 1) * _dy;
-                    double z00 = _alturas[i][j];
-                    double z10 = _alturas[i][j + 1];
-                    double z11 = _alturas[i + 1][j + 1];
-                    double z01 = _alturas[i + 1][j];
+                    double x0 = j * dx, x1 = (j + 1) * dx;
+                    double y0 = i * dy, y1 = (i + 1) * dy;
+                    double z00 = alturas[i][j];
+                    double z10 = alturas[i][j + 1];
+                    double z11 = alturas[i + 1][j + 1];
+                    double z01 = alturas[i + 1][j];
 
                     for (int si = 0; si < SUB; si++)
                     {
@@ -198,14 +198,14 @@ namespace Proyecto_Integrador.Views.Terrenos
             for (int i = 0; i < filas; i++)
                 for (int j = 0; j < cols - 1; j++)
                 {
-                    pts.Add(new Point3D(j * _dx, i * _dy, _alturas[i][j] + lift));
-                    pts.Add(new Point3D((j + 1) * _dx, i * _dy, _alturas[i][j + 1] + lift));
+                    pts.Add(new Point3D(j * dx, i * dy, alturas[i][j] + lift));
+                    pts.Add(new Point3D((j + 1) * dx, i * dy, alturas[i][j + 1] + lift));
                 }
             for (int j = 0; j < cols; j++)
                 for (int i = 0; i < filas - 1; i++)
                 {
-                    pts.Add(new Point3D(j * _dx, i * _dy, _alturas[i][j] + lift));
-                    pts.Add(new Point3D(j * _dx, (i + 1) * _dy, _alturas[i + 1][j] + lift));
+                    pts.Add(new Point3D(j * dx, i * dy, alturas[i][j] + lift));
+                    pts.Add(new Point3D(j * dx, (i + 1) * dy, alturas[i + 1][j] + lift));
                 }
             _viewport.Children.Add(new LinesVisual3D
             {
@@ -221,7 +221,7 @@ namespace Proyecto_Integrador.Views.Terrenos
                 for (int i = 0; i < filas; i++)
                     for (int j = 0; j < cols; j++)
                         mbS.AddSphere(
-                            ToV3(new Point3D(j * _dx, i * _dy, _alturas[i][j])),
+                            ToV3(new Point3D(j * dx, i * dy, alturas[i][j])),
                             (float)rSfera, 8, 6);
                 AddMesh(mbS, new DiffuseMaterial(new SolidColorBrush(Colors.White)));
             }
@@ -233,9 +233,9 @@ namespace Proyecto_Integrador.Views.Terrenos
                     for (int j = 0; j < cols; j++)
                         _viewport.Children.Add(new BillboardTextVisual3D
                         {
-                            Text = _alturas[i][j].ToString("F1"),
-                            Position = new Point3D(j * _dx, i * _dy,
-                                                     _alturas[i][j] + rSfera * 2.5 + lift),
+                            Text = alturas[i][j].ToString("F1"),
+                            Position = new Point3D(j * dx, i * dy,
+                                                     alturas[i][j] + rSfera * 2.5 + lift),
                             FontSize = 11,
                             Foreground = new SolidColorBrush(Colors.White),
                             Background = new SolidColorBrush(Color.FromArgb(120, 10, 15, 40))
@@ -248,8 +248,8 @@ namespace Proyecto_Integrador.Views.Terrenos
             for (int j = 0; j < cols; j++)
                 _viewport.Children.Add(new BillboardTextVisual3D
                 {
-                    Text = $"X{j + 1} ({j * _dx:F0} m)",
-                    Position = new Point3D(j * _dx, -offLbl, zLbl),
+                    Text = $"X{j + 1} ({j * dx:F0} m)",
+                    Position = new Point3D(j * dx, -offLbl, zLbl),
                     FontSize = 10,
                     Foreground = new SolidColorBrush(Color.FromRgb(255, 140, 140)),
                     Background = new SolidColorBrush(Color.FromArgb(100, 40, 0, 0))
@@ -258,8 +258,8 @@ namespace Proyecto_Integrador.Views.Terrenos
             if (cols >= 2)
                 _viewport.Children.Add(new BillboardTextVisual3D
                 {
-                    Text = $"Δx = {_dx:F1} m",
-                    Position = new Point3D(_dx / 2.0, -offLbl * 1.9, zLbl),
+                    Text = $"Δx = {dx:F1} m",
+                    Position = new Point3D(dx / 2.0, -offLbl * 1.9, zLbl),
                     FontSize = 10,
                     Foreground = new SolidColorBrush(Color.FromRgb(255, 190, 80)),
                     Background = new SolidColorBrush(Color.FromArgb(130, 50, 30, 0))
@@ -269,8 +269,8 @@ namespace Proyecto_Integrador.Views.Terrenos
             for (int i = 0; i < filas; i++)
                 _viewport.Children.Add(new BillboardTextVisual3D
                 {
-                    Text = $"Y{i + 1} ({i * _dy:F0} m)",
-                    Position = new Point3D(-offLbl, i * _dy, zLbl),
+                    Text = $"Y{i + 1} ({i * dy:F0} m)",
+                    Position = new Point3D(-offLbl, i * dy, zLbl),
                     FontSize = 10,
                     Foreground = new SolidColorBrush(Color.FromRgb(130, 230, 130)),
                     Background = new SolidColorBrush(Color.FromArgb(100, 0, 40, 0))
@@ -279,8 +279,8 @@ namespace Proyecto_Integrador.Views.Terrenos
             if (filas >= 2)
                 _viewport.Children.Add(new BillboardTextVisual3D
                 {
-                    Text = $"Δy = {_dy:F1} m",
-                    Position = new Point3D(-offLbl * 1.9, _dy / 2.0, zLbl),
+                    Text = $"Δy = {dy:F1} m",
+                    Position = new Point3D(-offLbl * 1.9, dy / 2.0, zLbl),
                     FontSize = 10,
                     Foreground = new SolidColorBrush(Color.FromRgb(110, 220, 80)),
                     Background = new SolidColorBrush(Color.FromArgb(130, 0, 50, 0))
@@ -302,49 +302,49 @@ namespace Proyecto_Integrador.Views.Terrenos
 
             for (int j = 0; j < cols - 1; j++)   // Norte
             {
-                double x0 = j * _dx, x1 = (j + 1) * _dx;
+                double x0 = j * dx, x1 = (j + 1) * dx;
                 var mb = new MeshBuilder();
-                mb.AddTriangle(ToV3(x0, 0, _alturas[0][j]),
-                               ToV3(x1, 0, _alturas[0][j + 1]),
+                mb.AddTriangle(ToV3(x0, 0, alturas[0][j]),
+                               ToV3(x1, 0, alturas[0][j + 1]),
                                ToV3(x1, 0, zBase));
-                mb.AddTriangle(ToV3(x0, 0, _alturas[0][j]),
+                mb.AddTriangle(ToV3(x0, 0, alturas[0][j]),
                                ToV3(x1, 0, zBase),
                                ToV3(x0, 0, zBase));
                 AddMesh(mb, matPared);
             }
             for (int j = 0; j < cols - 1; j++)   // Sur
             {
-                double x0 = j * _dx, x1 = (j + 1) * _dx, yS = (filas - 1) * _dy;
+                double x0 = j * dx, x1 = (j + 1) * dx, yS = (filas - 1) * dy;
                 var mb = new MeshBuilder();
-                mb.AddTriangle(ToV3(x0, yS, _alturas[filas - 1][j]),
+                mb.AddTriangle(ToV3(x0, yS, alturas[filas - 1][j]),
                                ToV3(x1, yS, zBase),
-                               ToV3(x1, yS, _alturas[filas - 1][j + 1]));
-                mb.AddTriangle(ToV3(x0, yS, _alturas[filas - 1][j]),
+                               ToV3(x1, yS, alturas[filas - 1][j + 1]));
+                mb.AddTriangle(ToV3(x0, yS, alturas[filas - 1][j]),
                                ToV3(x0, yS, zBase),
                                ToV3(x1, yS, zBase));
                 AddMesh(mb, matPared);
             }
             for (int i = 0; i < filas - 1; i++)  // Oeste
             {
-                double y0 = i * _dy, y1 = (i + 1) * _dy;
+                double y0 = i * dy, y1 = (i + 1) * dy;
                 var mb = new MeshBuilder();
-                mb.AddTriangle(ToV3(0, y0, _alturas[i][0]),
+                mb.AddTriangle(ToV3(0, y0, alturas[i][0]),
                                ToV3(0, y0, zBase),
                                ToV3(0, y1, zBase));
-                mb.AddTriangle(ToV3(0, y0, _alturas[i][0]),
+                mb.AddTriangle(ToV3(0, y0, alturas[i][0]),
                                ToV3(0, y1, zBase),
-                               ToV3(0, y1, _alturas[i + 1][0]));
+                               ToV3(0, y1, alturas[i + 1][0]));
                 AddMesh(mb, matPared);
             }
             for (int i = 0; i < filas - 1; i++)  // Este
             {
-                double y0 = i * _dy, y1 = (i + 1) * _dy, xE = (cols - 1) * _dx;
+                double y0 = i * dy, y1 = (i + 1) * dy, xE = (cols - 1) * dx;
                 var mb = new MeshBuilder();
-                mb.AddTriangle(ToV3(xE, y0, _alturas[i][cols - 1]),
+                mb.AddTriangle(ToV3(xE, y0, alturas[i][cols - 1]),
                                ToV3(xE, y1, zBase),
                                ToV3(xE, y0, zBase));
-                mb.AddTriangle(ToV3(xE, y0, _alturas[i][cols - 1]),
-                               ToV3(xE, y1, _alturas[i + 1][cols - 1]),
+                mb.AddTriangle(ToV3(xE, y0, alturas[i][cols - 1]),
+                               ToV3(xE, y1, alturas[i + 1][cols - 1]),
                                ToV3(xE, y1, zBase));
                 AddMesh(mb, matPared);
             }
@@ -444,14 +444,14 @@ namespace Proyecto_Integrador.Views.Terrenos
 
         private void ResetCamera()
         {
-            int filas = _alturas.Length;
-            int cols = filas > 0 ? _alturas[0].Length : 0;
-            double cx = (cols - 1) * _dx / 2.0;
-            double cy = (filas - 1) * _dy / 2.0;
+            int filas = alturas.Length;
+            int cols = filas > 0 ? alturas[0].Length : 0;
+            double cx = (cols - 1) * dx / 2.0;
+            double cy = (filas - 1) * dy / 2.0;
             double zCenter = (_zMin + _zMax) / 2.0;
             double diag = Math.Sqrt(
-                Math.Pow((cols - 1) * _dx, 2) +
-                Math.Pow((filas - 1) * _dy, 2));
+                Math.Pow((cols - 1) * dx, 2) +
+                Math.Pow((filas - 1) * dy, 2));
             double dist = diag * 1.5 + 10;
 
             _viewport.Camera = new PerspectiveCamera

@@ -1,6 +1,7 @@
 ﻿using Proyecto_Integrador.Controller;
 using Proyecto_Integrador.Models;
 using Proyecto_Integrador.Repository;
+using Proyecto_Integrador.Views.Utils;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -18,10 +19,12 @@ namespace Proyecto_Integrador.Views.Cotizaciones
         private ClienteController clienteController = new ClienteController();
         private List<Cotizacion> cotizaciones;
         private Usuario usuarioLogueado;
+        private ControlsUtils resize;
 
         public CotizacionesForm(Usuario usuario)
         {
             InitializeComponent();
+            this.resize = new ControlsUtils(this);
             this.usuarioLogueado = usuario;
             tablaCotizaciones.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }
@@ -87,16 +90,6 @@ namespace Proyecto_Integrador.Views.Cotizaciones
 
             tablaCotizaciones.RowTemplate.Height = 36;
             tablaCotizaciones.ColumnHeadersHeight = 34;
-
-            Editar.Text = "Editar";
-            Editar.UseColumnTextForButtonValue = true;
-            Editar.FlatStyle = FlatStyle.Flat;
-            Editar.DefaultCellStyle.BackColor = Color.FromArgb(0, 0, 64);
-            Editar.DefaultCellStyle.ForeColor = Color.White;
-            Editar.DefaultCellStyle.SelectionBackColor = Color.FromArgb(0, 0, 64);
-            Editar.DefaultCellStyle.SelectionForeColor = Color.White;
-            Editar.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-            Editar.Width = 90;
         }
 
 
@@ -183,6 +176,11 @@ namespace Proyecto_Integrador.Views.Cotizaciones
                     e.CellStyle.Font = new Font("Segoe UI", 9, FontStyle.Bold);
                 }
             }
+        }
+
+        private void CotizacionesForm_Resize(object sender, EventArgs e)
+        {
+            resize?.ejecutarEscalado();
         }
     }
 }

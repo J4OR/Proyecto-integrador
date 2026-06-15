@@ -172,9 +172,9 @@
             // panelTitulo
             // 
             panelTitulo.BackColor = Color.FromArgb(0, 0, 64);
-            panelTitulo.Location = new Point(-27, 0);
+            panelTitulo.Location = new Point(-2, 0);
             panelTitulo.Name = "panelTitulo";
-            panelTitulo.Size = new Size(1089, 63);
+            panelTitulo.Size = new Size(1056, 63);
             panelTitulo.TabIndex = 5;
             // 
             // btnAgregar

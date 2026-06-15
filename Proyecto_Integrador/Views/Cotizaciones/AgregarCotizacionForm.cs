@@ -315,6 +315,11 @@ namespace Proyecto_Integrador.Views.Cotizaciones
                 dgvItems.Rows.RemoveAt(e.RowIndex);
             }
         }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }
     

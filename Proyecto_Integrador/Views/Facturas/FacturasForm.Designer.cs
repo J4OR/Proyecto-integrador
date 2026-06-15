@@ -36,10 +36,6 @@
             fechaInicio = new DateTimePicker();
             btnCrearFactura = new Button();
             tablaFacturas = new DataGridView();
-            txtBuscador = new TextBox();
-            label1 = new Label();
-            panelTitulo = new Panel();
-            btnBuscar = new Button();
             Id = new DataGridViewTextBoxColumn();
             Cliente = new DataGridViewTextBoxColumn();
             Identificacion = new DataGridViewTextBoxColumn();
@@ -49,6 +45,9 @@
             Fecha = new DataGridViewTextBoxColumn();
             Ver = new DataGridViewButtonColumn();
             Accion = new DataGridViewButtonColumn();
+            txtBuscador = new TextBox();
+            label1 = new Label();
+            panelTitulo = new Panel();
             ((System.ComponentModel.ISupportInitialize)tablaFacturas).BeginInit();
             panelTitulo.SuspendLayout();
             SuspendLayout();
@@ -100,54 +99,13 @@
             tablaFacturas.AllowUserToAddRows = false;
             tablaFacturas.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             tablaFacturas.Columns.AddRange(new DataGridViewColumn[] { Id, Cliente, Identificacion, Descripcion, Total, Estado, Fecha, Ver, Accion });
-            tablaFacturas.Location = new Point(98, 186);
+            tablaFacturas.Location = new Point(95, 186);
             tablaFacturas.Name = "tablaFacturas";
             tablaFacturas.RowHeadersWidth = 51;
             tablaFacturas.Size = new Size(996, 497);
             tablaFacturas.TabIndex = 17;
             tablaFacturas.CellClick += tablaFacturas_CellClick;
             tablaFacturas.CellFormatting += tablaFacturas_CellFormatting;
-            // 
-            // txtBuscador
-            // 
-            txtBuscador.ForeColor = Color.Black;
-            txtBuscador.Location = new Point(98, 111);
-            txtBuscador.Name = "txtBuscador";
-            txtBuscador.Size = new Size(235, 27);
-            txtBuscador.TabIndex = 16;
-            txtBuscador.TextChanged += txtBuscar_TextChanged;
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.BackColor = Color.FromArgb(0, 0, 64);
-            label1.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.ForeColor = Color.White;
-            label1.Location = new Point(624, 17);
-            label1.Name = "label1";
-            label1.Size = new Size(268, 28);
-            label1.TabIndex = 15;
-            label1.Text = "Administración de facturas";
-            label1.TextAlign = ContentAlignment.MiddleCenter;
-            // 
-            // panelTitulo
-            // 
-            panelTitulo.BackColor = Color.FromArgb(0, 0, 64);
-            panelTitulo.Controls.Add(label1);
-            panelTitulo.Location = new Point(-157, -8);
-            panelTitulo.Name = "panelTitulo";
-            panelTitulo.Size = new Size(1325, 63);
-            panelTitulo.TabIndex = 18;
-            // 
-            // btnBuscar
-            // 
-            btnBuscar.Image = (Image)resources.GetObject("btnBuscar.Image");
-            btnBuscar.Location = new Point(339, 111);
-            btnBuscar.Name = "btnBuscar";
-            btnBuscar.Size = new Size(42, 30);
-            btnBuscar.TabIndex = 23;
-            btnBuscar.UseVisualStyleBackColor = true;
-            btnBuscar.Click += btnBuscar_Click;
             // 
             // Id
             // 
@@ -227,12 +185,42 @@
             Accion.UseColumnTextForButtonValue = true;
             Accion.Width = 140;
             // 
+            // txtBuscador
+            // 
+            txtBuscador.ForeColor = Color.Black;
+            txtBuscador.Location = new Point(98, 111);
+            txtBuscador.Name = "txtBuscador";
+            txtBuscador.Size = new Size(235, 27);
+            txtBuscador.TabIndex = 16;
+            txtBuscador.TextChanged += txtBuscar_TextChanged;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.BackColor = Color.FromArgb(0, 0, 64);
+            label1.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label1.ForeColor = Color.White;
+            label1.Location = new Point(459, 18);
+            label1.Name = "label1";
+            label1.Size = new Size(268, 28);
+            label1.TabIndex = 15;
+            label1.Text = "Administración de facturas";
+            label1.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // panelTitulo
+            // 
+            panelTitulo.BackColor = Color.FromArgb(0, 0, 64);
+            panelTitulo.Controls.Add(label1);
+            panelTitulo.Location = new Point(0, 0);
+            panelTitulo.Name = "panelTitulo";
+            panelTitulo.Size = new Size(1168, 63);
+            panelTitulo.TabIndex = 18;
+            // 
             // FacturasForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1168, 717);
-            Controls.Add(btnBuscar);
             Controls.Add(btnFecha);
             Controls.Add(fechaFin);
             Controls.Add(fechaInicio);
@@ -261,7 +249,6 @@
         private TextBox txtBuscador;
         private Label label1;
         private Panel panelTitulo;
-        private Button btnBuscar;
         private DataGridViewTextBoxColumn Id;
         private DataGridViewTextBoxColumn Cliente;
         private DataGridViewTextBoxColumn Identificacion;

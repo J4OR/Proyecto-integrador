@@ -33,12 +33,12 @@
             btnGuardar = new Button();
             txtConfirmar = new TextBox();
             label8 = new Label();
-            txtContraseña = new TextBox();
+            txtContraseñaActual = new TextBox();
             label6 = new Label();
             panel1 = new Panel();
             label1 = new Label();
             pictureBox1 = new PictureBox();
-            txtContraseñaActual = new TextBox();
+            txtContraseña = new TextBox();
             label2 = new Label();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
@@ -96,12 +96,12 @@
             label8.TabIndex = 48;
             label8.Text = "ConfirmarContraseña:";
             // 
-            // txtContraseña
+            // txtContraseñaActual
             // 
-            txtContraseña.Location = new Point(221, 135);
-            txtContraseña.Name = "txtContraseña";
-            txtContraseña.Size = new Size(375, 27);
-            txtContraseña.TabIndex = 47;
+            txtContraseñaActual.Location = new Point(221, 102);
+            txtContraseñaActual.Name = "txtContraseñaActual";
+            txtContraseñaActual.Size = new Size(375, 27);
+            txtContraseñaActual.TabIndex = 47;
             // 
             // label6
             // 
@@ -143,12 +143,12 @@
             pictureBox1.TabIndex = 0;
             pictureBox1.TabStop = false;
             // 
-            // txtContraseñaActual
+            // txtContraseña
             // 
-            txtContraseñaActual.Location = new Point(221, 102);
-            txtContraseñaActual.Name = "txtContraseñaActual";
-            txtContraseñaActual.Size = new Size(375, 27);
-            txtContraseñaActual.TabIndex = 55;
+            txtContraseña.Location = new Point(221, 135);
+            txtContraseña.Name = "txtContraseña";
+            txtContraseña.Size = new Size(375, 27);
+            txtContraseña.TabIndex = 55;
             // 
             // label2
             // 
@@ -164,14 +164,14 @@
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(632, 339);
-            Controls.Add(txtContraseñaActual);
+            Controls.Add(txtContraseña);
             Controls.Add(label2);
             Controls.Add(panel1);
             Controls.Add(button1);
             Controls.Add(btnGuardar);
             Controls.Add(txtConfirmar);
             Controls.Add(label8);
-            Controls.Add(txtContraseña);
+            Controls.Add(txtContraseñaActual);
             Controls.Add(label6);
             Name = "CambiarContraseñaForm";
             Text = "CambiarContraseñaForm";
@@ -187,12 +187,12 @@
         private Button btnGuardar;
         private TextBox txtConfirmar;
         private Label label8;
-        private TextBox txtContraseña;
+        private TextBox txtContraseñaActual;
         private Label label6;
         private Panel panel1;
         private Label label1;
         private PictureBox pictureBox1;
-        private TextBox txtContraseñaActual;
+        private TextBox txtContraseña;
         private Label label2;
     }
 }

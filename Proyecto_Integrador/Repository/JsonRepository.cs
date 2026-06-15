@@ -23,22 +23,49 @@ namespace Proyecto_Integrador.Repository
         {
             List<T> lista = new List<T>();
 
-            if (File.Exists(this.rutaCarpeta))
+            try
             {
-                using (StreamReader sr = new StreamReader(this.rutaCarpeta))
+                if (File.Exists(this.rutaCarpeta))
                 {
-                    string json = sr.ReadToEnd();
-
-                    if (json != String.Empty)
+                    using (StreamReader sr = new StreamReader(this.rutaCarpeta))
                     {
-                        lista = JsonSerializer.Deserialize<List<T>>(json) ?? lista;
+                        string json = sr.ReadToEnd();
+
+                        if (json != String.Empty)
+                        {
+                            lista = JsonSerializer.Deserialize<List<T>>(json) ?? lista;
+                        }
                     }
                 }
+                else
+                {
+                    Directory.CreateDirectory(carpeta);
+                    File.WriteAllText(rutaCarpeta, "[]");
+                }
             }
-            else
+            catch (JsonException)
             {
-                Directory.CreateDirectory(carpeta);
-                File.WriteAllText(rutaCarpeta, "[]");
+                MessageBox.Show(
+                    $"El archivo '{rutaCarpeta}' tiene un formato inválido (posiblemente fue editado manualmente).",
+                    "Error al leer datos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            catch (UnauthorizedAccessException)
+            {
+                MessageBox.Show(
+                    $"No tienes permisos para acceder a '{rutaCarpeta}'.",
+                    "Error de permisos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            catch (IOException ex)
+            {
+                MessageBox.Show(
+                    $"No se pudo leer el archivo '{rutaCarpeta}'.\n{ex.Message}",
+                    "Error de archivo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(
+                    $"Ocurrió un error inesperado al leer '{rutaCarpeta}'.\n{ex.Message}",
+                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
             return lista;
@@ -100,4 +127,4 @@ namespace Proyecto_Integrador.Repository
 
         }
     }
-   }
+}

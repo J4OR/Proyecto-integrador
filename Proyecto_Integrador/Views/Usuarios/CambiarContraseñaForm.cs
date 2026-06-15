@@ -27,32 +27,32 @@ namespace Proyecto_Integrador.Views.Usuarios
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            if (usuarioLogueado.password != PasswordHasher.ToSha256(txtContraseñaActual.Text.Trim()))
+            if (usuarioLogueado.password != PasswordHasher.ToSha256(txtContraseña.Text.Trim()))
             {
                 MessageBox.Show("La contraseña actual no es correcta");
                 return;
             }
 
-            if (string.IsNullOrWhiteSpace(txtContraseña.Text))
+            if (string.IsNullOrWhiteSpace(txtContraseñaActual.Text))
             {
                 MessageBox.Show("La nueva contraseña no puede estar vacía");
                 return;
             }
 
-            if (txtContraseña.Text.Trim() != txtConfirmar.Text.Trim())
+            if (txtContraseñaActual.Text.Trim() != txtConfirmar.Text.Trim())
             {
                 MessageBox.Show("La confirmación de contraseña no coincide");
                 return;
             }
 
-            if (PasswordHasher.ToSha256(txtContraseña.Text.Trim()) == usuarioLogueado.password) 
+            if (PasswordHasher.ToSha256(txtContraseñaActual.Text.Trim()) == usuarioLogueado.password) 
             {
                 MessageBox.Show("La nueva contraseña no puede ser igual a la anterior");
                 return;
             }
 
 
-            usuarioLogueado.password = PasswordHasher.ToSha256(txtContraseña.Text.Trim());
+            usuarioLogueado.password = PasswordHasher.ToSha256(txtContraseñaActual.Text.Trim());
 
             usuarioController.EditarUsuario(usuarioLogueado, usuarioLogueado.id);
 

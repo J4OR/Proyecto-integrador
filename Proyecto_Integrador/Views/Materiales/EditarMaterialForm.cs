@@ -14,11 +14,11 @@ namespace Proyecto_Integrador.Views.Materiales
     public partial class EditarMaterialForm : Form
     {
         private MaterialController materialController = new MaterialController();
-        private Material material;
+        private Material materialSeleccionado;
         public EditarMaterialForm(Material material)
         {
             InitializeComponent();
-            this.material = material;
+            this.materialSeleccionado = material;
             this.StartPosition = FormStartPosition.CenterParent;
             this.FormBorderStyle = FormBorderStyle.FixedDialog;
             this.MinimizeBox = false;
@@ -26,8 +26,8 @@ namespace Proyecto_Integrador.Views.Materiales
         }
         private void cargarDatos()
         {
-            txtNombre.Text = material.nombre;
-            txtPrecio.Text = material.precioUnidad.ToString();
+            txtNombre.Text = materialSeleccionado.nombre;
+            txtPrecio.Text = materialSeleccionado.precioUnidad.ToString();
         }
 
         private void EditarMaterialForm_Load(object sender, EventArgs e)
@@ -45,17 +45,17 @@ namespace Proyecto_Integrador.Views.Materiales
                 return;
             }
 
-            if (materialController.ExisteMaterial(txtNombre.Text))
+            if (materialController.ExisteMaterial(txtNombre.Text) && txtNombre.Text != materialSeleccionado.nombre)
             {
                 MessageBox.Show("El material ya existe. Por favor, ingrese otro.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            int id = materialController.ObtenerSiguienteId();
-            Material material = new Material(id, txtNombre.Text, double.Parse(txtPrecio.Text));
+            
+            Material material = new Material(materialSeleccionado.id, txtNombre.Text, double.Parse(txtPrecio.Text));
 
-            materialController.AgregarMaterial(material);
+            materialController.EditarMaterial(material, materialSeleccionado.id);
 
-            MessageBox.Show("Material agregado correctamente.", "Agregar material", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show("Material editado correctamente.", "Agregar material", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             this.DialogResult = DialogResult.OK;
             this.Close();

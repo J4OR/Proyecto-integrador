@@ -121,10 +121,6 @@ namespace Proyecto_Integrador.Views.Facturas
 
         }
 
-        private void btnBuscar_Click(object sender, EventArgs e)
-        {
-            cargarFacturas();
-        }
 
         private void FacturasForm_Resize(object sender, EventArgs e)
         {

@@ -1,6 +1,7 @@
 ﻿using Proyecto_Integrador.Controller;
 using Proyecto_Integrador.Models;
 using Proyecto_Integrador.Security;
+using Proyecto_Integrador.Validator;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -25,45 +26,99 @@ namespace Proyecto_Integrador.Views.Usuarios
             this.MaximizeBox = false;
         }
 
+        private void ValidarEnTiempoReal()
+        {
+            var errores = UsuarioValidator.ValidarContraseña(
+                txtContraseña.Text,
+                txtConfirmar.Text
+            );
+
+            if (errores.ContainsKey("txtContraseña"))
+            {
+                lblValidacionContraseña.Text = errores["txtContraseña"];
+                lblValidacionContraseña.Visible = true;
+            }
+            else
+            {
+                lblValidacionContraseña.Visible = false;
+            }
+
+            if (errores.ContainsKey("txtConfirmar"))
+            {
+                lblValidacion.Text = errores["txtConfirmar"];
+                lblValidacion.Visible = true;
+            }
+            else
+            {
+                lblValidacion.Visible = false;
+            }
+        }
+
+
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            if (usuarioLogueado.password != PasswordHasher.ToSha256(txtContraseña.Text.Trim()))
+
+            lblValidacionContraseña.Visible = false;
+            lblValidacion.Visible = false;
+
+
+            if (usuarioLogueado.password != PasswordHasher.ToSha256(txtContraseñaActual.Text.Trim()))
             {
-                MessageBox.Show("La contraseña actual no es correcta");
+                lblValidacionContraseña.Text = "La contraseña actual no es correcta";
+                lblValidacionContraseña.Visible = true;
                 return;
             }
 
-            if (string.IsNullOrWhiteSpace(txtContraseñaActual.Text))
+            var errores = UsuarioValidator.ValidarContraseña(
+                txtContraseña.Text,
+                txtConfirmar.Text
+            );
+
+            if (errores.ContainsKey("txtContraseña"))
             {
-                MessageBox.Show("La nueva contraseña no puede estar vacía");
+                lblValidacionContraseña.Text = errores["txtContraseña"];
+                lblValidacionContraseña.ForeColor = Color.Red;
+                lblValidacionContraseña.Visible = true;
                 return;
             }
 
-            if (txtContraseñaActual.Text.Trim() != txtConfirmar.Text.Trim())
+            if (errores.ContainsKey("txtConfirmar"))
             {
-                MessageBox.Show("La confirmación de contraseña no coincide");
+                lblValidacion.Text = errores["txtConfirmar"];
+                lblValidacion.Visible = true;
                 return;
             }
 
-            if (PasswordHasher.ToSha256(txtContraseñaActual.Text.Trim()) == usuarioLogueado.password) 
+            if (PasswordHasher.ToSha256(txtContraseña.Text.Trim()) == usuarioLogueado.password)
             {
-                MessageBox.Show("La nueva contraseña no puede ser igual a la anterior");
+                lblValidacionContraseña.Text = "La nueva contraseña no puede ser igual a la anterior";
+                lblValidacionContraseña.ForeColor = Color.Red;
+                lblValidacionContraseña.Visible = true;
                 return;
             }
 
-
-            usuarioLogueado.password = PasswordHasher.ToSha256(txtContraseñaActual.Text.Trim());
+            usuarioLogueado.password = PasswordHasher.ToSha256(txtContraseña.Text.Trim());
 
             usuarioController.EditarUsuario(usuarioLogueado, usuarioLogueado.id);
 
-            MessageBox.Show("Contraseña actualizada correctamente");
 
+            MessageBox.Show("Contraseña actualizada correctamente ", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
             this.Close();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void txtContraseña_TextChanged(object sender, EventArgs e)
+        {
+            ValidarEnTiempoReal();
+        }
+
+        private void txtConfirmar_TextChanged(object sender, EventArgs e)
+        {
+            ValidarEnTiempoReal();
         }
     }
 }

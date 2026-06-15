@@ -173,25 +173,47 @@ namespace Proyecto_Integrador.Validator
             return errores;
 
         }
+
         public static Dictionary<string, string> ValidarContraseña(string contraseña, string confirmar)
         {
             Dictionary<string, string> errores = new Dictionary<string, string>();
 
             if (string.IsNullOrWhiteSpace(contraseña))
+            {
                 errores["txtContraseña"] = "La contraseña es obligatoria.";
-            else if (contraseña.Length < 6)
-                errores["txtContraseña"] = "La contraseña debe tener mínimo 6 caracteres.";
-            else if (!Regex.IsMatch(contraseña, @"[0-9]"))
-                errores["txtContraseña"] = "La contraseña debe tener al menos un número.";
-            else if (!Regex.IsMatch(contraseña, @"[^a-zA-Z0-9]"))
-                errores["txtContraseña"] = "La contraseña debe tener al menos un carácter especial.";
+            }
+            else
+            {
+                StringBuilder mensaje = new StringBuilder();
 
+                if (!Regex.IsMatch(contraseña, "[A-Z]"))
+                    mensaje.AppendLine("• Debe tener una mayúscula");
+
+                if (contraseña.Length < 6)
+                    mensaje.AppendLine("• Mínimo 6 caracteres");
+
+                if (!Regex.IsMatch(contraseña, @"[0-9]"))
+                    mensaje.AppendLine("• Debe tener un número");
+
+                if (!Regex.IsMatch(contraseña, @"[^a-zA-Z0-9]"))
+                    mensaje.AppendLine("• Debe tener un carácter especial");
+
+                if (mensaje.Length > 0)
+                    errores["txtContraseña"] = mensaje.ToString();
+            }
+
+            // CONFIRMAR
             if (string.IsNullOrWhiteSpace(confirmar))
+            {
                 errores["txtConfirmar"] = "Confirma la contraseña.";
+            }
             else if (contraseña != confirmar)
+            {
                 errores["txtConfirmar"] = "Las contraseñas no coinciden.";
+            }
 
             return errores;
         }
+
     }
 }

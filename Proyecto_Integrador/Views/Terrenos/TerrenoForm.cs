@@ -126,7 +126,7 @@ namespace Proyecto_Integrador.Views.Terrenos
             if (tablaTerrenos.Columns[e.ColumnIndex].Name == "Ver")
             {
                 GraficaForm grafica = new GraficaForm(TerrenoSeleccionado.cotas, TerrenoSeleccionado.alturaReferencia,
-                    TerrenoSeleccionado.dx, TerrenoSeleccionado.dy);
+                    TerrenoSeleccionado.dx, TerrenoSeleccionado.dy, true);
                 grafica.ShowDialog();
             }
         }

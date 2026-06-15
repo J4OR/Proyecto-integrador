@@ -29,6 +29,7 @@ namespace Proyecto_Integrador.Views.Terrenos
             trkH = new TrackBar();
             lblH = new Label();
             host = new System.Windows.Forms.Integration.ElementHost();
+            btnGuardar = new Button();
             panelControles.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)trkDy).BeginInit();
             ((System.ComponentModel.ISupportInitialize)trkDx).BeginInit();
@@ -38,6 +39,7 @@ namespace Proyecto_Integrador.Views.Terrenos
             // panelControles
             // 
             panelControles.BackColor = Color.FromArgb(30, 30, 45);
+            panelControles.Controls.Add(btnGuardar);
             panelControles.Controls.Add(btnReset);
             panelControles.Controls.Add(chkEtiquetas);
             panelControles.Controls.Add(chkPuntos);
@@ -200,6 +202,19 @@ namespace Proyecto_Integrador.Views.Terrenos
             host.TabIndex = 0;
             host.Text = "host";
             // 
+            // btnGuardar
+            // 
+            btnGuardar.BackColor = Color.FromArgb(50, 70, 120);
+            btnGuardar.FlatStyle = FlatStyle.Flat;
+            btnGuardar.ForeColor = Color.White;
+            btnGuardar.Location = new Point(12, 462);
+            btnGuardar.Name = "btnGuardar";
+            btnGuardar.Size = new Size(196, 35);
+            btnGuardar.TabIndex = 53;
+            btnGuardar.Text = "Guardar";
+            btnGuardar.UseVisualStyleBackColor = false;
+            btnGuardar.Click += btnGuardar_Click;
+            // 
             // GraficaForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -235,5 +250,6 @@ namespace Proyecto_Integrador.Views.Terrenos
         private System.Windows.Forms.TrackBar trkH;
         private System.Windows.Forms.Label lblH;
         private System.Windows.Forms.Integration.ElementHost host;
+        private Button btnGuardar;
     }
 }

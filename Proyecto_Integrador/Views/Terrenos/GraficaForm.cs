@@ -12,6 +12,7 @@ namespace Proyecto_Integrador.Views.Terrenos
 {
     public partial class GraficaForm : Form
     {
+
         private readonly double[][] alturas;
         private double h, dx, dy;
         private HelixViewport3D _viewport;
@@ -20,11 +21,20 @@ namespace Proyecto_Integrador.Views.Terrenos
         private bool _mostrarPuntos = true;
         private bool _mostrarEtiquetas = true;
         private bool _inicializando = true;
+        private bool modoSoloLectura;
+
+
+        public double HFinal => h;
+        public double DxFinal => dx;
+        public double DyFinal => dy;
+
+
 
         private const int SUB = 3;
 
-        public GraficaForm(double[][] alturas, double h, double dx, double dy)
+        public GraficaForm(double[][] alturas, double h, double dx, double dy, bool modoLectura = false)
         {
+            this.modoSoloLectura = modoLectura;
             this.alturas = alturas;
             this.h = h;
             this.dx = dx;
@@ -49,6 +59,15 @@ namespace Proyecto_Integrador.Views.Terrenos
             InitSliders();
             _inicializando = false;
             ResetCamera();
+            AplicarModo();
+        }
+
+        private void AplicarModo()
+        {
+            if (modoSoloLectura)
+            {
+                panelControles.Visible = false;
+            }
         }
 
         private void InitLights()
@@ -472,6 +491,13 @@ namespace Proyecto_Integrador.Views.Terrenos
         // Helpers para convertir coordenadas double a Vector3 (float) de HelixToolkit.Geometry
         private static Vector3 ToV3(Point3D p) => new((float)p.X, (float)p.Y, (float)p.Z);
         private static Vector3 ToV3(double x, double y, double z) => new((float)x, (float)y, (float)z);
+
+
+        private void btnGuardar_Click(object sender, EventArgs e)
+        {
+            this.DialogResult = DialogResult.OK;
+            this.Close();
+        }
     }
 }
     

@@ -40,8 +40,12 @@
             pictureBox1 = new PictureBox();
             txtContraseña = new TextBox();
             label2 = new Label();
+            lblValidacion = new Label();
+            panel2 = new Panel();
+            lblValidacionContraseña = new Label();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            panel2.SuspendLayout();
             SuspendLayout();
             // 
             // button1
@@ -51,7 +55,7 @@
             button1.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             button1.ForeColor = Color.Black;
             button1.Image = (Image)resources.GetObject("button1.Image");
-            button1.Location = new Point(329, 275);
+            button1.Location = new Point(329, 390);
             button1.Name = "button1";
             button1.Padding = new Padding(10, 5, 0, 5);
             button1.Size = new Size(121, 36);
@@ -69,7 +73,7 @@
             btnGuardar.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnGuardar.ForeColor = SystemColors.ButtonHighlight;
             btnGuardar.Image = (Image)resources.GetObject("btnGuardar.Image");
-            btnGuardar.Location = new Point(466, 275);
+            btnGuardar.Location = new Point(466, 390);
             btnGuardar.Name = "btnGuardar";
             btnGuardar.Padding = new Padding(10, 5, 0, 5);
             btnGuardar.Size = new Size(130, 36);
@@ -82,15 +86,16 @@
             // 
             // txtConfirmar
             // 
-            txtConfirmar.Location = new Point(221, 168);
+            txtConfirmar.Location = new Point(221, 197);
             txtConfirmar.Name = "txtConfirmar";
             txtConfirmar.Size = new Size(375, 27);
             txtConfirmar.TabIndex = 49;
+            txtConfirmar.TextChanged += txtConfirmar_TextChanged;
             // 
             // label8
             // 
             label8.AutoSize = true;
-            label8.Location = new Point(12, 175);
+            label8.Location = new Point(12, 204);
             label8.Name = "label8";
             label8.Size = new Size(152, 20);
             label8.TabIndex = 48;
@@ -106,7 +111,7 @@
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(12, 142);
+            label6.Location = new Point(12, 154);
             label6.Name = "label6";
             label6.Size = new Size(86, 20);
             label6.TabIndex = 46;
@@ -145,10 +150,11 @@
             // 
             // txtContraseña
             // 
-            txtContraseña.Location = new Point(221, 135);
+            txtContraseña.Location = new Point(221, 147);
             txtContraseña.Name = "txtContraseña";
             txtContraseña.Size = new Size(375, 27);
             txtContraseña.TabIndex = 55;
+            txtContraseña.TextChanged += txtContraseña_TextChanged;
             // 
             // label2
             // 
@@ -159,11 +165,43 @@
             label2.TabIndex = 54;
             label2.Text = "Contraseña Actual:";
             // 
+            // lblValidacion
+            // 
+            lblValidacion.AutoSize = true;
+            lblValidacion.ForeColor = Color.White;
+            lblValidacion.Location = new Point(19, 18);
+            lblValidacion.Name = "lblValidacion";
+            lblValidacion.Size = new Size(50, 20);
+            lblValidacion.TabIndex = 56;
+            lblValidacion.Text = "label3";
+            lblValidacion.Visible = false;
+            // 
+            // panel2
+            // 
+            panel2.BackColor = Color.FromArgb(0, 0, 64);
+            panel2.Controls.Add(lblValidacionContraseña);
+            panel2.Controls.Add(lblValidacion);
+            panel2.Location = new Point(221, 250);
+            panel2.Name = "panel2";
+            panel2.Size = new Size(375, 131);
+            panel2.TabIndex = 57;
+            // 
+            // lblValidacionContraseña
+            // 
+            lblValidacionContraseña.AutoSize = true;
+            lblValidacionContraseña.ForeColor = Color.White;
+            lblValidacionContraseña.Location = new Point(19, 18);
+            lblValidacionContraseña.Name = "lblValidacionContraseña";
+            lblValidacionContraseña.Size = new Size(169, 20);
+            lblValidacionContraseña.TabIndex = 57;
+            lblValidacionContraseña.Text = "lblValidacionContraseña";
+            lblValidacionContraseña.Visible = false;
+            // 
             // CambiarContraseñaForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(632, 339);
+            ClientSize = new Size(632, 448);
             Controls.Add(txtContraseña);
             Controls.Add(label2);
             Controls.Add(panel1);
@@ -173,11 +211,14 @@
             Controls.Add(label8);
             Controls.Add(txtContraseñaActual);
             Controls.Add(label6);
+            Controls.Add(panel2);
             Name = "CambiarContraseñaForm";
             Text = "CambiarContraseñaForm";
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            panel2.ResumeLayout(false);
+            panel2.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -194,5 +235,8 @@
         private PictureBox pictureBox1;
         private TextBox txtContraseña;
         private Label label2;
+        private Label lblValidacion;
+        private Panel panel2;
+        private Label lblValidacionContraseña;
     }
 }

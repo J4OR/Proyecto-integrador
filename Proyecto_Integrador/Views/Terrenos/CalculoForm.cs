@@ -180,7 +180,16 @@ namespace Proyecto_Integrador.Views.Terrenos
             double[][] alturas = LeerAlturas();
 
             GraficaForm graficaForm = new GraficaForm(alturas, (double)nupAltura.Value, (double)nupDx.Value, (double)nupDy.Value);
-            graficaForm.ShowDialog();
+
+            if (graficaForm.ShowDialog() == DialogResult.OK)
+            {
+                nupAltura.Value = (decimal)graficaForm.HFinal;
+                nupDx.Value = (decimal)graficaForm.DxFinal;
+                nupDy.Value = (decimal)graficaForm.DyFinal;
+                lblResultado.Text = "Datos cargados desde la grafica";
+
+            }
+
         }
 
         private void btnGuardar_Click(object sender, EventArgs e)
